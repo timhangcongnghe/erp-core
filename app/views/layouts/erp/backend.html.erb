@@ -44,11 +44,7 @@ Website: http://globalnaturesoft.com/
                 <!-- BEGIN HEADER INNER -->
                 <div class="page-header-inner ">
                     <!-- BEGIN LOGO -->
-                    <div class="page-logo">
-                        <a href="index.html">
-                            <img src="/assets/layouts/layout/img/logo.png" alt="logo" class="logo-default" />
-                        </a>
-                    </div>
+                    <div class="page-logo"><%= link_to image_tag("/assets/layouts/layout/img/logo-big.png", alt: "logo", class: "logo-default"), erp.backend_path %></div>
                     <!-- END LOGO -->
                     <!-- BEGIN MEGA MENU -->
                     <!-- DOC: Remove "hor-menu-light" class to have a horizontal menu with theme background instead of white background -->
@@ -736,8 +732,7 @@ Website: http://globalnaturesoft.com/
                                             <i class="icon-lock"></i> Lock Screen </a>
                                     </li>
                                     <li>
-                                        <a href="page_user_login_1.html">
-                                            <i class="icon-key"></i> Log Out </a>
+                                        <%= link_to '<i class="icon-key"></i> Log Out'.html_safe, erp.destroy_user_session_path, method: :delete, redirect_to: erp.backend_path %>
                                     </li>
                                 </ul>
                             </li>

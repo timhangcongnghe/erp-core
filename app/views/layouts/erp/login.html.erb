@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!-- 
+<!-- 
+App name: ERP, Enterprise Resource Planning Software, ERP Software, ERP System, ERP Solutions
+Version: 1.0.0
+Author: Luan Pham, Son Nguyen, Hung Nguyen
+Website: http://globalnaturesoft.com/
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<html lang="en">
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+
+    <head>
+        <meta charset="utf-8" />
+        <title>ERP (Enterprise Resource Planning) System, ERP Software | Global Naturesoft</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="Preview page of Metronic Admin Theme #1 for " name="description" />
+        <meta content="" name="author" />
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" %>
+        <%= stylesheet_link_tag "/assets/global/plugins/font-awesome/css/font-awesome.min.css" %>
+        <%= stylesheet_link_tag "/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" %>
+        <%= stylesheet_link_tag "/assets/global/plugins/bootstrap/css/bootstrap.min.css" %>
+        <%= stylesheet_link_tag "/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" %>
+        <!-- END GLOBAL MANDATORY STYLES -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <%= stylesheet_link_tag "/assets/global/plugins/select2/css/select2.min.css" %>
+        <%= stylesheet_link_tag "/assets/global/plugins/select2/css/select2-bootstrap.min.css" %>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL STYLES -->
+        <%= stylesheet_link_tag "/assets/global/css/components-md.min.css" %>
+        <%= stylesheet_link_tag "/assets/global/css/plugins-md.min.css" %>
+        <!-- END THEME GLOBAL STYLES -->
+        <!-- BEGIN PAGE LEVEL STYLES -->
+        <%= stylesheet_link_tag "/assets/pages/css/login.min.css" %>
+        <!-- END PAGE LEVEL STYLES -->
+        <!-- BEGIN THEME LAYOUT STYLES -->
+        <!-- END THEME LAYOUT STYLES -->
+        <%= favicon_link_tag 'favicon.ico', rel: 'shortcut icon' %>
+    </head>
+    <!-- END HEAD -->
+
+    <body class=" login">
+        <!-- BEGIN LOGO -->
+        <div class="logo"><%= link_to image_tag("/assets/pages/img/logo-big.png", alt: ""), erp.backend_path %></div>
+        <!-- END LOGO -->
+        <!-- BEGIN LOGIN -->
+        <div class="content">
+            <!-- BEGIN LOGIN FORM -->
+            <%= yield %>
+            <!-- END LOGIN FORM -->
+            <!-- BEGIN FORGOT PASSWORD FORM -->
+            <form class="forget-form" action="index.html" method="post">
+                <h3 class="font-green">Forget Password ?</h3>
+                <p> Enter your e-mail address below to reset your password. </p>
+                <div class="form-group">
+                    <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" /> </div>
+                <div class="form-actions">
+                    <button type="button" id="back-btn" class="btn green btn-outline">Back</button>
+                    <button type="submit" class="btn btn-success uppercase pull-right">Submit</button>
+                </div>
+            </form>
+            <!-- END FORGOT PASSWORD FORM -->
+        </div>
+        <div class="copyright">2016 &copy; ERP System By <%= link_to "Global Naturesoft", "http://globalnaturesoft.com", target: "_blank" %>. All rights reserved.</div>
+        <!--[if lt IE 9]>
+        <%= javascript_include_tag "/assets/global/plugins/respond.min.js" %>
+        <%= javascript_include_tag "/assets/global/plugins/excanvas.min.js" %>
+        <%= javascript_include_tag "/assets/global/plugins/ie8.fix.min.js" %>
+        <![endif]-->
+        <!-- BEGIN CORE PLUGINS -->
+        <%= javascript_include_tag "/assets/global/plugins/jquery.min.js" %>
+        <%= javascript_include_tag "/assets/global/plugins/bootstrap/js/bootstrap.min.js" %>
+        <%= javascript_include_tag "/assets/global/plugins/js.cookie.min.js" %>
+        <%= javascript_include_tag "/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" %>
+        <%= javascript_include_tag "/assets/global/plugins/jquery.blockui.min.js" %>
+        <%= javascript_include_tag "/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" %>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <%= javascript_include_tag "/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" %>
+        <%= javascript_include_tag "/assets/global/plugins/jquery-validation/js/additional-methods.min.js" %>
+        <%= javascript_include_tag "/assets/global/plugins/select2/js/select2.full.min.js" %>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        <%= javascript_include_tag "/assets/global/scripts/app.min.js" %>
+        <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <%= javascript_include_tag "/assets/pages/scripts/login.min.js" %>
+        <!-- END PAGE LEVEL SCRIPTS -->
+        <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        <!-- END THEME LAYOUT SCRIPTS -->
+    </body>
+
+</html>

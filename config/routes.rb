@@ -1,6 +1,9 @@
 Erp::Core::Engine.routes.draw do
-  devise_for :users, class_name: "Erp::User", module: :devise
+  devise_for :users, class_name: "Erp::User", module: :devise, :controllers => {
+		:sessions => "erp/users/sessions"
+	}
 	namespace :backend do
-		root to: "dashboard#index"
+		get '/' => 'backend#index'
+		get '/dashboard' => 'dashboard#index', as: :dashboard
 	end
 end
