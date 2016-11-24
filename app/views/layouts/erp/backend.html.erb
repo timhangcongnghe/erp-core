@@ -11,9 +11,10 @@ Website: http://globalnaturesoft.com/
     <!--<![endif]-->
     <!-- BEGIN HEAD -->
 
-    <head>
-        <meta charset="utf-8" />
-        <title>ERP (Enterprise Resource Planning) System, ERP Software | Global Naturesoft</title>
+    <head>        
+        <%= csrf_meta_tags %>
+        
+        <meta charset="utf-8" />        
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #1 for full width layout with mega menu" name="description" />
@@ -2959,6 +2960,10 @@ Website: http://globalnaturesoft.com/
         <script src="/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
         <script src="/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
         <!-- END THEME LAYOUT SCRIPTS -->
+        
+        <!-- CUSTOM ERP SCRIPTS -->
+        <%= javascript_include_tag '/backend/js/main.js' %>
+        <!-- END CUSTOM ERP SCRIPTS -->
     </body>
 
 </html>
