@@ -6,10 +6,6 @@ module Erp::Backend
 		def index
 		end
 		
-		def after_sign_out_path_for(resource_or_scope)
-			erp.backend_path
-		end
-		
 		private
 			def set_layout
 			  "erp/backend/index"
