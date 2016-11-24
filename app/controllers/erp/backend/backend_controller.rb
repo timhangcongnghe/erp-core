@@ -12,7 +12,7 @@ module Erp::Backend
 		
 		private
 			def set_layout
-			  "erp/backend"
+			  "erp/backend/index"
 			end
 	end
 end
