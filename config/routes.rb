@@ -3,7 +3,6 @@ Erp::Core::Engine.routes.draw do
 		:sessions => "erp/users/sessions"
 	}
 	namespace :backend do
-		get '/' => 'backend#index'
-		get '/dashboard' => 'dashboard#index', as: :dashboard
+		get '/' => 'dashboard#index'
 	end
 end
