@@ -3,9 +3,6 @@ module Erp::Backend
 		before_action :authenticate_user!
 		layout :set_layout
 		
-		def index
-		end
-		
 		private
 			def set_layout
 			  "erp/backend/index"
