@@ -25,6 +25,10 @@ Website: http://globalnaturesoft.com/
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap/css/bootstrap.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" %>
         <!-- END GLOBAL MANDATORY STYLES -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <link href="/backend/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+        <link href="/backend/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
         <%= stylesheet_link_tag "/backend/assets/global/css/components-md.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/css/plugins-md.min.css" %>
@@ -40,6 +44,7 @@ Website: http://globalnaturesoft.com/
 
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-full-width page-md">
         <div class="page-wrapper">
+            
             <!-- BEGIN HEADER -->
             <!-- Includes: logo, mega menu, header search box, responsive menu toggler, top navigation menu -->
             <%= render "layouts/erp/backend/header" %>
@@ -51,25 +56,50 @@ Website: http://globalnaturesoft.com/
             
             <!-- BEGIN CONTAINER -->
             <div class="page-container">
+                
                 <!-- BEGIN SIDEBAR -->
                 <%= render "layouts/erp/backend/sidebar" %>
                 <!-- END SIDEBAR -->
+                
                 <!-- BEGIN CONTENT -->
-                <%= yield %>
+                <div class="page-content-wrapper">
+                    <!-- BEGIN CONTENT BODY -->
+                    <div class="page-content">
+                        <!-- BEGIN PAGE HEADER -->
+                        
+                        <!-- BEGIN PAGE BAR -->
+                        <!-- Includes: breadcrumb and actions -->
+                        <%= render "layouts/erp/backend/page_bar" %>
+                        <!-- END PAGE BAR -->
+                        
+                        <!-- BEGIN PAGE TITLE-->
+                        <h1 class="page-title">This's Title</h1>
+                        <!-- END PAGE TITLE-->
+                        
+                        <!-- END PAGE HEADER-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <%= yield %>
+                            </div>
+                        </div>   
+                    </div>
+                    <!-- END CONTENT BODY -->
+                </div>
                 <!-- END CONTENT -->
+                
                 <!-- BEGIN QUICK SIDEBAR -->
                 <%= render "layouts/erp/backend/quick_sidebar" %>
                 <!-- END QUICK SIDEBAR -->
+                
             </div>
             <!-- END CONTAINER -->
             
             <!-- BEGIN FOOTER -->
             <%= render "layouts/erp/backend/footer" %>
             <!-- END FOOTER -->
+            
         </div>
-        <!-- BEGIN QUICK NAV -->
-        <%= render "layouts/erp/backend/quick_nav" %>
-        <!-- END QUICK NAV -->
+        
         <!-- BEGIN JAVASCRIPT INCLUDES -->
         <%= render "layouts/erp/backend/javascript_includes" %>
         <!-- END JAVASCRIPT INCLUDES -->

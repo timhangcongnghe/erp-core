@@ -4,7 +4,7 @@ module Erp
 		
 		private
 		def set_layout
-			"erp/login"
+			"erp/backend/login"
 		end
 	end
 end
