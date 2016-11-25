@@ -1,0 +1,19 @@
+<div class="btn-group">
+    <a class="btn green-haze btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+        <i class="fa fa-th-list"></i> Actions
+        <i class="fa fa-angle-down"></i>
+    </a>
+    <ul class="dropdown-menu pull-left">
+        <% actions.each do |act| %>
+            <% if act[:divider] %>
+                <li class="divider"></li>
+            <% else %>
+                <li>
+                    <a href="javascript:;">
+                        <%= act[:text].html_safe %>
+                    </a>
+                </li>
+            <% end %>
+        <% end %>
+    </ul>
+</div>    

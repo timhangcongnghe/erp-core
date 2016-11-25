@@ -1,0 +1,14 @@
+.btn-group-checkable .dropdown-menu>li>a {
+    padding-left: 30px;
+}
+.btn-group-checkable .dropdown-menu>li>a.checked {
+    color: #217ebd;
+    padding-left: 12px;
+}
+.btn-group-checkable .dropdown-menu>li>a.checked:before {
+    content: "\f00c ";
+    font: normal normal normal 14px/1 FontAwesome;
+}
+.page-header.navbar .hor-menu .navbar-nav>li.active>a>i, .page-header.navbar .hor-menu .navbar-nav>li.current>a>i {
+    color: #fff;    
+}

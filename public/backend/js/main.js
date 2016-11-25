@@ -27,4 +27,16 @@ $(document).ready(function() {
         }));
         newForm.submit();
     });
+    
+    // Filters group link click    
+    $(document).on('click', '.btn-group-checkable .dropdown-menu>li>a', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if($(this).hasClass('checked')) {
+            $(this).removeClass('checked');
+        } else {            
+            $(this).addClass('checked');
+        }
+    });
 });
