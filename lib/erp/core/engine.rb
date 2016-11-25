@@ -16,7 +16,7 @@ module Erp
       end
       
       # Add a load path for this specific Engine
-      config.autoload_paths << File.expand_path("../../", __FILE__)
+      config.autoload_paths << File.expand_path("#{root}/lib/erp", __FILE__)
     end
   end
 end
