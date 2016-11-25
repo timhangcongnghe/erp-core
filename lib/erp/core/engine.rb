@@ -14,6 +14,9 @@ module Erp
       initializer "static assets" do |app|
         app.middleware.use ::ActionDispatch::Static, "#{root}/public"
       end
+      
+      # Add a load path for this specific Engine
+      config.autoload_paths << File.expand_path("../../", __FILE__)
     end
   end
 end
