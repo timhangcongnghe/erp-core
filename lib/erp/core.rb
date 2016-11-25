@@ -1,4 +1,6 @@
 require 'devise'
+require 'will_paginate'
+require 'will_paginate-bootstrap'
 
 module Erp
 	module Core
