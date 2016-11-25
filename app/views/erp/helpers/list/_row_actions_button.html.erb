@@ -9,7 +9,10 @@
                 <li class="divider"></li>
             <% else %>
                 <li>
-                    <a href="javascript:;">
+                    <a
+                        href="<%= act[:href] if act[:href].present? %>"
+                        data-method="<%= act['data-method'] if act['data-method'].present? %>"
+                    >
                         <%= act[:text].html_safe %>
                     </a>
                 </li>
