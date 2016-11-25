@@ -1,3 +1,5 @@
+# Additional translations
+
 en:
   Home: "Home"
   Dashboard: "Dashboard"
@@ -6,3 +8,27 @@ en:
   Titles: "Titles"
   Tags: "Tags"
   Create: "Create"
+  
+  name: "Name"
+  status: "Status"
+  creator: "Creator"
+  created_at: "Created At"
+  actions: "Actions"
+  create_tag: "Create Tag"
+  tag_name: "Tag Name"
+  
+  add_new_tag: "Add New Tag"
+  new: "New"
+  create: "Create"
+  edit: "Edit"
+  detete: "Delete"
+  active: "Active"
+  inactive: "Inactive"
+  
+  save: "Save"
+  cancel: "Cancel"
+  discard: "Discard"
+  listing_tags: "Listing Tags"
+  
+  placeholder_enter_name: "Enter name..."
+  textfield_required: "This field is required..."
