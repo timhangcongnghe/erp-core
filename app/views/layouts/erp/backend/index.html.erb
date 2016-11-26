@@ -14,7 +14,7 @@ Website: http://globalnaturesoft.com/
         <%= csrf_meta_tags %>
         
         <meta charset="utf-8" />
-        <title>ERP, Enterprise Resource Planning Software, ERP Software, ERP System, ERP Solutions | Global Naturesoft</title>
+        <title><%= yield(:title) %> | ERP, Enterprise Resource Planning Software, ERP Software, ERP System, ERP Solutions | Global Naturesoft</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="" name="description" />
@@ -79,7 +79,11 @@ Website: http://globalnaturesoft.com/
                         
                         <!-- BEGIN PAGE TITLE-->
                         <!--<h1 class="page-title">This's Title</h1>-->
-                        <br />
+                        <% if content_for?(:title) %>
+                            <h1><%= yield(:title) %></h1>
+                        <% else %>
+                            <br />
+                        <% end %>
                         <!-- END PAGE TITLE-->
                         
                         <!-- END PAGE HEADER-->

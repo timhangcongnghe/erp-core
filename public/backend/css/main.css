@@ -12,3 +12,24 @@
 .page-header.navbar .hor-menu .navbar-nav>li.active>a>i, .page-header.navbar .hor-menu .navbar-nav>li.current>a>i {
     color: #fff;    
 }
+.form-group.list-filters-search {
+    padding: 0;
+    display: inline-block;
+    margin: 0 20px 0 0;
+}
+.list-search-item button {
+    border-radius: 0 !important;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+}
+.list-search-items {
+    display: inline-block;
+    margin-right: 10px;
+}
+.list-search-items .or-cond {
+    text-transform: lowercase !important;
+}
+.table-checkable.table-advance thead tr th {
+    font-weight: 600;
+    font-size: 90%;
+}

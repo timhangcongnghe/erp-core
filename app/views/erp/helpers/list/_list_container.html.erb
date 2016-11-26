@@ -1,0 +1,64 @@
+<!-- BEGIN EXAMPLE TABLE PORTLET-->
+<div class="portlet light">
+    <div class="portlet-title">
+        <div class="caption font-green-haze">
+                <%= erp_list_actions_button(
+                    options[:actions]
+                ) %>
+                <%= erp_filters_button(
+                    options[:filters]                
+                ) %>            
+                <%= erp_columns_button(
+                    options[:columns]
+                ) %>                
+        </div>
+        <div class="actions">
+            <div class="list-search-items">
+                <div class="btn-group btn-group-solid list-search-item">
+                    <button type="button" class="btn green-meadow">
+                        <i class="fa fa-filter"></i>
+                    </button>
+                    <button type="button" class="btn grey">
+                        Companies
+                        <span class="or-cond">or</span>
+                        Persons
+                    </button>
+                    <button type="button" class="btn grey"><i class="fa fa-close"></i></button>
+                </div>
+                <div class="btn-group btn-group-solid list-search-item">
+                    <button type="button" class="btn purple-plum">
+                        <i class="fa fa-user"></i>
+                    </button>
+                    <button type="button" class="btn grey">
+                        Lawe Pham
+                    </button>
+                    <button type="button" class="btn grey"><i class="fa fa-close"></i></button>
+                </div>
+            </div>
+            <div class="form-group form-md-line-input has-success form-md-floating-label list-filters-search">                
+                <div class="input-icon right">                    
+                    <input type="text" class="form-control" placeholder="Type to search">
+                    <i class="fa fa-search"></i>
+                </div>
+            </div>
+            <a class="btn btn-circle btn-icon-only btn-default fullscreen pl-10" href="javascript:;" data-original-title="" title=""> </a>            
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="">
+            <%= render options[:view], data: options[:data] %>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-5 col-sm-5">
+                <div><%= page_entries_info options[:data] %></div>
+            </div>
+            <div class="col-md-7 col-sm-7">
+                <div class="pagination-style">
+                    <%= will_paginate options[:data], previous_label: '<i class="fa fa-angle-left"></i>'.html_safe, next_label: '<i class="fa fa-angle-right"></i>'.html_safe, renderer: BootstrapPagination::Rails %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END EXAMPLE TABLE PORTLET-->
