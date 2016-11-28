@@ -1,11 +1,11 @@
 .btn-group-checkable .dropdown-menu>li>a {
     padding-left: 30px;
 }
-.btn-group-checkable .dropdown-menu>li>a.checked {
+.btn-group-checkable .dropdown-menu>li.checked>a {
     color: #217ebd;
     padding-left: 12px;
 }
-.btn-group-checkable .dropdown-menu>li>a.checked:before {
+.btn-group-checkable .dropdown-menu>li.checked>a:before {
     content: "\f00c ";
     font: normal normal normal 14px/1 FontAwesome;
 }
@@ -32,4 +32,7 @@
 .table-checkable.table-advance thead tr th {
     font-weight: 600;
     font-size: 90%;
+}
+.list-search-items .btn-group {
+    margin-right: 5px;
 }

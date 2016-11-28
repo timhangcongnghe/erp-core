@@ -16,18 +16,23 @@ module Erp
     end
     
     # filters button for list
-    def erp_filters_button(actions=[])
-      render partial: "erp/helpers/list/filters_button", locals: { actions: actions }
+    def erp_datalist_filters(actions=[])
+      render partial: "erp/helpers/list/datalist_filters", locals: { actions: actions }
     end
     
     # columns button for list
-    def erp_columns_button(actions=[])
-      render partial: "erp/helpers/list/columns_button", locals: { actions: actions }
+    def erp_datalist_columns_select(actions=[])
+      render partial: "erp/helpers/list/datalist_columns_select", locals: { actions: actions }
     end
     
-    # columns button for list
-    def erp_list_container(options=[])
-      render partial: "erp/helpers/list/list_container", locals: { options: options }
+    # Datalist main helper
+    def erp_datalist(options=[])
+      render partial: "erp/helpers/list/datalist", locals: { options: options }
+    end
+    
+    # Datalist pagination
+    def erp_datalist_pagination(data)
+      render partial: "erp/helpers/list/datalist_pagination", locals: { data: data }
     end
   end
 end

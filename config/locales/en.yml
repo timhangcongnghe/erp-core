@@ -8,3 +8,5 @@ en:
   Titles: "Titles"
   Tags: "Tags"
   Create: "Create"
+  core:
+    or: 'or'

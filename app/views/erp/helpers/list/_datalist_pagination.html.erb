@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col-md-5 col-sm-5">
+        <div><%= page_entries_info data %></div>
+    </div>
+    <div class="col-md-7 col-sm-7">
+        <div class="pagination-style">
+            <%= will_paginate data, previous_label: '<i class="fa fa-angle-left"></i>'.html_safe, next_label: '<i class="fa fa-angle-right"></i>'.html_safe, renderer: BootstrapPagination::Rails %>
+        </div>
+    </div>
+</div>

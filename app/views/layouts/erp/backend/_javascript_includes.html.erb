@@ -19,5 +19,12 @@
 <%= render "layouts/erp/backend/theme_layout_scripts" %>
 <!-- END THEME LAYOUT SCRIPTS -->
 <!-- CUSTOM ERP SCRIPTS -->
+<%= javascript_include_tag '/backend/js/datalist.js' %>
 <%= javascript_include_tag '/backend/js/main.js' %>
 <!-- END CUSTOM ERP SCRIPTS -->
+
+<!-- LOCALE JAVASCRIPT -->
+<script>
+    var LANG_OR = '<%= t('core.or') %>';
+</script>
+<!-- END LOCALE JAVASCRIPT -->
