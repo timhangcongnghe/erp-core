@@ -1,8 +1,8 @@
 module Erp
   module ApplicationHelper
     # text field builder
-    def erp_text_field(options={})
-      render partial: "erp/helpers/form_builders/text", locals: { options: options }
+    def erp_form_control(type, options={})
+      render partial: "erp/helpers/form_builders/#{type}", locals: { options: options }
     end
     
     # list actions button for list
