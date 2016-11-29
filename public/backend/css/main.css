@@ -36,3 +36,17 @@
 .list-search-items .btn-group {
     margin-right: 5px;
 }
+.page-bar .page-title {
+    display: inline-block;
+    font-size: 20px;
+    margin: 7px 0;
+}
+.page-bar .page-title a {
+    font-weight: 400;
+    color: #217ebd;
+}
+@media (max-width: 767px) {
+    .page-content-wrapper .page-content .page-bar .page-title {
+        margin: 8px;
+    }
+}

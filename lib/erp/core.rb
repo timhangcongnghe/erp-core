@@ -1,7 +1,6 @@
 require 'devise'
 require 'will_paginate'
 require 'will_paginate-bootstrap'
-require 'breadcrumbs_on_rails'
 
 module Erp
 	module Core

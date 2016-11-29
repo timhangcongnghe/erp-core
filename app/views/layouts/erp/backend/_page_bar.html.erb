@@ -1,5 +1,7 @@
 <div class="page-bar">
-    <%= render_breadcrumbs :builder => Erp::BootstrapBreadcrumbsBuilder, :separator => '<i class="fa fa-circle"></i>' %>
+    <div class="page-title">
+        <%= yield :page_title %>
+    </div>
     <div class="page-toolbar">
         <%= yield :page_toolbar %>        
     </div>
