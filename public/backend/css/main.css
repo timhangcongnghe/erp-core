@@ -54,3 +54,6 @@
     width: auto !important;
     height: auto !important;
 }
+.padding-clear {
+    padding: 0;
+}
