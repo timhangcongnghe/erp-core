@@ -3,8 +3,11 @@ function removeFromKeywords(list, id) {
     var new_keywords = [];
     var listid = list.attr('data-id');
     
+    // check if entry exist keyword groups
     keywords[listid].forEach(function(entry) {
         var exist = false;
+        
+        // check if entry exist keyword group entries
         entry.forEach(function(entry2) {            
             if(entry2.id == id) {
                 exist = true;
@@ -89,19 +92,6 @@ function addToKeywords(list, item) {
     // clear current input
     list.find(".datalist-search-input").val("");
     list.find(".datalist-search-helper").hide();
-}
-
-// getDatalistKeywords
-function getDatalistKeywords(list) {
-    var keywords = [];
-    list.find('.datalist-search-helper ul li .keyword').each(function() {
-        var name = $(this).attr("name");
-        var value = $(this).html();
-        
-        keywords.push({'name': name, 'value': value.trim()});
-    });
-    
-    return keywords;
 }
 
 // toggleDatalistSearchHelper
@@ -332,7 +322,7 @@ $(document).ready(function() {
     });
     
     // Datalist search helper click
-    $(document).on("click", ".datalist-search-helper ul li a", function(e) {
+    $(document).on("click", ".datalist-search-helper ul li a", function() {
         var list = $(this).parents('.datalist');
         var keyword = $(this).find(".keyword");
         
@@ -344,9 +334,9 @@ $(document).ready(function() {
     {
         var container = $(".list-filters-search");
         var helper = $(".datalist-search-helper");
-    
-        if (!container.is(e.target) // if the target of the click isn't the container...
-            && container.has(e.target).length === 0) // ... nor a descendant of the container
+        
+        // if the target of the click isn't the container...
+        if (!container.is(e.target) && container.has(e.target).length === 0) // ... nor a descendant of the container
         {
             helper.hide();
         }
