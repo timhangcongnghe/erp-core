@@ -4,10 +4,13 @@
         <span class="input-group-addon">
             <i class="fa fa-envelope"></i>
         </span>
-        <input type="email" class="form-control"
-            name="<%= options[:name] if options[:name].present? %>"
-            value="<%= options[:value] if options[:value].present? %>"
-            placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
-         >
+        <div class="input-icon right">
+            <i class="fa fa-info-circle tooltips" data-original-title="<%= options[:help] if options[:help].present? %>" data-container="body"></i>
+            <input type="email" class="form-control"
+                name="<%= options[:name] if options[:name].present? %>"
+                value="<%= options[:value] if options[:value].present? %>"
+                placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
+             >
+        </div>
     </div>
 </div>
