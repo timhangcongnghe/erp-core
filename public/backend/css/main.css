@@ -51,10 +51,6 @@
         margin: 8px;
     }
 }
-.mt-overlay-custom {
-    width: auto !important;
-    height: auto !important;
-}
 .datalist-search-helper {
     position: absolute;
     background: #fff;
@@ -99,6 +95,11 @@
 }
 .ktext {
     text-transform: none;
-}.padding-clear {
+}
+.padding-clear {
     padding: 0;
+}
+.mt-element-overlay .mt-overlay-custom {
+    width: 25%;
+    height: 25%;
 }
