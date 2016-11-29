@@ -50,3 +50,7 @@
         margin: 8px;
     }
 }
+.mt-overlay-custom {
+    width: auto !important;
+    height: auto !important;
+}
