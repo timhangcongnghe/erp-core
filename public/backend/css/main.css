@@ -28,6 +28,7 @@
 }
 .list-search-items .or-cond {
     text-transform: lowercase !important;
+    font-style: italic;
 }
 .table-checkable.table-advance thead tr th {
     font-weight: 600;
@@ -53,4 +54,51 @@
 .mt-overlay-custom {
     width: auto !important;
     height: auto !important;
+}
+.datalist-search-helper {
+    position: absolute;
+    background: #fff;
+    width: 300px;
+    border: solid 1px #ccc;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    right: 0;
+}
+.datalist-search-helper ul {
+    padding: 0;
+    margin: 0;
+}
+.datalist-search-helper ul li {
+    list-style: none;
+}
+.datalist-search-helper ul li a {
+    padding: 7px 10px;
+    display: block;
+    color: #333;
+}
+.datalist-search-helper ul li:first-child a {
+    text-decoration: none;
+    background-color: #e1e5ec;
+}
+.datalist-search-helper ul li a:hover {
+    text-decoration: none;
+    background-color: #e1e5ec;
+}
+.datalist-search-helper ul:hover li:first-child a {
+    text-decoration: none;
+    background-color: #fff;
+}
+.datalist-search-helper ul:hover li:first-child a:hover {
+    text-decoration: none;
+    background-color: #e1e5ec;
+}
+.datalist-search-helper .keyword {
+    font-style: italic;
+}
+.datalist-search-helper {
+    display: none;
+}
+.ktext {
+    text-transform: none;
+}.padding-clear {
+    padding: 0;
 }

@@ -1,0 +1,7 @@
+<div class="form-group">
+    <label><%= options[:label] if options[:label].present? %></label>
+    <textarea class="form-control" rows="3"
+        name="<%= options[:name] if options[:name].present? %>"
+        placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
+    ><%= options[:value] if options[:value].present? %></textarea>
+</div>

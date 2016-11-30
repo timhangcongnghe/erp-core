@@ -7,22 +7,33 @@
         <div class="caption font-green-haze">
             <%= erp_list_actions_button(
                 options[:actions]
-            ) %>
+            ) if options[:actions].present? %>
             <%= erp_datalist_filters(
-                options[:filters]                
-            ) %>            
+                options[:filters]
+            ) if options[:filters].present? %>
             <%= erp_datalist_columns_select(
                 options[:columns]
-            ) %>                
+            ) if options[:columns].present? %>                
         </div>
         <div class="actions">
             <div class="list-search-items">
             </div>
             <div class="form-group form-md-line-input has-success form-md-floating-label list-filters-search">                
                 <div class="input-icon right">                    
-                    <input type="text" class="form-control" placeholder="Type to search">
+                    <input type="text" class="datalist-search-input form-control" placeholder="Type to search">
                     <i class="fa fa-search"></i>
                 </div>
+                <% if options[:keywords] %>
+                    <div class="datalist-search-helper">
+                        <ul>
+                            <% options[:keywords].each do |keyword| %>
+                                <li>
+                                    <a href="javascript:;">Search <span class="bold"><%= keyword[:text] %></span> for: <span class="keyword bold" text="<%= keyword[:text] %>" name="<%= keyword[:name] %>"></span></a>
+                                </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
             </div>
             <a class="btn btn-circle btn-icon-only btn-default fullscreen pl-10" href="javascript:;" data-original-title="" title=""> </a>
             <a href="" class="reload"> </a>

@@ -1,3 +1,114 @@
+// Add to keywords
+function removeFromKeywords(list, id) {
+    var new_keywords = [];
+    var listid = list.attr('data-id');
+    
+    // check if entry exist keyword groups
+    keywords[listid].forEach(function(entry) {
+        var exist = false;
+        
+        // check if entry exist keyword group entries
+        entry.forEach(function(entry2) {            
+            if(entry2.id == id) {
+                exist = true;
+            }
+        });
+        
+        if(!exist) {
+            new_keywords.push(entry);
+        }
+    });
+    keywords[listid] = new_keywords;
+}
+
+// removeDatalistSearchItem
+function removeDatalistSearchItem(list, id) {
+    var item = $('[data-id="' + id + '"]');
+    
+    // if is checkable list
+    if(item.length) {
+        checkCheckableItem($('[data-id="' + id + '"]'));
+    } else {
+        // if it is keyword
+        removeFromKeywords(list, id);
+    }
+}
+
+// Generate unique id
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
+}
+
+// Add to keywords
+function addToKeywords(list, item) {
+    var id = list.attr('data-id');
+    
+    if(typeof(item) == 'undefined') {
+        // get default keyword
+        item = list.find(".datalist-search-helper ul li").eq(0).find("a .keyword");        
+    }
+    
+    // get item values
+    var name = item.attr("name");
+    var text = item.attr("text");
+    var value = item.html();
+    
+    item = {id: guid(), name: name, text: '<span class="ktext">' + value + '</span>', value: value, label: text};
+    
+    // Check if exists
+    var exist = false;
+    keywords[id].forEach(function(entry) {
+        var inserted = false;
+        entry.forEach(function(entry2) {
+            if(entry2.name == item.name) {
+                exist = true;
+                if(entry2.text == item.text) {
+                    inserted = true;
+                }
+            } else {
+                inserted = true;
+            }
+        });
+        
+        if(!inserted) {
+            entry.push(item);
+        }
+    });
+    
+    // add to keywords
+    if(!exist) {
+        keywords[id].push([item]);
+    }
+    
+    // console.log(keywords[id]);
+    datalistFilter(list);
+    
+    // clear current input
+    list.find(".datalist-search-input").val("");
+    list.find(".datalist-search-helper").hide();
+}
+
+// toggleDatalistSearchHelper
+function toggleDatalistSearchHelper(list) {
+    var keyword = list.find(".datalist-search-input").val();
+    var helper = list.find(".datalist-search-helper");
+    
+    // Toggle helper box
+    if(keyword.trim() !== '') {
+        helper.show();
+    } else {
+        helper.hide();
+    }
+    
+    // Update keyword field
+    helper.find('.keyword').html(keyword);
+}
 
 // check checkable li item
 function checkCheckableItem(li) {
@@ -120,6 +231,14 @@ function datalistFilter(list, page) {
     // Columns
     var columns = getValuesFromCheckableList(list.find('.datalist-columns-select li'));
     
+    // Keywords
+    if(typeof(keywords[id]) == 'undefined') {
+        keywords[id] = [];
+    }
+    keywords[id].forEach(function(entry) {
+        addItemToListSearch(list, entry, entry[0].label);
+    });
+    
     // ajax update custom sort
 	if(datalists[id] && datalists[id].readyState != 4){
 		datalists[id].abort();
@@ -131,6 +250,7 @@ function datalistFilter(list, page) {
             'authenticity_token': AUTH_TOKEN,
             'filters': filters,
             'columns': columns,
+            'keywords': keywords[id],
             'page': page
         },
     }).done(function( html ) {
@@ -138,7 +258,8 @@ function datalistFilter(list, page) {
     });
 }
 
-var datalists= {};
+var datalists = {};
+var keywords = {};
 // Main js execute when loaded page
 $(document).ready(function() {
     // Filter all datalists in first load
@@ -174,15 +295,50 @@ $(document).ready(function() {
     });
     
     // Remove item from search list
-    $(document).on("click", ".list-search-item .cancel-button", function(e) {
+    $(document).on("click", ".list-search-item .cancel-button", function() {
         var item = $(this).parents('.list-search-item');
         var ids = item.attr('data-ids');
         var list = $(this).parents('.datalist');
         
         ids.split(",").forEach(function(id) {
-            checkCheckableItem($('[data-id="' + id + '"]'));
+            // checkCheckableItem($('[data-id="' + id + '"]'));
+            removeDatalistSearchItem(list, id);
         });
         
         datalistFilter(list);
+    });
+    
+    // Datalist search input
+    $(document).on("keyup focus", ".datalist-search-input", function(e) {
+        var list = $(this).parents('.datalist');
+        toggleDatalistSearchHelper(list);
+        
+        var code = e.which;
+        if(code==13) e.preventDefault();
+        if(code==13){
+            // add keyword to list
+            addToKeywords(list);
+        }
+    });
+    
+    // Datalist search helper click
+    $(document).on("click", ".datalist-search-helper ul li a", function() {
+        var list = $(this).parents('.datalist');
+        var keyword = $(this).find(".keyword");
+        
+        addToKeywords(list, keyword);
+    });
+    
+    // Hide datalist helper
+    $(document).mouseup(function (e)
+    {
+        var container = $(".list-filters-search");
+        var helper = $(".datalist-search-helper");
+        
+        // if the target of the click isn't the container...
+        if (!container.is(e.target) && container.has(e.target).length === 0) // ... nor a descendant of the container
+        {
+            helper.hide();
+        }
     });
 });
