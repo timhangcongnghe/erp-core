@@ -11,8 +11,8 @@ module Erp
     end
     
     # list actions button for each row of list
-    def erp_row_actions_button(actions=[])
-      render partial: "erp/helpers/list/row_actions_button", locals: { actions: actions }
+    def erp_datalist_row_actions(actions=[])
+      render partial: "erp/helpers/list/datalist_row_actions", locals: { actions: actions }
     end
     
     # filters button for list
@@ -28,6 +28,22 @@ module Erp
     # Datalist main helper
     def erp_datalist(options=[])
       render partial: "erp/helpers/list/datalist", locals: { options: options }
+    end
+    
+    # Datalist check all checkbox
+    def erp_datalist_check_all
+      '<label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+          <input type="checkbox" class="group-checkable datalist-checkbox-all"/>
+          <span></span>
+      </label>'.html_safe
+    end
+    
+    # Datalist check all checkbox
+    def erp_datalist_check_row(options={})
+      ('<label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+          <input type="checkbox" class="checkboxes datalist-row-checkbox" name="ids[]" value="'+options[:id].to_s+'" />
+          <span></span>
+      </label>').html_safe
     end
     
     # Datalist pagination

@@ -1,3 +1,17 @@
+// checkDatalistCheckAllState
+function checkDatalistCheckAllState(list) {
+    var check_all_box = list.find('.datalist-checkbox-all');
+    var ids = $("input[name='ids[]']:checked").map(
+        function () { return this.value; }
+    ).get();
+    
+    if(ids.length) {
+        check_all_box.prop('checked', true);
+    } else {
+        check_all_box.prop('checked', false);
+    }
+}
+
 // Add to keywords
 function removeFromKeywords(list, id) {
     var new_keywords = [];
@@ -340,5 +354,25 @@ $(document).ready(function() {
         {
             helper.hide();
         }
+    });
+    
+    // Check all list click
+    $(document).on('click', '.datalist-checkbox-all', function() {
+        var list = $(this).parents('.datalist');
+        var item = $(this);        
+        var checked = item.is(':checked');
+        
+        if(checked) {
+            list.find('.datalist-row-checkbox').prop('checked', true);
+        } else {
+            list.find('.datalist-row-checkbox').prop('checked', false);
+        }
+    });
+    
+    // Check row checkbox
+    $(document).on('click', '.datalist-row-checkbox', function() {
+        var list = $(this).parents('.datalist');
+        
+        checkDatalistCheckAllState(list);
     });
 });
