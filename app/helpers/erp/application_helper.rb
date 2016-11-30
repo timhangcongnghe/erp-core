@@ -6,8 +6,8 @@ module Erp
     end
     
     # list actions button for list
-    def erp_list_actions_button(actions=[])
-      render partial: "erp/helpers/list/list_actions_button", locals: { actions: actions }
+    def erp_datalist_list_actions(actions=[])
+      render partial: "erp/helpers/list/datalist_list_actions", locals: { actions: actions }
     end
     
     # list actions button for each row of list

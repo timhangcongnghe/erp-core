@@ -1,4 +1,4 @@
-<div class="btn-group">
+<div class="btn-group datalist-list-action">
     <a class="btn btn-sm blue-madison" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
         <i class="fa fa-th-list"></i> Actions
         <i class="fa fa-angle-down"></i>
@@ -9,7 +9,11 @@
                 <li class="divider"></li>
             <% else %>
                 <li>
-                    <a href="javascript:;">
+                    <a
+                        href="<%= act[:url] if act[:url].present? %>"
+                        <%= ('data-method="' + act[:data_method] + '"').html_safe if act[:data_method].present? %>
+                        <%= ('data-confirm="' + act[:data_confirm] + '"').html_safe if act[:data_confirm].present? %>
+                    >
                         <%= act[:text].html_safe %>
                     </a>
                 </li>

@@ -1,9 +1,63 @@
+// datalist link proccess
+function listActionProccess(link) {
+    var method = link.attr('data-method');
+    if(typeof(method) === 'undefined' || method.trim() === '') {
+        method = 'GET';
+    }
+    
+    var url = link.attr("href");
+    var list = link.parents(".datalist");
+    var link_item = link;
+    var ids = getDataListCheckedIds(list); 
+    
+    if(!ids.length) {
+        swal({
+            title: 'Please select at least 1 row in the list',
+            text: '',
+            type: 'error',
+            allowOutsideClick: true,
+            confirmButtonText: "OK"
+        });
+        return;
+    }
+    
+    $.ajax({
+        url: url,
+        method: method,
+        data: {
+            'authenticity_token': AUTH_TOKEN,
+            'format': 'json',
+            'ids': ids
+        }
+    }).done(function( result ) {
+        swal({
+            title: result.message,
+            text: '',
+            type: result.type,
+            allowOutsideClick: true,
+            confirmButtonText: "OK"
+        });
+        
+        // find outer datalist if exists
+        if(link_item.parents('.datalist').length) {
+            datalistFilter(link_item.parents('.datalist'));
+        }
+    });
+}
+
+// action
+function getDataListCheckedIds(list) {
+    var ids = list.find("input[name='ids[]']:checked").map(
+        function () { return this.value; }
+    ).get();
+    
+    return ids;
+}
+
 // checkDatalistCheckAllState
 function checkDatalistCheckAllState(list) {
     var check_all_box = list.find('.datalist-checkbox-all');
-    var ids = $("input[name='ids[]']:checked").map(
-        function () { return this.value; }
-    ).get();
+    var ids = getDataListCheckedIds(list);
     
     if(ids.length) {
         check_all_box.prop('checked', true);
@@ -374,5 +428,15 @@ $(document).ready(function() {
         var list = $(this).parents('.datalist');
         
         checkDatalistCheckAllState(list);
+    });
+    
+    // List action
+    // Datalist action link with message return
+    $(document).on('click', '.datalist-list-action ul li a', function(e) {
+        e.stopImmediatePropagation();
+        e.stopPropagation();
+        e.preventDefault();
+        
+        listActionProccess($(this));
     });
 });

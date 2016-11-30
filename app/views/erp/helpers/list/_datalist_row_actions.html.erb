@@ -11,7 +11,8 @@
                 <li>
                     <a
                         href="<%= act[:href] if act[:href].present? %>"
-                        data-method="<%= act['data-method'] if act['data-method'].present? %>"
+                        <%= ('data-method="' + act[:data_method] + '"').html_safe if act[:data_method].present? %>
+                        <%= ('data-confirm="' + act[:data_confirm] + '"').html_safe if act[:data_confirm].present? %>
                         class="<%= act[:class] if act[:class].present? %>"
                     >
                         <%= act[:text].html_safe %>
