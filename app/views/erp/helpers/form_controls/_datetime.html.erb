@@ -1,7 +1,7 @@
 <div class="form-group">
     <label class="control-label"><%= options[:label] if options[:label].present? %></label>
     <div class="input-group date form_datetime" data-date="<%= Time.now.in_time_zone("Asia/Bangkok").strftime("%d %m %Y - %H:%M") %>">
-        <input type="text" name="<%= options[:name] if options[:name].present? %>" id="" size="16" readonly class="form-control" value="<%= options[:value] if options[:value].present? %>">
+        <input type="text" name="<%= options[:name] if options[:name].present? %>" id="" size="16" readonly class="form-control">
         <span class="input-group-btn">
             <button class="btn default date-reset" type="button">
                 <i class="fa fa-times"></i>
