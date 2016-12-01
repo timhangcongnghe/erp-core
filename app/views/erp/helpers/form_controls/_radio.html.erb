@@ -4,10 +4,14 @@
     <% end %>
     <div class="input-group">
         <div class="icheck-inline">
-            <% if options[:radios].present? %>
-                <% options[:radios].each_with_index do |radio,id| %>
+            <% if options[:options].present? %>
+                <% options[:options].each do |option| %>
                     <label>
-                        <input type="radio" id="radio-<%= id %>" name="<%= radio.second %>" class="icheck" data-radio="iradio_flat-grey"> <%= radio.first %>
+                        <input type="radio" class="icheck" data-radio="iradio_flat-grey"
+                            <%= 'checked' if options[:value] == option[:value] %>
+                            name="<%= options[:name] if options[:name].present? %>"
+                            value="<%= option[:value] if option[:value].present? %>"
+                        > <%= option[:text] %>
                     </label>
                 <% end %>
             <% end %>
