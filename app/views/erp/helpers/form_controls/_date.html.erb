@@ -1,6 +1,6 @@
 <div class="form-group">
     <label class="control-label"><%= options[:label] if options[:label].present? %></label>
-    <div class="input-group input-medium date date-picker" data-date="01-12-2016" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
+    <div class="input-group date date-picker" data-date="<%= Time.now.in_time_zone("Asia/Bangkok").strftime("%d-%m-%Y") %>" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
         <input type="text" name="<%= options[:name] if options[:name].present? %>" id="" class="form-control" value="<%= options[:value] if options[:value].present? %>" readonly>
         <span class="input-group-btn">
             <button class="btn default" type="button">
