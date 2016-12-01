@@ -100,7 +100,45 @@
 .padding-clear {
     padding: 0;
 }
-.mt-element-overlay .mt-overlay-custom {
-    width: 25%;
-    height: 25%;
+.dataselect {
+    position: relative;
+}
+.dataselect-data {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+.dataselect-data ul {
+    background: #fff;
+    padding: 0;
+    border: solid 1px #c2cad8;
+    margin: 0;
+    margin-top: -3px;
+}
+.dataselect-data ul li {
+    list-style: none;
+}
+.dataselect-data ul li a {
+    display: block;
+    padding: 5px 7px;
+    border-bottom: solid 1px #c2cad8;
+    color: #333;
+}
+.dataselect-data ul li.create-new a {
+    font-weight: 600;
+    font-size: 13px;
+    background: #f5f5f5;
+}
+.dataselect-data ul li a:hover {
+    background-color: #e1e5ec;
+    text-decoration: none;
+}
+.dataselect-data ul li:last-child a {
+    border-bottom: none;
+}
+.new_contact .mt-element-overlay .mt-overlay-4 {
+    text-align: right;
+}
+.tabbable-custom>.tab-content {
+    padding: 10px 15px;
 }

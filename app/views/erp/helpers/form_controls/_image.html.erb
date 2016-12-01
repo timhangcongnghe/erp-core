@@ -1,9 +1,11 @@
 <div class="form-group">
-    <label><%= options[:label] if options[:label].present? %></label>
+    <% if options[:label].present? %>
+        <label><%= options[:label] %></label>
+    <% end %>
     <div class="mt-element-overlay">
         <div class="mt-overlay-custom mt-overlay-4 mt-overlay-4-icons fileinput fileinput-new" data-provides="fileinput">
             <div class="fileinput-new thumbnail" style="width: 150px; height: 110px;">
-                <img src="<%= options[:img_src].present? ? options[:img_src] : url_for("/backend/assets/global/img/text-no-image.png") %>" alt="" /> </div>
+                <img src="<%= options[:img_src].present? ? options[:img_src] : url_for("/backend/img/placeholder.jpg") %>" alt="" /> </div>
             <div class="fileinput-preview fileinput-exists thumbnail" data-trigger="fileinput" style="width: 150px; height: 110px;"> </div>
             <ul class="mt-info">
                 <li>

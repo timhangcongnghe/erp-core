@@ -1,5 +1,7 @@
 <div class="form-group">
-    <label><%= options[:label] if options[:label].present? %></label>
+    <% if options[:label].present? %>
+        <label><%= options[:label] %></label>
+    <% end %>
     <div class="input-group">
         <div class="icheck-inline">
             <% if options[:radios].present? %>

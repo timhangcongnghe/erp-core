@@ -1,0 +1,24 @@
+<div class="form-group dataselect">
+    <label class="control-label"><%= options[:label] if options[:label].present? %></label>
+    <input
+        class="form-control dataselect-control"
+        name="<%= options[:name] if options[:name].present? %>"
+        data-url="<%= options[:url] if options[:url].present? %>"
+    />
+    <!--<div class="dataselect-data">
+        <ul>
+            <li>
+                <a href="">Afghanistan</a>
+            </li>
+            <li>
+                <a href="">Albania</a>
+            </li>
+            <li>
+                <a href="">Algeria</a>
+            </li>
+            <li class="create-new">
+                <a href=""><i class="fa fa-plus"></i> Create new...</a>
+            </li>
+        </ul>
+    </div>-->
+</div>
