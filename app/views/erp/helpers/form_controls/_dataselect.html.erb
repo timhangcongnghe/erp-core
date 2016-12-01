@@ -1,24 +1,27 @@
 <div class="form-group dataselect">
     <label class="control-label"><%= options[:label] if options[:label].present? %></label>
     <input
-        class="form-control dataselect-control"
+        type="text"
         name="<%= options[:name] if options[:name].present? %>"
-        data-url="<%= options[:url] if options[:url].present? %>"
+        value="1"
+        class="dataselect-value"
     />
-    <!--<div class="dataselect-data">
+    <input
+        class="form-control dataselect-control"
+        data-url="<%= options[:url] if options[:url].present? %>"
+        placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
+        value='<%= options[:text] if options[:text].present? %>'
+    />
+    <span class="pointer"></span>
+    <div class="dataselect-data">
         <ul>
-            <li>
-                <a href="">Afghanistan</a>
-            </li>
-            <li>
-                <a href="">Albania</a>
-            </li>
-            <li>
-                <a href="">Algeria</a>
-            </li>
+            <li class="dataselect-hook"></li>
             <li class="create-new">
-                <a href=""><i class="fa fa-plus"></i> Create new...</a>
+                <a href="javascript:;"><i class="fa fa-plus"></i> Create "<span class="text-bold dataselect-new-name">aa</span>"</a>
+            </li>
+            <li class="create-edit">
+                <a href="javascript:;"><i class="fa fa-plus"></i> Create and Edit</a>
             </li>
         </ul>
-    </div>-->
+    </div>
 </div>
