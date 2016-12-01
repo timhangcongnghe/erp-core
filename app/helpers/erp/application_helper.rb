@@ -5,6 +5,11 @@ module Erp
       render partial: "erp/helpers/form_controls/#{type}", locals: { options: options }
     end
     
+    # components
+    def erp_component(type, options={})
+      render partial: "erp/helpers/components/#{type}", locals: { options: options }
+    end
+    
     # list actions button for list
     def erp_datalist_list_actions(actions=[])
       render partial: "erp/helpers/list/datalist_list_actions", locals: { actions: actions }
