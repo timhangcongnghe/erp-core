@@ -3,19 +3,19 @@
         <label><%= options[:label] %></label>
     <% end %>
     <div class="fileinput fileinput-new" data-provides="fileinput">
-        <div class="fileinput-new thumbnail" style="width: 140px; height: 140px;">
+        <div class="fileinput-new thumbnail" style="width: 175px; height: 160px;">
             <img src="<%= options[:img_src].present? ? options[:img_src] : url_for("/backend/img/placeholder.jpg") %>" alt="" />
         </div>
-        <div class="fileinput-preview fileinput-exists thumbnail" style="width: 140px; height: 140px;"> </div>
+        <div class="fileinput-preview fileinput-exists thumbnail" style="width: 175px; height: 160px;"> </div>
         <div class="btn-control-file">
-            <span class="btn btn-no-color btn-file">
-                <span class="fileinput-new"> <i class="icon-link"></i> </span>
-                <span class="fileinput-exists"> <i class="fa fa-pencil-square-o"></i> </span>
+            <span class="btn red btn-outline btn-file">
+                <span class="fileinput-new"> <i class="icon-link"></i> Select </span>
+                <span class="fileinput-exists"> <i class="fa fa-pencil-square-o"></i> Edit </span>
                 <input type="file"
                        name="<%= options[:name] if options[:name].present? %>"
                 />
             </span>
-            <a href="javascript:;" class="btn btn-no-color fileinput-exists" data-dismiss="fileinput"> <i class="fa fa-remove"></i> </a>
+            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> <i class="fa fa-remove"></i> Remove </a>
         </div>
     </div>
 </div>
