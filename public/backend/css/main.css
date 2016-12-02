@@ -141,7 +141,7 @@
     padding: 10px 15px;
 }
 div.btn-control-file {
-    margin-top: -45px;
+    /*margin-top: -45px;*/
     text-align: center; 
 }
 .fileinput-preview.thumbnail > img {
@@ -154,7 +154,8 @@ div.btn-control-file {
 .btn-no-color:hover {
     color: #fff;
     border: solid 1px #999;
-}.dataselect-data {
+}
+.dataselect-data {
     display: none;
 }
 .text-bold {
