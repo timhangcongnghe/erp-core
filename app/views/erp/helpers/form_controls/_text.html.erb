@@ -1,9 +1,19 @@
-<div class="form-group">
-    <label><%= options[:label] if options[:label].present? %></label>
-    <input class="form-control spinner"
-           type="text"
-           name="<%= options[:name] if options[:name].present? %>"
-           value="<%= options[:value] if options[:value].present? %>"
-           placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
+<div class="form-group <%= "has-error" if options[:errors].present? %>">
+    <% if options[:label].present? %>
+        <label><%= options[:label] %></label>
+        <% if options[:required] == true %>
+            <span class="required" aria-required="true"> * </span>
+        <% end %>
+    <% end %>
+    <div class="input-icon right">        
+        <input class="form-control spinner"
+            type="text"
+            name="<%= options[:name] if options[:name].present? %>"
+            value="<%= options[:value] if options[:value].present? %>"
+            placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
         />
+        <% if options[:errors].present? %>
+            <span class="help-block"> <%= options[:errors].join('<br/>') %></span>
+        <% end %>
+    </div>
 </div>

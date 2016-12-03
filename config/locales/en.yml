@@ -10,3 +10,4 @@ en:
   Create: "Create"
   core:
     or: 'or'
+    form_has_error_message: 'You have some form errors. Please check below.'
