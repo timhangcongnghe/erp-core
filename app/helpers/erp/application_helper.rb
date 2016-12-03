@@ -55,5 +55,19 @@ module Erp
     def erp_datalist_pagination(data)
       render partial: "erp/helpers/list/datalist_pagination", locals: { data: data }
     end
+    
+    # Get columns datalist
+    def get_columns(params)
+      conds = []
+      if params["columns"].present?
+        params["columns"].to_unsafe_h.each do |cl|
+          cl[1].each do |cond|
+            conds << "#{cond[1]["name"]}"
+          end
+        end
+      end
+      conds
+    end
+    
   end
 end
