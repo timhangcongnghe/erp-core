@@ -1,5 +1,10 @@
-<div class="form-group">
-    <label class="control-label"><%= options[:label] if options[:label].present? %></label>
+<div class="form-group <%= "has-error" if options[:errors].present? %>">
+    <label class="control-label">
+        <%= options[:label] if options[:label].present? %>
+        <% if options[:required] == true %>
+            <span class="required" aria-required="true"> * </span>
+        <% end %>
+    </label>
     <select name="<%= options[:name] if options[:name].present? %>" id="<%= options[:id] if options[:id].present? %>" class="bs-select form-control" data-live-search="true" data-size="8">
         <% if options[:options].present? %>
             <% options[:options].each_with_index do |option| %>
@@ -9,4 +14,7 @@
             <% end %>
         <% end %>
     </select>
+    <% if options[:errors].present? %>
+        <span class="help-block"> <%= options[:errors].join('<br/>') %></span>
+    <% end %>
 </div>
