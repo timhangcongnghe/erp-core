@@ -58,9 +58,10 @@ module Erp
     
     # Get columns datalist
     def get_columns(params)
+      params = params.to_unsafe_hash
       conds = []
       if params["columns"].present?
-        params["columns"].to_unsafe_h.each do |cl|
+        params["columns"].each do |cl|
           cl[1].each do |cond|
             conds << "#{cond[1]["name"]}"
           end
