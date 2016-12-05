@@ -13,7 +13,7 @@
             placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
         />
         <% if options[:errors].present? %>
-            <span class="help-block"> <%= options[:errors].join('<br/>') %></span>
+            <span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span>
         <% end %>
     </div>
 </div>
