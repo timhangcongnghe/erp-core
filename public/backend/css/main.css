@@ -183,3 +183,6 @@ div.btn-control-file {
 .right {
     text-align: right;
 }
+.has-error .input-icon>i.icon-default-color {
+    color: #ccc;
+}
