@@ -1,5 +1,7 @@
 //
 function submitDataselectModalForm(form) {
+    var dataselect = item.parents('.dataselect');
+    var control = dataselect.find('.dataselect-control');
     var method = form.attr('method');
     var url = form.attr('action');
     
@@ -17,7 +19,7 @@ function submitDataselectModalForm(form) {
         success: function(data)
         {
             // get data
-            container = $('<div>').html(data).find('.form-container');
+            container = $('<div>').html(data).find(control.attr('container-selector'));
             if (container.length) {
                 html = container.html();
                 $('#dataselect-modal .modal-body').html(html);
@@ -52,8 +54,8 @@ function showCreateModalContent(dataselect, with_keyword) {
         $('#dataselect-modal .modal-title').html(create_title);
         
         // get form
-        form = $('<div>').html(data).find('.form-container').html();
-        $('#dataselect-modal .modal-body').html(form);
+        container = $('<div>').html(data).find(control.attr('container-selector'));
+        $('#dataselect-modal .modal-body').html(container);
         
         //
         if(typeof(with_keyword) !== 'undefined' && with_keyword) {
