@@ -180,3 +180,6 @@ div.btn-control-file {
     border-color: transparent transparent #999 transparent;
     border-width: 0 4px 4px 4px;
 }
+.right {
+    text-align: right;
+}
