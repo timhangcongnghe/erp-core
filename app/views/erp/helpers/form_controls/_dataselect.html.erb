@@ -11,16 +11,21 @@
         data-url="<%= options[:url] if options[:url].present? %>"
         placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
         value='<%= options[:text] if options[:text].present? %>'
+        <% if options[:create] %>
+            create-url='<%= options[:create][:url] if options[:create][:url].present? %>'
+            create-title='<%= options[:create][:title] if options[:create][:title].present? %>'
+            input-selector='<%= options[:create][:input_selector] if options[:create][:input_selector].present? %>'
+        <% end %>
     />
     <span class="pointer"></span>
     <div class="dataselect-data">
         <ul>
             <li class="dataselect-hook"></li>
             <li class="create-new">
-                <a href="javascript:;"><i class="fa fa-plus"></i> Create "<span class="text-bold dataselect-new-name">aa</span>"</a>
+                <a href="#create"><i class="fa fa-plus"></i> Create "<span class="text-bold dataselect-new-name"></span>"</a>
             </li>
             <li class="create-edit">
-                <a href="javascript:;"><i class="fa fa-plus"></i> Create and Edit</a>
+                <a href="#create"><i class="fa fa-plus"></i> Create and Edit</a>
             </li>
         </ul>
     </div>

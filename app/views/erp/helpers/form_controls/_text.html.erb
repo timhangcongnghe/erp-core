@@ -5,8 +5,8 @@
             <span class="required" aria-required="true"> * </span>
         <% end %>
     <% end %>
-    <div class="input-icon right">        
-        <input class="form-control spinner"
+    <div class="input-icon right">
+        <input class="form-control spinner <%= options[:class] if options[:class].present? %>"
             type="text"
             name="<%= options[:name] if options[:name].present? %>"
             value="<%= options[:value] if options[:value].present? %>"
