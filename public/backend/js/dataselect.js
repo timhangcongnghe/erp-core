@@ -5,19 +5,12 @@ function submitDataselectModalForm(form) {
     var method = form.attr('method');
     var url = form.attr('action');
     
-    var params = form.serializeArray();
-    var dataselect = {
-          name: "dataselect",
-          value: "true"
-    };
-    params.push(dataselect);
-    
     $('#dataselect-modal .modal-body').html('<div class="text-center"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
     
     $.ajax({
         type: method,
         url: url,
-        data: params, // serializes the form's elements.
+        data: form.serializeArray(), // serializes the form's elements.
         success: function(data)
         {
             // get data
