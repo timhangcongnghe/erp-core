@@ -12,6 +12,8 @@ function submitDataselectModalForm(form) {
     };
     params.push(dataselect);
     
+    $('#dataselect-modal .modal-body').html('<div class="text-center"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
+    
     $.ajax({
         type: method,
         url: url,
