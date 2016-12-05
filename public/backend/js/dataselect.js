@@ -1,6 +1,6 @@
 //
 function submitDataselectModalForm(form) {
-    var dataselect = item.parents('.dataselect');
+    var dataselect = CURRENT_DATASELECT;
     var control = dataselect.find('.dataselect-control');
     var method = form.attr('method');
     var url = form.attr('action');
@@ -21,8 +21,7 @@ function submitDataselectModalForm(form) {
             // get data
             container = $('<div>').html(data).find(control.attr('container-selector'));
             if (container.length) {
-                html = container.html();
-                $('#dataselect-modal .modal-body').html(html);
+                $('#dataselect-modal .modal-body').html(container[0].outerHTML);
             } else {                    
                 $('#dataselect-modal').modal('hide');
                 
@@ -54,8 +53,8 @@ function showCreateModalContent(dataselect, with_keyword) {
         $('#dataselect-modal .modal-title').html(create_title);
         
         // get form
-        container = $('<div>').html(data).find(control.attr('container-selector'));
-        $('#dataselect-modal .modal-body').html(container);
+        html = $('<div>').html(data).find(control.attr('container-selector'))[0].outerHTML;
+        $('#dataselect-modal .modal-body').html(html);
         
         //
         if(typeof(with_keyword) !== 'undefined' && with_keyword) {
