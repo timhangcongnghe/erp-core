@@ -1,16 +1,24 @@
-<div class="form-group">
-    <label><%= options[:label] if options[:label].present? %></label>
+<div class="form-group <%= "has-error" if options[:errors].present? %>">
+    <label>
+        <%= options[:label] if options[:label].present? %>
+        <% if options[:required] == true %>
+            <span class="required" aria-required="true"> * </span>
+        <% end %>
+    </label>
     <div class="input-group">
         <span class="input-group-addon">
             <i class="fa fa-envelope"></i>
         </span>
         <div class="input-icon right">
-            <i class="fa fa-info-circle tooltips" data-original-title="<%= options[:help] if options[:help].present? %>" data-container="body"></i>
-            <input type="email" class="form-control"
+            <i class="fa fa-info-circle tooltips icon-default-color" data-original-title="<%= options[:help] if options[:help].present? %>" data-container="body"></i>
+            <input type="text" class="form-control"
                 name="<%= options[:name] if options[:name].present? %>"
                 value="<%= options[:value] if options[:value].present? %>"
                 placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
-            >
+            />    
         </div>
     </div>
+    <% if options[:errors].present? %>
+        <span class="help-block right"> <%= options[:errors].join('<br/>').html_safe %></span>
+    <% end %>
 </div>
