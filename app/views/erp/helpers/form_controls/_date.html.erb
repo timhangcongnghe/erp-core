@@ -6,7 +6,7 @@
         <% end %>
     </label>
     <div class="input-group date date-picker" data-date="<%= Time.now.in_time_zone("Asia/Bangkok").strftime("%d-%m-%Y") %>" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
-        <input type="text" name="<%= options[:name] if options[:name].present? %>" id="" class="form-control" readonly>
+        <input type="text" name="<%= options[:name] if options[:name].present? %>" id="" class="form-control">
         <span class="input-group-btn">
             <button class="btn default" type="button">
                 <i class="fa fa-calendar"></i>
