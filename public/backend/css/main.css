@@ -186,3 +186,9 @@ div.btn-control-file {
 .has-error .input-icon>i.icon-default-color {
     color: #ccc;
 }
+div.sm-title {
+    font-size: 12px;
+}
+div.alert.custom-box-shadow {
+    box-shadow: 0 1px 3px rgba(0,0,0,.1),0 0px 2px rgba(0,0,0,.18);
+}
