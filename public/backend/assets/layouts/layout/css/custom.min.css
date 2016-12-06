@@ -6,3 +6,6 @@
 .form-horizontal .control-label {
 	text-align: left;
 }
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+	background: #fff;
+}

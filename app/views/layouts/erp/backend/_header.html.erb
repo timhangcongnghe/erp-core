@@ -2,7 +2,12 @@
     <!-- BEGIN HEADER INNER -->
     <div class="page-header-inner ">
         <!-- BEGIN LOGO -->
-        <div class="page-logo"><%= link_to image_tag("/backend/assets/layouts/layout/img/logo-big.png", alt: "logo", class: "logo-default"), erp.backend_path %></div>
+        <div class="page-logo">
+            <%= link_to image_tag("/backend/assets/layouts/layout/img/logo-big.png", alt: "logo", class: "logo-default"), erp.backend_path %>
+            <div class="menu-toggler sidebar-toggler">
+                <span></span>
+            </div>
+        </div>
         <!-- END LOGO -->
         <!-- BEGIN MEGA MENU -->
         <!-- DOC: Remove "hor-menu-light" class to have a horizontal menu with theme background instead of white background -->
