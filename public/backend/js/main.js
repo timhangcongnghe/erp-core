@@ -80,6 +80,12 @@ $(document).ready(function() {
     
     // Grap link with data-method attribute
     $(document).on('click', 'a[data-method]', function(e) {
+        
+        // return if this is list action
+        if($(this).parents('.datalist-list-action').length) {
+            return;
+        }
+        
         e.preventDefault();
         
         var method = $(this).attr("data-method");
@@ -101,6 +107,5 @@ $(document).ready(function() {
             'type': 'hidden'
         }));
         newForm.submit();
-    });
-    
+    });    
 });
