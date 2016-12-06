@@ -1,11 +1,19 @@
-//
+// Get current dataselect
+function getCurrentDataselect() {
+    dataselect = $('[rel="' + $('.dataselect-modal.in').last().attr('dataselect') + '"]');
+    console.log(dataselect);
+    return dataselect;
+}
+
+// 
 function submitDataselectModalForm(form) {
-    var dataselect = CURRENT_DATASELECT;
+    var dataselect = getCurrentDataselect();
     var control = dataselect.find('.dataselect-control');
     var method = form.attr('method');
     var url = form.attr('action');
+    var modal = $('#dataselect-modal-' + dataselect.attr('rel'));
     
-    $('#dataselect-modal .modal-body').html('<div class="text-center"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
+    modal.find('.modal-body').html('<div class="text-center"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
     
     $.ajax({
         type: method,
@@ -16,13 +24,13 @@ function submitDataselectModalForm(form) {
             // get data
             container = $('<div>').html(data).find(control.attr('container-selector'));
             if (container.length) {
-                $('#dataselect-modal .modal-body').html(container[0].outerHTML);
-            } else {                    
-                $('#dataselect-modal').modal('hide');
-                
+                modal.find('.modal-body').html(container[0].outerHTML);
+            } else {
                 if(typeof(data.status) !== 'undefined' && data.status === 'success') {
-                    updateDataselectValue(CURRENT_DATASELECT, data.text, data.value);
+                    updateDataselectValue(getCurrentDataselect(), data.text, data.value);
                 }
+                
+                modal.modal('hide');                
             }
         }
     });
@@ -33,28 +41,63 @@ function showCreateModalContent(dataselect, with_keyword) {
     var control = dataselect.find('.dataselect-control');
     var create_url = control.attr('create-url');
     var create_title = control.attr('create-title');
+    var keyword = control.val().trim();
+    var modal_size = control.attr('modal-size');
+    
+    // create with keyword but keyword is empty
+    if(with_keyword && keyword === '') {
+        return;
+    }
+    
+    // modal width
+    if (typeof(modal_width) === 'undefined' || modal_width === '') {
+        modal_width = '400';
+    }
     
     // set current select
     CURRENT_DATASELECT = dataselect;
     
+    // create uid for dataselecy if not exist
+    var uid = dataselect.attr('rel');
+    if (typeof(uid) === 'undefined' || uid === '') {
+        uid = guid();
+        dataselect.attr('rel', uid);
+    }
+    
+    // create new modal if not exist
+    var modal_uid = "dataselect-modal-" + uid;
+    var html = '<div id="'+modal_uid+'" dataselect="'+uid+'" class="modal dataselect-modal fade" tabindex="-1">' +
+        '<div class="modal-dialog modal-' + modal_size + '">' +
+            '<div class="modal-content">' +
+                '<div class="modal-header">' +
+                    '<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>' +
+                    '<h4 class="modal-title"></h4>' +
+                '</div>' +
+                '<div class="modal-body">' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+    '</div>';
+    $('body').append(html);
+    var modal = $('#' + modal_uid);
+    
     // show modal
-    $('#dataselect-modal').addClass('in');
-    $('#dataselect-modal').modal('show');
-    $('#dataselect-modal .modal-body').html('<div class="text-center"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
+    modal.addClass('in');
+    modal.modal('show');
+    modal.find('.modal-body').html('<div class="text-center"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
     
     $.ajax({
         url: create_url,
     }).done(function( data ) {
-        $('#dataselect-modal .modal-title').html(create_title);
+        modal.find('.modal-title').html(create_title);
         
         // get form
         html = $('<div>').html(data).find(control.attr('container-selector'))[0].outerHTML;
-        $('#dataselect-modal .modal-body').html(html);
+        modal.find('.modal-body').html(html);
         
-        //
-        if(typeof(with_keyword) !== 'undefined' && with_keyword) {
-            var value = dataselect.find('.dataselect-new-name').html().trim();
-            $('#dataselect-modal .modal-body').find(control.attr('input-selector')).val(value);
+        // insert keyword to form
+        if(typeof(with_keyword) !== 'undefined' && with_keyword) {            
+            modal.find('.modal-body').find(control.attr('input-selector')).val(keyword);
         }
     });
 }
@@ -123,10 +166,10 @@ function updateDataselectData(dataselect) {
     var keyword = control.val();
     var dataselect_hook = databox.find('.dataselect-hook');
     
-    if(CURRENT_DATASELECT_XRC && CURRENT_DATASELECT_XRC.readyState != 4){
-		CURRENT_DATASELECT_XRC.abort();
+    if(CURRENT_DATASELECT_XHR && CURRENT_DATASELECT_XHR.readyState != 4){
+		CURRENT_DATASELECT_XHR.abort();
 	}
-    CURRENT_DATASELECT_XRC = $.ajax({
+    CURRENT_DATASELECT_XHR = $.ajax({
         url: url,
         data: {
             'keyword': keyword
@@ -165,7 +208,7 @@ function toggleDataselectData(dataselect) {
 
 // Main js execute when loaded page
 var CURRENT_DATASELECT;
-var CURRENT_DATASELECT_XRC;
+var CURRENT_DATASELECT_XHR;
 $(document).ready(function() {
     // Datalist search input
     $(document).on('keyup focus', '.dataselect .dataselect-control', function() {
@@ -188,21 +231,22 @@ $(document).ready(function() {
     });
     
     // when blur dataselect control
-    $('.dataselect .dataselect-control').bind('blur', function () {
+    $(document).on("blur",".dataselect .dataselect-control", function() { 
         var dataselect = $(this).parents('.dataselect');
+        var modal = $('#dataselect-modal-' + dataselect.attr('rel'));
         
         // wait for other action
         setTimeout(function() {            
             var selected_item = findDataselectControlTextMatched(dataselect);
-            
+
             if(!selected_item) {            
-                if(!$('#dataselect-modal').hasClass('in')) {
+                if(!modal.hasClass('in')) {
                     showCreateModalContent(dataselect, true);
                 }
             } else {
                 selectDataselectItem(selected_item);
             }
-    
+
             toggleDataselectData(dataselect);
         }, 500);        
     });
@@ -220,7 +264,7 @@ $(document).ready(function() {
     });
     
     // modal form submit
-    $(document).on('submit', '#dataselect-modal form', function(e) {
+    $(document).on('submit', '.dataselect-modal form', function(e) {
         e.preventDefault();
         
         // submit form
@@ -228,10 +272,10 @@ $(document).ready(function() {
     });
     
     // modal form submit
-    $(document).on('click', '#dataselect-modal .btn-cancel', function(e) {
+    $(document).on('click', '.dataselect-modal .btn-cancel', function(e) {
         e.preventDefault();
         
         // submit form
-        $('#dataselect-modal').modal('hide');
+        $(this).parents('.dataselect-modal').modal('hide');
     });
 });

@@ -102,17 +102,6 @@ function removeDatalistSearchItem(list, id) {
     }
 }
 
-// Generate unique id
-function guid() {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  }
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-    s4() + '-' + s4() + s4() + s4();
-}
-
 // Add to keywords
 function addToKeywords(list, item) {
     var id = list.attr('data-id');
@@ -182,7 +171,7 @@ function toggleDatalistSearchHelper(list) {
 function checkCheckableItem(li) {
     if(li.hasClass('checked')) {
         li.removeClass('checked');
-    } else {            
+    } else {
         li.addClass('checked');
     }
 }
