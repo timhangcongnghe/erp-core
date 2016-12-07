@@ -34,9 +34,9 @@ function submitAddablelistModalForm(form) {
                 modal.find('.modal-body').html(result[0].outerHTML);
             } else {
                 container.append(data);
+                jsForAjaxContent(container);
                 
-                modal.modal('hide');
-                
+                modal.modal('hide');                
                 scrollToElement(addablelist, 140);
             }
         }
@@ -90,6 +90,7 @@ function showAddablelistAddModal(addablelist) {
         // get form
         html = $('<div>').html(data).find(container_selector)[0].outerHTML;
         modal.find('.modal-body').html(html);
+        jsForAjaxContent(modal);
     });
 }
 
