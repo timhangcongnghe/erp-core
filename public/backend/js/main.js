@@ -1,3 +1,14 @@
+//scroll to jquery element
+function scrollToElement(element, top) {
+  if(typeof(top) === 'undefined') {
+    top = 0;
+  }
+    
+  $('html,body').animate({
+    scrollTop: element.offset().top - top
+  }, 'slow');
+}
+
 // Generate unique id
 function guid() {
   function s4() {

@@ -1,0 +1,22 @@
+<div class="addablelist"
+    create-url='<%= options[:create][:url] if options[:create][:url].present? %>'
+    create-title='<%= options[:create][:title] if options[:create][:title].present? %>'
+    container-selector='<%= options[:create][:container_selector] if options[:create][:container_selector].present? %>'
+    modal-size='<%= options[:create][:modal_size] if options[:create][:modal_size].present? %>'
+    list-partial='<%= options[:create][:list_partial] if options[:create][:list_partial].present? %>'
+>
+    <div class="addablelist-container">
+        <% options[:create][:list_items].each do |item| %>
+            <%= render partial: options[:create][:list_partial], locals: {options[:create][:list_item] => item} %>
+        <% end %>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <a href="#form_modal_example" class="btn btn-sm blue addablelist-add-button">
+                <i class="fa fa-plus"></i>
+                <%= options[:button_text].present? ? options[:button_text] : t('contacts.contact.add') %>
+            </a>
+        </div>
+    </div>
+</div>

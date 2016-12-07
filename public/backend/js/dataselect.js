@@ -1,7 +1,7 @@
 // Get current dataselect
 function getCurrentDataselect() {
     dataselect = $('[rel="' + $('.dataselect-modal.in').last().attr('dataselect') + '"]');
-    console.log(dataselect);
+
     return dataselect;
 }
 
@@ -15,10 +15,14 @@ function submitDataselectModalForm(form) {
     
     modal.find('.modal-body').html('<div class="text-center"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
     
+    // form data
+    var form_data = form.serializeArray();
+    form_data.push({name: 'format', value: 'json'});
+    
     $.ajax({
         type: method,
         url: url,
-        data: form.serializeArray(), // serializes the form's elements.
+        data: form_data, // serializes the form's elements.
         success: function(data)
         {
             // get data
@@ -50,8 +54,8 @@ function showCreateModalContent(dataselect, with_keyword) {
     }
     
     // modal width
-    if (typeof(modal_width) === 'undefined' || modal_width === '') {
-        modal_width = '400';
+    if (typeof(modal_size) === 'undefined' || modal_size === '') {
+        modal_size = 'md';
     }
     
     // set current select
