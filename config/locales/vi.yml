@@ -12,3 +12,6 @@ vi:
     actions: "Chọn thao tác"
     type_to_search: "Nhập để tìm kiếm..."
     form_has_error_message: "Có một vài lỗi trong lúc xác nhận. Vui lòng kiểm tra lại."
+    img_select: "Chọn hình ảnh"
+    img_update: "Cập nhật"
+    img_remove: "Xóa"
