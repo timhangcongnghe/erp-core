@@ -1,7 +1,7 @@
 Array.prototype.contains = function(obj) {
     var i = this.length;
     while (i--) {
-        if (this[i] === obj) {
+        if (this[i].trim() === obj.trim()) {
             return true;
         }
     }
