@@ -38,6 +38,8 @@ function submitAddablelistModalForm(form) {
                 
                 modal.modal('hide');                
                 scrollToElement(addablelist, 140);
+                
+                jsForAjaxContent(modal);
             }
         }
     });

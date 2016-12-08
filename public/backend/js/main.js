@@ -1,3 +1,95 @@
+Array.prototype.contains = function(obj) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+};
+
+function initHiddabbleControls() {
+    // find all cond item
+    $('[data-cond-item]').each(function() {
+        box = $(this).parents('form');
+        
+        var class_name = $(this).attr('data-cond-item');
+        var control = box.find(class_name);
+        
+        if(control.hasClass('icheck')) {
+            control.on("ifChecked", function() {
+                value = $(this).val();
+                box.find('[data-cond-item="' + class_name + '"]').each(function() {                    
+                    if($(this).attr('data-cond-value') !== value) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                });
+            });
+            if(control.is(':checked')) {
+                value = control.val();
+                box.find('[data-cond-item="' + class_name + '"]').each(function() {                    
+                    if($(this).attr('data-cond-value') !== value) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                });
+            }
+        } else {            
+            control.on("change", function() {
+                value = $(this).val();
+                box.find('[data-cond-item="' + class_name + '"]').each(function() {
+                    if($(this).attr('data-cond-value') !== value) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                });
+            });
+            control.trigger('change');
+        }
+    });
+
+    
+    ////
+    //items.forEach(function(item) {
+    //    if($(item).hasClass('icheck')) {
+    //        value = $(item + ':checked').val();
+    //        $('[data-cond-item="' + item + '"]').each(function() {
+    //            if($(this).attr('data-cond-value') !== value) {
+    //                $(this).hide();
+    //            } else {
+    //                $(this).show();
+    //            }
+    //        });
+    //        $(document).on("ifChecked", item, function() {
+    //            value = $(this).val();
+    //            $('[data-cond-item="' + item + '"]').each(function() {
+    //                if($(this).attr('data-cond-value') !== value) {
+    //                    $(this).hide();
+    //                } else {
+    //                    $(this).show();
+    //                }
+    //            });
+    //        });            
+    //    } else {
+    //        $(document).on("change", item, function() {
+    //            value = $(this).val();
+    //            $('[data-cond-item="' + item + '"]').each(function() {
+    //                if($(this).attr('data-cond-value') !== value) {
+    //                    $(this).hide();
+    //                } else {
+    //                    $(this).show();
+    //                }
+    //            });
+    //        });
+    //        $(item).trigger('change');
+    //    }        
+    //});
+}
+
 function jsForAjaxContent(container) {
   // date picker
   container.find('.date-picker').each(function() {
@@ -26,6 +118,9 @@ function jsForAjaxContent(container) {
         });
     }
   });
+  
+  // hiddable field control
+  initHiddabbleControls();
 }
 
 //scroll to jquery element
@@ -159,5 +254,8 @@ $(document).ready(function() {
             'type': 'hidden'
         }));
         newForm.submit();
-    });    
+    });
+    
+    // Grap link with data-method attribute
+    initHiddabbleControls();
 });

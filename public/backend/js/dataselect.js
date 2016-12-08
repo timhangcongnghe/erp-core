@@ -34,7 +34,8 @@ function submitDataselectModalForm(form) {
                     updateDataselectValue(getCurrentDataselect(), data.text, data.value);
                 }
                 
-                modal.modal('hide');                
+                modal.modal('hide');
+                jsForAjaxContent(modal);
             }
         }
     });
@@ -103,6 +104,8 @@ function showCreateModalContent(dataselect, with_keyword) {
         if(typeof(with_keyword) !== 'undefined' && with_keyword) {            
             modal.find('.modal-body').find(control.attr('input-selector')).val(keyword);
         }
+        
+        jsForAjaxContent(modal);
     });
 }
 
