@@ -6,3 +6,6 @@
 .form-horizontal .control-label {
 	text-align: left;
 }
+.radio-padding-top {
+	padding-top: 5px;
+}
