@@ -1,0 +1,14 @@
+#Additional translations
+
+vi:
+  home: "Trang chủ"
+  dashboard: "Bảng điều khiển"
+  core:
+    or: "hoặc"
+    search: "Tìm theo"
+    for: "cho"
+    columns: "Ẩn/Hiện cột"
+    filters: "Bộ lọc"
+    actions: "Chọn thao tác"
+    type_to_search: "Nhập để tìm kiếm..."
+    form_has_error_message: "Có một vài lỗi trong lúc xác nhận. Vui lòng kiểm tra lại."

@@ -20,7 +20,7 @@
             </div>
             <div class="form-group form-md-line-input has-success form-md-floating-label list-filters-search">                
                 <div class="input-icon right">                    
-                    <input type="text" class="datalist-search-input form-control" placeholder="Type to search">
+                    <input type="text" class="datalist-search-input form-control" placeholder="<%= t('core.type_to_search') %>">
                     <i class="fa fa-search"></i>
                 </div>
                 <% if options[:keywords] %>
@@ -28,7 +28,7 @@
                         <ul>
                             <% options[:keywords].each do |keyword| %>
                                 <li>
-                                    <a href="javascript:;">Search <span class="bold"><%= keyword[:text] %></span> for: <span class="keyword bold" text="<%= keyword[:text] %>" name="<%= keyword[:name] %>"></span></a>
+                                    <a href="javascript:;"><%= t('core.search') %> <span class="bold"><%= keyword[:text] %></span> <%= t('core.for') %> <span class="keyword bold" text="<%= keyword[:text] %>" name="<%= keyword[:name] %>"></span></a>
                                 </li>
                             <% end %>
                         </ul>
