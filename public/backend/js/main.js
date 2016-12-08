@@ -19,8 +19,8 @@ function initHiddabbleControls() {
         if(control.hasClass('icheck')) {
             control.on("ifChecked", function() {
                 value = $(this).val();
-                box.find('[data-cond-item="' + class_name + '"]').each(function() {                    
-                    if($(this).attr('data-cond-value') !== value) {
+                box.find('[data-cond-item="' + class_name + '"]').each(function() {
+                    if(!$(this).attr('data-cond-value').split(',').contains(value)) {
                         $(this).hide();
                     } else {
                         $(this).show();
@@ -30,7 +30,7 @@ function initHiddabbleControls() {
             if(control.is(':checked')) {
                 value = control.val();
                 box.find('[data-cond-item="' + class_name + '"]').each(function() {                    
-                    if($(this).attr('data-cond-value') !== value) {
+                    if(!$(this).attr('data-cond-value').split(',').contains(value)) {
                         $(this).hide();
                     } else {
                         $(this).show();
@@ -41,7 +41,7 @@ function initHiddabbleControls() {
             control.on("change", function() {
                 value = $(this).val();
                 box.find('[data-cond-item="' + class_name + '"]').each(function() {
-                    if($(this).attr('data-cond-value') !== value) {
+                    if(!$(this).attr('data-cond-value').split(',').contains(value)) {
                         $(this).hide();
                     } else {
                         $(this).show();
