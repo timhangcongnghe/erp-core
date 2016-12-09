@@ -7,7 +7,9 @@
 >
     <div class="addablelist-container">
         <% options[:create][:list_items].each do |item| %>
-            <%= render partial: options[:create][:list_partial], locals: {options[:create][:list_item] => item} %>
+            <div class="addablelist-row">
+                <%= render partial: options[:create][:list_partial], locals: {options[:create][:list_item] => item} %>
+            </div>
         <% end %>
     </div>
     <hr />

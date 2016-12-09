@@ -156,7 +156,12 @@
                         <i class="icon-lock"></i> Lock Screen </a>
                 </li>
                 <li>
-                    <%= link_to '<i class="icon-key"></i> Log Out'.html_safe, erp.destroy_user_session_path, method: :delete, redirect_to: erp.backend_path %>
+                    <%= link_to '<i class="icon-key"></i> Log Out'.html_safe,
+                        erp.destroy_user_session_path,
+                        method: :delete,
+                        redirect_to: erp.backend_path,
+                        class: 'link-method'
+                    %>
                 </li>
             </ul>
         </li>

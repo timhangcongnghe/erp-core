@@ -226,7 +226,7 @@ $(document).ready(function() {
     });
     
     // Grap link with data-method attribute
-    $(document).on('click', 'a[data-method]', function(e) {
+    $(document).on('click', 'a.link-method[data-method]', function(e) {
         
         // return if this is list action
         if($(this).parents('.datalist-list-action').length) {
