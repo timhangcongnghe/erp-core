@@ -1,6 +1,8 @@
 require 'devise'
 require 'will_paginate'
 require 'will_paginate-bootstrap'
+require 'carrierwave'
+require 'mini_magick'
 
 module Erp
 	module Core
