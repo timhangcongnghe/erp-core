@@ -30,9 +30,11 @@
             <% end %>
         />
         <span class="pointer"></span>
-        <span class="dataselect-edit-button"
-            <%= 'style="display: block"'.html_safe if options[:value].present? %>
-        ><i class="fa fa-pencil"></i></span>
+        <% if options[:edit].present? %>
+            <span class="dataselect-edit-button"
+                <%= 'style="display: block"'.html_safe if options[:value].present? %>
+            ><i class="fa fa-pencil"></i></span>
+        <% end %>
     </div>
     <div class="dataselect-data">
         <ul>
