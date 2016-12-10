@@ -42,21 +42,35 @@ function submitDataselectModalForm(form) {
 }
 
 // show create modal
-function showCreateModalContent(dataselect, with_keyword) {
-    var control = dataselect.find('.dataselect-control');
-    var create_url = control.attr('create-url');
-    var create_title = control.attr('create-title');
+function showModalForm(dataselect, with_keyword, is_edit) {
+    var url, title, container;
+    var control = dataselect.find('.dataselect-control');    
     var keyword = control.val().trim();
     var modal_size = control.attr('modal-size');
+    var value_control = dataselect.find('.dataselect-value');
     
     // create with keyword but keyword is empty
-    if(with_keyword && keyword === '') {
+    if((typeof(with_keyword) !== 'undefined' || with_keyword) && keyword === '') {
         return;
     }
     
     // modal width
     if (typeof(modal_size) === 'undefined' || modal_size === '') {
         modal_size = 'md';
+    }
+    
+    // is edit ?
+    if(typeof(is_edit) !== 'undefined' && is_edit) {
+        url = control.attr('edit-url');
+        title = control.attr('edit-title');
+        container = control.attr('edit-container-selector');
+        
+        // replace id with value
+        url = url.replace(':value', value_control.val());
+    } else {
+        url = control.attr('create-url');
+        title = control.attr('create-title');
+        container = control.attr('create-container-selector');
     }
     
     // set current select
@@ -76,7 +90,7 @@ function showCreateModalContent(dataselect, with_keyword) {
             '<div class="modal-content">' +
                 '<div class="modal-header">' +
                     '<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>' +
-                    '<h4 class="modal-title"></h4>' +
+                    '<h4 class="modal-title">' + title + '</h4>' +
                 '</div>' +
                 '<div class="modal-body">' +
                 '</div>' +
@@ -92,12 +106,10 @@ function showCreateModalContent(dataselect, with_keyword) {
     modal.find('.modal-body').html('<div class="text-center"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
     
     $.ajax({
-        url: create_url,
+        url: url,
     }).done(function( data ) {
-        modal.find('.modal-title').html(create_title);
-        
         // get form
-        html = $('<div>').html(data).find(control.attr('container-selector'))[0].outerHTML;
+        html = $('<div>').html(data).find(container)[0].outerHTML;
         modal.find('.modal-body').html(html);
         
         // insert keyword to form
@@ -106,6 +118,8 @@ function showCreateModalContent(dataselect, with_keyword) {
         }
         
         jsForAjaxContent(modal);
+        
+        scrollToElement(dataselect, 140);
     });
 }
 
@@ -114,6 +128,7 @@ function findDataselectControlTextMatched(dataselect) {
     var items = dataselect.find('.dataselect-item a');
     var current_text = dataselect.find('.dataselect-control').val().trim();
     var value_control = dataselect.find('.dataselect-value');
+    var edit_button = dataselect.find('.dataselect-edit-button');
     var found;
 
     // update dataselect data
@@ -126,7 +141,11 @@ function findDataselectControlTextMatched(dataselect) {
     
     // empty control value if not found
     if(!found) {
+        // clear input value
         value_control.val('');
+        
+        // hide edit button
+        edit_button.hide();
     }
     
     return found;
@@ -136,9 +155,13 @@ function findDataselectControlTextMatched(dataselect) {
 function updateDataselectValue(dataselect, text, value) {
     var control = dataselect.find('.dataselect-control');
     var value_control = dataselect.find('.dataselect-value');
+    var edit_button = dataselect.find('.dataselect-edit-button');
 
     control.val(text);
     value_control.val(value);
+    
+    // show edit button
+    edit_button.show();
 }
 
 // dataselect select an item
@@ -248,7 +271,7 @@ $(document).ready(function() {
 
             if(!selected_item) {            
                 if(!modal.hasClass('in')) {
-                    showCreateModalContent(dataselect, true);
+                    showModalForm(dataselect, true);
                 }
             } else {
                 selectDataselectItem(selected_item);
@@ -261,13 +284,13 @@ $(document).ready(function() {
     // Show creat new modal
     $(document).on('click', '.dataselect .create-edit a', function() {
         var dataselect = $(this).parents('.dataselect');
-        showCreateModalContent(dataselect);
+        showModalForm(dataselect);
     });
     
     // Show creat new modal
     $(document).on('click', '.dataselect .create-new a', function() {
         var dataselect = $(this).parents('.dataselect');        
-        showCreateModalContent(dataselect, true);
+        showModalForm(dataselect, true);
     });
     
     // modal form submit
@@ -284,5 +307,13 @@ $(document).ready(function() {
         
         // submit form
         $(this).parents('.dataselect-modal').modal('hide');
+    });
+    
+    // edit button click
+    $(document).on('click', '.dataselect-edit-button', function(e) {
+        var dataselect = $(this).parents('.dataselect');
+        
+        // show edit modal
+        showModalForm(dataselect, false, true);
     });
 });

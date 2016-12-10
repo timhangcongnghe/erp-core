@@ -109,7 +109,7 @@ a:hover {
 .dataselect-data {
     position: absolute;
     width: 100%;
-    z-index: 1;
+    z-index: 10056;
 }
 .dataselect-data ul {
     background: #fff;
@@ -164,6 +164,9 @@ div.btn-control-file {
 .text-bold {
     font-weight: 800;
 }
+.dataselect-input-group {
+    position: relative
+}
 .dataselect .pointer {
     border-color: #999 transparent transparent transparent;
     border-style: solid;
@@ -172,7 +175,7 @@ div.btn-control-file {
     margin-left: -4px;
     margin-top: -2px;
     position: absolute;
-    top: 42px;
+    top: 18px;
     width: 0;
     right: 12px;
 }
@@ -191,4 +194,24 @@ div.sm-title {
 }
 div.alert.custom-box-shadow {
     box-shadow: 0 1px 3px rgba(0,0,0,.1),0 0px 2px rgba(0,0,0,.18);
+}
+.dataselect-edit-button {
+    position: absolute;
+    right: 30px;
+    padding: 4px 7px;
+    top: 4px;
+    height: 26px;
+    display: none;
+}
+.dataselect-edit-button:hover {
+    background: #ddd;
+    cursor: pointer;
+}
+.btn-group>.dropdown-menu.pull-left:before, .dropdown-toggle>.dropdown-menu.pull-left:before, .dropdown>.dropdown-menu.pull-left:before {
+    right: auto;
+    left: 9px;
+}
+.btn-group>.dropdown-menu.pull-left:after, .dropdown-toggle>.dropdown-menu.pull-left:after, .dropdown>.dropdown-menu.pull-left:after {
+    right: auto;
+    left: 10px;
 }
