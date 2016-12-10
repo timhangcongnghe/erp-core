@@ -58,11 +58,14 @@ function getDataListCheckedIds(list) {
 function checkDatalistCheckAllState(list) {
     var check_all_box = list.find('.datalist-checkbox-all');
     var ids = getDataListCheckedIds(list);
+    var action_button = list.find('.datalist-list-action');
     
     if(ids.length) {
         check_all_box.prop('checked', true);
+        action_button.css('display', 'inline-block');
     } else {
         check_all_box.prop('checked', false);
+        action_button.hide();
     }
 }
 
@@ -404,11 +407,14 @@ $(document).ready(function() {
         var list = $(this).parents('.datalist');
         var item = $(this);        
         var checked = item.is(':checked');
+        var action_button = list.find('.datalist-list-action');
         
         if(checked) {
             list.find('.datalist-row-checkbox').prop('checked', true);
+            action_button.css('display', 'inline-block');
         } else {
             list.find('.datalist-row-checkbox').prop('checked', false);
+            action_button.hide();
         }
     });
     

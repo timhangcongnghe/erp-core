@@ -1,0 +1,23 @@
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.btn-group>.dropdown-menu.pull-left:before, .dropdown-toggle>.dropdown-menu.pull-left:before, .dropdown>.dropdown-menu.pull-left:before {
+    right: auto;
+    left: 9px;
+}
+.btn-group>.dropdown-menu.pull-left:after, .dropdown-toggle>.dropdown-menu.pull-left:after, .dropdown>.dropdown-menu.pull-left:after {
+    right: auto;
+    left: 10px;
+}
+.portlet.light {
+    padding: 20px;
+}
+.portlet.datalist>.portlet-title>.caption {
+    padding-top: 0;
+}
+.portlet.datalist>.portlet-title>.actions {
+    padding: 0px 0 14px;
+}
+/*.form-group {
+    margin-bottom: 25px;
+}*/
