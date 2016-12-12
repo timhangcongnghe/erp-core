@@ -6,6 +6,11 @@ Erp::Core::Engine.routes.draw do
 		root to: "home#index"
 		namespace :backend do
 			get '/' => 'dashboard#index'
+			resources :users do
+				collection do
+					get 'dataselect'
+				end
+			end
 		end
 	end
 end
