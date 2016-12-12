@@ -4,7 +4,16 @@
         <% if options[:options].present? %>
             <% options[:options].each_with_index do |option| %>
                 <label class="mt-checkbox">
-                    <input type="checkbox" name="<%= options[:name] if options[:name].present? %>" id="<%= options[:id] if options[:id].present? %>" value="<%= option[:value] %>"> <%= option[:text] %>
+                    <% if options[:not_selected_value].present? %>
+                        <input type="hidden"
+                            name="<%= options[:name] if options[:name].present? %>"
+                            value="<%= options[:not_selected_value] %>"
+                        >
+                    <% end %>
+                    <input type="checkbox" <%= "checked" if options[:value] == true %>
+                        name="<%= options[:name] if options[:name].present? %>"
+                        id="<%= options[:id] if options[:id].present? %>"
+                        value="<%= option[:value] %>"> <%= option[:text] %>
                     <span></span>
                 </label>
             <% end %>
