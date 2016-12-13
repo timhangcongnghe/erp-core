@@ -1,0 +1,65 @@
+<% content_for :title do %>
+    <%= t('core.user') %>
+<% end %>
+
+<% content_for :page_title do %>
+    <i class="fa fa-bookmark-o"></i> <%= t('core.user') %>
+<% end %>
+
+<% content_for :page_toolbar do %>
+    <%= erp_component('button/create', {
+        text: t('core.create'),
+        href: erp.new_backend_user_path,
+        class: 'btn-sm'
+    }) %>
+<% end %>
+
+<%= erp_datalist(
+    url: erp.list_backend_users_path,
+    keywords: [
+        {
+            text: t('core.name'), name: 'name'
+        },
+        {
+            text: t('core.email'), name: 'email'
+        }
+    ],
+    actions: [
+        {
+            text: '<i class="fa fa-check"></i> '+t('core.activate'),
+            url: erp.activate_all_backend_users_path,
+            data_method: 'PUT'
+        },
+        {
+            text: '<i class="fa fa-exclamation"></i> '+t('core.deactivate'),
+            url: erp.deactivate_all_backend_users_path,
+            data_method: 'PUT'
+        },
+        {
+            divider: true
+        },
+        {
+            text: '<i class="fa fa-trash"></i> '+t('core.delete'),
+            url: erp.delete_all_backend_users_path,
+            data_method: 'DELETE',
+            data_confirm: t('core.delete_confirm') 
+        }
+    ],
+    columns: [
+        {
+            text: t('core.name'), name: 'name', value: true, checked: true
+        },
+        {
+            text: t('core.email'), name: 'email', value: true, checked: true
+        },
+        {
+            text: t('core.status'), name: 'status', value: true, checked: true
+        },
+        {
+            text: t('core.creator'), name: 'creator', value: true, checked: false
+        },
+        {
+            text: t('core.created_at'), name: 'created_at', value: true, checked: false
+        }
+    ]
+) %>    

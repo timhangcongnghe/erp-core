@@ -1,0 +1,30 @@
+<% content_for :page_toolbar do %>
+    <%= erp_component('button/create', {
+        text: t('core.create'),
+        href: erp.new_backend_user_path,
+        class: 'btn-sm'
+    }) %>
+<% end %>
+
+<% content_for :title do %>
+    <%= t('core.edit') %>
+<% end %>
+
+<% content_for :page_title do %>    
+    <a href=""><i class="fa fa-bookmark-o"></i> <%= t('core.user') %></a> / <%= t('core.edit') %>: <%= @user.email %>
+<% end %>
+
+<div class="row">
+    <div class="col-md-12">
+        <% if @user.errors.any? %>
+            <%= erp_form_control("form_error_message") %>
+        <% end %>
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-body">
+                <%= render 'form', user: @user %>
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+</div>

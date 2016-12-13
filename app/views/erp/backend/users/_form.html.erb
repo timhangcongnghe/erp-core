@@ -1,0 +1,63 @@
+<%= form_for([erp, :backend, user]) do |f| %>    
+    <div class="row">
+        <div class="col-md-6">
+            <%= erp_form_control("text", {
+                name: 'user[name]',
+                value: user.name,                   
+                label: t('core.name'),
+                placeholder: t('core.enter_user_name')
+            }) %>
+            <%= erp_form_control("email", {
+                name: 'user[email]',
+                value: user.email,                   
+                label: t('core.email'),
+                placeholder: t('core.enter_user_email'),
+                required: true,
+                errors: user.errors.full_messages_for(:email)
+            }) %>
+            <%= erp_form_control("password", {
+                name: 'user[password]',    
+                label: t('core.password'),
+                placeholder: t('core.enter_password'),
+                required: true,
+                errors: user.errors.full_messages_for(:password)
+            }) %>
+            <%= erp_form_control("password", {
+                name: 'user[password_confirmation]',
+                label: t('core.password_confirm'),
+                placeholder: t('core.enter_password_confirm'),
+                required: true,
+                errors: user.errors.full_messages_for(:password_confirmation)
+            }) %>
+            <%= erp_form_control('select', {
+                label: t('core.timezone'),
+                name: 'user[timezone]',
+                placeholder: t('core.choose_timezone'),
+                id: '',
+                value: user.timezone,
+                options: Erp::User.get_list_timezone
+            }) %>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <%= erp_form_control('image', {
+                        img_src: '',
+                        name: 'user[avatar]'
+                    }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <%= erp_component('button/save', {
+        text: t('core.submit'),
+        class: ''
+    }) %>
+    <%= erp_component('button/cancel', {
+        text: t('core.cancel'),
+        href: erp.backend_users_path,
+        class: ''
+    }) %>
+<% end %>

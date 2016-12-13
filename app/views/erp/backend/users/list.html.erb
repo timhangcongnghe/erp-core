@@ -1,0 +1,105 @@
+<div class="">
+    <table class="table table-advance table-hover table-striped table-checkable order-column" id="">
+        <thead>
+            <tr>
+                <th width='1%'>
+                    <%= erp_datalist_check_all %>
+                </th>
+                <% if get_columns(params).include?("name") %>
+                    <th>
+                        <%= t('core.name') %>
+                    </th>
+                <% end %>
+                <% if get_columns(params).include?("email") %>
+                    <th>
+                        <%= t('core.email') %>
+                    </th>
+                <% end %>
+                <% if get_columns(params).include?("status") %>
+                    <th>
+                        <%= t('core.status') %>
+                    </th>
+                <% end %>
+                <% if get_columns(params).include?("creator") %>
+                    <th>
+                        <%= t('core.creator') %>
+                    </th>
+                <% end %>
+                <% if get_columns(params).include?("created_at") %>
+                    <th>
+                        <%= t('core.created_at') %>
+                    </th>
+                <% end %>
+                <th width="7%"><%= t('core.actions') %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if @users.each do |user| %>
+                <tr class="odd gradeX">
+                    <td>
+                        <%= erp_datalist_check_row(id: user.id) %>
+                    </td>
+                    <% if get_columns(params).include?("name") %>
+                        <td><%= link_to user.name, erp.edit_backend_user_path(user) %></td>
+                    <% end %>
+                    <% if get_columns(params).include?("email") %>
+                        <td><%= user.email %></td>
+                    <% end %>
+                    <% if get_columns(params).include?("status") %>
+                    <td>
+                        <% if user.active == false %>
+                        <span class="label label-sm label-danger"><%= t('core.inactive') %></span>
+                        <% else %>
+                        <span class="label label-sm label-success"><%= t('core.active') %></span>
+                        <% end %> 
+                    </td>
+                    <% end %>
+                    <% if get_columns(params).include?("creator") %>
+                        <td></td>
+                    <% end %>
+                    <% if get_columns(params).include?("created_at") %>
+                        <td class="center"><%= user.created_at.strftime("%d/%m/%Y") %></td>
+                    <% end %>
+                    <td>
+                        <%= erp_datalist_row_actions(
+                            [
+                                {
+                                    text: '<i class="fa fa-edit"></i> '+t('contacts.titles.edit'),
+                                    href: erp.edit_backend_user_path(user)
+                                },
+                                {
+                                    text: '<i class="fa fa-check"></i> '+t('core.deactivate'),
+                                    href: erp.deactivate_backend_users_path(id: user),
+                                    data_method: 'PUT',
+                                    class: 'ajax-link'
+                                },
+                                {
+                                    text: '<i class="fa fa-exclamation"></i> '+t('core.activate'),
+                                    href: erp.activate_backend_users_path(id: user),
+                                    data_method: 'PUT',
+                                    class: 'ajax-link'
+                                },
+                                {
+                                    divider: true
+                                },
+                                {
+                                    text: '<i class="fa fa-trash"></i> '+t('core.delete'),
+                                    href: erp.backend_user_path(user),
+                                    data_method: 'DELETE',
+                                    data_confirm: t('core.delete_confirm'),
+                                    class: 'ajax-link'
+                                }
+                            ]
+                        ) %>
+                    </td>
+                </tr>
+            <% end.empty? %>
+                <tr>
+                    <td colspan="7"><%= t('contacts.titles.no_matching_records_found') %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+        
+<%= erp_datalist_pagination(@users) %>
