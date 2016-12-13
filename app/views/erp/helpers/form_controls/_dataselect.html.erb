@@ -6,7 +6,22 @@
         value="<%= options[:value] if options[:value].present? %>"
         class="dataselect-value"
     />
-    <div class="dataselect-input-group">
+    <div class="dataselect-input-group <%= 'multiple' if options[:multiple] == true %>">
+        <% if options[:multiple] == true %>
+            <div class="multiselect-values-container">
+                <% if !options[:values].empty? %>
+                    <% options[:values].each do |value| %>
+                        <% if value[:value].present? %>
+                            <div class="btn-group btn-group-solid dataselect-value-box">
+                                <input type="hidden" name="<%= options[:name] if options[:name].present? %>" value="<%= value[:value] %>">
+                                <button type="button" class="btn btn-sm green-meadow dataselect-value-item"><%= value[:text] %></button>
+                                <button type="button" class="btn btn-sm green-meadow remove-button"><i class="fa fa-close"></i></button>
+                            </div>
+                        <% end %>
+                    <% end %>
+                <% end %>
+            </div>
+        <% end %>
         <input
             class="form-control dataselect-control"
             data-url="<%= options[:url] if options[:url].present? %>"
@@ -28,13 +43,17 @@
                     edit-container-selector='<%= options[:edit][:container_selector] if options[:edit][:container_selector].present? %>'
                 <% end %>
             <% end %>
+            
+            <% if options[:multiple] == true %>
+                multiple='true'
+            <% end %>
         />
         <span class="pointer"></span>
         <% if options[:edit].present? %>
             <span class="dataselect-edit-button"
                 <%= 'style="display: block"'.html_safe if options[:value].present? %>
             ><i class="fa fa-pencil"></i></span>
-        <% end %>
+        <% end %>        
     </div>
     <div class="dataselect-data">
         <ul>

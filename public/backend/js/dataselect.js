@@ -1,3 +1,40 @@
+function clearDataselectControlText(dataselect) {
+    var control = dataselect.find('.dataselect-control');    
+    
+    control.val('');
+}
+
+function clearDataselectValue(dataselect) {
+    var value_control = dataselect.find('.dataselect-value');
+    var control = dataselect.find('.dataselect-control');
+    var is_multiple = control.attr('multiple');
+    
+    if(!is_multiple) {
+        value_control.val('');
+    }
+}
+
+// check things after finish dataselect control by user
+function afterFinishDataselect(dataselect) {
+    var modal = $('#dataselect-modal-' + dataselect.attr('rel'));
+    var control = dataselect.find('.dataselect-control');
+    var selected_item = findDataselectControlTextMatched(dataselect);
+
+    if(!selected_item) {
+        if(control.attr('create-url')) {
+            if(!modal.hasClass('in')) {
+                showModalForm(dataselect, true);
+            }
+        } else {
+            clearDataselectControlText(dataselect);
+        }
+    } else {
+        selectDataselectItem(selected_item);
+    }
+
+    toggleDataselectData(dataselect);
+}
+
 // Get current dataselect
 function getCurrentDataselect() {
     dataselect = $('[rel="' + $('.dataselect-modal.in').last().attr('dataselect') + '"]');
@@ -127,7 +164,6 @@ function showModalForm(dataselect, with_keyword, is_edit) {
 function findDataselectControlTextMatched(dataselect) {
     var items = dataselect.find('.dataselect-item a');
     var current_text = dataselect.find('.dataselect-control').val().trim();
-    var value_control = dataselect.find('.dataselect-value');
     var edit_button = dataselect.find('.dataselect-edit-button');
     var found;
 
@@ -142,7 +178,7 @@ function findDataselectControlTextMatched(dataselect) {
     // empty control value if not found
     if(!found) {
         // clear input value
-        value_control.val('');
+        clearDataselectValue(dataselect);
         
         // hide edit button
         edit_button.hide();
@@ -151,14 +187,87 @@ function findDataselectControlTextMatched(dataselect) {
     return found;
 }
 
+// update multiple value
+function updateDataselectMultipleValues(dataselect) {
+    var value_control = dataselect.find('.dataselect-value');
+    
+    value_control.val('');
+}
+
+// Get current value
+function getDataselectCurrentValue(dataselect) {
+    var value_control = dataselect.find('.dataselect-value');
+    var control = dataselect.find('.dataselect-control');
+    var is_multiple = control.attr('multiple');
+    
+    if(!is_multiple) {
+        return value_control.val();
+    } else {
+        var values = [];
+        dataselect.find('.dataselect-value-box input').each(function() {
+            values.push($(this).val());
+        });
+        
+        return values.join(',');
+    }
+}
+
+// remove item from dataselect
+function removeDataselectValueItem(item) {
+    var dataselect = item.parents('.dataselect');
+    var control = dataselect.find('.dataselect-control');
+    
+    item.remove();
+    
+    control.focus();
+    updateDataselectData(dataselect);
+}
+
+// insert item to dataselect value if multiple
+function insertDataselectValueItem(dataselect, text, value) {
+    var value_control = dataselect.find('.dataselect-value');
+    var control = dataselect.find('.dataselect-control');
+    var group = dataselect.find('.multiselect-values-container');
+
+    if(!dataselect.find('.dataselect-value-box input[value="' + value + '"]').length) {
+        // insert html item
+        var html = '<div class="btn-group btn-group-solid dataselect-value-box">' +
+            '<input type="hidden" name="' + value_control.attr('name') + '" value="' + value + '">' +
+            '<button type="button" class="btn btn-sm green-meadow dataselect-value-item">' + text + '</button>' +
+            '<button type="button" class="btn btn-sm green-meadow remove-button"><i class="fa fa-close"></i></button></div> ';
+        group.append(html);
+        
+        // update values
+        updateDataselectMultipleValues(dataselect);
+    }
+    
+    // wait for other action
+    control.focus();
+    updateDataselectData(dataselect);
+}
+
+// insert item to dataselect value if multiple
+function updateDataselectSingleValue(dataselect, text, value) {
+    var control = dataselect.find('.dataselect-control');
+    var value_control = dataselect.find('.dataselect-value');
+    
+    control.val(text);
+    value_control.val(value);
+}
+
 // update dataselect value
 function updateDataselectValue(dataselect, text, value) {
     var control = dataselect.find('.dataselect-control');
-    var value_control = dataselect.find('.dataselect-value');
     var edit_button = dataselect.find('.dataselect-edit-button');
-
-    control.val(text);
-    value_control.val(value);
+    var is_multiple = control.attr('multiple');
+    
+    if(!is_multiple) {
+        updateDataselectSingleValue(dataselect, text, value);
+    } else {
+        // insert item to dataselect values
+        insertDataselectValueItem(dataselect, text, value);
+        clearDataselectControlText(dataselect);
+    }
     
     // show edit button
     edit_button.show();
@@ -196,26 +305,36 @@ function updateDataselectData(dataselect) {
     var keyword = control.val();
     var dataselect_hook = databox.find('.dataselect-hook');
     
+    var current_value = getDataselectCurrentValue(dataselect);
+    
     if(CURRENT_DATASELECT_XHR && CURRENT_DATASELECT_XHR.readyState != 4){
 		CURRENT_DATASELECT_XHR.abort();
 	}
     CURRENT_DATASELECT_XHR = $.ajax({
         url: url,
         data: {
-            'keyword': keyword
+            'keyword': keyword,
+            'current_value': current_value
         }
     }).done(function( options ) {
         // remove old data
-        databox.find('.dataselect-item').remove();
+        databox.find('.dataselect-item, .dataselect-empty').remove();
         
         // update dataselect data
         options.forEach(function(option) {
             var html = '<li class="dataselect-item">' +
                             '<a href="javascript:;" data-value="' + option.value + '">' + option.text + '</a>' +
-                        '</li>';
-                        
+                        '</li>';                        
             dataselect_hook.before(html);
         });
+        
+        // if options is empty
+        if(!options.length) {
+            var html = '<li class="dataselect-empty">' +
+                            '<a href="javascript:;">' + LANG_NO_RECORD_FOUND + '</a>' +
+                        '</li>';                        
+            dataselect_hook.before(html);
+        }
         
         // check item exists
         toggleDataselectCreateNewLine(dataselect);
@@ -263,22 +382,11 @@ $(document).ready(function() {
     // when blur dataselect control
     $(document).on("blur",".dataselect .dataselect-control", function() { 
         var dataselect = $(this).parents('.dataselect');
-        var modal = $('#dataselect-modal-' + dataselect.attr('rel'));
         
         // wait for other action
-        setTimeout(function() {            
-            var selected_item = findDataselectControlTextMatched(dataselect);
-
-            if(!selected_item) {            
-                if(!modal.hasClass('in')) {
-                    showModalForm(dataselect, true);
-                }
-            } else {
-                selectDataselectItem(selected_item);
-            }
-
-            toggleDataselectData(dataselect);
-        }, 500);        
+        setTimeout(function() {
+            afterFinishDataselect(dataselect);
+        }, 200);        
     });
     
     // Show creat new modal
@@ -310,10 +418,16 @@ $(document).ready(function() {
     });
     
     // edit button click
-    $(document).on('click', '.dataselect-edit-button', function(e) {
+    $(document).on('click', '.dataselect-edit-button', function() {
         var dataselect = $(this).parents('.dataselect');
         
         // show edit modal
         showModalForm(dataselect, false, true);
+    });
+    
+    // remove dataselect item
+    $(document).on('click', '.dataselect-value-box .remove-button', function() {
+        var item = $(this).parents('.dataselect-value-box');
+        removeDataselectValueItem(item);
     });
 });

@@ -203,10 +203,35 @@ div.alert.custom-box-shadow {
     height: 26px;
     display: none;
 }
+.dataselect-data ul li.dataselect-empty a {
+    color: #aaa;
+}
 .dataselect-edit-button:hover {
     background: #ddd;
     cursor: pointer;
 }
 .datalist-list-action {
     display: none;
+}
+.dataselect-input-group.multiple {
+    padding: 0px;
+    border: solid 1px #c2cad8;
+    padding-right: 25px;
+}
+.multiselect-values-container {
+    display: inline-block;
+    line-height: 0px;
+    vertical-align: top;
+    padding: 2px 2px 0;
+}
+.dataselect-value-box {
+    vertical-align: top;
+    margin-bottom: 4px;
+}
+.dataselect-input-group.multiple .dataselect-control {
+    display: inline-block;
+    width: 50%;
+    border: none;
+    padding-left: 2px;
+    padding-right: 0;
 }
