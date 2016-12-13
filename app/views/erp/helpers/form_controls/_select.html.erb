@@ -5,16 +5,19 @@
             <span class="required" aria-required="true"> * </span>
         <% end %>
     </label>
-    <select name="<%= options[:name] if options[:name].present? %>" id="<%= options[:id] if options[:id].present? %>" class="bs-select form-control" data-live-search="true" data-size="8">
+    <select class="bs-select form-control" data-live-search="true" data-size="8"
+        name="<%= options[:name] if options[:name].present? %>"
+        id="<%= options[:id] if options[:id].present? %>">
         <% if options[:options].present? %>
             <% options[:options].each_with_index do |option| %>
-                <option value="<%= option[:value] %>">
+                <option <%= 'selected' if options[:value] == option[:value] %>
+                    value="<%= option[:value] %>">
                     <%= option[:text] %>
                 </option>
             <% end %>
         <% end %>
     </select>
     <% if options[:errors].present? %>
-        <span class="help-block"> <%= options[:errors].join('<br/>') %></span>
+        <span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span>
     <% end %>
 </div>
