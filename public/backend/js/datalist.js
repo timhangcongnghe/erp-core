@@ -47,7 +47,7 @@ function listActionProccess(link) {
 
 // action
 function getDataListCheckedIds(list) {
-    var ids = list.find("input[name='ids[]']:checked").map(
+    var ids = list.find("td input[name='ids[]']:checked").map(
         function () { return this.value; }
     ).get();
     
@@ -407,14 +407,22 @@ $(document).ready(function() {
         var list = $(this).parents('.datalist');
         var item = $(this);        
         var checked = item.is(':checked');
-        var action_button = list.find('.datalist-list-action');
+        var action_button = list.find('.datalist-list-action');       
         
+        // check all
         if(checked) {
             list.find('.datalist-row-checkbox').prop('checked', true);
-            action_button.css('display', 'inline-block');
         } else {
             list.find('.datalist-row-checkbox').prop('checked', false);
+        }
+        
+        var ids = getDataListCheckedIds(list);
+        // if no row found
+        if(ids.length) {
+            action_button.css('display', 'inline-block');
+        } else {
             action_button.hide();
+            item.prop('checked', false);
         }
     });
     
