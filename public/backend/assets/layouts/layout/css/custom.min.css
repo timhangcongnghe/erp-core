@@ -12,3 +12,6 @@
 .center {
 	text-align: center;
 }
+.page-header.navbar .hor-menu .navbar-nav.home-back>li>a>i {
+	color: #fff !important;
+}

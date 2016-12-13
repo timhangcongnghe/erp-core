@@ -1,5 +1,10 @@
-<div class="form-group dataselect">
-    <label class="control-label"><%= options[:label] if options[:label].present? %></label>
+<div class="form-group dataselect <%= "has-error" if options[:errors].present? %>"">
+    <label>
+        <%= options[:label] if options[:label].present? %>
+        <% if options[:required] == true %>
+            <span class="required" aria-required="true"> * </span>
+        <% end %>
+    </label>
     <input
         type="hidden"
         name="<%= options[:name] if options[:name].present? %>"
@@ -61,12 +66,15 @@
             
             <% if options[:create].present? %>
                 <li class="create-new">
-                    <a href="#create"><i class="fa fa-plus"></i> Create "<span class="text-bold dataselect-new-name"></span>"</a>
+                    <a href="#create"><i class="fa fa-plus"></i> <%= t(:create) %> "<span class="text-bold dataselect-new-name"></span>"</a>
                 </li>
                 <li class="create-edit">
-                    <a href="#create"><i class="fa fa-plus"></i> Create and Edit</a>
+                    <a href="#create"><i class="fa fa-plus"></i> <%= t(:create_edit) %></a>
                 </li>
             <% end %>
         </ul>
     </div>
+    <% if options[:errors].present? %>
+        <span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span>
+    <% end %>
 </div>
