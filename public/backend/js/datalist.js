@@ -277,10 +277,22 @@ function datalistFilterAll() {
     });
 }
 
+// Update datalist sort layout
+function updateDatalistSortLayout(list) {
+    var sort_by = list.attr('sort-by');
+    var sort_direction = list.attr('sort-direction');
+    var th = list.find('th.sortable[sort-by="' + sort_by + '"]');
+    
+    th.addClass('current');
+    th.attr('sort-direction', sort_direction);
+}
+
 // Filter a datalist
 function datalistFilter(list, page) {
     var url = list.attr('data-url');
     var id = list.attr('data-id');
+    var sort_by = list.attr('sort-by');
+    var sort_direction = list.attr('sort-direction');
     
     // check page
     if(typeof(page) == 'undefined') {
@@ -320,10 +332,15 @@ function datalistFilter(list, page) {
             'filters': filters,
             'columns': columns,
             'keywords': keywords[id],
-            'page': page
+            'page': page,
+            'sort_by': sort_by,
+            'sort_direction': sort_direction
         },
     }).done(function( html ) {
         list.find(".datalist-container" ).html( html );
+        
+        // update list sort layout
+        updateDatalistSortLayout(list);
     });
 }
 
@@ -443,5 +460,31 @@ $(document).ready(function() {
         e.preventDefault();
         
         listActionProccess($(this));
+    });
+    
+    // Sort head click event
+    $(document).on('click', '.datalist th.sortable', function() {
+        var list = $(this).parents('.datalist');
+        var is_current = $(this).hasClass('current');
+        var sort_direction = $(this).attr('sort-direction');
+        
+        if(typeof(sort_direction) === 'undefined' || sort_direction.trim() === '') {
+            sort_direction = 'asc';
+        }
+        
+        if(is_current) {
+            if (sort_direction == 'asc') {
+                sort_direction = 'desc';
+            } else {
+                sort_direction = 'asc';
+            }
+            list.attr('sort-direction', sort_direction);
+            $(this).attr('sort-direction', sort_direction);
+        } else {
+            list.attr('sort-by', $(this).attr('sort-by'));
+            list.attr('sort-direction', sort_direction);
+        }
+        
+        datalistFilter(list);
     });
 });

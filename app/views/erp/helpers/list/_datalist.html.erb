@@ -2,6 +2,8 @@
 <div class="portlet light datalist"
     data-url='<%= options[:url] %>'
     data-id='<%= Digest::SHA1.hexdigest([Time.now, rand].join) %>'
+    sort-by='<%= options[:sort][:sort_by] %>'
+    sort-direction='<%= options[:sort][:sort_direction] %>'
 >
     <div class="portlet-title">
         <div class="caption font-green-haze">

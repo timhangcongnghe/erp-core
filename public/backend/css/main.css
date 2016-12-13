@@ -244,3 +244,20 @@ div.alert.custom-box-shadow {
     border-width: 0 0 2px 0;
     transform: none; 
 }
+th.sortable {
+    cursor: pointer;
+}
+th.sortable:hover {
+    background: #eee;
+}
+.sortable.current:after {
+    content: "\f0d8";
+    font: normal normal normal 14px/1 FontAwesome;
+    float: right;
+    padding-right: 10px;
+    display: inline-block;
+    margin-left: -10px;
+}
+.sortable[sort-direction=desc]:after {
+    content: "\f0d7";
+}
