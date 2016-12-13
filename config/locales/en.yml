@@ -15,3 +15,30 @@ en:
     img_select: "Select"
     img_update: "Update"
     img_remove: "Remove"
+    submit: Submit
+    cancel: Cancel
+    
+    create: Create user
+    edit: Edit
+    delete: Delete
+    delete_confirm: Are you sure?
+    
+    user: User
+    users: Users
+    name: Name
+    email: Email
+    status: Status
+    active: active
+    inactive: inactive
+    creator: Creator
+    created_at: Created At
+    actions: Actions
+    password: Password
+    password_confirm: Password confirm
+    timezone: Time zone
+    
+    enter_user_name: Enter user name...
+    enter_user_email: Enter email address (required)
+    enter_password: Enter password (required)
+    enter_password_confirm: Enter password confirm (required)
+    choose_timezone: Choose time zone...
