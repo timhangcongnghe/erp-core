@@ -26,6 +26,28 @@
                 <li class="heading" data-erp-hook='sidebar-menu'>
                     <h3 class="uppercase">Main Menu</h3>
                 </li>
+                <li class="nav-item <%= "active open" if ["erp/backend/users"].include?(params[:controller]) %>">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-user"></i>
+                        <span class="title"><%= t('core.user') %></span>
+                        <% if ["erp/backend/users"].include?(params[:controller]) %>
+                            <span class="selected"></span>
+                            <span class="arrow open"></span>
+                        <% else %>
+                            <span class="arrow"></span>
+                        <% end %>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item <%= "active open" if ["erp/backend/users"].include?(params[:controller]) %>">
+                            <a href="<%= erp.backend_users_path %>" class="nav-link ">
+                                <span class="title"><%= t('core.users') %></span>
+                                <% if ["erp/backend/contacts"].include?(params[:controller]) %>
+                                <span class="selected"></span>
+                                <% end %>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
             <!-- END RESPONSIVE MENU FOR HORIZONTAL & SIDEBAR MENU -->
         </div>
