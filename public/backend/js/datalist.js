@@ -59,13 +59,22 @@ function checkDatalistCheckAllState(list) {
     var check_all_box = list.find('.datalist-checkbox-all');
     var ids = getDataListCheckedIds(list);
     var action_button = list.find('.datalist-list-action');
+    var row_count = list.find("td input[name='ids[]']").length;
     
+    // check length
     if(ids.length) {
         check_all_box.prop('checked', true);
         action_button.css('display', 'inline-block');
     } else {
         check_all_box.prop('checked', false);
         action_button.hide();
+    }
+    
+    // half check class
+    if(ids.length < row_count) {
+        check_all_box.parent().find('span').addClass('check-half');
+    } else {
+        check_all_box.parent().find('span').removeClass('check-half');
     }
 }
 
@@ -416,14 +425,7 @@ $(document).ready(function() {
             list.find('.datalist-row-checkbox').prop('checked', false);
         }
         
-        var ids = getDataListCheckedIds(list);
-        // if no row found
-        if(ids.length) {
-            action_button.css('display', 'inline-block');
-        } else {
-            action_button.hide();
-            item.prop('checked', false);
-        }
+        checkDatalistCheckAllState(list);
     });
     
     // Check row checkbox

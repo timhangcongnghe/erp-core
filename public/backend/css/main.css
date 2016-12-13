@@ -235,3 +235,12 @@ div.alert.custom-box-shadow {
     padding-left: 2px;
     padding-right: 0;
 }
+.mt-checkbox>span.check-half:after {
+    left: 3px;
+    top: -1px;
+    width: 10px;
+    height: 10px;
+    border: solid #888;
+    border-width: 0 0 2px 0;
+    transform: none; 
+}
