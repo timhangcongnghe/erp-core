@@ -8,7 +8,13 @@ Erp::Core::Engine.routes.draw do
 			get '/' => 'dashboard#index'
 			resources :users do
 				collection do
+					post 'list'
 					get 'dataselect'
+					delete 'delete_all'
+					put 'activate'
+					put 'deactivate'
+					put 'activate_all'
+					put 'deactivate_all'
 				end
 			end
 		end
