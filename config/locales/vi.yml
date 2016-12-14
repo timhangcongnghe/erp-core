@@ -4,6 +4,7 @@ vi:
   home: "Trang chủ"
   dashboard: "Bảng điều khiển"
   core:
+    dashboard: "Dashboard"
     or: "hoặc"
     search: "Tìm theo"
     for: "cho"
