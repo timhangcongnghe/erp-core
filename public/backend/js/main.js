@@ -258,4 +258,39 @@ $(document).ready(function() {
     
     // Grap link with data-method attribute
     initHiddabbleControls();
+    
+    // auto crop image input helper
+    $('.fileinput-preview').bind("DOMSubtreeModified",function(){
+        if(!$(this).find('span').length) {
+            $(this).find('img').wrap('<span></span>');
+            
+            // get real size of image
+            var imgs = $(this).find('img');
+            var img = $(this).find('img')[0]; // Get my img elem
+            var pic_real_width, pic_real_height;
+            var span = $(this).find('span');
+            $("<img/>") // Make in memory copy of image to avoid css issues
+                .attr("src", $(img).attr("src"))
+                .load(function() {
+                    pic_real_width = this.width;   // Note: $(this).width() will not
+                    pic_real_height = this.height; // work for in memory images.
+                    
+                    // 
+                    var box_width = span.width();
+                    var box_height = span.height();
+                    
+                    if(box_width/box_height > pic_real_width/pic_real_height) {
+                        imgs.css('width', box_width);
+                        
+                        var m_top = -((pic_real_height*(box_width/pic_real_width)) - box_height)/2;
+                        imgs.css('margin-top', m_top);
+                    } else {
+                        imgs.css('height', box_height);
+                        
+                        var m_left = -((pic_real_width*(box_height/pic_real_height)) - box_width)/2;
+                        imgs.css('margin-left', m_left);
+                    }
+                });
+        }
+    });
 });

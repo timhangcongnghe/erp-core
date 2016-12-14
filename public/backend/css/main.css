@@ -147,9 +147,6 @@ div.btn-control-file {
     /*margin-top: -45px;*/
     text-align: center; 
 }
-.fileinput-preview.thumbnail > img {
-    height: 100%;
-}
 .btn-no-color {
     color: #fff;
     border: solid 1px #999;
@@ -260,4 +257,15 @@ th.sortable:hover {
 }
 .sortable[sort-direction=desc]:after {
     content: "\f0d7";
+}
+.fileinput-preview span {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+.fileinput-preview.thumbnail > img {
+    max-height: none;
+    max-width: none;
 }

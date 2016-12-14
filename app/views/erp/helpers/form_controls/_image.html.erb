@@ -6,7 +6,7 @@
         <div class="fileinput-new thumbnail" style="width: 160px; height: 160px;">
             <img src="<%= options[:img_src].present? ? options[:img_src] : url_for("/backend/img/placeholder.jpg") %>" alt="" />
         </div>
-        <div class="fileinput-preview fileinput-exists thumbnail" style="width: 160px; height: 160px;"> </div>
+        <div class="fileinput-preview fileinput-exists thumbnail" style="width: 160px; height: 160px;"></div>
         <div class="btn-control-file">
             <span class="btn btn-xs grey-cascade btn-outline btn-file">
                 <span class="fileinput-new"> <i class="icon-link"></i> <%= t('core.img_select') %> </span>
