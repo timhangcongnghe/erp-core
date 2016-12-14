@@ -17,12 +17,10 @@ vi:
     img_remove: "Xóa"
     submit: Lưu
     cancel: Hủy
-    
     create: Tạo tài khoản
     edit: Cập nhật
     delete: Xóa
     delete_confirm: Bạn chắc chắn muốn xóa?
-  
     user: Tài khoản
     users: Người dùng
     name: Tên người dùng
@@ -36,10 +34,10 @@ vi:
     password: Mật khẩu
     password_confirm: Xác nhận mật khẩu
     timezone: Múi giờ
-    
     enter_user_name: Nhập tên tài khoản người dùng...
     enter_user_email: Nhập địa chỉ email (bắt buộc)
     enter_password: Nhập mã bảo vệ (bắt buộc)
     enter_password_confirm: Nhập lại mã bảo vệ (bắt buộc) 
     choose_timezone: Lựa chọn múi giờ phù hợp với khu vực người dùng...
-    
+    create: "Thêm mới"
+    create_as: "Thêm mới"
