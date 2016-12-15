@@ -49,12 +49,13 @@ function submitDataselectModalForm(form) {
     var method = form.attr('method');
     var url = form.attr('action');
     var modal = $('#dataselect-modal-' + dataselect.attr('rel'));
+    var selector = form.parents('.modal').attr('selector');
     
     modal.find('.modal-body').html('<div class="text-center"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
     
     // form data
     var form_data = form.serializeArray();
-    form_data.push({name: 'format', value: 'json'});
+    // form_data.push({name: 'format', value: 'json'});
     
     $.ajax({
         type: method,
@@ -63,7 +64,7 @@ function submitDataselectModalForm(form) {
         success: function(data)
         {
             // get data
-            container = $('<div>').html(data).find(control.attr('container-selector'));
+            container = $('<div>').html(data).find(selector);
             if (container.length) {
                 modal.find('.modal-body').html(container[0].outerHTML);
             } else {
@@ -122,7 +123,7 @@ function showModalForm(dataselect, with_keyword, is_edit) {
     
     // create new modal if not exist
     var modal_uid = "dataselect-modal-" + uid;
-    var html = '<div id="'+modal_uid+'" dataselect="'+uid+'" class="modal dataselect-modal fade" tabindex="-1">' +
+    var html = '<div selector="' + container + '" id="'+modal_uid+'" dataselect="'+uid+'" class="modal dataselect-modal fade" tabindex="-1">' +
         '<div class="modal-dialog modal-' + modal_size + '">' +
             '<div class="modal-content">' +
                 '<div class="modal-header">' +
