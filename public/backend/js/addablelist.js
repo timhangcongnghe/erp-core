@@ -45,10 +45,10 @@ function submitAddablelistModalForm(form) {
                 jsForAjaxContent(container);
                 
                 modal.modal('hide');                
-                scrollToElement(addablelist, 140);
-                
-                jsForAjaxContent(modal);
+                scrollToElement(addablelist, 140);                
             }
+            
+            jsForAjaxContent(modal);
         }
     });
 }
