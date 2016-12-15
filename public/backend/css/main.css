@@ -258,7 +258,9 @@ th.sortable:hover {
 .sortable[sort-direction=desc]:after {
     content: "\f0d7";
 }
-.fileinput-preview span {
+span.tag-border-radius {
+    border-radius: 10px !important;
+}.fileinput-preview span {
     display: inline-block;
     width: 100%;
     height: 100%;
