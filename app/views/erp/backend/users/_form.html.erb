@@ -5,7 +5,9 @@
                 name: 'user[name]',
                 value: user.name,                   
                 label: t('core.name'),
-                placeholder: t('core.enter_user_name')
+                placeholder: t('core.enter_user_name'),
+                required: true,
+                errors: user.errors.full_messages_for(:name)
             }) %>
             <%= erp_form_control("email", {
                 name: 'user[email]',
