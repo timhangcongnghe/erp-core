@@ -27,7 +27,7 @@ module Erp
       # POST /users
       def create
         @user = User.new(user_params)
-        # @user.user = current_user
+        @user.creator = current_user
   
         if @user.save
           if params.to_unsafe_hash['format'] == 'json'
