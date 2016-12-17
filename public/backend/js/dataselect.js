@@ -1,3 +1,22 @@
+function initParentControls() {
+    // find all cond item
+    $('[parent-control]').each(function() {
+        box = $(this).parents('form');
+        
+        var class_name = $(this).attr('parent-control');
+        var parent_control = box.find(class_name);
+        
+        parent_control.on("change", function() {
+            value = $(this).val();
+            box.find('[parent-control="' + class_name + '"]').each(function() {                
+                var dataselect = $(this).parents('.dataselect');
+                clearDataselectControlText(dataselect);
+                clearDataselectValue(dataselect);
+            });
+        });
+    });
+}
+
 function clearDataselectControlText(dataselect) {
     var control = dataselect.find('.dataselect-control');    
     
@@ -11,6 +30,7 @@ function clearDataselectValue(dataselect) {
     
     if(!is_multiple) {
         value_control.val('');
+        value_control.trigger('change');
     }
 }
 
@@ -193,6 +213,7 @@ function updateDataselectMultipleValues(dataselect) {
     var value_control = dataselect.find('.dataselect-value');
     
     value_control.val('');
+    value_control.trigger('change');
 }
 
 // Get current value
@@ -254,6 +275,7 @@ function updateDataselectSingleValue(dataselect, text, value) {
     
     control.val(text);
     value_control.val(value);
+    value_control.trigger('change');
 }
 
 // update dataselect value
@@ -299,24 +321,40 @@ function toggleDataselectCreateNewLine(dataselect) {
 }
 
 // update dataselect data list
-function updateDataselectData(dataselect) {
+function updateDataselectData(dataselect, ignore_keyword) {
     var databox = dataselect.find('.dataselect-data');
     var control = dataselect.find('.dataselect-control');
     var url = control.attr('data-url');
     var keyword = control.val();
     var dataselect_hook = databox.find('.dataselect-hook');
+    var parent_control = control.attr('parent-control');
+    var parent_id = control.attr('parent-id');
     
     var current_value = getDataselectCurrentValue(dataselect);
+    
+    // check parent control
+    if(typeof(ignore_keyword) !== 'undefined' && ignore_keyword) {
+        keyword = '';
+    }
+    
+    // Int form data
+    var form_data = {
+        'keyword': keyword,
+        'current_value': current_value
+    };
+    
+    // check parent control
+    if(typeof(parent_control) !== 'undefined' && parent_control !== '' && typeof(parent_id) !== 'undefined' && parent_id !== '') {
+        form_data.parent_value = $(parent_control).val();
+        form_data.parent_id = parent_id;
+    }
     
     if(CURRENT_DATASELECT_XHR && CURRENT_DATASELECT_XHR.readyState != 4){
 		CURRENT_DATASELECT_XHR.abort();
 	}
     CURRENT_DATASELECT_XHR = $.ajax({
         url: url,
-        data: {
-            'keyword': keyword,
-            'current_value': current_value
-        }
+        data: form_data
     }).done(function( options ) {
         // remove old data
         databox.find('.dataselect-item, .dataselect-empty').remove();
@@ -361,15 +399,24 @@ var CURRENT_DATASELECT;
 var CURRENT_DATASELECT_XHR;
 $(document).ready(function() {
     // Datalist search input
-    $(document).on('keyup focus', '.dataselect .dataselect-control', function() {
+    $(document).on('keyup', '.dataselect .dataselect-control', function() {
         var dataselect = $(this).parents('.dataselect');
         toggleDataselectData(dataselect);
+        updateDataselectData(dataselect);
+    });
+    
+    // Datalist search input
+    $(document).on('focus', '.dataselect .dataselect-control', function() {
+        var dataselect = $(this).parents('.dataselect');
+        toggleDataselectData(dataselect);
+        updateDataselectData(dataselect, true);
     });
     
     // Update dataselect data
-    $(document).on('keyup click', '.dataselect .dataselect-control', function() {
+    $(document).on('click', '.dataselect .dataselect-control', function() {
         var dataselect = $(this).parents('.dataselect');
-        updateDataselectData(dataselect);
+        toggleDataselectData(dataselect);
+        updateDataselectData(dataselect, true);
     });
     
     // Select dataselect item
@@ -433,4 +480,5 @@ $(document).ready(function() {
     });
     
     // for related dataselect
+    initParentControls();
 });

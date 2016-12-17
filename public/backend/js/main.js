@@ -51,43 +51,6 @@ function initHiddabbleControls() {
             control.trigger('change');
         }
     });
-
-    
-    ////
-    //items.forEach(function(item) {
-    //    if($(item).hasClass('icheck')) {
-    //        value = $(item + ':checked').val();
-    //        $('[data-cond-item="' + item + '"]').each(function() {
-    //            if($(this).attr('data-cond-value') !== value) {
-    //                $(this).hide();
-    //            } else {
-    //                $(this).show();
-    //            }
-    //        });
-    //        $(document).on("ifChecked", item, function() {
-    //            value = $(this).val();
-    //            $('[data-cond-item="' + item + '"]').each(function() {
-    //                if($(this).attr('data-cond-value') !== value) {
-    //                    $(this).hide();
-    //                } else {
-    //                    $(this).show();
-    //                }
-    //            });
-    //        });            
-    //    } else {
-    //        $(document).on("change", item, function() {
-    //            value = $(this).val();
-    //            $('[data-cond-item="' + item + '"]').each(function() {
-    //                if($(this).attr('data-cond-value') !== value) {
-    //                    $(this).hide();
-    //                } else {
-    //                    $(this).show();
-    //                }
-    //            });
-    //        });
-    //        $(item).trigger('change');
-    //    }        
-    //});
 }
 
 function jsForAjaxContent(container) {
@@ -121,6 +84,9 @@ function jsForAjaxContent(container) {
   
   // hiddable field control
   initHiddabbleControls();
+  
+  // for related dataselect
+  initParentControls();
 }
 
 //scroll to jquery element

@@ -47,6 +47,11 @@
                     edit-title='<%= options[:edit][:title] if options[:edit][:title].present? %>'
                     edit-container-selector='<%= options[:edit][:container_selector] if options[:edit][:container_selector].present? %>'
                 <% end %>
+                
+                <% if options[:parent_control].present? %>
+                    parent-control='<%= options[:parent_control] if options[:parent_control].present? %>'
+                    parent-id='<%= options[:parent_id] if options[:parent_id].present? %>'
+                <% end %>
             <% end %>
             
             <% if options[:multiple] == true %>
