@@ -30,7 +30,19 @@
                         <ul>
                             <% options[:keywords].each do |keyword| %>
                                 <li>
-                                    <a href="javascript:;"><%= t('core.search') %> <span class="bold"><%= keyword[:text] %></span> <%= t('core.for') %> <span class="keyword bold" text="<%= keyword[:text] %>" name="<%= keyword[:name] %>"></span></a>
+                                    <a href="javascript:;" class="keyword-line <%= "has-keyword-select" if keyword[:data_url].present? %>">
+                                        <%= raw t('core.search_keyword_for', name: keyword[:text], keyword: keyword[:name]) %>
+                                    </a>
+                                    
+                                    <% if keyword[:select].present? %>
+                                        <i class="keyword-select-pointer"></i>
+                                        <ul class="keyword-select"
+                                            data-url="<%= keyword[:select][:data_url] %>"
+                                            name="<%= keyword[:select][:name] %>"
+                                        >
+                                            
+                                        </ul>
+                                    <% end %>
                                 </li>
                             <% end %>
                         </ul>

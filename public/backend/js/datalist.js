@@ -1,3 +1,35 @@
+function loadKeywordSelectList(container) {
+    var list = container.parents('.datalist');
+    var url = container.attr('data-url');    
+    var keyword = list.find(".datalist-search-input").val();
+    var name = container.attr('name');    
+    
+    container.html('');
+    
+    $.ajax({
+        url: url,
+        data: {
+            keyword: keyword
+        }
+    }).done(function( result ) {
+        // check if entry exist keyword groups
+        result.forEach(function(entry) {
+            var html = '<li><a href="javascript:;" class="keyword-select-item" name="' + name + '" value="' + entry.value + '">' +
+                entry.text +
+                '</a></li>';
+            container.append(html);
+        });
+        
+        // empty
+        if(!result.length) {
+            var html = '<li><a href="javascript:;">' +
+                LANG_NO_RECORD_FOUND +
+                '</a></li>';
+            container.append(html);
+        }
+    });
+}
+
 // datalist link proccess
 function listActionProccess(link) {
     var method = link.attr('data-method');
@@ -213,6 +245,11 @@ function addItemToListSearch(list, ors, label) {
     ors.forEach(function(entry) {
         texts.push(entry.text);
         ids.push(entry.id);
+        
+        // overide label
+        if(entry.label) {
+            label = entry.label;
+        }
     });
     
     html = '<div class="btn-group btn-group-solid list-search-item" data-ids="' + ids.join(',') + '">' +
@@ -306,7 +343,7 @@ function datalistFilter(list, page) {
     list.find('.list-search-items').html('');
     
     // Filters
-    var filters = getValuesFromCheckableList(list.find('.datalist-filters li'));
+    var filters = getValuesFromCheckableList(list.find('.datalist-filters li'));    
     addItemsToListSearch(list, filters, '<i class="fa fa-filter"></i>');
     
     // Columns
@@ -319,6 +356,14 @@ function datalistFilter(list, page) {
     keywords[id].forEach(function(entry) {
         addItemToListSearch(list, entry, entry[0].label);
     });
+    
+    // Selects
+    if(typeof(selects[id]) == 'undefined') {
+        selects[id] = [];
+    }
+    //selects[id].forEach(function(entry) {
+    //    addItemToListSearch(list, entry, entry[0].label);
+    //});
     
     // ajax update custom sort
 	if(datalists[id] && datalists[id].readyState != 4){
@@ -346,6 +391,7 @@ function datalistFilter(list, page) {
 
 var datalists = {};
 var keywords = {};
+var selects = {};
 // Main js execute when loaded page
 $(document).ready(function() {
     // Filter all datalists in first load
@@ -395,9 +441,20 @@ $(document).ready(function() {
     });
     
     // Datalist search input
-    $(document).on("keyup focus", ".datalist-search-input", function(e) {
+    $(document).on("focus", ".datalist-search-input", function() {
         var list = $(this).parents('.datalist');
         toggleDatalistSearchHelper(list);
+    });
+    
+    // Datalist search input
+    $(document).on("keyup", ".datalist-search-input", function(e) {
+        var list = $(this).parents('.datalist');
+        toggleDatalistSearchHelper(list);        
+        
+        // show keyword-select if exits
+        list.find('.keyword-select').each(function () {
+            loadKeywordSelectList($(this));
+        });
         
         var code = e.which;
         if(code==13) e.preventDefault();
@@ -405,10 +462,11 @@ $(document).ready(function() {
             // add keyword to list
             addToKeywords(list);
         }
+        
     });
     
     // Datalist search helper click
-    $(document).on("click", ".datalist-search-helper ul li a", function() {
+    $(document).on("click", ".datalist-search-helper ul li a.keyword-line", function() {
         var list = $(this).parents('.datalist');
         var keyword = $(this).find(".keyword");
         
@@ -455,11 +513,21 @@ $(document).ready(function() {
     // List action
     // Datalist action link with message return
     $(document).on('click', '.datalist-list-action ul li a', function(e) {
-        e.stopImmediatePropagation();
-        e.stopPropagation();
         e.preventDefault();
         
         listActionProccess($(this));
+    });
+    
+    // Datalist action link with message return
+    $(document).on('click', '.datalist-search-helper ul li .keyword-select-pointer', function() {
+        var select = $(this).parents('li').find('ul');
+        select.toggle();
+        
+        if(select.is(':visible')) {
+            $(this).addClass('open');
+        } else {
+            $(this).removeClass('open');
+        }
     });
     
     // Sort head click event

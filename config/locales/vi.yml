@@ -6,6 +6,7 @@ vi:
   core:
     dashboard: "Dashboard"
     or: "hoặc"
+    search_keyword_for: Tìm theo <span class="bold">%{name}</span> với từ khóa <span class="keyword bold" text="%{name}" name="%{keyword}"></span>
     search: "Tìm theo"
     for: "cho"
     columns: "Ẩn/Hiện cột"
