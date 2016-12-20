@@ -1,0 +1,14 @@
+<% if !flash.empty? %>
+    <% classes = {"success" => "success", "alert" => "warning", "notice" => "success", "warning" => "warning", "error" => "error"} %>
+    <% flash.each do |key, value| %>
+        <script>
+            $(document).ready(function() {
+                toastr.options = {
+                    positionClass : "toast-top-right"
+                };
+                
+                toastr['<%= classes[key] %>']('<%= value %>');
+            });
+        </script>
+    <% end %>
+<% end %>

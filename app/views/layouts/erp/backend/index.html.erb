@@ -44,6 +44,8 @@ Website: http://globalnaturesoft.com/
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/clockface/css/clockface.css" %>
+        
+        <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-toastr/toastr.min.css" %>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
         <%= stylesheet_link_tag "/backend/assets/global/css/components.min.css" %>
@@ -130,6 +132,10 @@ Website: http://globalnaturesoft.com/
         <!-- END JAVASCRIPT INCLUDES -->
         
         <!-- stackable -->
+        
+        <!-- BEGIN toastr flash messages -->
+            <%= render 'layouts/erp/backend/flash_messages' %>
+        <!-- END toastr flash messages -->
         
     </body>
 

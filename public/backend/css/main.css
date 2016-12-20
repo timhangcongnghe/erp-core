@@ -271,3 +271,6 @@ span.tag-border-radius {
     max-height: none;
     max-width: none;
 }
+.toast-top-right {
+    top: 60px;
+}
