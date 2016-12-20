@@ -89,7 +89,9 @@ function showAddablelistModal(addablelist, url, title, selector) {
         $('body').append(html);
         
         modal = $('#' + modal_uid);
-    }    
+    } else {
+        modal.attr('data-selector', selector);
+    }
     
     // show modal
     modal.addClass('in');
