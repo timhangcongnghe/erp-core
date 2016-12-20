@@ -11,10 +11,11 @@ Array.prototype.contains = function(obj) {
 function initHiddabbleControls() {
     // find all cond item
     $('[data-cond-item]').each(function() {
-        box = $(this).parents('form');
+        var box = $(this).parents('form');
         
         var class_name = $(this).attr('data-cond-item');
         var control = box.find(class_name);
+        alert(control.length);
         
         if(control.hasClass('icheck')) {
             control.on("ifChecked", function() {
