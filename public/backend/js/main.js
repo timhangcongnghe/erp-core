@@ -15,29 +15,32 @@ function initHiddabbleControls() {
         
         var class_name = $(this).attr('data-cond-item');
         var control = box.find(class_name);
-        alert(control.length);
         
         if(control.hasClass('icheck')) {
-            control.on("ifChecked", function() {
-                value = $(this).val();
-                box.find('[data-cond-item="' + class_name + '"]').each(function() {
-                    if(!$(this).attr('data-cond-value').split(',').contains(value)) {
-                        $(this).hide();
-                    } else {
-                        $(this).show();
-                    }
+            control.each(function() {
+                var control_item = $(this);
+                control_item.on("ifChecked", function() {
+                    value = $(this).val();
+                    box.find('[data-cond-item="' + class_name + '"]').each(function() {
+                        if(!$(this).attr('data-cond-value').split(',').contains(value)) {
+                            $(this).hide();
+                        } else {
+                            $(this).show();
+                        }
+                    });
                 });
+                if(control_item.is(':checked')) {
+                    value = control_item.val();
+                    box.find('[data-cond-item="' + class_name + '"]').each(function() {                    
+                        if(!$(this).attr('data-cond-value').split(',').contains(value)) {
+                            $(this).hide();
+                        } else {
+                            $(this).show();
+                        }
+                    });
+                }
             });
-            if(control.is(':checked')) {
-                value = control.val();
-                box.find('[data-cond-item="' + class_name + '"]').each(function() {                    
-                    if(!$(this).attr('data-cond-value').split(',').contains(value)) {
-                        $(this).hide();
-                    } else {
-                        $(this).show();
-                    }
-                });
-            }
+                
         } else {            
             control.on("change", function() {
                 value = $(this).val();
