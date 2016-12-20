@@ -143,20 +143,26 @@ function showModalForm(dataselect, with_keyword, is_edit) {
     
     // create new modal if not exist
     var modal_uid = "dataselect-modal-" + uid;
-    var html = '<div selector="' + container + '" id="'+modal_uid+'" dataselect="'+uid+'" class="modal dataselect-modal fade" tabindex="-1">' +
-        '<div class="modal-dialog modal-' + modal_size + '">' +
-            '<div class="modal-content">' +
-                '<div class="modal-header">' +
-                    '<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>' +
-                    '<h4 class="modal-title">' + title + '</h4>' +
-                '</div>' +
-                '<div class="modal-body">' +
+    var modal = $('#' + modal_uid);
+    if(!modal.length) {
+        var html = '<div selector="' + container + '" id="'+modal_uid+'" dataselect="'+uid+'" class="modal dataselect-modal fade" tabindex="-1">' +
+            '<div class="modal-dialog modal-' + modal_size + '">' +
+                '<div class="modal-content">' +
+                    '<div class="modal-header">' +
+                        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>' +
+                        '<h4 class="modal-title">' + title + '</h4>' +
+                    '</div>' +
+                    '<div class="modal-body">' +
+                    '</div>' +
                 '</div>' +
             '</div>' +
-        '</div>' +
-    '</div>';
-    $('body').append(html);
-    var modal = $('#' + modal_uid);
+        '</div>';
+        $('body').append(html);
+        modal = $('#' + modal_uid);
+    } else {
+        modal.attr('selector', container);
+    }
+    
     
     // show modal
     modal.addClass('in');
