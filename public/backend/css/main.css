@@ -271,7 +271,9 @@ span.tag-border-radius {
 .toast-top-right {
     top: 60px;
 }
-.datalist-search-helper ul li {
+.tabbable-custom {
+    overflow: inherit;
+}.datalist-search-helper ul li {
     position: relative;
     border-bottom: solid 1px #ddd;
 }
