@@ -1,3 +1,64 @@
+// Remove from selects
+function removeFromSelects(list, id) {
+    var new_selects = [];
+    var listid = list.attr('data-id');
+    
+    // check if entry exist keyword groups
+    selects[listid].forEach(function(entry) {
+        var exist = false;
+        
+        // check if entry exist keyword group entries
+        entry.forEach(function(entry2) {            
+            if(entry2.id == id) {
+                exist = true;
+            }
+        });
+        
+        if(!exist) {
+            new_selects.push(entry);
+        }
+    });
+    selects[listid] = new_selects;
+}
+
+// Add chose search entry to selects
+function addToSelects(list, item) {
+    var id = list.attr('data-id');
+    
+    // get item values
+    var name = item.attr("name");
+    var text = item.html();
+    var value = item.attr('value');
+    var label = item.parents('li').find('.keyword').attr('text');
+    
+    var new_item = {id: guid(), name: name, text: text, value: value, label: label};
+    
+    // Check if exists
+    var exist = false;
+    selects[id].forEach(function(entry, index, arrays) {
+        entry.forEach(function(entry2) {
+            if(entry2.name == new_item.name) {
+                exist = true;
+                arrays[index] = [new_item];
+            }
+        });
+    });
+    
+    // add to keywords
+    if(!exist) {
+        selects[id].push([new_item]);
+    }
+    
+    console.log(selects[id]);
+    
+    datalistFilter(list);
+    
+    // clear current input
+    list.find(".datalist-search-input").val("");
+    list.find(".datalist-search-helper").hide();
+}
+
+// load keyword select list
 function loadKeywordSelectList(container) {
     var list = container.parents('.datalist');
     var url = container.attr('data-url');    
@@ -110,7 +171,7 @@ function checkDatalistCheckAllState(list) {
     }
 }
 
-// Add to keywords
+// Remove from keywords
 function removeFromKeywords(list, id) {
     var new_keywords = [];
     var listid = list.attr('data-id');
@@ -143,6 +204,9 @@ function removeDatalistSearchItem(list, id) {
     } else {
         // if it is keyword
         removeFromKeywords(list, id);
+        
+        // if it is selected item
+        removeFromSelects(list, id);
     }
 }
 
@@ -361,9 +425,10 @@ function datalistFilter(list, page) {
     if(typeof(selects[id]) == 'undefined') {
         selects[id] = [];
     }
-    //selects[id].forEach(function(entry) {
-    //    addItemToListSearch(list, entry, entry[0].label);
-    //});
+    selects[id].forEach(function(entry) {
+        addItemToListSearch(list, entry, entry[0].label);
+    });
+    filters = filters.concat(selects[id]);
     
     // ajax update custom sort
 	if(datalists[id] && datalists[id].readyState != 4){
@@ -554,5 +619,13 @@ $(document).ready(function() {
         }
         
         datalistFilter(list);
+    });
+    
+    // Datalist search entry select
+    $(document).on("click", ".datalist-search-helper ul li a.keyword-select-item", function() {
+        var list = $(this).parents('.datalist');
+        var item = $(this);
+        
+        addToSelects(list, item);
     });
 });
