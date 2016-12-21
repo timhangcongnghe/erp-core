@@ -47,10 +47,10 @@ module Erp
       
       if keyword.present?
         keyword = keyword.strip.downcase
-        query = query.where('LOWER(email) LIKE ?', "%#{keyword}%")
+        query = query.where('LOWER(name) LIKE ?', "%#{keyword}%")
       end
       
-      query = query.limit(8).map{|user| {value: user.id, text: user.email} }
+      query = query.limit(8).map{|user| {value: user.id, text: user.name} }
     end
     
     def activate
