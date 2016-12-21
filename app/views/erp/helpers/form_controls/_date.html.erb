@@ -5,9 +5,10 @@
             <span class="required" aria-required="true"> * </span>
         <% end %>
     </label>
-    <div class="input-group date date-picker" data-date="<%= Time.now.in_time_zone("Asia/Bangkok").strftime("%d-%m-%Y") %>" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
+    <div class="input-group date date-picker">
         <input type="text"
                name="<%= options[:name] if options[:name].present? %>"
+               value="<%= options[:value] if options[:value].present? %>"
                placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
                class="form-control">
         <span class="input-group-btn">

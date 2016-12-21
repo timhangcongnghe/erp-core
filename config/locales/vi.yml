@@ -43,3 +43,16 @@ vi:
     choose_timezone: Lựa chọn múi giờ phù hợp với khu vực người dùng...
     create: "Thêm mới"
     create_as: "Thêm mới"
+  will_paginate:
+    page_entries_info:
+      single_page:
+        zero:  "Dữ liệu trống."
+        one:   "Hiện có 1 dữ liệu."
+        other: "Hiển thị toàn bộ %{count} dữ liệu."
+      single_page_html:
+        zero:  "Dữ liệu trống."
+        one:   "Hiện có 1 dữ liệu."
+        other: "Hiển thị toàn bộ %{count} dữ liệu."
+
+      multi_page: "Hiển thị từ %{from} - %{to} / %{count}"
+      multi_page_html: "Hiển thị từ %{from} - %{to} / %{count}."
