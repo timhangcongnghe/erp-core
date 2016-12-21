@@ -105,7 +105,7 @@ function listActionProccess(link) {
     
     if(!ids.length) {
         swal({
-            title: 'Please select at least 1 row in the list',
+            title: LANG_PLEASE_SELECT_AT_LEAST_ONE_ROW,
             text: '',
             type: 'error',
             allowOutsideClick: true,
@@ -451,6 +451,9 @@ function datalistFilter(list, page) {
         
         // update list sort layout
         updateDatalistSortLayout(list);
+        
+        // hide actions button
+        checkDatalistCheckAllState(list);
     });
 }
 
