@@ -58,39 +58,92 @@ function initHiddabbleControls() {
 }
 
 function jsForAjaxContent(container) {
-  // date picker
-  container.find('.date-picker').each(function() {
-    $(this).datepicker({
-        rtl: App.isRTL(),
-        orientation: "left",
-        autoclose: true
+    // date picker
+    container.find('.date-picker').each(function() {
+      $(this).datepicker({
+          rtl: App.isRTL(),
+          orientation: "left",
+          autoclose: true
+      });
     });
-  });
+    
+    // icheck
+    container.find('.icheck').each(function() {
+      var checkboxClass = $(this).attr('data-checkbox') ? $(this).attr('data-checkbox') : 'icheckbox_minimal-grey';
+      var radioClass = $(this).attr('data-radio') ? $(this).attr('data-radio') : 'iradio_minimal-grey';
   
-  // icheck
-  container.find('.icheck').each(function() {
-    var checkboxClass = $(this).attr('data-checkbox') ? $(this).attr('data-checkbox') : 'icheckbox_minimal-grey';
-    var radioClass = $(this).attr('data-radio') ? $(this).attr('data-radio') : 'iradio_minimal-grey';
-
-    if (checkboxClass.indexOf('_line') > -1 || radioClass.indexOf('_line') > -1) {
-        $(this).iCheck({
-            checkboxClass: checkboxClass,
-            radioClass: radioClass,
-            insert: '<div class="icheck_line-icon"></div>' + $(this).attr("data-label")
-        });
-    } else {
-        $(this).iCheck({
-            checkboxClass: checkboxClass,
-            radioClass: radioClass
-        });
-    }
-  });
-  
-  // hiddable field control
-  initHiddabbleControls();
-  
-  // for related dataselect
-  initParentControls();
+      if (checkboxClass.indexOf('_line') > -1 || radioClass.indexOf('_line') > -1) {
+          $(this).iCheck({
+              checkboxClass: checkboxClass,
+              radioClass: radioClass,
+              insert: '<div class="icheck_line-icon"></div>' + $(this).attr("data-label")
+          });
+      } else {
+          $(this).iCheck({
+              checkboxClass: checkboxClass,
+              radioClass: radioClass
+          });
+      }
+    });
+    
+    // hiddable field control
+    initHiddabbleControls();
+    
+    // for related dataselect
+    initParentControls();
+    
+    // auto crop image input helper
+    container.find('.fileinput-preview').bind("DOMSubtreeModified",function(){
+        if(!$(this).find('span').length) {
+            $(this).find('img').wrap('<span></span>');
+            
+            // get real size of image
+            var imgs = $(this).find('img');
+            var img = $(this).find('img')[0]; // Get my img elem
+            var pic_real_width, pic_real_height;
+            var span = $(this).find('span');
+            $("<img/>") // Make in memory copy of image to avoid css issues
+                .attr("src", $(img).attr("src"))
+                .load(function() {
+                    pic_real_width = this.width;   // Note: $(this).width() will not
+                    pic_real_height = this.height; // work for in memory images.
+                    
+                    // 
+                    var box_width = span.width();
+                    var box_height = span.height();
+                    
+                    if(box_width/box_height > pic_real_width/pic_real_height) {
+                        imgs.css('width', box_width);
+                        
+                        var m_top = -((pic_real_height*(box_width/pic_real_width)) - box_height)/2;
+                        imgs.css('margin-top', m_top);
+                    } else {
+                        imgs.css('height', box_height);
+                        
+                        var m_left = -((pic_real_width*(box_height/pic_real_height)) - box_width)/2;
+                        imgs.css('margin-left', m_left);
+                    }
+                });
+        }
+    });
+    
+    // hightlight tab if has error form
+    container.find('.form-group.has-error').each(function() {
+        var tab = $(this).parents('.tab-pane');
+        var tab_id = tab.attr('id');
+        
+        $('[href="#' + tab_id + '"], [data-target="#' + tab_id + '"]').addClass('has_error');
+    });
+    
+    // input number helper
+    container.find('.numberic').each(function() {
+        var min = $(this).attr("min");
+        var max = $(this).attr("max");
+        var digit = $(this).attr("digit");
+        var type = $(this).attr("number-type");
+        
+        $(this).inputmask(type, {min:parseFloat(min), max: parseFloat(max), digits: parseFloat(digit), groupSeparator: ","});
+    });
 }
 
 //scroll to jquery element
@@ -227,48 +280,7 @@ $(document).ready(function() {
     });
     
     // Grap link with data-method attribute
-    initHiddabbleControls();
+    jsForAjaxContent($('body'));
     
-    // auto crop image input helper
-    $('.fileinput-preview').bind("DOMSubtreeModified",function(){
-        if(!$(this).find('span').length) {
-            $(this).find('img').wrap('<span></span>');
-            
-            // get real size of image
-            var imgs = $(this).find('img');
-            var img = $(this).find('img')[0]; // Get my img elem
-            var pic_real_width, pic_real_height;
-            var span = $(this).find('span');
-            $("<img/>") // Make in memory copy of image to avoid css issues
-                .attr("src", $(img).attr("src"))
-                .load(function() {
-                    pic_real_width = this.width;   // Note: $(this).width() will not
-                    pic_real_height = this.height; // work for in memory images.
-                    
-                    // 
-                    var box_width = span.width();
-                    var box_height = span.height();
-                    
-                    if(box_width/box_height > pic_real_width/pic_real_height) {
-                        imgs.css('width', box_width);
-                        
-                        var m_top = -((pic_real_height*(box_width/pic_real_width)) - box_height)/2;
-                        imgs.css('margin-top', m_top);
-                    } else {
-                        imgs.css('height', box_height);
-                        
-                        var m_left = -((pic_real_width*(box_height/pic_real_height)) - box_width)/2;
-                        imgs.css('margin-left', m_left);
-                    }
-                });
-        }
-    });
     
-    // hightlight tab if has error form
-    $('.form-group.has-error').each(function() {
-        var tab = $(this).parents('.tab-pane');
-        var tab_id = tab.attr('id');
-        
-        $('[href="#' + tab_id + '"], [data-target="#' + tab_id + '"]').addClass('has_error');
-    });
 });
