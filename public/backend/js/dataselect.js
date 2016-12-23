@@ -173,6 +173,10 @@ function showModalForm(dataselect, with_keyword, is_edit) {
         url: url,
     }).done(function( data ) {
         // get form
+        if(typeof(container) === 'undefined' || container.trim() === '') {
+            container = 'form';
+        }
+        
         html = $('<div>').html(data).find(container)[0].outerHTML;
         modal.find('.modal-body').html(html);
         

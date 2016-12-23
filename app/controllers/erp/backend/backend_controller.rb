@@ -14,7 +14,11 @@ module Erp::Backend
 		
 		private
 			def set_layout
-			  "erp/backend/index"
+				if request.xhr?
+					nil
+				else
+					"erp/backend/index"
+				end			  
 			end
 	end
 end
