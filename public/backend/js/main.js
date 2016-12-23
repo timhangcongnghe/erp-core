@@ -144,6 +144,11 @@ function jsForAjaxContent(container) {
         
         $(this).inputmask(type, {min:parseFloat(min), max: parseFloat(max), digits: parseFloat(digit), groupSeparator: ","});
     });
+    
+    // select helper
+    container.find('.select2').each(function() {
+        $(this).select2();
+    });
 }
 
 //scroll to jquery element

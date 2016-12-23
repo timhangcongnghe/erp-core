@@ -5,7 +5,7 @@
             <span class="required" aria-required="true"> * </span>
         <% end %>
     </label>
-    <select class="bs-select form-control" data-live-search="true" data-size="8"
+    <select class="bs-select form-control select2" data-live-search="true" data-size="8"
         name="<%= options[:name] if options[:name].present? %>"
         id="<%= options[:id] if options[:id].present? %>">
         <% if options[:options].present? %>
