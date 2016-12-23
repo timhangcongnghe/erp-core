@@ -13,7 +13,7 @@
                 <% if !act[:hide].present? %>
                     <li>
                         <a
-                            href="<%= act[:href] if act[:href].present? %>"
+                            href="<%= act[:url] if act[:url].present? %><%= act[:href] if act[:href].present? %>"
                             <%= ('data-method="' + act[:data_method] + '"').html_safe if act[:data_method].present? %>
                             <%= ('data-confirm="' + act[:data_confirm] + '"').html_safe if act[:data_confirm].present? %>
                             class="<%= act[:class] if act[:class].present? %>"
