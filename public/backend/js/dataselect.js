@@ -74,13 +74,14 @@ function submitDataselectModalForm(form) {
     modal.find('.modal-body').html('<div class="text-center"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
     
     // form data
-    var form_data = form.serializeArray();
-    // form_data.push({name: 'format', value: 'json'});
+    var form_data = new FormData(form[0]);
     
     $.ajax({
         type: method,
         url: url,
         data: form_data, // serializes the form's elements.
+        processData: false,
+        contentType:false,
         success: function(data)
         {
             // get data

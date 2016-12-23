@@ -18,13 +18,14 @@ function submitAddablelistModalForm(form) {
     modal.find('.modal-body').html('<div class="text-center"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
     
     // form data
-    var form_data = form.serializeArray();
-    form_data.push({name: 'format', value: 'partial'});
-    form_data.push({name: 'partial', value: list_partial});
+    var form_data = new FormData(form[0]);
+    form_data.append('partial', list_partial);
     
     $.ajax({
         type: method,
         url: url,
+        processData: false,
+        contentType:false,
         data: form_data, // serializes the form's elements.
         success: function(data)
         {
