@@ -309,3 +309,7 @@ span.tag-border-radius {
 .datalist-search-helper ul li ul li a {
     padding-left: 40px;
 }
+.nav-tabs li a.has_error {
+    color: #e73d4a;
+    font-weight: 600;
+}

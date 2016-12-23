@@ -264,5 +264,11 @@ $(document).ready(function() {
         }
     });
     
-    
+    // hightlight tab if has error form
+    $('.form-group.has-error').each(function() {
+        var tab = $(this).parents('.tab-pane');
+        var tab_id = tab.attr('id');
+        
+        $('[href="#' + tab_id + '"], [data-target="#' + tab_id + '"]').addClass('has_error');
+    });
 });
