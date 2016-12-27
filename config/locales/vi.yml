@@ -43,6 +43,7 @@ vi:
     choose_timezone: Lựa chọn múi giờ phù hợp với khu vực người dùng...
     create: "Thêm mới"
     create_as: "Thêm mới"
+    no_record_found: "Không tìm thấy kết quả"
   will_paginate:
     page_entries_info:
       single_page:
