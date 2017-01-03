@@ -70,5 +70,10 @@ module Erp
       conds
     end
     
+    
+    # Get custom uniquess id
+    def unique_id
+      return Digest::SHA1.hexdigest([Time.now, rand].join)
+    end
   end
 end

@@ -1,0 +1,13 @@
+<div class="addableform"
+     partial="<%= options[:partial] if options[:partial].present? %>"
+     partial-url="<%= options[:partial_url] if options[:partial_url].present? %>"
+>
+    <div class="addableform-container">
+        <% options[:items].each do |item| %>
+            <%= render options[:partial], options[:item] => item, uid: unique_id() %>
+        <% end %>
+    </div>
+    <a class="btn btn-primary add-button">
+        <i class="fa fa-plus"></i> <%= options[:add_button].present? ? options[:add_button] : t('.add')  %>
+    </a>
+</div>

@@ -1,10 +1,12 @@
 <div class="form-group dataselect <%= "has-error" if options[:errors].present? %>"">
-    <label>
-        <%= options[:label] if options[:label].present? %>
-        <% if options[:required] == true %>
-            <span class="required" aria-required="true"> * </span>
-        <% end %>
-    </label>
+    <% if options[:label].present? %>
+        <label>
+            <%= options[:label] if options[:label].present? %>
+            <% if options[:required] == true %>
+                <span class="required" aria-required="true"> * </span>
+            <% end %>
+        </label>
+    <% end %>
     <input
         type="hidden"
         name="<%= options[:name] if options[:name].present? %>"
