@@ -126,6 +126,7 @@ function jsForAjaxContent(container) {
                 });
         }
     });
+    container.find('.fileinput-preview').trigger("DOMSubtreeModified");
     
     // hightlight tab if has error form
     container.find('.form-group.has-error').each(function() {
@@ -287,5 +288,14 @@ $(document).ready(function() {
     // Grap link with data-method attribute
     jsForAjaxContent($('body'));
     
+    
+    // images uploader event
+    $(document).on('mouseup', '.images-upload .image-box .thumbnail', function() {
+        $(this).parents('.image-box').find('input[type=file]').trigger('click');
+    });
+    
+    $(document).on('click', '.images-upload .image-box .remove-image', function() {
+        $(this).parents('.image-box').find('.destroy_input').val('1');
+    });
     
 });

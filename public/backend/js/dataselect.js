@@ -1,3 +1,31 @@
+function clearDataselectTags(dataselect) {
+    dataselect.find('.dataselect-value-box').remove();
+}
+
+function insertTagNameToDataSelect(dataselect) {
+    var control = dataselect.find('.dataselect-control');
+    var text = control.val().trim();
+    
+    if(text != '') {
+        var group = dataselect.find('.multiselect-values-container');
+
+        if(!dataselect.find('.dataselect-name-box input[value="' + text + '"]').length) {
+            // insert html item
+            var html = '<div class="btn-group btn-group-solid dataselect-name-box">' +
+                '<input type="hidden" name="' + control.attr('insert-name') + '" value="' + text + '">' +
+                '<button type="button" class="btn btn-sm blue dataselect-value-item">' + text + '</button>' +
+                '<button type="button" class="btn btn-sm blue remove-button"><i class="fa fa-close"></i></button></div> ';
+            group.append(html);
+        }
+        
+        // wait for other action
+        clearDataselectControlText(dataselect);
+        clearDataselectValue(dataselect);
+        control.focus();
+        updateDataselectData(dataselect);
+    }
+}
+
 function initParentControls() {
     // find all cond item
     $('[parent-control]').each(function() {
@@ -12,6 +40,7 @@ function initParentControls() {
                 var dataselect = $(this).parents('.dataselect');
                 clearDataselectControlText(dataselect);
                 clearDataselectValue(dataselect);
+                clearDataselectTags(dataselect);
             });
         });
     });
@@ -29,8 +58,10 @@ function clearDataselectValue(dataselect) {
     var is_multiple = control.attr('multiple');
     
     if(!is_multiple) {
-        value_control.val('');
-        value_control.trigger('change');
+        if(value_control.val() !== '') {
+            value_control.val('');
+            value_control.trigger('change');
+        }
     }
 }
 
@@ -41,10 +72,15 @@ function afterFinishDataselect(dataselect) {
     var selected_item = findDataselectControlTextMatched(dataselect);
 
     if(!selected_item) {
+        // check if has create modal
         if(control.attr('create-url')) {
             if(!modal.hasClass('in')) {
                 showModalForm(dataselect, true);
             }
+        
+        // check if has inline insert name
+        } else if(control.attr('insert-name')) {
+            insertTagNameToDataSelect(dataselect);
         } else {
             clearDataselectControlText(dataselect);
         }
@@ -223,8 +259,10 @@ function findDataselectControlTextMatched(dataselect) {
 function updateDataselectMultipleValues(dataselect) {
     var value_control = dataselect.find('.dataselect-value');
     
-    value_control.val('');
-    value_control.trigger('change');
+    if(value_control.val() !== '') {
+        value_control.val('');
+        value_control.trigger('change');
+    }
 }
 
 // Get current value
@@ -247,6 +285,17 @@ function getDataselectCurrentValue(dataselect) {
 
 // remove item from dataselect
 function removeDataselectValueItem(item) {
+    var dataselect = item.parents('.dataselect');
+    var control = dataselect.find('.dataselect-control');
+    
+    item.remove();
+    
+    control.focus();
+    updateDataselectData(dataselect);
+}
+
+// remove name item from dataselect
+function removeDataselectNameItem(item) {
     var dataselect = item.parents('.dataselect');
     var control = dataselect.find('.dataselect-control');
     
@@ -285,8 +334,10 @@ function updateDataselectSingleValue(dataselect, text, value) {
     var value_control = dataselect.find('.dataselect-value');
     
     control.val(text);
-    value_control.val(value);
-    value_control.trigger('change');
+    if(value_control.val() !== value) {
+        value_control.val(value);
+        value_control.trigger('change');
+    }
 }
 
 // update dataselect value
@@ -448,6 +499,19 @@ $(document).ready(function() {
         }, 200);        
     });
     
+    $(document).on("keypress",".dataselect .dataselect-control", function(e) {
+        var dataselect = $(this).parents('.dataselect');
+        var control = dataselect.find('.dataselect-control');
+        
+        if(control.attr('insert-name')) {
+            if(e.which === 44 || e.which === 59 || e.which === 13) {
+                e.preventDefault();
+                
+                insertTagNameToDataSelect(dataselect);
+            }
+        }
+   });
+    
     // Show creat new modal
     $(document).on('click', '.dataselect .create-edit a', function() {
         var dataselect = $(this).parents('.dataselect');
@@ -488,6 +552,12 @@ $(document).ready(function() {
     $(document).on('click', '.dataselect-value-box .remove-button', function() {
         var item = $(this).parents('.dataselect-value-box');
         removeDataselectValueItem(item);
+    });
+    
+    // remove dataselect name item
+    $(document).on('click', '.dataselect-name-box .remove-button', function() {
+        var item = $(this).parents('.dataselect-name-box');
+        removeDataselectNameItem(item);
     });
     
     // for related dataselect

@@ -9,7 +9,10 @@ function addableformAddLine(addableform) {
             partial: partial
         }
     }).done(function( result ) {
-        container.append(result);
+        container.append('<span class="addableform-line">' + result + '</span>');
+        
+        // js for new content
+        jsForAjaxContent(container.find('.addableform-line').last());
     });
 }
 

@@ -12,17 +12,29 @@
         name="<%= options[:name] if options[:name].present? %>"
         value="<%= options[:value] if options[:value].present? %>"
         class="dataselect-value"
+        id="<%= options[:id] if options[:id].present? %>"
     />
     <div class="dataselect-input-group <%= 'multiple' if options[:multiple] == true %>">
         <% if options[:multiple] == true %>
             <div class="multiselect-values-container">
-                <% if !options[:values].empty? %>
+                <% if options[:values].present? and !options[:values].empty? %>
                     <% options[:values].each do |value| %>
                         <% if value[:value].present? %>
                             <div class="btn-group btn-group-solid dataselect-value-box">
                                 <input type="hidden" name="<%= options[:name] if options[:name].present? %>" value="<%= value[:value] %>">
                                 <button type="button" class="btn btn-sm green-meadow dataselect-value-item"><%= value[:text] %></button>
                                 <button type="button" class="btn btn-sm green-meadow remove-button"><i class="fa fa-close"></i></button>
+                            </div>
+                        <% end %>
+                    <% end %>
+                <% end %>
+                <% if options[:tags].present? and !options[:tags].empty? %>
+                    <% options[:tags].each do |tag| %>
+                        <% if tag.present? %>
+                            <div class="btn-group btn-group-solid dataselect-name-box">
+                                <input type="hidden" name="<%= options[:name] if options[:name].present? %>" value="<%= tag %>">
+                                <button type="button" class="btn btn-sm blue dataselect-value-item"><%= tag %></button>
+                                <button type="button" class="btn btn-sm blue remove-button"><i class="fa fa-close"></i></button>
                             </div>
                         <% end %>
                     <% end %>
@@ -34,6 +46,9 @@
             data-url="<%= options[:url] if options[:url].present? %>"
             placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
             value='<%= options[:text] if options[:text].present? %>'
+            <% if options[:inline_insert].present? %>
+                insert-name='<%= options[:inline_insert][:name] if options[:inline_insert][:name].present? %>'
+            <% end %>
             <% if options[:create] %>
                 <% if options[:create].present? %>
                     create-url='<%= options[:create][:url] if options[:create][:url].present? %>'
@@ -49,11 +64,11 @@
                     edit-title='<%= options[:edit][:title] if options[:edit][:title].present? %>'
                     edit-container-selector='<%= options[:edit][:container_selector] if options[:edit][:container_selector].present? %>'
                 <% end %>
-                
-                <% if options[:parent_control].present? %>
-                    parent-control='<%= options[:parent_control] if options[:parent_control].present? %>'
-                    parent-id='<%= options[:parent_id] if options[:parent_id].present? %>'
-                <% end %>
+            <% end %>
+            
+            <% if options[:parent_control].present? %>
+                parent-control='<%= options[:parent_control] if options[:parent_control].present? %>'
+                parent-id='<%= options[:parent_id] if options[:parent_id].present? %>'
             <% end %>
             
             <% if options[:multiple] == true %>

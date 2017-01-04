@@ -211,13 +211,13 @@ div.alert.custom-box-shadow {
     border: solid 1px #c2cad8;
     padding-right: 25px;
 }
-.multiselect-values-container {
+.multiselect-values-container, .multiselect-names-container {
     display: inline-block;
     line-height: 0px;
     vertical-align: top;
     padding: 2px 2px 0;
 }
-.dataselect-value-box {
+.dataselect-value-box, .dataselect-name-box {
     vertical-align: top;
     margin-bottom: 4px;
 }
@@ -315,3 +315,19 @@ span.tag-border-radius {
 }
 .mt-25 {
     margin-top: 25px;
+}
+.images-upload .image-box {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    cursor: pointer;
+}
+.images-upload .image-box .remove-image {
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0.7;
+}
+.images-upload .image-box .remove-image:hover {
+    opacity: 1;
+}
