@@ -3,6 +3,22 @@
 vi:
   home: "Trang chủ"
   dashboard: "Bảng điều khiển"
+  
+  #vietnamese translate global locales
+  edit: "Cập nhật"
+  status: "Trạng thái"
+  creator: "Người tạo"
+  created_at: "Ngày tạo"
+  updated_at: "Ngày cập nhật"
+  actions: "Thao tác"
+  archived: "Đã bị ẩn"
+  active: "Đang hiển thị"
+  archive: "Ẩn khỏi danh sách"
+  unarchive: "Hiện ra danh sách"
+  delete_confirm: "Bạn có chắc muốn xóa?"
+  submit: "Lưu"
+  cancel: "Hủy"
+  
   core:
     dashboard: "Dashboard"
     or: "hoặc"
