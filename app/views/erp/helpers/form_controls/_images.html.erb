@@ -24,6 +24,10 @@
                 <% if options[:id_name].present? %>
                     <input class="name_input" type="hidden" name="<%= options[:id_name].gsub('__index__', index.to_s) %>" value="<%= image.id %>" />
                 <% end %>
+                
+                <% if options[:name_cache].present? %>
+                    <input class="name_input" type="hidden" name="<%= options[:name_cache].gsub('__index__', index.to_s) %>" value="<%= image.instance_eval(options[:origin_attribute] + "_cache") %>" />
+                <% end %>
             
                 <div class="fileinput-new thumbnail"
                     style="width: <%= options[:width].present? ? options[:width] : '100' %>px; height: <%= options[:height].present? ? options[:height] : '100' %>px;">
