@@ -22,4 +22,16 @@ $(document).ready(function() {
         
         addableformAddLine(addableform);
     });
+    
+    $(document).on("click", ".addableform .add-button", function() {
+        var addableform = $(this).parents('.addableform');
+        
+        addableformAddLine(addableform);
+    });
+    
+    $(document).on("click", ".addableform .remove-button", function() {
+        var addableformline = $(this).parents('.addableform-line');
+        
+        addableformline.remove();
+    });
 });

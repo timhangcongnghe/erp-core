@@ -73,7 +73,7 @@ module Erp
     
     # Get custom uniquess id
     def unique_id
-      return Digest::SHA1.hexdigest([Time.now, rand].join)
+      return [*5..30000].sample.to_s
     end
   end
 end

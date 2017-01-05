@@ -4,7 +4,9 @@
 >
     <div class="addableform-container">
         <% options[:items].each do |item| %>
-            <%= render options[:partial], options[:item] => item, uid: unique_id() %>
+            <span class="addableform-line">
+                <%= render options[:partial], options[:item] => item, uid: unique_id() %>
+            </span>
         <% end %>
     </div>
     <a class="btn btn-primary add-button">
