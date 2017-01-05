@@ -30,7 +30,7 @@ module Erp
         @user.creator = current_user
   
         if @user.save
-          if params.to_unsafe_hash['format'] == 'json'
+          if request.xhr?
             render json: {
               status: 'success',
               text: @user.name,
@@ -46,9 +46,8 @@ module Erp
 
       # PATCH/PUT /users/1
       def update
-        # @user.user = current_user
         if @user.update(user_params)
-          if params.to_unsafe_hash['format'] == 'json'
+          if request.xhr?
             render json: {
               status: 'success',
               text: @user.name,
