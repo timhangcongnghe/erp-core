@@ -290,12 +290,16 @@ $(document).ready(function() {
     
     
     // images uploader event
-    $(document).on('mouseup', '.images-upload .image-box .thumbnail', function() {
+    $(document).on('click', '.images-upload .image-box .thumbnail', function() {
         $(this).parents('.image-box').find('input[type=file]').trigger('click');
-    });
-    
+    });    
     $(document).on('click', '.images-upload .image-box .remove-image', function() {
         $(this).parents('.image-box').find('.destroy_input').val('1');
     });
-    
+    // remove destroy if has new image
+    setInterval(function() {
+        $('.images-upload .image-box.fileinput-exists').each(function() {
+            $(this).find('.destroy_input').val('');
+        });
+    }, 1000);    
 });
