@@ -19,8 +19,7 @@
             <div class="multiselect-values-container">
                 <% if options[:values].present? and !options[:values].empty? %>
                     <% options[:values].each do |value| %>
-                        <% if value[:value].present? %>
-                            
+                        <% if value[:value].present? %>                            
                             <div class="btn-group btn-group-solid dataselect-value-box">
                                 <input type="hidden" name="<%= options[:name] if options[:name].present? %>" value="<%= value[:value] %>">
                                 <button type="button" class="btn btn-sm green-meadow dataselect-value-item"><%= value[:text] %></button>
@@ -33,7 +32,7 @@
                     <% options[:tags].each do |tag| %>
                         <% if tag.present? %>
                             <div class="btn-group btn-group-solid dataselect-name-box">
-                                <input type="hidden" name="<%= options[:name] if options[:name].present? %>" value="<%= tag %>">
+                                <input type="hidden" name="<%= options[:inline_insert][:name] if options[:inline_insert].present? %>" value="<%= tag %>">
                                 <button type="button" class="btn btn-sm blue dataselect-value-item"><%= tag %></button>
                                 <button type="button" class="btn btn-sm blue remove-button"><i class="fa fa-close"></i></button>
                             </div>
