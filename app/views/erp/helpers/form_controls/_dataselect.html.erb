@@ -20,6 +20,7 @@
                 <% if options[:values].present? and !options[:values].empty? %>
                     <% options[:values].each do |value| %>
                         <% if value[:value].present? %>
+                            
                             <div class="btn-group btn-group-solid dataselect-value-box">
                                 <input type="hidden" name="<%= options[:name] if options[:name].present? %>" value="<%= value[:value] %>">
                                 <button type="button" class="btn btn-sm green-meadow dataselect-value-item"><%= value[:text] %></button>
