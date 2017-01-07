@@ -331,3 +331,11 @@ span.tag-border-radius {
 .images-upload .image-box .remove-image:hover {
     opacity: 1;
 }
+i.right {
+    float: right;
+    color: #ccc;
+    cursor: pointer;
+}
+i.right:hover {
+    color: #333;
+}
