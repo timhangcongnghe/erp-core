@@ -1,5 +1,5 @@
 <a href="#remove"
-    class="btn btn-danger remove-button <%= options[:class].to_s if options[:class].present? %>"
+    class="btn btn-danger <%= "nested-" if options[:is_nested_form].present? and options[:is_nested_form] == true %>remove-button <%= options[:class].to_s if options[:class].present? %>"
 >
     <%= options[:label].present? ? options[:label] : '<i class="fa fa-close"></i>'.html_safe %>
 </a>

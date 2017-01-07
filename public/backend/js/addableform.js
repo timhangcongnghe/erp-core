@@ -28,4 +28,17 @@ $(document).ready(function() {
         
         addableformline.remove();
     });
+    
+    $(document).on("click", ".addableform .nested-remove-button", function() {
+        var addableformline = $(this).parents('.addableform-line');
+        
+        addableformline.find('input').each(function() {
+            var name = $(this).attr('name');
+            if(typeof(name) != 'undefined' && name.indexOf('_destroy') >= 0) {
+                $(this).val('1');                
+            }
+        });
+        
+        addableformline.hide();
+    });
 });
