@@ -5,6 +5,11 @@
             <span class="required" aria-required="true"> * </span>
         <% end %>
     </label>
+    <% if options[:help].present? %>
+        <i class="fa fa-info-circle right tooltips icon-default-color"
+            data-original-title="<%= options[:help] %>"
+            data-container="body"></i>
+    <% end %>
     <div class="input-group date form_datetime" data-date="<%= Time.now.in_time_zone("Asia/Bangkok").strftime("%d %m %Y - %H:%M") %>">
         <input type="text" name="<%= options[:name] if options[:name].present? %>" id="" size="16" readonly class="form-control">
         <span class="input-group-btn">

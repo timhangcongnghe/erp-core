@@ -4,21 +4,21 @@
         <% if options[:required] == true %>
             <span class="required" aria-required="true"> * </span>
         <% end %>
-    <% end %>
-    <div class="input-icon right">
         <% if options[:help].present? %>
-        <i class="fa fa-info-circle tooltips icon-default-color"
-           data-original-title="<%= options[:help] %>"
-           data-container="body"></i>
+            <i class="fa fa-info-circle right tooltips icon-default-color"
+            data-original-title="<%= options[:help] %>"
+            data-container="body"></i>
         <% end %>
-        <input class="form-control spinner <%= options[:class] if options[:class].present? %>"
-            type="text"
-            name="<%= options[:name] if options[:name].present? %>"
-            id="<%= options[:id] if options[:id].present? %>"
-            value="<%= options[:value] if options[:value].present? %>"
-            placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
-        />        
-    </div>
+    <% end %>
+        
+    <input class="form-control spinner <%= options[:class] if options[:class].present? %>"
+        type="text"
+        name="<%= options[:name] if options[:name].present? %>"
+        id="<%= options[:id] if options[:id].present? %>"
+        value="<%= options[:value] if options[:value].present? %>"
+        placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
+    />
+        
     <% if options[:errors].present? %>
         <span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span>
     <% end %>

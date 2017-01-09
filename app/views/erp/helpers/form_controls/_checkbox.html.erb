@@ -16,6 +16,11 @@
                         value="<%= option[:value] %>"> <%= option[:text] %>
                     <span></span>
                 </label>
+                <% if options[:help].present? %>
+                    <i class="fa fa-info-circle tooltips icon-default-color"
+                    data-original-title="<%= options[:help] %>"
+                    data-container="body"></i>
+                <% end %>
             <% end %>
         <% end %>
     </div>

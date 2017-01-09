@@ -5,16 +5,16 @@
             <span class="required" aria-required="true"> * </span>
         <% end %>
     </label>
+    <% if options[:help].present? %>
+        <i class="fa fa-info-circle right tooltips icon-default-color"
+            data-original-title="<%= options[:help] %>"
+            data-container="body"></i>
+    <% end %>
     <div class="input-group">
         <span class="input-group-addon">
             <i class="fa fa-envelope"></i>
         </span>
-        <div class="input-icon right">
-            <% if options[:help].present? %>
-            <i class="fa fa-info-circle tooltips icon-default-color"
-               data-original-title="<%= options[:help] %>"
-               data-container="body"></i>
-            <% end %>
+        <div class="">
             <input type="text" class="form-control"
                 name="<%= options[:name] if options[:name].present? %>"
                 value="<%= options[:value] if options[:value].present? %>"
