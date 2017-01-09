@@ -339,3 +339,10 @@ i.right {
 i.right:hover {
     color: #333;
 }
+i.default {
+    color: #ccc;
+    cursor: pointer;
+}
+i.default:hover {
+    color: #333;
+}
