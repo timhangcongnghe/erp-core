@@ -1,9 +1,15 @@
+body {
+    background-color: #2b3643;
+}
 body, h1, h2, h3, h4, h5, h6, .label, .table.table-light>thead>tr>th {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Roboto", "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .btn-group>.dropdown-menu.pull-left:before, .dropdown-toggle>.dropdown-menu.pull-left:before, .dropdown>.dropdown-menu.pull-left:before {
     right: auto;
     left: 9px;
+}
+.page-container-bg-solid .page-bar .page-toolbar .btn, .page-content-white .page-bar .page-toolbar .btn {
+    margin-top: 0;
 }
 .btn-group>.dropdown-menu.pull-left:after, .dropdown-toggle>.dropdown-menu.pull-left:after, .dropdown>.dropdown-menu.pull-left:after {
     right: auto;
@@ -11,6 +17,7 @@ body, h1, h2, h3, h4, h5, h6, .label, .table.table-light>thead>tr>th {
 }
 .portlet.light {
     padding: 20px;
+    border: solid 1px #ddd;
 }
 .portlet.datalist>.portlet-title>.caption {
     padding-top: 0;
@@ -18,6 +25,53 @@ body, h1, h2, h3, h4, h5, h6, .label, .table.table-light>thead>tr>th {
 .portlet.datalist>.portlet-title>.actions {
     padding: 0px 0 14px;
 }
-/*.form-group {
-    margin-bottom: 25px;
-}*/
+.page-sidebar .page-sidebar-menu>li.open>a, .page-sidebar .page-sidebar-menu>li:hover>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.open>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li:hover>a,
+.page-sidebar .page-sidebar-menu>li>a, .page-sidebar .page-sidebar-menu>li>span.title:hover, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a {
+    color: rgba(255,255,255,0.8);
+    border-top: none;
+    font-size: 15px;
+}
+.page-sidebar .page-sidebar-menu .sub-menu>li>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li>a {
+    color: rgba(255,255,255,0.8);
+}
+.page-sidebar .page-sidebar-menu>li>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a,
+.page-sidebar .page-sidebar-menu>li.active>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.active>a{
+    font-size: 15px;
+}
+.page-sidebar .page-sidebar-menu .sub-menu li>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li>a {
+    padding: 8px 15px 8px 43px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+}
+.page-sidebar .page-sidebar-menu .sub-menu {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.page-sidebar .page-sidebar-menu>li>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a {
+    padding: 12px 15px;
+}
+.page-sidebar .page-sidebar-menu>li>a>i, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a>i {
+    color: rgba(255,255,255,0.6);
+}
+.portlet.light.bordered {
+    border: 1px solid #ddd !important;
+}
+.page-sidebar .page-sidebar-menu>li.open>a>.arrow.open:before, .page-sidebar .page-sidebar-menu>li.open>a>.arrow:before, .page-sidebar .page-sidebar-menu>li.open>a>i, .page-sidebar .page-sidebar-menu>li:hover>a>.arrow.open:before, .page-sidebar .page-sidebar-menu>li:hover>a>.arrow:before, .page-sidebar .page-sidebar-menu>li:hover>a>i, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.open>a>.arrow.open:before, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.open>a>.arrow:before, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.open>a>i, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li:hover>a>.arrow.open:before, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li:hover>a>.arrow:before, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li:hover>a>i,
+.page-sidebar .page-sidebar-menu>li>a>i[class*=icon-], .page-sidebar .page-sidebar-menu>li>a>i[class^=icon-], .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a>i[class*=icon-], .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a>i[class^=icon-] {
+    color: rgba(255,255,255,0.6);
+    font-size: 15px;
+}
+.page-bar .page-title {
+    margin: 9px 0;
+    font-size: 19px;
+    font-weight: 400;
+}
+.page-sidebar, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover {
+    background-color: #2b3643;
+}
+.page-sidebar .page-sidebar-menu .sub-menu, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu {
+    background: #212b37;
+}
+.page-sidebar .page-sidebar-menu>li.active.open>a, .page-sidebar .page-sidebar-menu>li.active>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.active.open>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.active>a {
+    background: #294567;
+}

@@ -34,7 +34,7 @@ a:hover {
     font-style: italic;
 }
 .table-checkable.table-advance thead tr th {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 90%;
 }
 .list-search-items .btn-group {
@@ -42,12 +42,9 @@ a:hover {
 }
 .page-bar .page-title {
     display: inline-block;
-    font-size: 18px;
-    margin: 8px 0;
 }
 .page-bar .page-title a {
     font-weight: 400;
-    color: #217ebd;
 }
 @media (max-width: 767px) {
     .page-content-wrapper .page-content .page-bar .page-title {
@@ -345,4 +342,17 @@ i.default {
 }
 i.default:hover {
     color: #333;
+}
+.datalist>.portlet-title {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+.datalist .table>thead>tr>th {
+    border-bottom: none;
+}
+.form-control-mb-0 .form-group, .form-control-mb-0 .form-group label {
+    margin-bottom: 0 !important;
+}
+.tabbable-custom>.tab-content {
+    padding: 20px;
 }
