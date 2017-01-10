@@ -183,10 +183,10 @@ function showModalForm(dataselect, with_keyword, is_edit) {
     var modal = $('#' + modal_uid);
     if(!modal.length) {
         var html = '<div selector="' + container + '" id="'+modal_uid+'" dataselect="'+uid+'" class="modal dataselect-modal fade" tabindex="-1">' +
-            '<div class="modal-dialog modal-' + modal_size + '">' +
+            '<div class="modal-dialog modal-custom-blue modal-' + modal_size + '">' +
                 '<div class="modal-content">' +
                     '<div class="modal-header">' +
-                        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>' +
+                        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>' +
                         '<h4 class="modal-title">' + title + '</h4>' +
                     '</div>' +
                     '<div class="modal-body">' +

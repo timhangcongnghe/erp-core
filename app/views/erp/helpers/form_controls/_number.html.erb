@@ -1,14 +1,15 @@
 <div class="form-group <%= "has-error" if options[:errors].present? %>">
     <% if options[:label].present? %>
-        <label><%= options[:label] %></label>
-        <% if options[:required] == true %>
-            <span class="required" aria-required="true"> * </span>
-        <% end %>
-        <% if options[:help].present? %>
-            <i class="fa fa-info-circle right tooltips icon-default-color"
-                data-original-title="<%= options[:help] %>"
-                data-container="body"></i>
-        <% end %>
+        <label><%= options[:label] %>
+            <% if options[:required] == true %>
+                <span class="required" aria-required="true"> * </span>
+            <% end %>
+            <% if options[:help].present? %>
+                <i class="fa fa-commenting right tooltips icon-default-color"
+                    data-original-title="<%= options[:help] %>"
+                    data-container="body"></i>
+            <% end %>
+        </label>
     <% end %>
     
     <input class="form-control <%= options[:class] if options[:class].present? %> numberic"

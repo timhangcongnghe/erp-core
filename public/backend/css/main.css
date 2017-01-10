@@ -42,9 +42,8 @@ a:hover {
 }
 .page-bar .page-title {
     display: inline-block;
-}
-.page-bar .page-title a {
     font-weight: 400;
+    letter-spacing: -0.5px;
 }
 @media (max-width: 767px) {
     .page-content-wrapper .page-content .page-bar .page-title {
@@ -107,16 +106,17 @@ a:hover {
 .dataselect-data ul {
     background: #fff;
     padding: 0;
-    border: solid 1px #c2cad8;
+    border: solid 1px #50749f;
     margin: 0;
-    margin-top: -3px;
+    margin-top: -2px;
+    border-top-color: #ccc;
 }
 .dataselect-data ul li {
     list-style: none;
 }
 .dataselect-data ul li a {
     display: block;
-    padding: 5px 7px;
+    padding: 7px 10px;
     color: #333;
 }
 .dataselect-data ul li.create-new a, .dataselect-data ul li.create-edit a {
@@ -355,4 +355,14 @@ i.default:hover {
 }
 .tabbable-custom>.tab-content {
     padding: 20px;
+}
+.form-group i {
+    font-size: 16px;
+    margin-left: 5px;
+}
+.mt-checkbox-inline .mt-checkbox {
+    margin-right: 0;
+}
+.dataselect-data ul li.dataselect-empty a {
+    color: #555;
 }

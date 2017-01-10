@@ -5,12 +5,12 @@
             <% if options[:required] == true %>
                 <span class="required" aria-required="true"> * </span>
             <% end %>
+            <% if options[:help].present? %>
+                <i class="fa fa-commenting right tooltips icon-default-color"
+                    data-original-title="<%= options[:help] %>"
+                    data-container="body"></i>
+            <% end %>
         </label>
-        <% if options[:help].present? %>
-            <i class="fa fa-info-circle right tooltips icon-default-color"
-                data-original-title="<%= options[:help] %>"
-                data-container="body"></i>
-        <% end %>
     <% end %>
     <input
         type="hidden"
