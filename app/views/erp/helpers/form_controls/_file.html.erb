@@ -4,6 +4,11 @@
         <% if options[:required] == true %>
             <span class="required" aria-required="true"> * </span>
         <% end %>
+        <% if options[:help].present? %>
+            <i class="fa fa-commenting right tooltips icon-default-color"
+            data-original-title="<%= options[:help] %>"
+            data-container="body"></i>
+        <% end %>
     </label>
     <div class="input-group fileinput fileinput-new" data-provides="fileinput">
         <div class="input-group input-large">

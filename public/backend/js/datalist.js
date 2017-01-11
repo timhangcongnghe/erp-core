@@ -317,13 +317,13 @@ function addItemToListSearch(list, ors, label) {
     });
     
     html = '<div class="btn-group btn-group-solid list-search-item" data-ids="' + ids.join(',') + '">' +
-        '<button type="button" class="btn btn-sm green-meadow">' +
+        '<button type="button" class="btn green-meadow">' +
             label +
         '</button>' +
-        '<button type="button" class="btn btn-sm grey">' +
+        '<button type="button" class="btn grey">' +
             texts.join(' <span class="or-cond">' + LANG_OR +'</span> ') +
         '</button>' +
-        '<button type="button" class="btn btn-sm grey cancel-button"><i class="fa fa-close"></i></button>' +
+        '<button type="button" class="btn grey cancel-button"><i class="fa fa-close"></i></button>' +
     '</div>';
     
     box.append(html);

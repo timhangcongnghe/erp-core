@@ -230,7 +230,7 @@ div.alert.custom-box-shadow {
     top: -1px;
     width: 10px;
     height: 10px;
-    border: solid #888;
+    border: solid #fff;
     border-width: 0 0 2px 0;
     transform: none; 
 }
@@ -266,7 +266,8 @@ span.tag-border-radius {
     max-width: none;
 }
 .toast-top-right {
-    top: 60px;
+    bottom: 60px;
+    top: auto;
 }
 .tabbable-custom {
     overflow: inherit;
@@ -321,9 +322,13 @@ span.tag-border-radius {
 }
 .images-upload .image-box .remove-image {
     position: absolute;
-    right: 0;
-    top: 0;
-    opacity: 0.7;
+    right: -5px;
+    top: -5px;
+    border-radius: 20px !important;
+    height: 30px;
+    opacity: 01;
+    padding: 5px;
+    width: 30px;
 }
 .images-upload .image-box .remove-image:hover {
     opacity: 1;
@@ -347,22 +352,32 @@ i.default:hover {
     border-bottom: none;
     margin-bottom: 0;
 }
-.datalist .table>thead>tr>th {
-    border-bottom: none;
-}
 .form-control-mb-0 .form-group, .form-control-mb-0 .form-group label {
     margin-bottom: 0 !important;
+}
+.form-control-mb-10 .form-group {
+    margin-bottom: 10px !important;
 }
 .tabbable-custom>.tab-content {
     padding: 20px;
 }
 .form-group i {
     font-size: 16px;
-    margin-left: 5px;
 }
 .mt-checkbox-inline .mt-checkbox {
     margin-right: 0;
 }
 .dataselect-data ul li.dataselect-empty a {
     color: #555;
+}
+.datalist-empty-line {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #f8f8f8;
+    margin-top: -9px;
+}
+.table .title {
+    font-weight: 500;
 }
