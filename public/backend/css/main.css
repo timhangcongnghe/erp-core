@@ -265,7 +265,7 @@ span.tag-border-radius {
     max-width: none;
 }
 .toast-top-right {
-    bottom: 60px;
+    bottom: 20px;
     top: auto;
 }
 .tabbable-custom {
