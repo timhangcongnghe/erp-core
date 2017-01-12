@@ -65,6 +65,9 @@ a:hover {
 .btn {
     padding: 6px 15px;
 }
+.input-group-addon>i {
+    color: #999;
+}
 .form-group {
     margin-bottom: 25px;
 }
@@ -354,4 +357,7 @@ a:hover {
 }
 .form-control {
     height: 35px;
+}
+.table td {
+    font-size: 15px;
 }
