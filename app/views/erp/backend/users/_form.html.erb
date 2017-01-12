@@ -1,6 +1,12 @@
 <%= form_for([erp, :backend, user]) do |f| %>    
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
+            <%= erp_form_control('image', {
+                img_src: '',
+                name: 'user[avatar]',
+                width: 150,
+                height: 150
+            }) %>            
             <%= erp_form_control("text", {
                 name: 'user[name]',
                 value: user.name,                   
@@ -39,17 +45,6 @@
                 value: user.timezone,
                 options: Erp::User.get_list_timezone
             }) %>
-        </div>
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-8"></div>
-                <div class="col-md-4">
-                    <%= erp_form_control('image', {
-                        img_src: '',
-                        name: 'user[avatar]'
-                    }) %>
-                </div>
-            </div>
         </div>
     </div>
     <hr>

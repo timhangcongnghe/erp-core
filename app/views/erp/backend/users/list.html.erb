@@ -34,7 +34,7 @@
             </tr>
         </thead>
         <tbody>
-            <% if @users.each do |user| %>
+            <% @users.each do |user| %>
                 <tr class="odd gradeX">
                     <td>
                         <%= erp_datalist_check_row(id: user.id) %>
@@ -93,13 +93,12 @@
                         ) %>
                     </td>
                 </tr>
-            <% end.empty? %>
-                <tr>
-                    <td colspan="7"><%= t('contacts.titles.no_matching_records_found') %></td>
-                </tr>
             <% end %>
         </tbody>
     </table>
+    <% if @users.empty? %>
+        <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
+    <% end %>
 </div>
         
 <%= erp_datalist_pagination(@users) %>

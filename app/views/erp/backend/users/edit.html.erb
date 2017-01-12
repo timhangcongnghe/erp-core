@@ -11,11 +11,11 @@
 <% end %>
 
 <% content_for :page_title do %>    
-    <a href=""><i class="fa fa-bookmark-o"></i> <%= t('core.user') %></a> / <%= t('core.edit') %>: <%= @user.email %>
+    <a href=""><i class="fa fa-user"></i> <%= t('core.user') %></a> / <%= t('core.edit') %>: <%= @user.email %>
 <% end %>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <% if @user.errors.any? %>
             <%= erp_form_control("form_error_message") %>
         <% end %>

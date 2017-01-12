@@ -3,14 +3,14 @@
 <% end %>
 
 <% content_for :page_title do %>
-    <i class="fa fa-bookmark-o"></i> <%= t('core.user') %>
+    <i class="fa fa-user"></i> <%= t('core.user') %>
 <% end %>
 
 <% content_for :page_toolbar do %>
     <%= erp_component('button/create', {
         text: t('core.create'),
         href: erp.new_backend_user_path,
-        class: 'btn-sm'
+        class: 'btn-noborder'
     }) %>
 <% end %>
 
