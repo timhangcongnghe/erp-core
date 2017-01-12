@@ -150,6 +150,9 @@ function jsForAjaxContent(container) {
     container.find('.select2').each(function() {
         $(this).select2();
     });
+    
+    // For tooltip
+    container.find('.tooltips').tooltip();
 }
 
 //scroll to jquery element

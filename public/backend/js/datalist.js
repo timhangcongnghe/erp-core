@@ -454,6 +454,9 @@ function datalistFilter(list, page) {
         
         // hide actions button
         checkDatalistCheckAllState(list);
+        
+        // Tooltip
+        jsForAjaxContent(list);
     });
 }
 
