@@ -1,3 +1,5 @@
+require_dependency "erp/application_controller"
+
 module Erp::Backend
 	class BackendController < Erp::ApplicationController
 		before_action :authenticate_user!
