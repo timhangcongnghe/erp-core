@@ -200,7 +200,7 @@ function ajaxLinkRequest(link) {
             text: '',
             type: result.type,
             allowOutsideClick: true,
-            confirmButtonText: "OK"
+            confirmButtonText: LANG_OK
         });
         
         // find outer datalist if exists
@@ -228,10 +228,10 @@ $(document).ready(function() {
             message: message,
             buttons: {
                 'cancel': {
-                    label: 'Cancel',
+                    label: LANG_CANCEL,
                 },
                 'confirm': {
-                    label: 'OK',
+                    label: LANG_OK,
                 }
             },
             callback: function(result) {

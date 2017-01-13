@@ -43,6 +43,7 @@ vi:
     img_remove: "Xóa"
     submit: Lưu
     cancel: Hủy
+    ok: "Đồng ý"
     create: Tạo tài khoản
     edit: Cập nhật
     delete: Xóa
