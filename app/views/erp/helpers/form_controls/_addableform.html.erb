@@ -1,17 +1,51 @@
-<div class="addableform"
-     partial="<%= options[:partial] if options[:partial].present? %>"
-     partial-url="<%= options[:partial_url] if options[:partial_url].present? %>"
->
-    <div class="addableform-container">
-        <% if options[:items].present? %>
-            <% options[:items].each do |item| %>
-                <span class="addableform-line">
-                    <%= render options[:partial], options[:item] => item, uid: unique_id(), params: options[:params] %>
-                </span>
+<% if !options[:type].present? %>
+    <div class="addableform"
+         partial="<%= options[:partial] if options[:partial].present? %>"
+         partial-url="<%= options[:partial_url] if options[:partial_url].present? %>"
+    >
+        <div class="addableform-container">
+            <% if options[:items].present? %>
+                <% options[:items].each do |item| %>
+                    <span class="addableform-line">
+                        <%= render options[:partial], options[:item] => item, uid: unique_id(), params: options[:params] %>
+                    </span>
+                <% end %>
             <% end %>
-        <% end %>
+        </div>
+        <a class="btn btn-primary add-button">
+            <i class="fa fa-plus"></i> <%= options[:add_button].present? ? options[:add_button] : t('.add')  %>
+        </a>
     </div>
-    <a class="btn btn-primary add-button">
-        <i class="fa fa-plus"></i> <%= options[:add_button].present? ? options[:add_button] : t('.add')  %>
-    </a>
-</div>
+<% elsif (options[:type] == 'table') %>
+    <div class="addableform"
+        partial="<%= options[:partial] if options[:partial].present? %>"
+        partial-url="<%= options[:partial_url] if options[:partial_url].present? %>"
+        type="<%= options[:type] if options[:type].present? %>"
+        add-control-selector="<%= options[:add_control_selector] if options[:add_control_selector].present? %>"
+    >
+        <div class="row">
+            <% if options[:add_control].present? %>
+                <div class="col-md-6">
+                    <%= options[:add_control] %>
+                </div>
+            <% end %>            
+            <div class="col-md-6">
+                <a class="btn btn-primary add-button mt-25">
+                    <i class="fa fa-plus"></i> <%= options[:add_button].present? ? options[:add_button] : t('.add')  %>
+                </a>
+            </div>
+        </div>                                
+        <table class="table table-advance table-hover table-striped">
+            <% if options[:thead].present? %>
+                <thead>
+                    <tr>
+                        <%= options[:thead].html_safe %>
+                    </tr>
+                </thead>
+            <% end %>
+            <tbody class="addableform-container">
+                
+            </tbody>
+        </table>
+    </div>
+<% end %>

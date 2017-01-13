@@ -33,7 +33,7 @@ a:hover {
     text-transform: lowercase !important;
     font-style: italic;
 }
-.table-checkable.table-advance thead tr th {
+.table-advance thead tr th {
     font-weight: 500;
 }
 .list-search-items .btn-group {
