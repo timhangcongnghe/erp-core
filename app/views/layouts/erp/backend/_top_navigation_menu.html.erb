@@ -14,7 +14,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-default">
                 <li>
-                    <%= link_to '<i class="icon-key"></i> Log Out'.html_safe,
+                    <%= link_to '<i class="icon-key"></i>'.html_safe + t('logout'),
                         erp.destroy_user_session_path,
                         method: :delete,
                         redirect_to: erp.backend_path,
