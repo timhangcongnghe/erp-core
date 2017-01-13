@@ -3,8 +3,11 @@
 vi:
   home: "Trang chủ"
   dashboard: "Bảng điều khiển"
+  login: "Đăng nhập"
+  logout: "Đăng xuất"
   
   #vietnamese translate global locales
+  fullscreen: "Toàn màn hình"
   edit: "Cập nhật"
   status: "Trạng thái"
   creator: "Người tạo"
@@ -19,6 +22,11 @@ vi:
   submit: "Lưu"
   cancel: "Hủy"
   
+  layouts:
+    erp:
+      backend:
+        header_search_box:
+          search: "Tìm kiếm..."
   core:
     dashboard: "Dashboard"
     or: "hoặc"
