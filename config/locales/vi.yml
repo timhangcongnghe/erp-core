@@ -21,6 +21,8 @@ vi:
   delete_confirm: "Bạn có chắc muốn xóa?"
   submit: "Lưu"
   cancel: "Hủy"
+  date_format_js: "yyyy-mm-dd"
+  date_format: "%Y-%m-%d"
   
   layouts:
     erp:

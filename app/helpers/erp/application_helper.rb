@@ -74,5 +74,10 @@ module Erp
     def unique_id
       return [*5..30000].sample.to_s
     end
+    
+    # Format date
+    def format_date(date)
+      date.strftime(t('date_format'))
+    end
   end
 end

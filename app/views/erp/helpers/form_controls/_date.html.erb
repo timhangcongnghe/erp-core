@@ -13,7 +13,7 @@
     <div class="input-group date date-picker">
         <input type="text"
                name="<%= options[:name] if options[:name].present? %>"
-               value="<%= options[:value] if options[:value].present? %>"
+               value="<%= format_date(options[:value]) if options[:value].present? %>"
                placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
                class="form-control">
         <span class="input-group-btn">

@@ -63,7 +63,8 @@ function jsForAjaxContent(container) {
       $(this).datepicker({
           rtl: App.isRTL(),
           orientation: "left",
-          autoclose: true
+          autoclose: true,
+          format: LANG_DATE_FORMAT_JS
       });
     });
     
