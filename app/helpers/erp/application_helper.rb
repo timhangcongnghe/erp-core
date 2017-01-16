@@ -77,7 +77,7 @@ module Erp
     
     # Format date
     def format_date(date)
-      date.strftime(t('date_format'))
+      date.nil? ? '' : date.strftime(t('date_format'))
     end
   end
 end
