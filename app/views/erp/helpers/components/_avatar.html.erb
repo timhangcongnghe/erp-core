@@ -1,0 +1,9 @@
+<% if !options[:user].nil? %>
+    <img class="img-circle" src="/backend/assets/pages/media/users/avatar4.jpg">
+    <span class="contact-name"><%= options[:user].name %></span>
+    <span class="contact-status bg-green"></span>
+<% else %>
+    <img class="img-circle" src="/backend/img/placeholder.jpg">
+    <span class="contact-name"><%= t("no_creator") %></span>
+    <span class="contact-status bg-green"></span>
+<% end %>
