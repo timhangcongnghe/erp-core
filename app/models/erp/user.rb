@@ -3,13 +3,13 @@ module Erp
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
-           :recoverable, :rememberable, :trackable, :validatable
+           :recoverable, :rememberable, :trackable #, :validatable
     
     validates :name, :presence => true       
     validates_format_of :email, :presence => true,
 												:with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
 												:message => " is invalid (Eg. 'username@globalnaturesoft.com')"
-    validates :password, :length => { :minimum => 6, :maximum => 40 }, :confirmation => true
+    # validates :password, :length => { :minimum => 6, :maximum => 40 }, :confirmation => true
     
     belongs_to :creator, class_name: "Erp::User", optional: true
     
