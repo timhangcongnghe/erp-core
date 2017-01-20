@@ -380,6 +380,6 @@ i.default:hover {
 .table .title {
     font-weight: 500;
 }
-.addableform-table .form-group {
+.addableform-table table .form-group {
     margin-bottom: 5px;
 }
