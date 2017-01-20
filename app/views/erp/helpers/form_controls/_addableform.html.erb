@@ -44,7 +44,13 @@
                 </thead>
             <% end %>
             <tbody class="addableform-container">
-                
+                <% if options[:items].present? %>
+                    <% options[:items].each do |item| %>
+                        <tr class="addableform-line">
+                            <%= render options[:partial], options[:item] => item, uid: unique_id(), params: options[:params] %>
+                        </tr>
+                    <% end %>
+                <% end %>
             </tbody>
         </table>
     </div>
