@@ -240,7 +240,10 @@ $(document).ready(function() {
                     if (link.parents('.datalist-list-action').length) {
                         listActionProccess(link);
                     } else if(link.hasClass('ajax-link')) {
-                        ajaxLinkRequest(link);                        
+                        ajaxLinkRequest(link);
+                    } else if(link.hasClass('link-method')) {
+                        link.removeAttr('data-confirm');
+                        link.trigger('click');
                     } else {
                         window.location = link.attr('href');
                     }
