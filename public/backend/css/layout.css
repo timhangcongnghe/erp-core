@@ -158,6 +158,9 @@ a:hover {
     border-color: #bbb;
     box-shadow: 4px 4px rgba(102,102,102,.2);
 }
+.tooltip {
+    z-index: 99999;
+}
 /* Tooltip */
 .tooltip > .tooltip-inner {
     background: #364150;
