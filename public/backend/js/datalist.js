@@ -61,13 +61,18 @@ function addToSelects(list, item) {
 // load keyword select list
 function loadKeywordSelectList(container) {
     var list = container.parents('.datalist');
+    var id = list.attr('data-id');
     var url = container.attr('data-url');    
     var keyword = list.find(".datalist-search-input").val();
     var name = container.attr('name');    
     
     container.html('');
     
-    $.ajax({
+    // ajax update custom sort
+	if(keywords_xhrs[id] && keywords_xhrs[id].readyState != 4){
+		keywords_xhrs[id].abort();
+	}
+    keywords_xhrs[id] = $.ajax({
         url: url,
         data: {
             keyword: keyword
@@ -461,6 +466,7 @@ function datalistFilter(list, page) {
 }
 
 var datalists = {};
+var keywords_xhrs = {};
 var keywords = {};
 var selects = {};
 // Main js execute when loaded page

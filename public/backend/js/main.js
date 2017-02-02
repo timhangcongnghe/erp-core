@@ -308,5 +308,45 @@ $(document).ready(function() {
         $('.images-upload .image-box.fileinput-exists').each(function() {
             $(this).find('.destroy_input').val('');
         });
-    }, 1000);    
+    }, 1000);
+    
+    // Modal link
+    $(document).on('click', '.modal-link', function(e) {
+        e.preventDefault();
+        
+        var url = $(this).attr('href');
+        
+        // create new modal if not exist
+        var modal_uid = "link-modal-" + guid();
+        var modal_size = 'full';
+        var title = 'Title';
+        
+        var modal = $('#' + modal_uid);
+        if(!modal.length) {
+            var html = '<div id="' + modal_uid + '" class="modal addablelist-modal fade" tabindex="-1">' +
+                '<div class="modal-dialog  modal-custom-blue modal-' + modal_size + '">' +
+                    '<div class="modal-content">' +
+                        '<div class="modal-header">' +
+                            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>' +
+                            '<h4 class="modal-title">' + title + '</h4>' +
+                        '</div>' +
+                        '<div class="modal-body text-center">' +
+                            '<i class="icon-refresh text-semibold"></i>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
+            $('body').append(html);
+            
+            modal = $('#' + modal_uid);
+        }
+        
+        modal.modal('show');
+        
+        $.ajax({
+            url: url
+        }).done(function( html ) {
+            modal.find('.modal-body').html(html);            
+        });
+    });
 });
