@@ -26,4 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'will_paginate-bootstrap'
   s.add_dependency 'carrierwave'
   s.add_dependency 'mini_magick'
+  s.add_dependency 'rubyzip', '~> 1.1.0'
+  s.add_dependency 'axlsx', '2.1.0.pre'
+  s.add_dependency 'axlsx_rails'
 end
