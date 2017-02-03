@@ -1,3 +1,13 @@
+function hideSidebar() {
+    $('body').addClass('page-sidebar-closed');
+    $('.page-sidebar-menu').addClass('page-sidebar-menu-closed');
+}
+
+function showSidebar() {
+    $('body').removeClass('page-sidebar-closed');
+    $('.page-sidebar-menu').removeClass('page-sidebar-menu-closed');
+}
+
 Array.prototype.contains = function(obj) {
     var i = this.length;
     while (i--) {
@@ -349,4 +359,18 @@ $(document).ready(function() {
             modal.find('.modal-body').html(html);            
         });
     });
+    
+    // Save current sidebar state
+    $(document).on('click', '.menu-toggler.sidebar-toggler', function(e) {
+        if($('body').hasClass('page-sidebar-closed')) {
+            Cookies.set('sidebar_state', 'hide');
+        } else {
+            Cookies.set('sidebar_state', 'show');
+        }
+    });
+    // show hide sidebar
+    var sidebar_state = Cookies.get('sidebar_state');
+    if(typeof(sidebar_state) !== 'undefined' && sidebar_state === 'hide') {
+        hideSidebar();
+    }
 });
