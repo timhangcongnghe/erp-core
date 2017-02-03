@@ -92,6 +92,9 @@ function loadKeywordSelectList(container) {
                 LANG_NO_RECORD_FOUND +
                 '</a></li>';
             container.append(html);
+            container.parents('li').addClass('no-record');
+        } else {
+            container.parents('li').removeClass('no-record');
         }
     });
 }

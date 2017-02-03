@@ -383,3 +383,6 @@ i.default:hover {
 .addableform-table table .form-group {
     margin-bottom: 5px;
 }
+.datalist-search-helper li.no-record {
+    opacity: 0.5;
+}
