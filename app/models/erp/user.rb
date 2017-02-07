@@ -5,7 +5,7 @@ module Erp
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable #, :validatable
     
-    validates :name, :presence => true       
+    validates :name, :presence => true
     validates_format_of :email, :presence => true,
 												:with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
 												:message => " is invalid (Eg. 'username@globalnaturesoft.com')"
