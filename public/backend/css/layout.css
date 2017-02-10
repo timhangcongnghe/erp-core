@@ -372,3 +372,11 @@ a:hover {
     font-size: 15px;
     font-weight: 500;
 }
+.portlet-body.form .form-group:last-child {
+    margin-bottom: 10px;
+}
+.btn-group>.dropdown-menu, .dropdown-toggle>.dropdown-menu, .dropdown>.dropdown-menu {
+    max-height: 300px;
+    overflow: auto;
+    margin-top: 2px;
+}

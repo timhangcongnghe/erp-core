@@ -4,6 +4,7 @@ function addableformAddLine(addableform) {
     var container = addableform.find('.addableform-container');
     var type = addableform.attr('type');
     var add_control = $(addableform.attr('add-control-selector'));
+    var items = container.find('.item-id');
     
     if(typeof(add_control) === 'undefined') {
         add_value = '';
@@ -15,11 +16,20 @@ function addableformAddLine(addableform) {
         type = 'normal';
     }
     
+    var exist_ids = [];
+    if(items.length) {
+        items.each(function () {
+            var id = $(this).attr('value');
+            exist_ids.push(id);
+        });
+    }
+    
     $.ajax({
         url: url,
         data: {
             partial: partial,
-            add_value: add_value
+            add_value: add_value,
+            exist_ids: exist_ids
         }
     }).done(function( result ) {
         if(type !== 'table') {
