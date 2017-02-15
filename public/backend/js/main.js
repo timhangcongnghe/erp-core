@@ -299,6 +299,7 @@ $(document).ready(function() {
             'value': method,
             'type': 'hidden'
         }));
+        $(document.body).append(newForm);
         newForm.submit();
     });
     
