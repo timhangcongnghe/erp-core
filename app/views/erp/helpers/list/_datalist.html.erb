@@ -1,5 +1,5 @@
 <!-- BEGIN EXAMPLE TABLE PORTLET-->
-<div class="portlet light datalist"
+<div class="<%= 'portlet' if !options[:no_border].present? %> light datalist"
     data-url='<%= options[:url] %>'
     data-id='<%= Digest::SHA1.hexdigest([Time.now, rand].join) %>'
     sort-by='<%= options[:sort][:sort_by] if options[:sort].present? and options[:sort][:sort_by].present? %>'
