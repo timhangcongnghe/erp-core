@@ -5,6 +5,7 @@ require 'carrierwave'
 require 'mini_magick'
 require 'axlsx'
 require 'axlsx_rails'
+require	'cancan'
 
 module Erp
 	module Core

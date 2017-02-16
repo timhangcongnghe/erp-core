@@ -29,4 +29,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'rubyzip', '~> 1.1.0'
   s.add_dependency 'axlsx', '2.1.0.pre'
   s.add_dependency 'axlsx_rails'
+  s.add_dependency	'cancan'
 end
