@@ -185,6 +185,9 @@ function jsForAjaxContent(container) {
                     '</tr>'
                 );
                 row.addClass('opened');
+                
+                child = row.next();
+                jsForAjaxContent(child);
             } else {
                 if(exist.is(':visible')) {
                     exist.remove();
@@ -193,7 +196,7 @@ function jsForAjaxContent(container) {
                     exist.show();
                     row.addClass('opened');
                 }
-            }
+            }            
         });
     });
 }
