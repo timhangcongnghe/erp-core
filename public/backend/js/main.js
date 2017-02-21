@@ -164,6 +164,38 @@ function jsForAjaxContent(container) {
     
     // For tooltip
     container.find('.tooltips').tooltip();
+    
+    // Row has child ajax content
+    container.find('.has-child-table .expand').bind("click", function() {
+        var row = $(this).parents('tr');
+        var url = row.attr('data-url');
+        var cols = row.find('td').length;
+        
+        $.ajax({
+            url: url,
+            method: 'GET'
+        }).done(function( result ) {
+            var exist = row.next();
+            if(!exist.hasClass('child-row')) {
+                row.after(
+                    '<tr class="child-row">' +
+                        '<td class="child-td" colspan="' + cols + '">' +
+                            result +
+                        '</td>' +
+                    '</tr>'
+                );
+                row.addClass('opened');
+            } else {
+                if(exist.is(':visible')) {
+                    exist.remove();
+                    row.removeClass('opened');
+                } else {
+                    exist.show();
+                    row.addClass('opened');
+                }
+            }
+        });
+    });
 }
 
 //scroll to jquery element

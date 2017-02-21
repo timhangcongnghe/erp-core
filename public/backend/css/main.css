@@ -464,3 +464,26 @@ span.invoice-title {
 .row.sign {
     clear: both;
 }
+.tr-expand-button {
+    background: #2b3643;
+    color: #fff;
+    height: 19px;
+    width: 19px;
+    float: left;
+    margin-right: 10px;
+    padding: 3px 4px 4px 4px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.tr-expand-button:hover {
+    opacity: 0.8;
+}
+.opened i.tr-expand-button:before {
+    content: "\f068";
+}
+.child-td {
+    padding: 10px !important;
+}
+.child-row, .child-row:hover>td, .table-hover > tbody > tr.child-row:hover > td {
+    background: #e3e4e6 !important;
+}
