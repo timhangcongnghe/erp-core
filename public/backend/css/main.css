@@ -464,6 +464,9 @@ span.invoice-title {
 .row.sign {
     clear: both;
 }
+h2.invoice-title.title {
+    line-height: 0;
+}
 .tr-expand-button {
     background: #2b3643;
     color: #fff;
