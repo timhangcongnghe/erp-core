@@ -7,19 +7,23 @@ body, h1, h2, h3, h4, h5, h6, .label, .table.table-light>thead>tr>th {
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   font-weight: 300;
-  font-size: 15px;
+  font-size: 14px;
+  font-style: italic;
 }
 ::-moz-placeholder { /* Firefox 19+ */
   font-weight: 300;
-  font-size: 15px;
+  font-size: 14px;
+  font-style: italic;
 }
 :-ms-input-placeholder { /* IE 10+ */
   font-weight: 300;
-  font-size: 15px;
+  font-size: 14px;
+  font-style: italic;
 }
 :-moz-placeholder { /* Firefox 18- */
   font-weight: 300;
-  font-size: 15px;
+  font-size: 14px;
+  font-style: italic;
 }
 .form-control, output {
     font-size: 15px;
@@ -28,8 +32,8 @@ body, h1, h2, h3, h4, h5, h6, .label, .table.table-light>thead>tr>th {
     font-weight: 400;
 }
 label {
-    font-size: 15px;
-    color: #555;
+    font-size: 14px;
+    color: #333;
 }
 .mt-checkbox, .mt-radio {
     font-size: 15px;
@@ -214,10 +218,10 @@ a:hover {
     background: #FbFcFc;
 }
 .form-control {
-    border: 1px solid #ddd;
+    border: 1px solid #eaefef;
     font-weight: 500;
     color: #333;
-    background: #FbFcFc;
+    background: #f7f9f9;
 }
 .form-control:focus, .form-control:hover {
     border: 1px solid #759ecf;
@@ -379,4 +383,12 @@ a:hover {
     max-height: 300px;
     overflow: auto;
     margin-top: 2px;
+}
+.datepicker.dropdown-menu {
+    box-shadow: 5px 5px rgba(102,102,102,.2);
+    border: 1px solid #bbb;
+    background: #f7f9f9;
+}
+.datepicker table td, .datepicker table th, .datetimepicker table td, .datetimepicker table th {
+    font-family: "Roboto", "Helvetica Neue",Helvetica,Arial,sans-serif !important;
 }
