@@ -56,6 +56,7 @@ function clearDataselectValue(dataselect) {
     var value_control = dataselect.find('.dataselect-value');
     var control = dataselect.find('.dataselect-control');
     var is_multiple = control.attr('multiple');
+    var edit_button = dataselect.find('.dataselect-edit-button');
     
     if(!is_multiple) {
         if(value_control.val() !== '') {
@@ -63,6 +64,8 @@ function clearDataselectValue(dataselect) {
             value_control.trigger('change');
         }
     }
+    
+    edit_button.hide();
 }
 
 // check things after finish dataselect control by user

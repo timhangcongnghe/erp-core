@@ -7,7 +7,7 @@ function addableformAddLine(addableform) {
     var items = container.find('.item-id');
     
     if(typeof(add_control) === 'undefined') {
-        add_value = '';
+        add_value = '';        
     } else {
         add_value = add_control.val();
     }
@@ -24,23 +24,28 @@ function addableformAddLine(addableform) {
         });
     }
     
-    $.ajax({
-        url: url,
-        data: {
-            partial: partial,
-            add_value: add_value,
-            exist_ids: exist_ids
-        }
-    }).done(function( result ) {
-        if(type !== 'table') {
-            container.append('<span class="addableform-line">' + result + '</span>');
-        } else {
-            container.append('<tr class="addableform-line">' + result + '</tr>');
-        }
-        
-        // js for new content
-        jsForAjaxContent(container.find('.addableform-line').last());
-    });
+    if(add_value != '') {
+        $.ajax({
+            url: url,
+            data: {
+                partial: partial,
+                add_value: add_value,
+                exist_ids: exist_ids
+            }
+        }).done(function( result ) {
+            if(type !== 'table') {
+                container.append('<span class="addableform-line">' + result + '</span>');
+            } else {
+                container.append('<tr class="addableform-line">' + result + '</tr>');
+            }
+            
+            clearDataselectControlText(add_control.parents('.dataselect'));
+            clearDataselectValue(add_control.parents('.dataselect'));
+            
+            // js for new content
+            jsForAjaxContent(container.find('.addableform-line').last());
+        });
+    }
 }
 
 $(document).ready(function() {
