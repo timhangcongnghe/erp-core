@@ -53,6 +53,7 @@ module Erp
     
     # Datalist pagination
     def erp_datalist_pagination(data)
+      return '' if data.empty?
       render partial: "erp/helpers/list/datalist_pagination", locals: { data: data }
     end
     
