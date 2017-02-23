@@ -10,12 +10,12 @@
             data-container="body"></i>
         <% end %>
     </label>
-    <div class="input-group date date-picker">
+    <div class="input-group date">
         <input type="text"
                name="<%= options[:name] if options[:name].present? %>"
                value="<%= format_date(options[:value]) if options[:value].present? %>"
                placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
-               class="form-control">
+               class="form-control date-picker" />
         <span class="input-group-btn">
             <button class="btn default" type="button">
                 <i class="fa fa-calendar"></i>
