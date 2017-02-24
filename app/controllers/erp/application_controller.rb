@@ -1,5 +1,12 @@
 module Erp
   class ApplicationController < ActionController::Base
+		Dir.glob(Rails.root.join('engines').to_s + "/*") do |d|
+			eg = d.split(/[\/\\]/).last
+			if eg != "core" and Erp::Core.available?(eg)
+				helper "Erp::#{eg.camelize}::Engine".constantize.helpers
+			end
+		end
+		
 		before_action	:authenticate_user!
 		
 		rescue_from CanCan::AccessDenied do |exception|
