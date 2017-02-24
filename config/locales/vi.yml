@@ -14,10 +14,10 @@ vi:
   created_at: "Ngày tạo"
   updated_at: "Ngày cập nhật"
   actions: "Thao tác"
-  archived: "Đã bị ẩn"
-  active: "Đang hiển thị"
-  archive: "Ẩn khỏi danh sách"
-  unarchive: "Hiện ra danh sách"
+  archived: "Ngưng sử dụng"
+  active: "Đang sử dụng"
+  archive: "Ngưng sử dụng"
+  unarchive: "Sử dụng lại"
   delete_confirm: "Bạn có chắc muốn xóa?"
   submit: "Lưu"
   cancel: "Hủy"
@@ -43,23 +43,13 @@ vi:
     img_select: "Chọn hình ảnh"
     img_update: "Cập nhật"
     img_remove: "Xóa"
-    submit: Lưu
-    cancel: Hủy
     ok: "Đồng ý"
     create: Tạo tài khoản
-    edit: Cập nhật
     delete: Xóa
-    delete_confirm: Bạn chắc chắn muốn xóa?
     user: Tài khoản
     users: Người dùng
     name: Tên người dùng
     email: Địa chỉ email
-    status: Trạng thái
-    active: Đang kích hoạt
-    inactive: Chưa kích hoạt
-    creator: Người tạo
-    created_at: Ngày tạo
-    actions: Chọn thao tác
     password: Mật khẩu
     password_confirm: Xác nhận mật khẩu
     timezone: Múi giờ
