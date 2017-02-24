@@ -384,7 +384,10 @@ a:hover {
     overflow: auto;
     margin-top: 2px;
 }
-.datepicker.dropdown-menu {
+.datalist-container div.m-grid-col.m-grid-col-middle.m-grid-col-center {
+    padding: 10px 0;
+    height: 0;
+}.datepicker.dropdown-menu {
     box-shadow: 5px 5px rgba(102,102,102,.2);
     border: 1px solid #bbb;
     background: #f7f9f9;
