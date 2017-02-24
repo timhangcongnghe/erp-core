@@ -1,0 +1,23 @@
+<div class="form-group">
+    <label class="control-label">
+        <%= options[:label] if options[:label].present? %>
+        <% if options[:required] == true %>
+            <span class="required" aria-required="true"> * </span>
+        <% end %>
+        <% if options[:help].present? %>
+            <i class="fa fa-commenting right tooltips icon-default-color"
+            data-original-title="<%= options[:help] %>"
+            data-container="body"></i>
+        <% end %>
+    </label>
+    <div class="">
+        <div id="reportrange" class="btn default">
+            <i class="fa fa-calendar"></i> &nbsp;
+            <span> </span>
+            <b class="fa fa-angle-down"></b>
+        </div>
+    </div>
+    <% if options[:errors].present? %>
+        <span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span>
+    <% end %>
+</div>
