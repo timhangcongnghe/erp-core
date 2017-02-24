@@ -44,6 +44,7 @@ vi:
     img_update: "Cập nhật"
     img_remove: "Xóa"
     ok: "Đồng ý"
+    cancel: "Bỏ qua"
     create: Tạo tài khoản
     delete: Xóa
     user: Tài khoản
