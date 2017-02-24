@@ -490,3 +490,7 @@ h2.invoice-title.title {
 .child-row, .child-row:hover>td, .table-hover > tbody > tr.child-row:hover > td {
     background: #e3e4e6 !important;
 }
+.top-datalist div#reportrange {
+    background-color: #ffffff;
+    margin-bottom: 5px;
+}
