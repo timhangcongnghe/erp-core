@@ -260,7 +260,7 @@ a:hover {
     border-radius: 20px !important;
 }
 .label.label-sm {
-    padding: 1px 12px;
+    padding: 2px 6px !important;
 }
 .btn-group-sm>.btn, .btn-sm {
     padding: 5px 12px;
@@ -394,4 +394,25 @@ a:hover {
 }
 .datepicker table td, .datepicker table th, .datetimepicker table td, .datetimepicker table th {
     font-family: "Roboto", "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+.label-draft {
+    background-color: #659be0;
+}
+.label-confirmed {
+    background-color: #36c6d3;
+}
+.label-cancelled {
+    background-color: #ed6b75;
+}
+.label-paid {
+    background-color: #36c6d3;
+}
+.label-overdue {
+    background-color: #f36a5a;
+}
+.label-debt {
+    background-color: #ecc00d;
+}
+.label-return_back {
+    background-color: #ff9b04;
 }
