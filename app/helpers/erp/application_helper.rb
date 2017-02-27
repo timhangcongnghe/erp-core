@@ -185,5 +185,10 @@ module Erp
       return chuoi.strip.capitalize + " đồng"
     end
     
+    # Status /list page
+    def status_label(status)
+      status.present? ? "<span class=\'label label-sm label-#{status}\'>#{t('.' + status)}</span>".html_safe : ''
+    end
+    
   end
 end
