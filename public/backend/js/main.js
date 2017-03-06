@@ -376,7 +376,7 @@ $(document).ready(function() {
                             '<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>' +
                             '<h4 class="modal-title">' + title + '</h4>' +
                         '</div>' +
-                        '<div class="modal-body text-center">' +
+                        '<div class="modal-body">' +
                             '<i class="icon-refresh text-semibold"></i>' +
                         '</div>' +
                     '</div>' +
