@@ -416,3 +416,11 @@ a:hover {
 .label-return_back {
     background-color: #ff9b04;
 }
+.label:not(.md-skip) {
+    padding: 3px 6px 3px;
+    font-size: 11px;
+}
+.btn:not(.md-skip):not(.bs-select-all):not(.bs-deselect-all).btn-sm {
+    font-size: 12px;
+    padding: 4px 12px;
+}
