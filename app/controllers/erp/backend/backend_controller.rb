@@ -1,10 +1,12 @@
 require_dependency "erp/application_controller"
 
 module Erp::Backend
-	class BackendController < Erp::ApplicationController
-		before_action :authenticate_user!
+	class BackendController < Erp::ApplicationController		
 		layout :set_layout
 		before_action :set_locale
+		before_action :set_view
+		
+		before_action :authenticate_user!
 		
 		rescue_from CanCan::AccessDenied do |exception|
 			render :file => "erp/static/403.html", :status => 403, :layout => false
@@ -12,11 +14,6 @@ module Erp::Backend
 		
 		def current_ability
 			@current_ability ||= Erp::Ability.new(current_user)
-		end
-		
-    # @todo: seperate backend fronend api
-    def after_sign_out_path_for(resource_or_scope)
-			erp.backend_path
 		end
 		
 		def set_locale
@@ -34,6 +31,10 @@ module Erp::Backend
 				else
 					"erp/backend/index"
 				end			  
+			end
+			
+			def set_view
+				session[:current_view] = "backend"
 			end
 	end
 end

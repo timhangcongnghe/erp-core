@@ -6,5 +6,14 @@ module Erp
 				helper "Erp::#{eg.camelize}::Engine".constantize.helpers
 			end
 		end
+		
+		# @todo: seperate backend fronend api
+		def after_sign_in_path_for(resource_or_scope)
+			if session[:current_view] == 'frontend'
+				url_for('/')
+			else
+				erp.backend_path
+			end
+		end
   end
 end
