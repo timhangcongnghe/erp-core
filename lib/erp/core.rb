@@ -3,8 +3,6 @@ require 'will_paginate'
 require 'will_paginate-bootstrap'
 require 'carrierwave'
 require 'mini_magick'
-require 'axlsx'
-require 'axlsx_rails'
 require	'cancan'
 
 module Erp
