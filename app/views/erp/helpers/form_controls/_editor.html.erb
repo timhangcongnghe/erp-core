@@ -1,0 +1,14 @@
+<div class="form-group" data-toggle="tooltip">
+    <% if options[:label].present? %>
+        <label><%= options[:label] if options[:label].present? %></label>
+    <% end %>
+    <% if options[:help].present? %>
+        <i class="fa fa-info-circle right tooltips icon-default-color"
+        data-original-title="<%= options[:help] %>"
+        data-container="body"></i>
+    <% end %>
+    <textarea class="form-control editor<%= options[:type] if options[:type].present? %>" rows="3"
+        name="<%= options[:name] if options[:name].present? %>"
+        placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
+    ><%= options[:value] if options[:value].present? %></textarea>
+</div>
