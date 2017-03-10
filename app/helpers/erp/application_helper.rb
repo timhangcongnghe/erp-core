@@ -93,7 +93,7 @@ module Erp
       if !precision.nil?
         prec = precision
       end
-    
+      
       if vn
         number_to_currency(number, precision: prec, separator: ",", unit: '', delimiter: ".")
       else
@@ -190,5 +190,9 @@ module Erp
       status.present? ? "<span class=\'label label-sm label-#{status}\'>#{t('.' + status)}</span>".html_safe : ''
     end
     
+    # image src
+    def image_src(image, size)
+      !image.nil? ? image.image_url.send(size).url : url_for("/backend/img/placeholder.jpg")
+    end
   end
 end
