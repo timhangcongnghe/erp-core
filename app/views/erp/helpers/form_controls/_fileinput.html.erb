@@ -1,0 +1,24 @@
+<div class="form-group">
+    <% if options[:label].present? %>
+        <label><%= options[:label] %></label>
+        <% if options[:required] == true %>
+            <span class="required" aria-required="true"> * </span>
+        <% end %>
+    <% end %>
+    <div class="fileinput fileinput-fullwidth fileinput-new" data-provides="fileinput">
+        <div class="input-group input-large">
+            <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
+                <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                <span class="fileinput-filename"> </span>
+            </div>
+            <span class="input-group-addon btn default btn-file">
+                <span class="fileinput-new"> <%= t('core.select_file') %> </span>
+                <span class="fileinput-exists"> Change </span>
+                <input type="file"
+                       name="<%= options[:name] if options[:name].present? %>"
+                />
+            </span>
+            <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+        </div>
+    </div>
+</div>

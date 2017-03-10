@@ -494,3 +494,6 @@ h2.invoice-title.title {
     background-color: #ffffff;
     margin-bottom: 5px;
 }
+.fileinput-fullwidth {
+    width: 100%;
+}
