@@ -194,5 +194,10 @@ module Erp
     def image_src(image, size)
       !image.nil? ? image.image_url.send(size).url : url_for("/backend/img/placeholder.jpg")
     end
+    
+    # remove html and reuncate text
+    def short_text(text, length=50)      
+      strip_tags(text).split[0..length-1].join(" ")
+    end
   end
 end

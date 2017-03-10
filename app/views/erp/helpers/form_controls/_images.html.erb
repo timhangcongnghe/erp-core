@@ -39,12 +39,15 @@
                             <img src="<%=image.instance_eval(options[:image_attribute]) %>" alt="" />
                         <% end %>
                     </div>
-                    <div>
+                    <div style="position: absolute;
+                        top: 0;
+                        right: 0;">
                         <span class="btn default btn-file hide">
                             <span class="fileinput-new"> <%= t('core.img_select') %> </span>
                             <span class="fileinput-exists"> <%= t('core.img_update') %> </span>
                             <input type="file" name="<%= options[:name].gsub('__index__', index.to_s) if options[:name].present? %>"> </span>
-                        <a href="javascript:;" class="btn red fileinput-exists remove-image" data-dismiss="fileinput"> <i class="fa fa-close"></i> </a>
+                            <a style="padding: 6px;" href="javascript:;" class="btn red fileinput-exists remove-image" data-dismiss="fileinput"> <i class="fa fa-close"></i> </a>
+                        </span>
                     </div>
                 </div>
             <% end %>
