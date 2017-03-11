@@ -4,6 +4,7 @@
     data-id='<%= Digest::SHA1.hexdigest([Time.now, rand].join) %>'
     sort-by='<%= options[:sort][:sort_by] if options[:sort].present? and options[:sort][:sort_by].present? %>'
     sort-direction='<%= options[:sort][:sort_direction] if options[:sort].present? and options[:sort][:sort_direction].present? %>'
+    <%= 'sortable=true' if options[:sortable].present? %>
 >
     <% if options[:keywords] or options[:actions] or options[:filters] or options[:columns] %>
         <div class="portlet-title">

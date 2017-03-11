@@ -5,7 +5,7 @@ vi:
   dashboard: "Bảng điều khiển"
   login: "Đăng nhập"
   logout: "Đăng xuất"
-  
+  custom_order: 'Order'
   #vietnamese translate global locales
   fullscreen: "Toàn màn hình"
   edit: "Cập nhật"
