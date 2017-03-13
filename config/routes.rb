@@ -21,6 +21,7 @@ Erp::Core::Engine.routes.draw do
 				end
 			end
 			post '/editor/upload' => 'editor_uploads#upload'
+			patch '/editor/upload' => 'editor_uploads#upload'
 		end
 		
 		get 'login', to: 'erp/users/sessions#new', as: :login

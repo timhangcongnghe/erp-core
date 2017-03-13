@@ -3,6 +3,7 @@ $(document).ready(function() {
       selector: '.editor',
       height: 500,
       menubar: false,
+      relative_urls: false,
       plugins: [
         'advlist autolink lists link image charmap print preview anchor',
         'searchreplace visualblocks code fullscreen',
@@ -17,6 +18,7 @@ $(document).ready(function() {
       selector: '.editortiny',
       height: 100,
       menubar: false,
+      relative_urls: false,
       plugins: [
         'advlist autolink lists link image charmap print preview anchor',
         'searchreplace visualblocks code fullscreen',
