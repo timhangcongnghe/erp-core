@@ -20,6 +20,7 @@ Erp::Core::Engine.routes.draw do
 					put 'deactivate_all'
 				end
 			end
+			post '/editor/upload' => 'editor_uploads#upload'
 		end
 		
 		get 'login', to: 'erp/users/sessions#new', as: :login

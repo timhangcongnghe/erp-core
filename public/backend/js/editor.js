@@ -26,4 +26,40 @@ $(document).ready(function() {
       content_css: '//www.tinymce.com/css/codepen.min.css',
       statusbar: false,
     });
+    
+    $(document).ready(function() {
+        $(document).on('click', '.editor-insert-image-button', function() {
+            var button = $(this);
+            var form = button.parents('form');
+            var file = form.find('input[name="editor_upload[image_url]"]');
+            
+            file.trigger('click');
+        });
+        $(document).on('change', 'input[name="editor_upload[image_url]"]', function() {
+            var file = $(this);
+            var form = file.parents('form');
+            var formData = new FormData(form[0]);
+            var url = file.attr('data-url');
+            var editor_id = file.attr('editor-id');
+            console.log(editor_id);
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: formData,
+                async: false,
+                success: function (imgsrc) {
+                    tinymce.get(editor_id).execCommand(
+                        'mceInsertContent',
+                        false,
+                        '<img src="'+imgsrc+'" />'
+                    );
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        
+            return false;
+        });
+    });
 });
