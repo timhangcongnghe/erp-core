@@ -13,12 +13,12 @@
             </div>
             <span class="input-group-addon btn default btn-file">
                 <span class="fileinput-new"> <%= t('core.select_file') %> </span>
-                <span class="fileinput-exists"> Change </span>
+                <span class="fileinput-exists"> <%= t('core.change') %> </span>
                 <input type="file"
                        name="<%= options[:name] if options[:name].present? %>"
                 />
             </span>
-            <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+            <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> <%= t('core.remove') %> </a>
         </div>
     </div>
 </div>
