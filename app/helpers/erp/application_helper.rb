@@ -199,5 +199,11 @@ module Erp
     def short_text(text, length=50)      
       strip_tags(text).split[0..length-1].join(" ")
     end
+    
+    # convert string to url friendly string
+    def url_friendly(string)
+      string.to_ascii.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
+    end
+    
   end
 end

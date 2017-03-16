@@ -28,4 +28,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'mini_magick'
   s.add_dependency 'rubyzip', '~> 1.1.0'
   s.add_dependency	'cancan'
+  s.add_dependency 'unidecoder'
 end

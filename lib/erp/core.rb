@@ -4,6 +4,7 @@ require 'will_paginate-bootstrap'
 require 'carrierwave'
 require 'mini_magick'
 require	'cancan'
+require 'unidecoder'
 
 module Erp
 	module Core
