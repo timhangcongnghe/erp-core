@@ -1,6 +1,10 @@
 <div class="form-group" data-toggle="tooltip">
     <% if options[:label].present? %>
-        <label><%= options[:label] if options[:label].present? %></label>
+        <label><%= options[:label] if options[:label].present? %>
+            <% if options[:required] == true %>
+                <span class="required" aria-required="true"> * </span>
+            <% end %>
+        </label>
     <% end %>
     <% if options[:help].present? %>
         <i class="fa fa-info-circle right tooltips icon-default-color"
@@ -11,4 +15,7 @@
         name="<%= options[:name] if options[:name].present? %>"
         placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
     ><%= options[:value] if options[:value].present? %></textarea>
+    <% if options[:errors].present? %>
+        <span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span>
+    <% end %>
 </div>

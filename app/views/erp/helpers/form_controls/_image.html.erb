@@ -1,6 +1,10 @@
 <div class="form-group center">
     <% if options[:label].present? %>
-        <label><%= options[:label] %></label>
+        <label><%= options[:label] %>
+            <% if options[:required] == true %>
+                <span class="required" aria-required="true"> * </span>
+            <% end %>
+        </label>
     <% end %>
     <div class="fileinput fileinput-new" data-provides="fileinput">
         <div class="fileinput-new thumbnail" style="width: <%= options[:width].present? ? options[:width] : '100' %>px; height: <%= options[:height].present? ? options[:height] : '100' %>px;">
@@ -20,4 +24,7 @@
             </div>
         <% end %>
     </div>
+    <% if options[:errors].present? %>
+        <span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span>
+    <% end %>
 </div>
