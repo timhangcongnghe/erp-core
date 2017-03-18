@@ -1,5 +1,9 @@
 module Erp
   class ApplicationController < ActionController::Base
+		# @todo add cart for application controller bescause User::Session login not run
+		include Erp::Carts::Frontend::Concerns::CurrentCart
+		before_action :set_cart
+		
 		Dir.glob(Rails.root.join('engines').to_s + "/*") do |d|
 			eg = d.split(/[\/\\]/).last
 			if eg != "core" and Erp::Core.available?(eg)
