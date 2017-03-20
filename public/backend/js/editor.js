@@ -33,7 +33,8 @@ $(document).ready(function() {
         $(document).on('click', '.editor-insert-image-button', function() {
             var button = $(this);
             var form = button.parents('form');
-            var file = form.find('input[name="editor_upload[image_url]"]');
+            var group = button.parents('.form-group');
+            var file = group.find('input[name="editor_upload[image_url]"]');
             
             file.trigger('click');
         });
