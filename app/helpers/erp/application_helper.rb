@@ -205,5 +205,24 @@ module Erp
       string.to_ascii.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
     end
     
+    # relative time
+    def relative_time(start_time)
+			diff_seconds = (Time.now - start_time).to_i
+			case diff_seconds
+				when 0 .. 59
+					"Vừa xong"
+				when 60 .. (3600-1)
+					"#{diff_seconds/60} phút trước"
+				when 3600 .. (3600*24-1)
+					"#{diff_seconds/3600} giờ trước"
+				when (3600*24) .. (3600*24*30-1) 
+					"#{diff_seconds/(3600*24)} ngày trước"
+				when (3600*24*30) .. (3600*24*30*12-1)
+					"#{diff_seconds/(3600*24*30)} tháng trước"
+				else
+					"#{diff_seconds/(3600*24*30*12)} năm trước"
+			end
+		end
+    
   end
 end
