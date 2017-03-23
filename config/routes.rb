@@ -4,8 +4,11 @@ Erp::Core::Engine.routes.draw do
 			class_name: "Erp::User",
 			module: :devise,
 			:controllers => {
-				:sessions => "erp/users/sessions"
+				:sessions => "erp/users/sessions",
+				:registrations => "erp/users/registrations"
 			}
+		
+		get '/auth/:provider/callback', to: 'frontend/users#omniauth_login'
 		
 		namespace :backend do
 			get '/' => 'dashboard#index'
@@ -23,7 +26,5 @@ Erp::Core::Engine.routes.draw do
 			post '/editor/upload' => 'editor_uploads#upload'
 			patch '/editor/upload' => 'editor_uploads#upload'
 		end
-		
-		get 'login', to: 'erp/users/sessions#new', as: :login
 	end
 end

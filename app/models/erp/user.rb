@@ -3,7 +3,7 @@ module Erp
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
-           :recoverable, :rememberable, :trackable #, :validatable
+           :recoverable, :rememberable, :trackable, :validatable
     
     validates :name, :presence => true
     validates_format_of :email, :presence => true,
@@ -81,5 +81,17 @@ module Erp
 			end
 			return timezones
     end
+    
+    def self.create_with_omniauth(auth)
+			user = User.new ({
+				provider: auth["provider"],
+				uid: auth["uid"],
+				name: auth["info"]["name"],
+				email: auth["info"]["email"].present? ? auth["info"]["email"] : "#{(0...50).map { ('a'..'z').to_a[rand(26)]}.join}@unknown.com",
+				password: 'aA456321@',
+			})
+			user.save
+			return user
+		end
   end
 end

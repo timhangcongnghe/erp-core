@@ -5,6 +5,7 @@ require 'carrierwave'
 require 'mini_magick'
 require	'cancan'
 require 'unidecoder'
+require 'omniauth-facebook'
 
 module Erp
 	module Core

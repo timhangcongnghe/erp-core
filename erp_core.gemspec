@@ -29,4 +29,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'rubyzip', '~> 1.1.0'
   s.add_dependency	'cancan'
   s.add_dependency 'unidecoder'
+  s.add_dependency 'omniauth-facebook'
 end
