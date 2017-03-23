@@ -503,3 +503,7 @@ h2.invoice-title.title {
 span.tooltips {
     cursor: pointer;
 }
+.dataselect-input-group.multiple .dataselect-control {
+    width: calc(100% - 15px);
+    background: none;
+}
