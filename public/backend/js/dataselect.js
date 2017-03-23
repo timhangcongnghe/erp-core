@@ -9,7 +9,7 @@ function insertTagNameToDataSelect(dataselect) {
     if(text != '') {
         var group = dataselect.find('.multiselect-values-container');
 
-        if(!dataselect.find('.dataselect-name-box input[value="' + text + '"]').length) {
+        if(!dataselect.find('.dataselect-name-box input[value=\'' + text + '\']').length) {
             // insert html item
             var html = '<div class="btn-group btn-group-solid dataselect-name-box">' +
                 '<input type="hidden" name="' + control.attr('insert-name') + '" value="' + text + '">' +

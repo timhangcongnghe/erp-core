@@ -6,6 +6,7 @@ require 'mini_magick'
 require	'cancan'
 require 'unidecoder'
 require 'omniauth-facebook'
+require 'omniauth-google-oauth2'
 
 module Erp
 	module Core

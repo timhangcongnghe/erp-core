@@ -1,7 +1,6 @@
 module Erp
 	class Users::SessionsController < Devise::SessionsController
 		layout :set_layout
-		layout nil, only: [:new]
 		
 		def new
 			self.resource = resource_class.new(sign_in_params)
@@ -12,6 +11,8 @@ module Erp
 		
 		private
 			def set_layout
+				return nil if request.xhr?
+				
 				if session[:current_view] == 'frontend'
 					'erp/frontend/index'
 				else

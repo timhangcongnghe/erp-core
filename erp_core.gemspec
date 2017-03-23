@@ -30,4 +30,5 @@ Gem::Specification.new do |s|
   s.add_dependency	'cancan'
   s.add_dependency 'unidecoder'
   s.add_dependency 'omniauth-facebook'
+  s.add_dependency 'omniauth-google-oauth2'
 end
