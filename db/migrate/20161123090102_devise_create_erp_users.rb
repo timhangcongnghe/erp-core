@@ -20,6 +20,9 @@ class DeviseCreateErpUsers < ActiveRecord::Migration[5.0]
       t.string   :last_sign_in_ip
       t.string   :provider
       t.string   :uid
+      
+      #@todo online store
+      t.boolean  :backend_access, default: false
 
       ## Confirmable
       # t.string   :confirmation_token

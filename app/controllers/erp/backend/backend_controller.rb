@@ -5,8 +5,8 @@ module Erp::Backend
 		layout :set_layout
 		before_action :set_locale
 		before_action :set_view
-		
 		before_action :authenticate_user!
+		before_action :check_backend_access
 		
 		rescue_from CanCan::AccessDenied do |exception|
 			render :file => "erp/static/403.html", :status => 403, :layout => false
@@ -22,7 +22,15 @@ module Erp::Backend
 		
 		def default_url_options
 			{ locale: I18n.locale }
-		end	
+		end
+		
+		# Check if user has backend access
+		def check_backend_access
+			#@toda ugly announce
+			if !current_user.present? or !current_user.backend_access
+				render text: 'You are not authorized to perform this action!'
+			end
+		end
 		
 		private
 			def set_layout
