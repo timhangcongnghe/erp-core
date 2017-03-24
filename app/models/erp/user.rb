@@ -13,6 +13,10 @@ module Erp
     
     belongs_to :creator, class_name: "Erp::User", optional: true
     
+    if Erp::Core.available?("carts")
+			has_many :wish_lists, dependent: :destroy, class_name: 'Erp::Carts::WishList'
+		end
+    
     # Filters
     def self.filter(query, params)
       params = params.to_unsafe_hash
