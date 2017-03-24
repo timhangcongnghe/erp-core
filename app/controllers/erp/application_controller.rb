@@ -3,6 +3,8 @@ module Erp
 		# @todo add cart for application controller bescause User::Session login not run
 		include Erp::Carts::Frontend::Concerns::CurrentCart
 		before_action :set_cart
+		include Erp::Carts::Frontend::Concerns::CurrentCompare
+		before_action :set_compare
 		
 		Dir.glob(Rails.root.join('engines').to_s + "/*") do |d|
 			eg = d.split(/[\/\\]/).last
