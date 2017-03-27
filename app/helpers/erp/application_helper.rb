@@ -224,5 +224,10 @@ module Erp
 			end
 		end
     
+    # format price
+    def format_price(price)
+      number_to_currency(price, precision: 0, format: "%n đ", separator: ',')
+    end
+    
   end
 end
