@@ -5,7 +5,8 @@ Erp::Core::Engine.routes.draw do
 			module: :devise,
 			:controllers => {
 				:sessions => "erp/users/sessions",
-				:registrations => "erp/users/registrations"
+				:registrations => "erp/users/registrations",
+				:passwords => "erp/users/passwords",
 			}
 		
 		get '/auth/:provider/callback', to: 'frontend/users#omniauth_login'
