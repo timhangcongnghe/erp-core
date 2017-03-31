@@ -3,7 +3,7 @@ function addableformAddLine(addableform) {
     var partial = addableform.attr('partial');
     var container = addableform.find('.addableform-container');
     var type = addableform.attr('type');
-    var add_control = $(addableform.attr('add-control-selector'));
+    var add_control = addableform.find(addableform.attr('add-control-selector'));
     var items = container.find('.item-id');
     
     if(typeof(add_control) === 'undefined') {
@@ -15,7 +15,7 @@ function addableformAddLine(addableform) {
     if(typeof(type) === 'undefined') {
         type = 'normal';
     }
-    
+    console.log('add clicked');
     var exist_ids = [];
     if(items.length) {
         items.each(function () {
