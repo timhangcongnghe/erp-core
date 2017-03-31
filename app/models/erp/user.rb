@@ -13,8 +13,9 @@ module Erp
     
     belongs_to :creator, class_name: "Erp::User", optional: true
     
-    #@todo check if Contact Engine available
-    has_one :contact, class_name: "Erp::Contacts::Contact", foreign_key: 'user_id'
+    if Erp::Core.available?("contacts")
+			has_one :contact, class_name: "Erp::Contacts::Contact", foreign_key: 'user_id'
+		end
     
     if Erp::Core.available?("carts")
 			has_many :wish_lists, dependent: :destroy, class_name: 'Erp::Carts::WishList'
