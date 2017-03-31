@@ -6,6 +6,10 @@ module Erp::Frontend
     
     layout 'erp/frontend/index'
     
+    def current_ability
+			@current_ability ||= Erp::Ability.new(current_user)
+		end
+    
     private
 			def set_view
 				session[:current_view] = "frontend"
