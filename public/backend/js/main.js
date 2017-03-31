@@ -69,7 +69,7 @@ function initHiddabbleControls() {
 
 function jsForAjaxContent(container) {
     // date picker
-    container.find('.date-picker').each(function() {
+    container.find('.date-picker-erp').each(function() {
       $(this).datepicker({
           rtl: App.isRTL(),
           orientation: "left",
