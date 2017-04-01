@@ -5,6 +5,7 @@ module Erp
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :validatable
     
+    mount_uploader :avatar, Erp::AvatarUploader
     validates :name, :presence => true
     validates_format_of :email, :presence => true,
 												:with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
