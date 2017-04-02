@@ -49,11 +49,11 @@ module Erp
     # end
     
     version :system do
-      process resize_to_fit: [60, 60]
+      process resize_to_fill: [60, 60]
     end
     
     version :profile do
-      process resize_to_fit: [100, 100]
+      process resize_to_fill: [100, 100]
     end
   end
 end
