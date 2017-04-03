@@ -416,6 +416,9 @@ a:hover {
 .label-return_back {
     background-color: #ff9b04;
 }
+.label-orange {
+    background-color: #ff5000;
+}
 .label:not(.md-skip) {
     padding: 3px 6px 3px;
     font-size: 11px;
