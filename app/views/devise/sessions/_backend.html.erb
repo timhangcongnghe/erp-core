@@ -1,24 +1,24 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "login-form"}) do |f| %>
-    <h3 class="form-title font-green">Sign In</h3>
+    <h3 class="form-title font-green"><%= t('.sign_in') %></h3>
     <div class="alert alert-danger display-hide">
         <button class="close" data-close="alert"></button>
-        <span> Enter any username and password.</span>
+        <span> <%= t('.sign_in_warning') %></span>
     </div>
     <div class="form-group">
         <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-        <label class="control-label visible-ie8 visible-ie9">Username</label>
-        <%= f.email_field :email, autofocus: true, autocomplete: "off", placeholder: "Username", class: "form-control form-control-solid placeholder-no-fix" %>
+        <label class="control-label visible-ie8 visible-ie9"><%= t('.user') %></label>
+        <%= f.email_field :email, autofocus: true, autocomplete: "off", placeholder: t('.enter_user'), class: "form-control form-control-solid placeholder-no-fix" %>
     </div>
     <div class="form-group">
-        <label class="control-label visible-ie8 visible-ie9">Password</label>
-        <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control form-control-solid placeholder-no-fix" %>
+        <label class="control-label visible-ie8 visible-ie9"><%= t('.password') %></label>
+        <%= f.password_field :password, autocomplete: "off", placeholder: t('.enter_password'), class: "form-control form-control-solid placeholder-no-fix" %>
     </div>
     <div class="form-actions">
-        <button type="submit" class="btn green uppercase">Login</button>
+        <button type="submit" class="btn green uppercase"><%= t('.login') %></button>
         <label class="rememberme check mt-checkbox mt-checkbox-outline" for="user_remember_me">
-            <input name="user[remember_me]" type="hidden" value="0"><input type="checkbox" id="user_remember_me" name="user[remember_me]" value="1" />Remember
+            <input name="user[remember_me]" type="hidden" value="0"><input type="checkbox" id="user_remember_me" name="user[remember_me]" value="1" /><%= t('.remember_me') %>
             <span></span>
         </label>
-        <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
+        <a href="javascript:;" id="forget-password" class="forget-password"><%= t('.forgot_password') %></a>
     </div>
 <% end %>

@@ -62,6 +62,18 @@ vi:
     create: "Thêm mới"
     create_as: "Thêm mới"
     no_record_found: "Không tìm thấy kết quả"
+  devise:
+    sessions:
+      backend:
+        sign_in: "Đăng Nhập Hệ Thống"
+        user: "Email"
+        password: "Mật khẩu"
+        enter_user: "Nhập email..."
+        enter_password: "Nhập mật khẩu..."
+        sign_in_warning: "Bạn cần phải đăng nhập để tiếp tục."
+        remember_me: "Ghi nhớ"
+        login: "Đăng Nhập"
+        forgot_password: "Quên mật khẩu?"        
   will_paginate:
     page_entries_info:
       single_page:
