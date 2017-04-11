@@ -1,21 +1,13 @@
 module Erp
   class ApplicationController < ActionController::Base
-		# @todo add cart for application controller bescause User::Session login not run
-<<<<<<< Updated upstream
-		include Erp::Carts::Frontend::Concerns::CurrentCart
-		before_action :set_cart
-		include Erp::Carts::Frontend::Concerns::CurrentCompare
-		before_action :set_compare
-
-=======
 		if Erp::Core.available?("carts")
+			# @todo add cart for application controller bescause User::Session login not run
 			include Erp::Carts::Frontend::Concerns::CurrentCart
 			before_action :set_cart
 			include Erp::Carts::Frontend::Concerns::CurrentCompare
 			before_action :set_compare
 		end
 		
->>>>>>> Stashed changes
 		Dir.glob(Rails.root.join('engines').to_s + "/*") do |d|
 			eg = d.split(/[\/\\]/).last
 			if eg != "core" and Erp::Core.available?(eg)
