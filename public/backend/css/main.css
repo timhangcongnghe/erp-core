@@ -13,7 +13,7 @@ a:hover {
     font: normal normal normal 14px/1 FontAwesome;
 }
 .page-header.navbar .hor-menu .navbar-nav>li.active>a>i, .page-header.navbar .hor-menu .navbar-nav>li.current>a>i {
-    color: #fff;    
+    color: #fff;
 }
 .form-group.list-filters-search {
     padding: 0;
@@ -137,7 +137,7 @@ a:hover {
 }
 div.btn-control-file {
     /*margin-top: -45px;*/
-    text-align: center; 
+    text-align: center;
 }
 .btn-no-color {
     color: #fff;
@@ -231,7 +231,7 @@ div.alert.custom-box-shadow {
     height: 10px;
     border: solid #fff;
     border-width: 0 0 2px 0;
-    transform: none; 
+    transform: none;
 }
 th.sortable {
     cursor: pointer;
@@ -506,4 +506,7 @@ span.tooltips {
 .dataselect-input-group.multiple .dataselect-control {
     width: calc(100% - 15px);
     background: none;
+}
+.dataselect-value-item {
+    text-transform: inherit !important;
 }
