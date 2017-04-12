@@ -8,6 +8,7 @@ vi:
   custom_order: 'Order'
   #vietnamese translate global locales
   fullscreen: "Toàn màn hình"
+  image: "Hình ảnh"
   edit: "Cập nhật"
   status: "Trạng thái"
   creator: "Người tạo"

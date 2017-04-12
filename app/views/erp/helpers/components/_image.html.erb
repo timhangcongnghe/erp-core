@@ -1,0 +1,5 @@
+<% if !options[:object].nil? %>
+    <img class="image-datalist" src="<%= options[:object].image_url.system_logo %>">
+<% else %>
+    <img class="image-datalist" src="/backend/img/image-coming-soon.jpg">
+<% end %>
