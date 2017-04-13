@@ -510,3 +510,9 @@ span.tooltips {
 .dataselect-value-item {
     text-transform: inherit !important;
 }
+.pl-20 {
+    padding-left: 20px;
+}
+.property-value-select .form-group {
+    margin-bottom: 5px;
+}
