@@ -12,12 +12,16 @@ module Erp
 
     # get prev item
     def prev
-      self.class.where(parent_id: self.parent_id).where('custom_order < ?', self.custom_order).order('custom_order desc').first
+      query = self.class
+      query = query.where(parent_id: self.parent_id) if self.class.column_names.include?("parent_id")
+      query.where('custom_order < ?', self.custom_order).order('custom_order desc').first
     end
 
     # get next item
     def next
-      self.class.where(parent_id: self.parent_id).where('custom_order > ?', self.custom_order).order('custom_order asc').first
+      query = self.class
+      query = query.where(parent_id: self.parent_id) if self.class.column_names.include?("parent_id")
+      query.where('custom_order > ?', self.custom_order).order('custom_order asc').first
     end
 
     # move up item
