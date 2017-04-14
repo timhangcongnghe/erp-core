@@ -10,6 +10,11 @@ module Erp
       render partial: "erp/helpers/components/#{type}", locals: { options: options }
     end
 
+    # custom order column
+    def erp_datalist_order_column(options={})
+      render partial: "erp/helpers/list/datalist_order_column", locals: { options: options }
+    end
+
     # list actions button for list
     def erp_datalist_list_actions(actions=[])
       render partial: "erp/helpers/list/datalist_list_actions", locals: { actions: actions }

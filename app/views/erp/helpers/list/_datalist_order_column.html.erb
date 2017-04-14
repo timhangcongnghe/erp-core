@@ -1,0 +1,21 @@
+<%= options[:item].custom_order %>
+<% if params[:sort_by] == options[:sort_by] %>
+    <a data-method="PUT"
+        href="<%=
+            params[:sort_direction] == 'asc' ?
+            options[:move_up_url] :
+            options[:move_down_url]
+        %>"
+        class="ajax-link">
+            <i class="fa fa-caret-square-o-up icon-big"></i>
+    </a>
+    <a data-method="PUT"
+        href="<%=
+            params[:sort_direction] == 'asc' ?
+            options[:move_down_url] :
+            options[:move_up_url]
+        %>"
+        class="ajax-link">
+            <i class="fa fa-caret-square-o-down icon-big"></i>
+    </a>
+<% end %>
