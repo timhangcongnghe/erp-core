@@ -231,7 +231,7 @@ module Erp
 
     # format price
     def format_price(price)
-      number_to_currency(price, precision: 0, format: "%n đ", separator: ',')
+      number_to_currency(price, precision: 0, format: "%n₫", separator: ',')
     end
 
   end
