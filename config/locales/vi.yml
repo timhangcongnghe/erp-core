@@ -46,23 +46,33 @@ vi:
     img_remove: "Xóa"
     ok: "Đồng ý"
     cancel: "Bỏ qua"
-    create: Tạo tài khoản
-    delete: Xóa
-    user: Tài khoản
-    users: Người dùng
-    name: Tên người dùng
-    email: Địa chỉ email
-    password: Mật khẩu
-    password_confirm: Xác nhận mật khẩu
-    timezone: Múi giờ
-    enter_user_name: Nhập tên tài khoản người dùng...
-    enter_user_email: Nhập địa chỉ email (bắt buộc)
-    enter_password: Nhập mã bảo vệ (bắt buộc)
-    enter_password_confirm: Nhập lại mã bảo vệ (bắt buộc) 
-    choose_timezone: Lựa chọn múi giờ phù hợp với khu vực người dùng...
+    create: "Tạo tài khoản"
+    edit: "Sửa tài khoản"
+    delete: "Xóa tài khoản"
+    delete_confirm: "Bạn chắc chắn muốn xóa?"
+    user: "Tài khoản"
+    users: "Người dùng"
+    name: "Tên người dùng"
+    email: "Địa chỉ email"
+    password: "Mật khẩu"
+    password_confirm: "Xác nhận mật khẩu"
+    timezone: "Múi giờ"
+    enter_user_name: "Nhập tên tài khoản người dùng..."
+    enter_user_email: "Nhập địa chỉ email (bắt buộc)"
+    enter_password: "Nhập mã bảo vệ (bắt buộc)"
+    enter_password_confirm: "Nhập lại mã bảo vệ (bắt buộc)"
+    choose_timezone: "Lựa chọn múi giờ phù hợp với khu vực người dùng..."
     create: "Thêm mới"
     create_as: "Thêm mới"
     no_record_found: "Không tìm thấy kết quả"
+    activate: "Kích hoạt tài khoản"
+    deactivate: "Khóa tài khoản"
+    status: "Trạng thái"
+    creator: "Người tạo"
+    created_at: "Ngày tạo"
+    active: "Kích hoạt"
+    inactive: "Chưa kích hoạt"
+    submit: "Lưu"
   devise:
     sessions:
       backend:
