@@ -64,19 +64,21 @@
                         <%= erp_datalist_row_actions(
                             [
                                 {
-                                    text: '<i class="fa fa-edit"></i> '+t('contacts.titles.edit'),
+                                    text: '<i class="fa fa-edit"></i> '+t('core.edit'),
                                     href: erp.edit_backend_user_path(user)
                                 },
                                 {
                                     text: '<i class="fa fa-check"></i> '+t('core.deactivate'),
                                     href: erp.deactivate_backend_users_path(id: user),
                                     data_method: 'PUT',
+                                    hide: !user.active,
                                     class: 'ajax-link'
                                 },
                                 {
                                     text: '<i class="fa fa-exclamation"></i> '+t('core.activate'),
                                     href: erp.activate_backend_users_path(id: user),
                                     data_method: 'PUT',
+                                    hide: user.active,
                                     class: 'ajax-link'
                                 },
                                 {
