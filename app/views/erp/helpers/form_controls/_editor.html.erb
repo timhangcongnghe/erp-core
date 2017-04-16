@@ -7,6 +7,9 @@
     <% if options[:label].present? %>
         <label><%= options[:label] if options[:label].present? %></label>
     <% end %>
+    <% if options[:errors].present? %>
+        <span class="help-block" style="color: #e73d4a;"> <%= options[:errors].join('').html_safe %></span>
+    <% end %>
     <% if options[:help].present? %>
         <i class="fa fa-info-circle right tooltips icon-default-color"
         data-original-title="<%= options[:help] %>"
