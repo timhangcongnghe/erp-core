@@ -231,6 +231,7 @@ module Erp
 
     # format price
     def format_price(price)
+      price = (price.to_f/1000).round*1000
       number_to_currency(price, precision: 0, format: "%n₫", separator: ',')
     end
 
