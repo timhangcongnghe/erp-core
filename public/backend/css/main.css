@@ -516,3 +516,9 @@ span.tooltips {
 .property-value-select .form-group {
     margin-bottom: 5px;
 }
+.bg-dark {
+    background: #555;
+}
+.bg-grey {
+    color: #555;
+}
