@@ -3,18 +3,18 @@ module Erp
     class UsersController < Erp::Backend::BackendController
       before_action :set_user, only: [:deactivate, :activate, :edit, :update, :destroy]
       before_action :set_users, only: [:deactivate_all, :activate_all, :delete_all]
-      
+
       # GET /users
       def index
       end
-      
+
       # POST /users/list
       def list
         @users = User.search(params).paginate(:page => params[:page], :per_page => 3)
-        
+
         render layout: nil
       end
-      
+
       # GET /users/new
       def new
         @user = User.new
@@ -28,17 +28,17 @@ module Erp
       def create
         @user = User.new(user_params)
         @user.creator = current_user
-  
+
         if @user.save
           if request.xhr?
             render json: {
               status: 'success',
               text: @user.name,
               value: @user.id
-            }              
+            }
           else
             redirect_to erp.edit_backend_user_path(@user), notice: 'User was successfully created.'
-          end            
+          end
         else
           render :new
         end
@@ -52,10 +52,10 @@ module Erp
               status: 'success',
               text: @user.name,
               value: @user.id
-            }              
+            }
           else
             redirect_to erp.edit_backend_user_path(@user), notice: 'User was successfully updated.'
-          end            
+          end
         else
           render :edit
         end
@@ -64,7 +64,7 @@ module Erp
       # DELETE /users/1
       def destroy
         @user.destroy
-        
+
         respond_to do |format|
           format.html { redirect_to erp.backend_users_path, notice: 'User was successfully destroyed.' }
           format.json {
@@ -75,11 +75,11 @@ module Erp
           }
         end
       end
-      
+
       # DELETE /users/delete_all?ids=1,2,3
-      def delete_all         
+      def delete_all
         @users.destroy_all
-        
+
         respond_to do |format|
           format.json {
             render json: {
@@ -89,7 +89,7 @@ module Erp
           }
         end
       end
-      
+
       def dataselect
         respond_to do |format|
           format.json {
@@ -97,7 +97,7 @@ module Erp
           }
         end
       end
-      
+
       def deactivate
         @user.deactivate
         respond_to do |format|
@@ -110,7 +110,7 @@ module Erp
           }
         end
       end
-      
+
       def activate
         @user.activate
         respond_to do |format|
@@ -123,11 +123,11 @@ module Erp
           }
         end
       end
-      
+
       # Deactivate /users/deactivate_all?ids=1,2,3
-        def deactivate_all         
+        def deactivate_all
           @users.deactivate_all
-          
+
           respond_to do |format|
             format.json {
               render json: {
@@ -137,11 +137,11 @@ module Erp
             }
           end
         end
-        
+
         # Activate /users/activate_all?ids=1,2,3
         def activate_all
           @users.activate_all
-          
+
           respond_to do |format|
             format.json {
               render json: {
@@ -149,19 +149,19 @@ module Erp
                 'type': 'success'
               }
             }
-          end          
+          end
         end
-      
+
       private
         # Use callbacks to share common setup or constraints between actions.
         def set_user
           @user = User.find(params[:id])
         end
-          
+
         def set_users
           @users = User.where(id: params[:ids])
         end
-  
+
         # Only allow a trusted parameter "white list" through.
         def user_params
           params.fetch(:user, {}).permit(:name, :email, :password, :timezone)

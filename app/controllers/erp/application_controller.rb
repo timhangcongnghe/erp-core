@@ -7,7 +7,7 @@ module Erp
 			include Erp::Carts::Frontend::Concerns::CurrentCompare
 			before_action :set_compare
 		end
-		
+
 		Dir.glob(Rails.root.join('engines').to_s + "/*") do |d|
 			eg = d.split(/[\/\\]/).last
 			if eg != "core" and Erp::Core.available?(eg)
@@ -17,6 +17,7 @@ module Erp
 
 		# @todo: seperate backend fronend api
 		def after_sign_in_path_for(resource_or_scope)
+			set_flash_message :notice, :signed_in
 			if session[:current_view] == 'frontend'
 				url_for('/')
 			else

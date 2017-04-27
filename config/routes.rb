@@ -8,9 +8,9 @@ Erp::Core::Engine.routes.draw do
 				:registrations => "erp/users/registrations",
 				:passwords => "erp/users/passwords",
 			}
-		
+
 		get '/auth/:provider/callback', to: 'frontend/users#omniauth_login'
-		
+
 		namespace :backend do
 			get '/' => 'dashboard#index'
 			resources :users do
