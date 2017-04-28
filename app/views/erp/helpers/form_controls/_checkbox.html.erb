@@ -10,7 +10,7 @@
                             value="<%= options[:not_selected_value] %>"
                         >
                     <% end %>
-                    <input type="checkbox" <%= "checked" if options[:value] == true %>
+                    <input type="checkbox" <%= "checked" if options[:value] == true or options[:value] == option[:value] %>
                         name="<%= options[:name] if options[:name].present? %>"
                         id="<%= options[:id] if options[:id].present? %>"
                         value="<%= option[:value] %>"> <%= option[:text] %>

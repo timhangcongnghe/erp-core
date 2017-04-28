@@ -522,3 +522,9 @@ span.tooltips {
 .bg-grey {
     color: #555;
 }
+.permissions-container .form-group {
+    margin-bottom: 0;
+}
+.permissions-container h5 {
+    margin-bottom: 0;
+}

@@ -2,12 +2,12 @@
     <%= t('core.create') %>
 <% end %>
 
-<% content_for :page_title do %>    
+<% content_for :page_title do %>
     <a href=""><i class="fa fa-user"></i> <%= t('core.user') %></a> / <%= t('core.create') %>
 <% end %>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <% if @user.errors.any? %>
             <%= erp_form_control("form_error_message") %>
         <% end %>

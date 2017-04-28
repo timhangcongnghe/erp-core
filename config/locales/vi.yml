@@ -98,3 +98,29 @@ vi:
 
       multi_page: "Hiển thị từ %{from} - %{to} / %{count}"
       multi_page_html: "Hiển thị từ %{from} - %{to} / %{count}."
+  can:
+    permissions: "Phân Quyền"
+    products_comments:
+      label: "Bình luận sản phẩm"
+      create:
+        label: "Tạo mới"
+        text: "Cho phép"
+      delete:
+        label: "Xóa"
+        text: "Cho phép"
+    products_ratings:
+      label: "Đánh giá sản phẩm"
+      create:
+        label: "Tạo mới"
+        text: "Cho phép"
+      delete:
+        label: "Xóa"
+        text: "Cho phép"
+    articles_comments:
+      label: "Bình luận bài viết"
+      create:
+        label: "Tạo mới"
+        text: "Cho phép"
+      delete:
+        label: "Xóa"
+        text: "Cho phép"

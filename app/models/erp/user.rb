@@ -103,15 +103,65 @@ module Erp
 			return user
 		end
 
-    def selfdefaultPermissions
+    def self.permission_options
 			{
-				'product_comment_create' => 'yes',
-				'product_comment_delete' => 'own',
-				'product_review_create' => 'yes',
-				'product_review_delete' => 'own',
-				'article_comment_create' => 'yes',
-				'article_comment_delete' => 'own',
+				"products_comments" => {
+					"create" => {
+						"default" => "yes",
+						"type" => "checkbox",
+						"options" => ["no", "yes"]
+					},
+					"delete" => {
+						"default" => "no",
+						"type" => "checkbox",
+						"options" => ["no", "yes"]
+					}
+				},
+				"products_ratings" => {
+					"create" => {
+						"default" => "yes",
+						"type" => "checkbox",
+						"options" => ["no", "yes"]
+					},
+					"delete" => {
+						"default" => "no",
+						"type" => "checkbox",
+						"options" => ["no", "yes"]
+					}
+				},
+				"articles_comments" => {
+					"create" => {
+						"default" => "yes",
+						"type" => "checkbox",
+						"options" => ["no", "yes"]
+					},
+					"delete" => {
+						"default" => "no",
+						"type" => "checkbox",
+						"options" => ["no", "yes"]
+					}
+				},
 			}
+		end
+
+    def get_permissions
+			saved_permissions = {}
+			saved_permissions = JSON.parse(self.permissions) if self.permissions.present?
+
+			permissions = {}
+			permission_options = User.permission_options
+			permission_options.each do |group|
+				permissions[group[0]] = {}
+				group[1].each do |per|
+					if saved_permissions[group[0]].present? and saved_permissions[group[0]][per[0]].present?
+						permissions[group[0]][per[0]] = saved_permissions[group[0]][per[0]]
+					else
+						permissions[group[0]][per[0]] = per[1]["default"]
+					end
+				end
+			end
+
+			permissions
 		end
   end
 end

@@ -28,6 +28,7 @@ module Erp
       def create
         @user = User.new(user_params)
         @user.creator = current_user
+        @user.permissions = params.to_unsafe_hash[:permissions].to_json
 
         if @user.save
           if request.xhr?
@@ -46,7 +47,15 @@ module Erp
 
       # PATCH/PUT /users/1
       def update
+        if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+          params[:user].delete(:password)
+          params[:user].delete(:password_confirmation)
+        end
+
         if @user.update(user_params)
+          @user.permissions = params.to_unsafe_hash[:permissions].to_json
+          @user.save
+
           if request.xhr?
             render json: {
               status: 'success',

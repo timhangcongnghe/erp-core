@@ -1,15 +1,15 @@
-<%= form_for([erp, :backend, user]) do |f| %>    
+<%= form_for([erp, :backend, user]) do |f| %>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <%= erp_form_control('image', {
                 img_src: '',
                 name: 'user[avatar]',
                 width: 150,
                 height: 150
-            }) %>            
+            }) %>
             <%= erp_form_control("text", {
                 name: 'user[name]',
-                value: user.name,                   
+                value: user.name,
                 label: t('core.name'),
                 placeholder: t('core.enter_user_name'),
                 required: true,
@@ -17,14 +17,14 @@
             }) %>
             <%= erp_form_control("email", {
                 name: 'user[email]',
-                value: user.email,                   
+                value: user.email,
                 label: t('core.email'),
                 placeholder: t('core.enter_user_email'),
                 required: true,
                 errors: user.errors.full_messages_for(:email)
             }) %>
             <%= erp_form_control("password", {
-                name: 'user[password]',    
+                name: 'user[password]',
                 label: t('core.password'),
                 placeholder: t('core.enter_password'),
                 required: true,
@@ -45,6 +45,27 @@
                 value: user.timezone,
                 options: Erp::User.get_list_timezone
             }) %>
+        </div>
+        <div class="col-md-6 permissions-container">
+            <h4 class="text-bold mb-20"><%= t('can.permissions') %></h4>
+            <% Erp::User.permission_options.each do |permission_group| %>
+                <h5 class="text-semibold"><%= t('can.'+permission_group[0].to_s+'.label') %></h5>
+                <div class="row">
+                    <% permission_group[1].each do |permission| %>
+                        <div class="col-md-6">
+                            <h5><%= t('can.'+permission_group[0].to_s+'.'+permission[0].to_s+'.label') %></h5>
+                            <% if permission[1]["type"] == 'checkbox' %>
+                                <%= erp_form_control('checkbox', {
+                                    name: 'permissions['+permission_group[0].to_s+']['+permission[0].to_s+']',
+                                    value: user.get_permissions[permission_group[0]][permission[0]],
+                                    not_selected_value: permission[1]["options"][0],
+                                    options: [{text: t('can.'+permission_group[0].to_s+'.'+permission[0].to_s+'.text'), value: permission[1]["options"][1]}]
+                                }) %>
+                            <% end %>
+                        </div>
+                    <% end %>
+                </div>
+            <% end %>
         </div>
     </div>
     <hr>
