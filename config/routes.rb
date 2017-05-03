@@ -7,6 +7,7 @@ Erp::Core::Engine.routes.draw do
 				:sessions => "erp/users/sessions",
 				:registrations => "erp/users/registrations",
 				:passwords => "erp/users/passwords",
+				:confirmations => "erp/users/confirmations",
 			}
 
 		get '/auth/:provider/callback', to: 'frontend/users#omniauth_login'
