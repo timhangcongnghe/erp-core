@@ -20,7 +20,7 @@ vi:
       confirmation_instructions:
         subject: "Confirmation instructions"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Hướng dẫn thay đổi mật khẩu"
       unlock_instructions:
         subject: "Unlock instructions"
       password_change:
