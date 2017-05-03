@@ -1,6 +1,6 @@
 module Erp
   class ApplicationMailer < ActionMailer::Base
-    default from: "soft.support@hoangkhang.com.vn"
+    default from: "TIMHANGCONGNGHE.VN <soft.support@hoangkhang.com.vn>"
     layout 'mailer'
 
     private
