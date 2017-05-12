@@ -401,6 +401,9 @@ a:hover {
 .label-confirmed {
     background-color: #36c6d3;
 }
+.label-finished {
+    background-color: #4caf50;
+}
 .label-cancelled {
     background-color: #ed6b75;
 }
