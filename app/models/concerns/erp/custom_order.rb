@@ -47,7 +47,7 @@ module Erp
     end
 
     module ClassMethods
-      def self.reset_custom_order
+      def reset_custom_order
         self.order("created_at").each_with_index do |item,index|
           item.update_column(:custom_order, index)
         end
