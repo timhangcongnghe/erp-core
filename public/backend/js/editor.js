@@ -2,10 +2,10 @@ $(document).ready(function() {
     tinymce.init({
       selector: '.editor',
       height: 500,
-      menubar: false,
+      menubar: true,
       relative_urls: false,
       plugins: [
-        'advlist autolink lists link image charmap print preview anchor',
+        'table advlist autolink lists link image charmap print preview anchor',
         'searchreplace visualblocks code fullscreen',
         'insertdatetime media table contextmenu paste code'
       ],
@@ -28,14 +28,14 @@ $(document).ready(function() {
       content_css: '//www.tinymce.com/css/codepen.min.css',
       statusbar: false,
     });
-    
+
     $(document).ready(function() {
         $(document).on('click', '.editor-insert-image-button', function() {
             var button = $(this);
             var form = button.parents('form');
             var group = button.parents('.form-group');
             var file = group.find('input[name="editor_upload[image_url]"]');
-            
+
             file.trigger('click');
         });
         $(document).on('change', 'input[name="editor_upload[image_url]"]', function() {
@@ -61,7 +61,7 @@ $(document).ready(function() {
                 contentType: false,
                 processData: false
             });
-        
+
             return false;
         });
     });
