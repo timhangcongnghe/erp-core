@@ -1,3 +1,5 @@
+require "rmega"
+
 module Erp
   class System < ActiveRecord::Base
     def self.columns
@@ -15,7 +17,7 @@ module Erp
     end
 
     def self.backup(params)
-      bk_dir = params[:backup_path]
+      bk_dir = params[:backup_dir]
       Dir.mkdir(bk_dir) unless File.exists?(bk_dir)
 
       root_dir = params[:dir].present? ? params[:dir] : ""
@@ -41,7 +43,7 @@ module Erp
       backup_cmd = "mkdir #{bk_dir}/#{dir} && "
       backup_cmd += "pg_dump #{database} >> #{bk_dir}/#{dir}/data.dump && " if params[:database].present?
       backup_cmd += "cp -a #{root_dir}public/uploads #{bk_dir}/#{dir}/ && " if !params[:file].nil? && File.directory?("#{root_dir}public/uploads")
-      backup_cmd += "zip -r #{bk_dir}/#{dir}.zip #{bk_dir}/#{dir} && "
+      backup_cmd += "cd #{bk_dir}/#{dir} && zip -r #{bk_dir}/#{dir}.zip ./* && "
       backup_cmd += "rm -rf #{bk_dir}/#{dir}"
 
       puts backup_cmd
@@ -90,6 +92,56 @@ module Erp
 
         puts "Done!"
       end
+    end
+
+    # upload mega.nz
+    def self.upload_backup_to_mega_nz(params)
+      bk_dir = params[:backup_dir]
+      root_dir = params[:dir].present? ? params[:dir] : ""
+      revision_max = 10
+      backup_folder_name = 'dacsanvungmien.vn'
+
+      # find lastest backup file
+      latest_backup_file = nil
+      (Dir.glob("#{bk_dir}/*").sort{|a,b| b <=> a}).each do |f|
+        if f.include?(".zip")
+          latest_backup_file = f
+          break
+        end
+      end
+      return if latest_backup_file.nil?
+      file_name = latest_backup_file.split("/").last
+      puts "Uploading... " + latest_backup_file
+
+      storage = Rmega.login("timhangcongnghe.vn@gmail.com", "aA456321@#$")
+
+      # Find backup folder
+      backup_folder = nil
+      storage.root.folders.each do |folder|
+        # puts "Folder #{folder.name} contains #{folder.files.size} files."
+        backup_folder = folder if folder.name == backup_folder_name
+      end
+      backup_folder = storage.root.create_folder(backup_folder_name) if backup_folder.nil?
+
+      # Check if already upload
+      if backup_folder.files.find { |file| file.name == file_name }
+        puts "file exists!"
+        return
+      end
+
+      # upload file
+      backup_folder.upload(latest_backup_file)
+
+      # Delete last file if revision_max
+      count = backup_folder.files.count
+      backup_folder.files.each_with_index do |file,index|
+        if count - index > revision_max
+          puts "Deleting old backup... #{file.name}"
+          file.delete
+        end
+      end
+
+      puts "done"
     end
   end
 end
