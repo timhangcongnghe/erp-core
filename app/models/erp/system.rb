@@ -113,7 +113,7 @@ module Erp
       file_name = latest_backup_file.split("/").last
       puts "Uploading... " + latest_backup_file
 
-      storage = Rmega.login("timhangcongnghe.vn@gmail.com", "aA456321@#$")
+      storage = Rmega.login('timhangcongnghe.vn@gmail.com', 'aA456321@#$')
 
       # Find backup folder
       backup_folder = nil
