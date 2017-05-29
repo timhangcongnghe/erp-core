@@ -99,6 +99,7 @@ module Erp
 				email: auth["info"]["email"].present? ? auth["info"]["email"] : "#{(0...50).map { ('a'..'z').to_a[rand(26)]}.join}@unknown.com",
 				password: 'aA456321@',
 			})
+			user.skip_confirmation!
 			user.save
 			return user
 		end
