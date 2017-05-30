@@ -528,3 +528,9 @@ span.tooltips {
 .permissions-container h5 {
     margin-bottom: 0;
 }
+.dropdown.active .pointer:hover {
+    cursor: pointer;
+}
+.dropdown ul.dropdown-menu {
+    min-width: 100%;
+}
