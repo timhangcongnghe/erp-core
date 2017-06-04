@@ -28,7 +28,7 @@ module Erp::Backend
 		def check_backend_access
 			#@toda ugly announce
 			if !current_user.present? or !current_user.backend_access
-				render text: 'You are not authorized to perform this action!'
+				render(:status => 404)
 			end
 		end
 		
