@@ -534,3 +534,6 @@ span.tooltips {
 .dropdown ul.dropdown-menu {
     min-width: 100%;
 }
+.format-price {
+    font-family: Arial, sans-serif;
+}
