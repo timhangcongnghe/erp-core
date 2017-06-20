@@ -101,6 +101,8 @@ a:hover {
     position: absolute;
     width: 100%;
     z-index: 10056;
+    max-height: 200px;
+    overflow: scroll;
 }
 .dataselect-data ul {
     background: #fff;
