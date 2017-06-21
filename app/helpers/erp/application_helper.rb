@@ -202,7 +202,7 @@ module Erp
 
     # remove html and reuncate text
     def short_text(text, length=50)
-      strip_tags(text).split[0..length-1].join(" ")
+      strip_tags(text).split[0..length-1].join(" ").gsub('&amp;','&')
     end
 
     # convert string to url friendly string
