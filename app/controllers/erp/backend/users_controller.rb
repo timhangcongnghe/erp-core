@@ -10,7 +10,7 @@ module Erp
 
       # POST /users/list
       def list
-        @users = User.search(params).paginate(:page => params[:page], :per_page => 3)
+        @users = User.search(params).paginate(:page => params[:page], :per_page => 20)
 
         render layout: nil
       end
