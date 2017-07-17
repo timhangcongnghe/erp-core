@@ -1,14 +1,14 @@
 <% content_for :title do %>
-    <%= t('core.user') %>
+    <%= t('.user') %>
 <% end %>
 
 <% content_for :page_title do %>
-    <i class="fa fa-user"></i> <%= t('core.user') %>
+    <i class="fa fa-users"></i> <%= t('.user') %>
 <% end %>
 
 <% content_for :page_toolbar do %>
     <%= erp_component('button/create', {
-        text: t('core.create'),
+        text: t('.create'),
         href: erp.new_backend_user_path,
         class: 'btn-noborder'
     }) %>
@@ -18,20 +18,20 @@
     url: erp.list_backend_users_path,
     keywords: [
         {
-            text: t('core.name'), name: 'name'
+            text: t('.name'), name: 'name'
         },
         {
-            text: t('core.email'), name: 'email'
+            text: t('.email'), name: 'email'
         }
     ],
     actions: [
         {
-            text: '<i class="fa fa-check"></i> '+t('core.activate'),
+            text: '<i class="fa fa-check"></i> '+t('.activate'),
             url: erp.activate_all_backend_users_path,
             data_method: 'PUT'
         },
         {
-            text: '<i class="fa fa-exclamation"></i> '+t('core.deactivate'),
+            text: '<i class="fa fa-exclamation"></i> '+t('.deactivate'),
             url: erp.deactivate_all_backend_users_path,
             data_method: 'PUT'
         },
@@ -39,27 +39,24 @@
             divider: true
         },
         {
-            text: '<i class="fa fa-trash"></i> '+t('core.delete'),
+            text: '<i class="fa fa-trash"></i> '+t('.delete'),
             url: erp.delete_all_backend_users_path,
             data_method: 'DELETE',
-            data_confirm: t('core.delete_confirm') 
+            data_confirm: t('.delete_confirm') 
         }
     ],
     columns: [
         {
-            text: t('core.name'), name: 'name', value: true, checked: true
+            text: t('.name'), name: 'name', value: true, checked: true
         },
         {
-            text: t('core.email'), name: 'email', value: true, checked: true
+            text: t('.email'), name: 'email', value: true, checked: true
         },
         {
-            text: t('core.status'), name: 'status', value: true, checked: true
+            text: t('status'), name: 'status', value: true, checked: true
         },
         {
-            text: t('core.creator'), name: 'creator', value: true, checked: false
-        },
-        {
-            text: t('core.created_at'), name: 'created_at', value: true, checked: false
+            text: t('created_at'), name: 'created_at', value: true, checked: false
         }
     ]
 ) %>    

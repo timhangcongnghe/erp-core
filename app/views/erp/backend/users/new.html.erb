@@ -1,9 +1,10 @@
 <% content_for :title do %>
-    <%= t('core.create') %>
+    <%= t('.create') %>
 <% end %>
 
 <% content_for :page_title do %>
-    <a href=""><i class="fa fa-user"></i> <%= t('core.user') %></a> / <%= t('core.create') %>
+    <a href="<%= erp.backend_users_path %>">
+        <i class="fa fa-users"></i> <%= t('.user') %></a> / <%= t('.create') %>
 <% end %>
 
 <div class="row">

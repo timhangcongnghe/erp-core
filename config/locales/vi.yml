@@ -6,6 +6,8 @@ vi:
   login: "Đăng nhập"
   logout: "Đăng xuất"
   custom_order: 'Order'
+  please_select_at_least_one_row: "Vui lòng chọn ít nhất 1 đối tượng"
+  no_record_found: "Không tìm thấy kết quả"
   #vietnamese translate global locales
   fullscreen: "Toàn màn hình"
   image: "Hình ảnh"
@@ -21,6 +23,8 @@ vi:
   unarchive: "Sử dụng lại"
   delete_confirm: "Bạn có chắc muốn xóa?"
   submit: "Lưu"
+  ok: "Đồng ý"
+  or: "hoặc"
   cancel: "Hủy"
   date_format_js: "yyyy-mm-dd"
   date_format: "%Y-%m-%d"
@@ -30,49 +34,81 @@ vi:
       backend:
         header_search_box:
           search: "Tìm kiếm..."
+        sidebar:
+          user: "Quản lý tài khoản"
+          users: "Tài khoản"
+  erp:
+    backend:
+      users:
+        create:
+          success: "Thêm tài khoản thành công."
+        update:
+          success: "Cập nhật tài khoản thành công."
+        destroy:
+          success: "Xóa tài khoản thành công."
+        delete_all:
+          success: "Xóa tài khoản được chọn thành công."
+        activate_all:
+          success: "Kích hoạt tài khoản được chọn thành công."
+        deactivate_all:
+          success: "Khóa tài khoản được chọn thành công."
+        activate:
+          success: "Kích hoạt tài khoản thành công."
+        deactivate:
+          success: "Khóa tài khoản thành công."
+        index:
+          create: "Thêm tài khoản"
+          user: "Tài khoản"
+          name: "Tên người dùng"
+          email: "Địa chỉ email"
+          activate: "Kích hoạt tài khoản"
+          deactivate: "Khóa tài khoản"
+          delete: "Xóa tài khoản"
+          delete_confirm: "Bạn chắc chắn muốn xóa?"
+        list:
+          name: "Tên người dùng"
+          email: "Địa chỉ email"
+          activate: "Kích hoạt tài khoản"
+          deactivate: "Khóa tài khoản"
+          delete: "Xóa tài khoản"
+          active: "Kích hoạt"
+          inactive: "Chưa kích hoạt"
+          delete_confirm: "Bạn chắc chắn muốn xóa?"
+        new:
+          user: "Tài khoản"
+          create: "Thêm tài khoản"
+        edit:
+          user: "Tài khoản"
+          create: "Thêm tài khoản"
+          edit: "Cập nhật"
+        form:
+          name: "Tên người dùng"
+          email: "Địa chỉ email"
+          enter_user_name: "Nhập tên người dùng"
+          enter_email: "Nhập địa chỉ email"
+          password: "Mật khẩu"
+          password_confirm: "Xác nhận mật khẩu"
+          enter_password: "Nhập mật khẩu..."
+          enter_password_confirm: "Nhập lại mật khẩu..."
+          timezone: "Múi giờ"
+          choose_timezone: "Chọn múi giờ..."          
   core:
-    dashboard: "Dashboard"
-    or: "hoặc"
     search_keyword_for: Tìm theo <span class="bold">%{name}</span> với từ khóa <span class="keyword bold" text="%{name}" name="%{keyword}"></span>
     search: "Tìm theo"
     for: "cho"
     columns: "Ẩn/Hiện cột"
     filters: "Bộ lọc"
     actions: "Chọn thao tác"
-    type_to_search: "Nhập để tìm kiếm..."
+    type_to_search: "Nhập từ khóa để tìm kiếm..."
     form_has_error_message: "Có một vài lỗi trong lúc xác nhận. Vui lòng kiểm tra lại."
     img_select: "Chọn hình ảnh"
     img_update: "Cập nhật"
-    img_remove: "Xóa"
-    ok: "Đồng ý"
-    cancel: "Bỏ qua"
-    create: "Tạo tài khoản"
-    edit: "Sửa tài khoản"
-    delete: "Xóa tài khoản"
-    delete_confirm: "Bạn chắc chắn muốn xóa?"
-    user: "Tài khoản"
-    users: "Người dùng"
-    name: "Tên người dùng"
-    email: "Địa chỉ email"
-    password: "Mật khẩu"
-    password_confirm: "Xác nhận mật khẩu"
-    timezone: "Múi giờ"
-    enter_user_name: "Nhập tên tài khoản người dùng..."
-    enter_user_email: "Nhập địa chỉ email (bắt buộc)"
-    enter_password: "Nhập mã bảo vệ (bắt buộc)"
-    enter_password_confirm: "Nhập lại mã bảo vệ (bắt buộc)"
-    choose_timezone: "Lựa chọn múi giờ phù hợp với khu vực người dùng..."
+    img_remove: "Xóa hình ảnh"
+    remove: "Xóa đường dẫn"
+    select_file: "Chọn file"
+    change: "Thay đổi"
     create: "Thêm mới"
     create_as: "Thêm mới"
-    no_record_found: "Không tìm thấy kết quả"
-    activate: "Kích hoạt tài khoản"
-    deactivate: "Khóa tài khoản"
-    status: "Trạng thái"
-    creator: "Người tạo"
-    created_at: "Ngày tạo"
-    active: "Kích hoạt"
-    inactive: "Chưa kích hoạt"
-    submit: "Lưu"
   devise:
     sessions:
       backend:

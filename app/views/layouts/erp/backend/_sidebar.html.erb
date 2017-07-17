@@ -28,8 +28,8 @@
                 </li>
                 <li class="nav-item <%= "active open" if ["erp/backend/users"].include?(params[:controller]) %>">
                     <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="fa fa-user"></i>
-                        <span class="title"><%= t('core.user') %></span>
+                        <i class="fa fa-users"></i>
+                        <span class="title"><%= t('.user') %></span>
                         <% if ["erp/backend/users"].include?(params[:controller]) %>
                             <span class="selected"></span>
                             <span class="arrow open"></span>
@@ -40,7 +40,7 @@
                     <ul class="sub-menu">
                         <li class="nav-item <%= "active open" if ["erp/backend/users"].include?(params[:controller]) %>">
                             <a href="<%= erp.backend_users_path %>" class="nav-link ">
-                                <span class="title"><%= t('core.users') %></span>
+                                <span class="title"><%= t('.users') %></span>
                                 <% if ["erp/backend/contacts"].include?(params[:controller]) %>
                                 <span class="selected"></span>
                                 <% end %>

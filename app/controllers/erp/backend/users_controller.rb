@@ -63,7 +63,7 @@ module Erp
               value: @user.id
             }
           else
-            redirect_to erp.edit_backend_user_path(@user), notice: 'User was successfully updated.'
+            redirect_to erp.edit_backend_user_path(@user), notice: t('.success')
           end
         else
           render :edit
@@ -75,10 +75,10 @@ module Erp
         @user.destroy
 
         respond_to do |format|
-          format.html { redirect_to erp.backend_users_path, notice: 'User was successfully destroyed.' }
+          format.html { redirect_to erp.backend_users_path, notice: t('.success') }
           format.json {
             render json: {
-              'message': 'User was successfully destroyed.',
+              'message': t('.success'),
               'type': 'success'
             }
           }
@@ -92,7 +92,7 @@ module Erp
         respond_to do |format|
           format.json {
             render json: {
-              'message': 'Users were successfully destroyed.',
+              'message': t('.success'),
               'type': 'success'
             }
           }
@@ -110,10 +110,10 @@ module Erp
       def deactivate
         @user.deactivate
         respond_to do |format|
-          format.html { redirect_to erp.backend_users_path, notice: 'User was successfully inactive.' }
+          format.html { redirect_to erp.backend_users_path, notice: t('.success') }
           format.json {
             render json: {
-              'message': 'User was successfully archived.',
+              'message': t('.success'),
               'type': 'success'
             }
           }
@@ -123,10 +123,10 @@ module Erp
       def activate
         @user.activate
         respond_to do |format|
-          format.html { redirect_to erp.backend_users_path, notice: 'User was successfully active.' }
+          format.html { redirect_to erp.backend_users_path, notice: t('.success') }
           format.json {
             render json: {
-              'message': 'User was successfully active.',
+              'message': t('.success'),
               'type': 'success'
             }
           }
@@ -140,7 +140,7 @@ module Erp
           respond_to do |format|
             format.json {
               render json: {
-                'message': 'Users were successfully inactive.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }
@@ -154,7 +154,7 @@ module Erp
           respond_to do |format|
             format.json {
               render json: {
-                'message': 'Users were successfully active.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }
@@ -173,7 +173,7 @@ module Erp
 
         # Only allow a trusted parameter "white list" through.
         def user_params
-          params.fetch(:user, {}).permit(:name, :email, :password, :timezone)
+          params.fetch(:user, {}).permit(:avatar, :name, :email, :password, :timezone)
         end
     end
   end

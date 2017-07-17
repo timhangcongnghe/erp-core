@@ -1,8 +1,8 @@
-<%= form_for([erp, :backend, user]) do |f| %>
+<%= form_for([erp, :backend, user], html: {multipart: true}) do |f| %>
     <div class="row">
         <div class="col-md-6">
             <%= erp_form_control('image', {
-                img_src: '',
+                img_src: user.avatar,
                 name: 'user[avatar]',
                 width: 150,
                 height: 150
@@ -10,37 +10,37 @@
             <%= erp_form_control("text", {
                 name: 'user[name]',
                 value: user.name,
-                label: t('core.name'),
-                placeholder: t('core.enter_user_name'),
+                label: t('.name'),
+                placeholder: t('.enter_user_name'),
                 required: true,
                 errors: user.errors.full_messages_for(:name)
             }) %>
             <%= erp_form_control("email", {
                 name: 'user[email]',
                 value: user.email,
-                label: t('core.email'),
-                placeholder: t('core.enter_user_email'),
+                label: t('.email'),
+                placeholder: t('.enter_email'),
                 required: true,
                 errors: user.errors.full_messages_for(:email)
             }) %>
             <%= erp_form_control("password", {
                 name: 'user[password]',
-                label: t('core.password'),
-                placeholder: t('core.enter_password'),
+                label: t('.password'),
+                placeholder: t('.enter_password'),
                 required: true,
                 errors: user.errors.full_messages_for(:password)
             }) %>
             <%= erp_form_control("password", {
                 name: 'user[password_confirmation]',
-                label: t('core.password_confirm'),
-                placeholder: t('core.enter_password_confirm'),
+                label: t('.password_confirm'),
+                placeholder: t('.enter_password_confirm'),
                 required: true,
                 errors: user.errors.full_messages_for(:password_confirmation)
             }) %>
             <%= erp_form_control('select', {
-                label: t('core.timezone'),
+                label: t('.timezone'),
                 name: 'user[timezone]',
-                placeholder: t('core.choose_timezone'),
+                placeholder: t('.choose_timezone'),
                 id: '',
                 value: user.timezone,
                 options: Erp::User.get_list_timezone
@@ -70,11 +70,11 @@
     </div>
     <hr>
     <%= erp_component('button/save', {
-        text: t('core.submit'),
+        text: t('submit'),
         class: ''
     }) %>
     <%= erp_component('button/cancel', {
-        text: t('core.cancel'),
+        text: t('cancel'),
         href: erp.backend_users_path,
         class: ''
     }) %>

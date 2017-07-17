@@ -1,17 +1,19 @@
 <% content_for :page_toolbar do %>
     <%= erp_component('button/create', {
-        text: t('core.create'),
+        text: t('.create'),
         href: erp.new_backend_user_path,
         class: 'btn-sm'
     }) %>
 <% end %>
 
 <% content_for :title do %>
-    <%= t('core.edit') %>
+    <%= @user.name %>
 <% end %>
 
 <% content_for :page_title do %>
-    <a href=""><i class="fa fa-user"></i> <%= t('core.user') %></a> / <%= t('core.edit') %>: <%= @user.email %>
+    <a href="<%= erp.backend_users_path %>">
+        <i class="fa fa-users"></i> <%= t('.user') %>
+    </a> / <%= t('.edit') %>: <%= @user.email %>
 <% end %>
 
 <div class="row">
