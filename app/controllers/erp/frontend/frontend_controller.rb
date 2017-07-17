@@ -1,16 +1,17 @@
 require_dependency "erp/application_controller"
 
+# @todo redundant code......
 module Erp::Frontend
   class FrontendController < Erp::ApplicationController
     include Erp::ApplicationHelper
-    before_filter :set_view
-  before_filter :redirect_subdomain
-
-  def redirect_subdomain
-    if request.host == 'www.timhangcongnghe.com'
-      redirect_to 'http://timhangcongnghe.com' + request.fullpath, :status => 301
-    end
-  end
+    before_action :set_view
+		before_action :redirect_subdomain
+	
+		def redirect_subdomain
+			if request.host == 'www.timhangcongnghe.com'
+				redirect_to 'http://timhangcongnghe.com' + request.fullpath, :status => 301
+			end
+		end
 
     layout 'erp/frontend/index'
 
