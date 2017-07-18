@@ -543,3 +543,12 @@ span.tooltips {
     height: 18px;
     margin: 14px 14px 0 0;
 }
+.userpic {
+    text-align: center;
+}
+.list-userpic img {
+    height: 35px;
+}
+.list-usertitle .list-usertitle-name {
+    font-size: 85%;
+}
