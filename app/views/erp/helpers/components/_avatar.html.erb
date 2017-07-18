@@ -1,9 +1,21 @@
 <% if !options[:user].nil? %>
-    <img class="img-circle" src="/backend/assets/pages/media/users/avatar4.jpg">
-    <span class="contact-name"><%= options[:user].name %></span>
-    <span class="contact-status bg-green"></span>
+    <div class="userpic">
+        <div class="list-userpic">
+            <% if options[:user].avatar.present? %>
+                <%= image_tag options[:user].avatar.system, class: "img-circle", alt: options[:user].email, title: options[:user].name + " (" + options[:user].email + ")" %>
+            <% else %>                    
+                <%= image_tag "/backend/img/placeholder.jpg", class: "img-circle", alt: options[:user].email, title: options[:user].name + " (" + options[:user].email + ")" %>
+            <% end %>
+        </div>
+        <div class="list-usertitle">
+            <div class="list-usertitle-name"><%= user_short_name(options[:user].name) %></div>
+        </div>
+    </div>
 <% else %>
-    <img class="img-circle" src="/backend/img/placeholder.jpg">
-    <span class="contact-name"><%= t("no_creator") %></span>
-    <span class="contact-status bg-green"></span>
+    <div class="list-userpic">
+        <img class="img-circle" src="/backend/img/placeholder.jpg"> 
+    </div>
+    <div class="list-usertitle">
+        <div class="list-usertitle-name"><%= t("no_creator") %></div>
+    </div>
 <% end %>
