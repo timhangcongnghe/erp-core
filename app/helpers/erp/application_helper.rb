@@ -209,6 +209,11 @@ module Erp
     def url_friendly(string)
       string.to_ascii.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
     end
+    
+    # display short name for user
+    def user_short_name(str)
+      str.rpartition(' ').last
+    end
 
     # relative time
     def relative_time(start_time)
