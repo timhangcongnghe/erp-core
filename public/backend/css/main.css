@@ -552,3 +552,6 @@ span.tooltips {
 .list-usertitle .list-usertitle-name {
     font-size: 85%;
 }
+.list-userpic {
+    margin-bottom: 2px;
+}
