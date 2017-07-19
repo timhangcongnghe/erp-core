@@ -38,7 +38,7 @@
                         <% end %>
                     </a>
                     <ul class="sub-menu">
-                        <li class="nav-item <%= "active open" if ["erp/backend/users"].include?(params[:controller]) %>">
+                        <li class="nav-item <%= "active" if ["erp/backend/users"].include?(params[:controller]) %>">
                             <a href="<%= erp.backend_users_path %>" class="nav-link ">
                                 <span class="title"><%= t('.users') %></span>
                                 <% if ["erp/backend/contacts"].include?(params[:controller]) %>

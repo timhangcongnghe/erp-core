@@ -22,10 +22,10 @@ vi:
   archive: "Ngưng sử dụng"
   unarchive: "Sử dụng lại"
   delete_confirm: "Bạn có chắc muốn xóa?"
-  submit: "Lưu"
+  submit: "Lưu thông tin"
   ok: "Đồng ý"
   or: "hoặc"
-  cancel: "Hủy"
+  cancel: "Hủy lưu"
   date_format_js: "yyyy-mm-dd"
   date_format: "%Y-%m-%d"
   
@@ -37,6 +37,8 @@ vi:
         sidebar:
           user: "Quản lý tài khoản"
           users: "Tài khoản"
+        javascript_includes:
+          no_record_found: "Không tìm thấy kết quả."
   erp:
     backend:
       users:

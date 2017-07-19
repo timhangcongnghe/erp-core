@@ -42,10 +42,14 @@
                 <% if get_columns(params).include?("status") %>
                 <td>
                     <% if user.active == false %>
-                    <span class="label label-sm label-danger"><%= t('.inactive') %></span>
+                        <%= erp_component('label/danger', {
+                            text: t('.inactive')
+                        }) %>                            
                     <% else %>
-                    <span class="label label-sm label-success"><%= t('.active') %></span>
-                    <% end %> 
+                        <%= erp_component('label/success', {
+                            text: t('.active')
+                        }) %>
+                    <% end %>
                 </td>
                 <% end %>
                 <% if get_columns(params).include?("created_at") %>
