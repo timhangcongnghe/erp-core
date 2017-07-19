@@ -2,7 +2,6 @@
 
 vi:
   home: "Trang chủ"
-  dashboard: "Bảng điều khiển"
   login: "Đăng nhập"
   logout: "Đăng xuất"
   custom_order: 'Order'
@@ -28,7 +27,6 @@ vi:
   cancel: "Hủy lưu"
   date_format_js: "yyyy-mm-dd"
   date_format: "%Y-%m-%d"
-  
   layouts:
     erp:
       backend:
@@ -41,6 +39,9 @@ vi:
           no_record_found: "Không tìm thấy kết quả."
   erp:
     backend:
+      dashboard:
+        index:
+          dashboard: "Bảng điều khiển"
       users:
         create:
           success: "Thêm tài khoản thành công."
