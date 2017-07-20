@@ -17,7 +17,7 @@ module Erp
           else
             set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
             expire_data_after_sign_in!
-            render text: '<h2><i class="fa fa-user" aria-hidden="true"></i> Tạo tài khoản thành công</h2><p>Một email đã được gửi tới bạn với hướng dẫn xác minh tài khoản. Vui lòng kiểm tra email.</p>'
+            render plain: '<h2><i class="fa fa-user" aria-hidden="true"></i> Tạo tài khoản thành công</h2><p>Một email đã được gửi tới bạn với hướng dẫn xác minh tài khoản. Vui lòng kiểm tra email.</p>'
           end
         else
           clean_up_passwords resource

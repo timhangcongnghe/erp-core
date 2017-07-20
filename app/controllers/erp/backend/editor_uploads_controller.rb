@@ -5,10 +5,10 @@ module Erp
       def upload
         @editor_upload = EditorUpload.new(editor_upload_params)
         @editor_upload.save
-        
-        render text: @editor_upload.image_url
+
+        render plain: @editor_upload.image_url
       end
-      
+
       private
         # Only allow a trusted parameter "white list" through.
         def editor_upload_params
