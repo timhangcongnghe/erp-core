@@ -69,10 +69,10 @@ function loadKeywordSelectList(container) {
     container.html('');
 
     // ajax update custom sort
-	if(keywords_xhrs[url] && keywords_xhrs[url].readyState != 4){
-		keywords_xhrs[url].abort();
+	if(keywords_xhrs[url+name] && keywords_xhrs[url+name].readyState != 4){
+		keywords_xhrs[url+name].abort();
 	}
-    keywords_xhrs[url] = $.ajax({
+    keywords_xhrs[url+name] = $.ajax({
         url: url,
         data: {
             keyword: keyword
