@@ -11,7 +11,7 @@
         data-original-title="<%= options[:help] %>"
         data-container="body"></i>
     <% end %>
-    <textarea class="form-control" rows="3"
+    <textarea class="form-control" rows="<%= options[:rows].present? ? options[:rows] : '3' %>"
         name="<%= options[:name] if options[:name].present? %>"
         placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
     ><%= options[:value] if options[:value].present? %></textarea>
