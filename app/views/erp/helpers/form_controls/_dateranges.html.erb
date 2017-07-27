@@ -6,17 +6,19 @@
     </div>
 <% else %>
     <div class="form-group">
-        <label class="control-label">
-            <%= options[:label] if options[:label].present? %>
-            <% if options[:required] == true %>
-                <span class="required" aria-required="true"> * </span>
-            <% end %>
-            <% if options[:help].present? %>
-                <i class="fa fa-commenting right tooltips icon-default-color"
-                data-original-title="<%= options[:help] %>"
-                data-container="body"></i>
-            <% end %>
-        </label>
+        <% if options[:label].present? %>
+            <label class="control-label">
+                <%= options[:label] if options[:label].present? %>
+                <% if options[:required] == true %>
+                    <span class="required" aria-required="true"> * </span>
+                <% end %>
+                <% if options[:help].present? %>
+                    <i class="fa fa-commenting right tooltips icon-default-color"
+                    data-original-title="<%= options[:help] %>"
+                    data-container="body"></i>
+                <% end %>
+            </label>
+        <% end %>
         <div class="">
             <div id="reportrange" class="btn default">
                 <i class="fa fa-calendar"></i> &nbsp;

@@ -493,8 +493,11 @@ h2.invoice-title.title {
     background: #e3e4e6 !important;
 }
 .top-datalist div#reportrange {
-    background-color: #ffffff;
+    background-color: #f7f9f9;;
     margin-bottom: 5px;
+}
+.global-filter div#reportrange {
+    margin-bottom: 0;
 }
 .fileinput-fullwidth {
     width: 100%;
