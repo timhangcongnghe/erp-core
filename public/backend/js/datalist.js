@@ -438,6 +438,15 @@ function datalistFilter(list, page) {
     });
     filters = filters.concat(selects[id]);
 
+    // More global filter
+    var global_filter = {};
+    if ($('.global-filter').length) {
+        arr = $('.global-filter').serializeArray();
+        for (var i = 0; i < arr.length; i++){
+          global_filter[arr[i]['name']] = arr[i]['value'];
+        }
+    }
+
     // ajax update custom sort
 	if(datalists[id] && datalists[id].readyState != 4){
 		datalists[id].abort();
@@ -452,7 +461,8 @@ function datalistFilter(list, page) {
             'keywords': keywords[id],
             'page': page,
             'sort_by': sort_by,
-            'sort_direction': sort_direction
+            'sort_direction': sort_direction,
+            'global_filter': global_filter
         },
     }).done(function( html ) {
         list.find(".datalist-container" ).html( html );
@@ -642,5 +652,10 @@ $(document).ready(function() {
         var item = $(this);
 
         addToSelects(list, item);
+    });
+
+    // Datalist search entry select
+    $(document).on("change", ".global-filter input, .global-filter select", function() {
+        datalistFilterAll();
     });
 });
