@@ -555,3 +555,12 @@ span.tooltips {
 .list-userpic {
     margin-bottom: 2px;
 }
+.stock-num-0 {
+    background-color: #fbe1e3;
+}
+.stock-num-1 {
+    background-color: #f9e491;
+}
+.stock-num-2 {
+    background-color: #e0ebf9;
+}
