@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- 
+<!--
 App name: ERP, Enterprise Resource Planning Software, ERP Software, ERP System, ERP Solutions
 Version: 1.0.0
 Author: Luan Pham, Son Nguyen, Hung Nguyen
@@ -12,16 +12,16 @@ Website: http://globalnaturesoft.com/
     <!-- BEGIN HEAD -->
     <head>
         <%= csrf_meta_tags %>
-        
+
         <meta charset="utf-8" />
         <title><%= yield(:title) %> | ERP, Enterprise Resource Planning Software, ERP Software, ERP System, ERP Solutions | Global Naturesoft</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="" name="description" />
         <meta content="" name="author" />
-        
+
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=vietnamese" rel="stylesheet">
-        
+
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/font-awesome/css/font-awesome.min.css" %>
@@ -41,13 +41,13 @@ Website: http://globalnaturesoft.com/
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/icheck/skins/all.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-sweetalert/sweetalert.css" %>
-        
+
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/clockface/css/clockface.css" %>
-        
+
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-toastr/toastr.min.css" %>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
@@ -74,34 +74,34 @@ Website: http://globalnaturesoft.com/
 
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-container-bg-solid">
         <div class="page-wrapper">
-            
+
             <!-- BEGIN HEADER -->
             <!-- Includes: logo, mega menu, header search box, responsive menu toggler, top navigation menu -->
             <%= render "layouts/erp/backend/header" %>
             <!-- END HEADER -->
-            
+
             <!-- BEGIN HEADER & CONTENT DIVIDER -->
             <div class="clearfix"> </div>
             <!-- END HEADER & CONTENT DIVIDER -->
-            
+
             <!-- BEGIN CONTAINER -->
             <div class="page-container">
-                
+
                 <!-- BEGIN SIDEBAR -->
                 <%= render "layouts/erp/backend/sidebar" %>
                 <!-- END SIDEBAR -->
-                
+
                 <!-- BEGIN CONTENT -->
                 <div class="page-content-wrapper">
                     <!-- BEGIN CONTENT BODY -->
                     <div class="page-content">
                         <!-- BEGIN PAGE HEADER -->
-                        
+
                         <!-- BEGIN PAGE BAR -->
                         <!-- Includes: breadcrumb and actions -->
                         <%= render "layouts/erp/backend/page_bar" %>
                         <!-- END PAGE BAR -->
-                        
+
                         <!-- BEGIN PAGE TITLE-->
                         <!--<h1 class="page-title">This's Title</h1>-->
                         <% if content_for?(:title) %>
@@ -111,41 +111,49 @@ Website: http://globalnaturesoft.com/
                             <br />
                         <% end %>
                         <!-- END PAGE TITLE-->
-                        
+
                         <!-- END PAGE HEADER-->
                         <div class="row">
                             <div class="col-md-12">
+                                <% if content_for?(:global_filter) %>
+                                    <!-- GLOABL FILTER -->
+                                    <form class="global-filter">
+                                        <%= yield(:global_filter) %>
+                                    </form>
+                                    <!-- END GLOABL FILTER -->
+                                <% end %>
+
                                 <%= yield %>
                             </div>
-                        </div>   
+                        </div>
                     </div>
                     <!-- END CONTENT BODY -->
                 </div>
                 <!-- END CONTENT -->
-                
+
                 <!-- BEGIN QUICK SIDEBAR -->
                 <%= render "layouts/erp/backend/quick_sidebar" %>
                 <!-- END QUICK SIDEBAR -->
-                
+
             </div>
             <!-- END CONTAINER -->
-            
+
             <!-- BEGIN FOOTER -->
             <%= render "layouts/erp/backend/footer" %>
             <!-- END FOOTER -->
-            
+
         </div>
-        
+
         <!-- BEGIN JAVASCRIPT INCLUDES -->
         <%= render "layouts/erp/backend/javascript_includes" %>
         <!-- END JAVASCRIPT INCLUDES -->
-        
+
         <!-- stackable -->
-        
+
         <!-- BEGIN toastr flash messages -->
             <%= render 'layouts/erp/backend/flash_messages' %>
         <!-- END toastr flash messages -->
-        
+
     </body>
 
 </html>
