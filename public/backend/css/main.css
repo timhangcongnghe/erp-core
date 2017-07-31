@@ -101,8 +101,6 @@ a:hover {
     position: absolute;
     width: 100%;
     z-index: 10056;
-    max-height: 200px;
-    overflow: auto;
 }
 .dataselect-data ul {
     background: #fff;
@@ -566,4 +564,8 @@ span.tooltips {
 }
 .stock-num-2 {
     background-color: #e0ebf9;
+}
+.dataselect-data ul {
+    max-height: 250px;
+    overflow: auto;
 }
