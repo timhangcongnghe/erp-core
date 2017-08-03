@@ -569,3 +569,12 @@ span.tooltips {
     max-height: 250px;
     overflow: auto;
 }
+.label-not_delivery {
+    background-color: #ed6b75;
+}
+.label-delivered {
+    background-color: #1bbc9b;
+}
+.label-over_delivered {
+    background-color: #c5b96b;
+}
