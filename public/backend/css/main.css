@@ -578,3 +578,6 @@ span.tooltips {
 .label-over_delivered {
     background-color: #c5b96b;
 }
+.global-filter span.select2 {
+    width: 100% !important;
+}

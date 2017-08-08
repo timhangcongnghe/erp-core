@@ -422,7 +422,7 @@ function updateDataselectData(dataselect, ignore_keyword) {
         data: form_data
     }).done(function( options ) {
         // remove old data
-        databox.find('.dataselect-item, .dataselect-empty').remove();
+        databox.find('.dataselect-item:not(.all), .dataselect-empty').remove();
 
         // update dataselect data
         options.forEach(function(option) {
