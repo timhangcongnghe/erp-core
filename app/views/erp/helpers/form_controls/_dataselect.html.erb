@@ -24,7 +24,7 @@
             <div class="multiselect-values-container">
                 <% if options[:values].present? and !options[:values].empty? %>
                     <% options[:values].each do |value| %>
-                        <% if value[:value].present? %>                            
+                        <% if value[:value].present? %>
                             <div class="btn-group btn-group-solid dataselect-value-box">
                                 <input type="hidden" name="<%= options[:name] if options[:name].present? %>" value="<%= value[:value] %>">
                                 <button type="button" class="btn btn-sm green-meadow dataselect-value-item"><%= value[:text] %></button>
@@ -59,23 +59,23 @@
                     create-url='<%= options[:create][:url] if options[:create][:url].present? %>'
                     create-title='<%= options[:create][:title] if options[:create][:title].present? %>'
                 <% end %>
-                
+
                 input-selector='<%= options[:create][:input_selector] if options[:create][:input_selector].present? %>'
                 create-container-selector='<%= options[:create][:container_selector] if options[:create][:container_selector].present? %>'
                 modal-size='<%= options[:create][:modal_size] if options[:create][:modal_size].present? %>'
-                
+
                 <% if options[:edit].present? %>
                     edit-url='<%= options[:edit][:url] if options[:edit][:url].present? %>'
                     edit-title='<%= options[:edit][:title] if options[:edit][:title].present? %>'
                     edit-container-selector='<%= options[:edit][:container_selector] if options[:edit][:container_selector].present? %>'
                 <% end %>
             <% end %>
-            
+
             <% if options[:parent_control].present? %>
                 parent-control='<%= options[:parent_control] if options[:parent_control].present? %>'
                 parent-id='<%= options[:parent_id] if options[:parent_id].present? %>'
             <% end %>
-            
+
             <% if options[:multiple] == true %>
                 multiple='true'
             <% end %>
@@ -85,12 +85,18 @@
             <span class="dataselect-edit-button"
                 <%= 'style="display: block"'.html_safe if options[:value].present? %>
             ><i class="fa fa-pencil"></i></span>
-        <% end %>        
+        <% end %>
     </div>
     <div class="dataselect-data">
         <ul>
+            <% if options[:include_all].present? %>
+                <li class="dataselect-item all">
+                    <a href="javascript:;" data-value="<%= options[:include_all][:value] %>"><%= options[:include_all][:text] %></a>
+                </li>
+            <% end %>
+
             <li class="dataselect-hook"></li>
-            
+
             <% if options[:create].present? %>
                 <li class="create-new">
                     <a href="#create"><i class="fa fa-plus"></i> <%= t('core.create_as') %> "<span class="text-bold dataselect-new-name"></span>"</a>

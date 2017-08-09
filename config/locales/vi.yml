@@ -2,7 +2,6 @@
 
 vi:
   home: "Trang chủ"
-  dashboard: "Bảng điều khiển"
   login: "Đăng nhập"
   logout: "Đăng xuất"
   custom_order: 'Order'
@@ -21,14 +20,14 @@ vi:
   active: "Đang sử dụng"
   archive: "Ngưng sử dụng"
   unarchive: "Sử dụng lại"
-  delete_confirm: "Bạn có chắc muốn xóa?"
-  submit: "Lưu"
+  delete_confirm: "Bạn có chắc dòng thông tin đang chọn hiện tại muốn xóa?"
+  submit: "Lưu thông tin"
   ok: "Đồng ý"
+  close: "Từ chối"
   or: "hoặc"
-  cancel: "Hủy"
+  cancel: "Hủy lưu"
   date_format_js: "yyyy-mm-dd"
   date_format: "%Y-%m-%d"
-  
   layouts:
     erp:
       backend:
@@ -37,8 +36,13 @@ vi:
         sidebar:
           user: "Quản lý tài khoản"
           users: "Tài khoản"
+        javascript_includes:
+          no_record_found: "Không tìm thấy kết quả."
   erp:
     backend:
+      dashboard:
+        index:
+          dashboard: "Bảng điều khiển"
       users:
         create:
           success: "Thêm tài khoản thành công."

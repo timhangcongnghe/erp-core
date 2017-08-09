@@ -15,6 +15,9 @@
     <select class="bs-select form-control select2" data-live-search="true" data-size="8"
         name="<%= options[:name] if options[:name].present? %>"
         id="<%= options[:id] if options[:id].present? %>">
+        <% if options[:include_blank].present? %>
+            <option><%= options[:include_blank] %></option>
+        <% end %>
         <% if options[:options].present? %>
             <% options[:options].each_with_index do |option| %>
                 <option <%= 'selected' if options[:value] == option[:value] %>

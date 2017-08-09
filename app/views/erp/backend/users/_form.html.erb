@@ -46,6 +46,7 @@
                 options: Erp::User.get_list_timezone
             }) %>
         </div>
+        <% if Erp::Core.available?("online_store") %>
         <div class="col-md-6 permissions-container">
             <h4 class="text-bold mb-20"><%= t('can.permissions') %></h4>
             <% Erp::User.permission_options.each do |permission_group| %>
@@ -67,15 +68,14 @@
                 </div>
             <% end %>
         </div>
+        <% end %>
     </div>
     <hr>
     <%= erp_component('button/save', {
-        text: t('submit'),
-        class: ''
+        text: t('submit')
     }) %>
     <%= erp_component('button/cancel', {
         text: t('cancel'),
-        href: erp.backend_users_path,
-        class: ''
+        href: erp.backend_users_path
     }) %>
 <% end %>
