@@ -14,6 +14,7 @@
     <% end %>
     <select class="bs-select form-control select2" data-live-search="true" data-size="8"
         name="<%= options[:name] if options[:name].present? %>"
+        <%= 'multiple=multiple' if options[:multiple] == true %>
         id="<%= options[:id] if options[:id].present? %>">
         <% if options[:include_blank].present? %>
             <option><%= options[:include_blank] %></option>
