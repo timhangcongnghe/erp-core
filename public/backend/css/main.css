@@ -389,11 +389,13 @@ i.default:hover {
 
 /*-------------------------------------------*/
 .addableform-table table .form-group textarea {
-    width: 190px;
+    max-width: 190px;
+    min-width: 90px;
     height: 35px;
 }
 .addableform-table table .form-group input {
-    width: 120px;
+    max-width: 120px;
+    min-width: 90px;
 }
 /*-------------------------------------------*/
 
@@ -577,3 +579,53 @@ span.tooltips {
 .global-filter span.select2 {
     width: 100% !important;
 }
+/* CSS LAYOUT SHOW ORDERS PAGE */
+.custom-invoice.invoice-content-2 {
+    padding: 50px 70px;
+}
+.custom-invoice .company-address.text-left {
+    text-align: left;
+}
+.custom-invoice .invoice-head .invoice-logo.inv-name>h1 {
+    float: none;
+    font-size: 24px;
+    margin-top: 0;
+}
+.inv-name .invoice-desc.inv-date {
+    margin: 0 auto 3px auto;
+}
+.inv-name .invoice-desc.inv-date {
+    margin: 0;
+    color: #7e8691;
+    font-weight: 400;
+    font-style: italic;
+}
+.inv-name .invoice-desc.inv-code {
+    margin: 3px 0 0;
+    color: #7e8691;
+    font-weight: 400;
+}
+.custom-invoice .invoice-payment span {
+    font-family: sans-serif;
+    font-weight: 600;
+}
+.custom-invoice .invoice-desc.inv-address {
+    font-size: 14px;
+}
+.custom-invoice.invoice-content-2 .invoice-body td, .custom-invoice.invoice-content-2 .invoice-body th {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+.custom-invoice.invoice-content-2 .invoice-body td h3 {
+    margin-top: 5px;
+}
+.custom-invoice.invoice-content-2 .invoice-body td p {
+    margin: 5px 0;
+}
+.custom-invoice.invoice-content-2 .invoice-body th {
+    letter-spacing: 0;
+}
+.cursor-help {
+    cursor: help;
+}
+/* END - CSS LAYOUT SHOW ORDERS PAGE */
