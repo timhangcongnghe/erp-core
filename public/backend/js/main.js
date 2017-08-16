@@ -8,6 +8,24 @@ function showSidebar() {
     $('.page-sidebar-menu').removeClass('page-sidebar-menu-closed');
 }
 
+function showAlert(type, message, title) {
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "positionClass": "toast-bottom-right",
+        "onclick": null,
+        "showDuration": "1000",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+    toastr[type](message, title);
+}
+
 Array.prototype.contains = function(obj) {
     var i = this.length;
     while (i--) {
@@ -431,5 +449,10 @@ $(document).ready(function() {
                 container.html(data);
             });
         }
+    });
+    
+    // show alert for input errors
+    $('.help-block.alert').each(function() {
+        showAlert('error', $(this).html());
     });
 });

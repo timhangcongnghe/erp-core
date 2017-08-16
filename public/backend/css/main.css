@@ -629,3 +629,6 @@ span.tooltips {
     cursor: help;
 }
 /* END - CSS LAYOUT SHOW ORDERS PAGE */
+span.help-block.alert {
+    display: none;
+}

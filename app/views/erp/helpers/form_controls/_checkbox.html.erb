@@ -3,6 +3,11 @@
     <div class="mt-checkbox-inline radio-padding-top">
         <% if options[:options].present? %>
             <% options[:options].each_with_index do |option| %>
+                <% if options[:errors].present? %>
+                    <span class="help-block<%= ' alert' if options[:alert].present? %>">
+                        <%= options[:errors].join('').html_safe %>
+                    </span>
+                <% end %>
                 <label class="mt-checkbox">
                     <% if options[:not_selected_value].present? %>
                         <input type="hidden"
