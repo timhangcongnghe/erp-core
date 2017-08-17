@@ -450,9 +450,21 @@ $(document).ready(function() {
             });
         }
     });
-    
+
     // show alert for input errors
     $('.help-block.alert').each(function() {
         showAlert('error', $(this).html());
     });
+
+    // global_filter_action
+    $(document).on('click', '.global_filter_action', function(e) {
+        e.preventDefault();
+
+        var form = $(this).parents('form');
+        var url = $(this).attr('href');
+
+        form.attr('action', url);
+
+        form.submit();
+    })
 });

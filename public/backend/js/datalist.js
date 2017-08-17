@@ -1,3 +1,61 @@
+// Filter a datalist
+function globalFilterAction(list) {
+    var url = list.attr('data-url');
+    var id = list.attr('data-id');
+    var sort_by = list.attr('sort-by');
+    var sort_direction = list.attr('sort-direction');
+
+    // Filters
+    var filters = getValuesFromCheckableList(list.find('.datalist-filters li'));
+
+    // Columns
+    var columns = getValuesFromCheckableList(list.find('.datalist-columns-select li'));
+
+    // Keywords
+    if(typeof(keywords[id]) == 'undefined') {
+        keywords[id] = [];
+    }
+    keywords[id].forEach(function(entry) {
+        addItemToListSearch(list, entry, entry[0].label);
+    });
+
+    // Selects
+    if(typeof(selects[id]) == 'undefined') {
+        selects[id] = [];
+    }
+    selects[id].forEach(function(entry) {
+        addItemToListSearch(list, entry, entry[0].label);
+    });
+    filters = filters.concat(selects[id]);
+
+    // More global filter
+    var global_filter = {};
+    if ($('.global-filter').length) {
+        arr = $('.global-filter').serializeArray();
+        for (var i = 0; i < arr.length; i++){
+          global_filter[arr[i]['name']] = arr[i]['value'];
+        }
+    }
+
+    // ajax update custom sort
+	$.ajax({
+        url: '',
+        method: 'GET',
+        data: {
+            'authenticity_token': AUTH_TOKEN,
+            'filters': filters,
+            'columns': columns,
+            'keywords': keywords[id],
+            'sort_by': sort_by,
+            'sort_direction': sort_direction,
+            'global_filter': global_filter
+        },
+    }).done(function( html ) {
+        var win = window.open();
+        win.document.write(html);
+    });
+}
+
 // Remove from selects
 function removeFromSelects(list, id) {
     var new_selects = [];

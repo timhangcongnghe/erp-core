@@ -579,6 +579,13 @@ span.tooltips {
 .global-filter span.select2 {
     width: 100% !important;
 }
+.mt-20 {
+    margin-top: 20px;
+}
+.table-checkable tr>td.text-left:first-child, .table-checkable tr>th.text-left:first-child {
+    text-align: left;
+    padding-left: 8px;
+}
 /* CSS LAYOUT SHOW ORDERS PAGE */
 .custom-invoice.invoice-content-2 {
     padding: 50px 70px;
