@@ -639,3 +639,10 @@ span.tooltips {
 span.help-block.alert {
     display: none;
 }
+.global-filter input.form-control, .global-filter .select2-container--bootstrap .select2-selection {
+    background: #eef1f5;
+    border-color: #c2cad8;
+}
+.global-filter span > button.btn.default, .global-filter .dataselect-data ul {
+    border-color: #c2cad8;
+}
