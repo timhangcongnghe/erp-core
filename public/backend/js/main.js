@@ -185,7 +185,7 @@ function jsForAjaxContent(container) {
 
     // Row has child ajax content
     container.find('.has-child-table .expand').bind("click", function() {
-        var row = $(this).parents('tr');
+        var row = $(this).closest('tr');
         var url = row.attr('data-url');
         var cols = row.find('td').length;
 

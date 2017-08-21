@@ -646,3 +646,6 @@ span.help-block.alert {
 .global-filter span > button.btn.default, .global-filter .dataselect-data ul {
     border-color: #c2cad8;
 }
+.table-td-valign-top td {
+    vertical-align: top !important;
+}
