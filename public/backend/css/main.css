@@ -649,3 +649,6 @@ span.help-block.alert {
 .table-td-valign-top td {
     vertical-align: top !important;
 }
+.deliveries-delivered {
+    margin-right: 20px !important;
+}
