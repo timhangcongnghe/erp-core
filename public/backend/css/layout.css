@@ -399,8 +399,10 @@ a:hover {
 .datepicker table td, .datepicker table th, .datetimepicker table td, .datetimepicker table th {
     font-family: "Roboto", "Helvetica Neue",Helvetica,Arial,sans-serif !important;
 }
+
+/* backgroud color for label status */
 .label-draft {
-    background-color: #67809f;
+    background-color: #3598dc;
 }
 .label-confirmed {
     background-color: #36c6d3;
@@ -429,6 +431,19 @@ a:hover {
 .label-orange {
     background-color: #ff5000;
 }
+.label-active {
+    background-color: #4caf50;
+}
+.label-not_delivery {
+    background-color: #ed6b75;
+}
+.label-delivered {
+    background-color: #1bbc9b;
+}
+.label-over_delivered {
+    background-color: #c5b96b;
+}
+
 .label:not(.md-skip) {
     padding: 3px 6px 3px;
     font-size: 11px;
