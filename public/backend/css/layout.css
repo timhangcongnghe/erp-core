@@ -383,6 +383,9 @@ a:hover {
 .portlet-body.form .row .form-group:last-child {
     margin-bottom: 25px;
 }
+.addableform table .addableform-line .form-group {
+    margin-bottom: 0 !important;
+}
 .btn-group>.dropdown-menu, .dropdown-toggle>.dropdown-menu, .dropdown>.dropdown-menu {
     max-height: 300px;
     overflow: auto;
