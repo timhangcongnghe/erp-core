@@ -643,3 +643,9 @@ span.help-block.alert {
 .deliveries-delivered {
     margin-right: 20px !important;
 }
+.portlet.light .custom-tab-detail {
+    padding: 0;
+}
+.tabbable-custom {
+    margin-bottom: 5px;
+}
