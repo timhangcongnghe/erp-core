@@ -5,7 +5,25 @@ function calculateOrderDetails(container) {
         var row = $(this);
         var quantity = parseFloat(row.find('.line_quantity').val());
         var unit_price = parseFloat(row.find('.line_unit_price').val());
-        var line_total = unit_price*quantity;
+        var discount_amount = 0;
+        var shipping_amount = 0;
+        var line_tax = 0;
+        if (row.find('.line_discount_amount').val() !== '') {
+            discount_amount = parseFloat(row.find('.line_discount_amount').val());
+        }
+        if (row.find('.line_shipping_amount').val() !== '') {
+            shipping_amount = parseFloat(row.find('.line_shipping_amount').val());
+        }
+        
+        var line_subtotal = unit_price*quantity;
+        var line_total_without_tax = line_subtotal - discount_amount + shipping_amount;
+        var line_total = line_total_without_tax + line_tax;
+        
+        // update line subtotal
+        row.find('.line_subtotal').html(line_subtotal);
+        
+        // update line total without tax
+        row.find('.line_line_total_without_tax').html(line_total_without_tax);
         
         // update line total
         row.find('.line_total').html(line_total);
