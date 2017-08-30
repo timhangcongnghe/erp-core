@@ -1,5 +1,5 @@
 function calculateOrderDetails(container) {
-    var rows = container.find('table tbody tr');
+    var rows = container.find('table tbody tr:visible');
     var order_total = 0;
     rows.each(function() {
         var row = $(this);
@@ -45,6 +45,12 @@ $(document).ready(function() {
     
     // Change event on order line
     $(document).on('change keyup', '.order-details input', function(e) {
+        var container = $(this).parents('.order-details');
+        calculateOrderDetails(container);
+    });
+    
+    // Click event nested remove button
+    $(document).on('click', '.nested-remove-button', function(e) {
         var container = $(this).parents('.order-details');
         calculateOrderDetails(container);
     });
