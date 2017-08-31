@@ -658,3 +658,12 @@ span.help-block.alert {
 .mt-5 {
     margin-top: 5px;
 }
+.label-not-delivery {
+    background-color: #e87e04;
+}
+.label-deliveried {
+    background-color: #1bbc9b;
+}
+.label-over-deliveried {
+    background-color: #d91e18;
+}
