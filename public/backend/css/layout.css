@@ -452,7 +452,7 @@ a:hover {
     font-size: 11px;
 }
 .btn:not(.md-skip):not(.bs-select-all):not(.bs-deselect-all).btn-sm {
-    font-size: 12px;
+    font-size: 11px;
     padding: 4px 12px;
 }
 table tr.blurred, table tr.blurred > td .btn-group > a.btn {
