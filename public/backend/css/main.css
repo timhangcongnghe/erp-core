@@ -649,3 +649,12 @@ span.help-block.alert {
 .tabbable-custom {
     margin-bottom: 5px;
 }
+.autolist .col-md-2, .autolist .col-md-1, .autolist .col-md-3, .autolist .col-md-8, .autolist .col-md-4 {
+    padding: 0 5px 0 0;
+}
+.autolist .row {
+    margin: 0 -5px 0 0;
+}
+.mt-5 {
+    margin-top: 5px;
+}

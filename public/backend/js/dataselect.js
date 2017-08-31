@@ -52,7 +52,7 @@ function clearDataselectControlText(dataselect) {
     control.val('');
 }
 
-function clearDataselectValue(dataselect) {
+function clearDataselectValue(dataselect, trigger) {
     var value_control = dataselect.find('.dataselect-value');
     var control = dataselect.find('.dataselect-control');
     var is_multiple = control.attr('multiple');
@@ -61,11 +61,11 @@ function clearDataselectValue(dataselect) {
     if(!is_multiple) {
         if(value_control.val() !== '') {
             value_control.val('');
-            value_control.trigger('change');
+            if (typeof(trigger) === 'undefined' || trigger) {
+                value_control.trigger('change');
+            }
         }
     }
-
-    edit_button.hide();
 }
 
 // check things after finish dataselect control by user
@@ -249,7 +249,7 @@ function findDataselectControlTextMatched(dataselect) {
     // empty control value if not found
     if(!found) {
         // clear input value
-        clearDataselectValue(dataselect);
+        clearDataselectValue(dataselect, false);
 
         // hide edit button
         edit_button.hide();
@@ -495,6 +495,7 @@ $(document).ready(function() {
     // when blur dataselect control
     $(document).on("blur",".dataselect .dataselect-control", function() {
         var dataselect = $(this).parents('.dataselect');
+        var value_control = dataselect.find('.dataselect-value');
 
         // wait for other action
         setTimeout(function() {

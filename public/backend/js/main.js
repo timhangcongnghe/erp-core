@@ -467,4 +467,7 @@ $(document).ready(function() {
 
         form.submit();
     })
+
+    // Auto list
+    $('.autolist').autolist();
 });

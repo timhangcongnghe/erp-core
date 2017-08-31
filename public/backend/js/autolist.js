@@ -1,0 +1,63 @@
+$.fn.autolist = function(action, param) {
+    box = this;
+    container = box.find('.autolist-container');
+    line_url = box.attr('data-line-url');
+
+    // Event
+    // Click remove button
+    $(document).on('click', '.autolist .remove-line', function() {
+        var line = $(this).closest('.autolist-line');
+
+        line.find('.destroy_input').val('true');
+        line.hide();
+    });
+    // Click add button
+    $(document).on('click', '.autolist .add-line', function() {
+        $.ajax({
+            url: line_url,
+            method: 'GET'
+        }).done(function( row ) {
+            container.append( row );
+            jsForAjaxContent(container.find('.autolist-line').last());
+        });
+    });
+    // Auto update line
+    $(document).on('change', '.autolist select, input', function() {
+        var input = $(this);
+        var line = input.closest('.autolist-line');
+
+        setTimeout(function() {
+            var formData = new FormData();
+            line.find('input, select, textarea').each(function() {
+                formData.append($(this).attr('name'), $(this).val());
+            });
+            line.css('opacity', 0.5);
+
+            $.ajax({
+                url: line_url,
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+            }).done(function( row ) {
+                // line.find('.order-box').html( $('<div>').html(row).find('.order-box').html() );
+                line.replaceWith( row );
+                jsForAjaxContent(line);
+            });
+        }, 150);
+    });
+
+    // action / param
+    if (typeof(action) !== 'undefined') {
+        switch(action) {
+            // Update value for dataselect
+            case 'val':
+
+                break;
+        }
+
+        return;
+    }
+
+    return box;
+};
