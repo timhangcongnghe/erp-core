@@ -47,11 +47,11 @@ function calculateTransferDetails(container) {
         total_stock_destination_after += stock_destination_after;
     });
     // update total
-    $('.transfer-details .total_transfer').html(quantity_total);
-    $('.transfer-details .total_stock_source_before').html(total_stock_source);
-    $('.transfer-details .total_stock_source_after').html(total_stock_source_after);
-    $('.transfer-details .total_stock_destination_before').html(total_stock_destination);
-    $('.transfer-details .total_stock_destination_after').html(total_stock_destination_after);
+    $('.transfer-details .total_transfer').html(formatNumber(quantity_total));
+    $('.transfer-details .total_stock_source_before').html(formatNumber(total_stock_source));
+    $('.transfer-details .total_stock_source_after').html(formatNumber(total_stock_source_after));
+    $('.transfer-details .total_stock_destination_before').html(formatNumber(total_stock_destination));
+    $('.transfer-details .total_stock_destination_after').html(formatNumber(total_stock_destination_after));
 }
 
 // Main js execute when loaded page

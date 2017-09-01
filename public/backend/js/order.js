@@ -1,3 +1,6 @@
+//function formatNumber(num) {
+//    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+//}
 function calculateOrderDetails(container) {
     var rows = container.find('table tbody tr:visible');
     var order_total = 0;
@@ -20,13 +23,13 @@ function calculateOrderDetails(container) {
         var line_total = line_total_without_tax + line_tax;
         
         // update line subtotal
-        row.find('.line_subtotal').html(line_subtotal);
+        row.find('.line_subtotal').html(formatNumber(line_subtotal));
         
         // update line total without tax
-        row.find('.line_line_total_without_tax').html(line_total_without_tax);
+        row.find('.line_line_total_without_tax').html(formatNumber(line_total_without_tax));
         
         // update line total
-        row.find('.line_total').html(line_total);
+        row.find('.line_total').html(formatNumber(line_total));
         
         // Update order total
         if(line_total) {
@@ -34,7 +37,7 @@ function calculateOrderDetails(container) {
         }
     });
     // update line total
-    container.find('.order_total').html(order_total);
+    container.find('.order_total').html(formatNumber(order_total));
 }
 
 // Main js execute when loaded page
