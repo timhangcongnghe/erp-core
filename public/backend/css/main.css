@@ -49,6 +49,11 @@ a:hover {
         margin: 8px;
     }
 }
+.page-content-wrapper .page-content .page-bar .page-title span.label {
+    left: 10px;
+    position: relative;
+    top: -3px;
+}
 .datalist-search-helper {
     position: absolute;
     background: #fff;
