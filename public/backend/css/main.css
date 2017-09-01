@@ -490,7 +490,7 @@ h2.invoice-title.title {
     padding: 10px !important;
 }
 .child-row, .child-row:hover>td, .table-hover > tbody > tr.child-row:hover > td {
-    background: #e3e4e6 !important;
+    background: #ffebe6 !important;
 }
 .top-datalist div#reportrange {
     background-color: #f7f9f9;;
@@ -666,4 +666,12 @@ span.help-block.alert {
 }
 .label-over-deliveried {
     background-color: #d91e18;
+}
+.child-tr-expand-button {
+    margin-right: -37px;
+    margin-left: 15px;
+    background: #3598dc;
+}
+.table-child-content {
+    margin-bottom: 0px;
 }
