@@ -680,3 +680,12 @@ span.help-block.alert {
 .table-child-content {
     margin-bottom: 0px;
 }
+.ml-10 {
+    margin-left: 10px;
+}
+.pull-none {
+    float: none;
+}
+.select2-container--bootstrap .select2-selection--single {
+    height: 35px;
+}
