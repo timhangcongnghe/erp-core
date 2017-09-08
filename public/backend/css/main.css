@@ -275,7 +275,9 @@ span.tag-border-radius {
 }
 .tabbable-custom {
     overflow: inherit;
-}.datalist-search-helper ul li {
+    margin-bottom: 25px;
+}
+.datalist-search-helper ul li {
     position: relative;
     border-bottom: solid 1px #ddd;
 }
@@ -650,9 +652,6 @@ span.help-block.alert {
 }
 .portlet.light .custom-tab-detail {
     padding: 0;
-}
-.tabbable-custom {
-    margin-bottom: 5px;
 }
 .autolist .col-md-2, .autolist .col-md-1, .autolist .col-md-3, .autolist .col-md-8, .autolist .col-md-4 {
     padding: 0 5px 0 0;
