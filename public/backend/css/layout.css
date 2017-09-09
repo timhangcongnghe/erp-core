@@ -446,6 +446,9 @@ a:hover {
 .label-over_delivered {
     background-color: #c5b96b;
 }
+.label-done {
+    background-color: #4caf50;
+}
 
 .label:not(.md-skip) {
     padding: 3px 6px 3px;
@@ -455,7 +458,7 @@ a:hover {
     font-size: 11px;
     padding: 4px 12px;
 }
-table tr.blurred, table tr.blurred > td .btn-group > a.btn {
+table tr.blurred, table tr.blurred > td .btn-group > a.btn, table tr.blurred > td a {
     color: #95a5a6;
 }
 table tr.blurred > td .tr-expand-button {
