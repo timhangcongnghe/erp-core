@@ -688,3 +688,20 @@ span.help-block.alert {
 .select2-container--bootstrap .select2-selection--single {
     height: 35px;
 }
+.tab-consignment-details .portlet-body {
+    padding: 0 !important;
+}
+.tab-consignment-details .portlet {
+    border: 0px !important;
+    margin-bottom: 0px;
+}
+.tabbable-custom>.tab-consignment-details {
+    padding: 10px 15px;
+}
+.tab-consignment-details table {
+    margin-bottom: 0;
+}
+.label:not(.md-skip) {
+    font-size: 10px;
+    padding: 2px 6px !important;
+}
