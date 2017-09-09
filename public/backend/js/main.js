@@ -277,6 +277,22 @@ function ajaxLinkRequest(link) {
     });
 }
 
+// Auto count quantity for addableform-table (line-form)
+function autoAddItemsLine(container) {
+    var rows = container.find('table tbody tr:visible');
+    var qtytotal = 0;
+    rows.each(function() {
+        var row = $(this);
+        var quantity = parseFloat(row.find('.line_quantity').val());
+        // Update items total
+        if(quantity) {
+            qtytotal += quantity;
+        }
+    });
+    // update line total
+    container.find('.quantity_total').html(qtytotal);
+}
+
 // Init vars
 var AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
 
@@ -469,8 +485,26 @@ $(document).ready(function() {
         form.attr('action', url);
 
         form.submit();
-    })
+    });
 
     // Auto list
     $('.autolist').autolist();
+    
+    // -- Auto count quantity for addableform-table (line-form)
+    $('.add-items-line').each(function() {
+        autoAddItemsLine($(this));
+    });
+    
+    // Change event on order line
+    $(document).on('change keyup', '.add-items-line input', function(e) {
+        var container = $(this).parents('.add-items-line');
+        autoAddItemsLine(container);
+    });
+    
+    // Click event nested remove button
+    $(document).on('click', '.nested-remove-button', function(e) {
+        var container = $(this).parents('.add-items-line');
+        setTimeout(function() {autoAddItemsLine(container);}, 100);
+    });
+    // -END- Auto count quantity for addableform-table (line-form)
 });
