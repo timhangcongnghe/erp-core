@@ -692,3 +692,6 @@ span.help-block.alert {
     font-size: 10px;
     padding: 2px 6px !important;
 }
+.btn-group-sm>.btn, .btn-sm {
+    line-height: 1.8;
+}
