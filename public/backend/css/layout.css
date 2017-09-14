@@ -255,6 +255,9 @@ a:hover {
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
     vertical-align: middle;
 }
+.table>tbody>tr.addableform-line>td, .table>tbody>tr.addableform-line>th, .table>tfoot>tr.addableform-line>td, .table>tfoot>tr.addableform-line>th, .table>thead>tr.addableform-line>td, .table>thead>tr.addableform-line>th {
+    vertical-align: baseline;
+}
 .label {
     padding: 4px 12px;
     border-radius: 20px !important;
@@ -386,6 +389,9 @@ a:hover {
 .addableform table .addableform-line .form-group {
     margin-bottom: 0 !important;
 }
+table tr.addableform-line > td .form-group {
+    margin-bottom: 0 !important;
+}
 .btn-group>.dropdown-menu, .dropdown-toggle>.dropdown-menu, .dropdown>.dropdown-menu {
     max-height: 300px;
     overflow: auto;
@@ -406,6 +412,15 @@ a:hover {
 /* backgroud color for label status */
 .label-draft {
     background-color: #3598dc;
+}
+.label-stock_checking {
+    background-color: #c072e8;
+}
+.label-stock_checked {
+    background-color: #d88d3f;
+}
+.label-stock_approved {
+    background-color: #15a704;
 }
 .label-confirmed {
     background-color: #36c6d3;
@@ -456,7 +471,7 @@ a:hover {
 }
 .btn:not(.md-skip):not(.bs-select-all):not(.bs-deselect-all).btn-sm {
     font-size: 11px;
-    padding: 4px 12px;
+    padding: 4px 4px;
 }
 table tr.blurred, table tr.blurred > td .btn-group > a.btn, table tr.blurred > td a {
     color: #95a5a6;
@@ -466,4 +481,21 @@ table tr.blurred > td .tr-expand-button {
 }
 table tr.blurred .userpic .list-userpic {
     opacity: 0.6;
+}
+table tr.addableform-line > td .btn-group .btn.dropdown-toggle {
+    font-weight: normal;
+    text-transform: none;
+}
+table tr.addableform-line > td .btn-group .btn {
+    font-size: 13px !important;
+}
+table tr.addableform-line > td .btn-group ul.dropdown-menu {
+    min-width: 150px;
+}
+table tr.addableform-line > td .btn-group ul.dropdown-menu>li>a {
+    font-size: 13px;
+}
+table tr.addableform-line > td .btn-group ul.dropdown-menu>li>a>.badge {
+    margin-top: -1px;
+    right: 5px;
 }
