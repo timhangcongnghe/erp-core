@@ -364,9 +364,6 @@ i.default:hover {
 .form-control-mb-10 .form-group {
     margin-bottom: 10px !important;
 }
-.tabbable-custom>.tab-content {
-    padding: 20px;
-}
 .mt-checkbox-inline .mt-checkbox {
     margin-right: 0;
 }
