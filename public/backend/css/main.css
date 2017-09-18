@@ -275,7 +275,6 @@ span.tag-border-radius {
 }
 .tabbable-custom {
     overflow: inherit;
-    margin-bottom: 25px;
 }
 .datalist-search-helper ul li {
     position: relative;
@@ -479,6 +478,9 @@ h2.invoice-title.title {
 }
 .child-row, .child-row:hover>td, .table-hover > tbody > tr.child-row:hover > td {
     background: #ffebe6 !important;
+}
+tr.child-row>td.child-td table.table {
+    margin-bottom: auto;
 }
 .top-datalist div#reportrange {
     background-color: #f7f9f9;;

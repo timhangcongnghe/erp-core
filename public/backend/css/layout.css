@@ -44,8 +44,6 @@ label {
 .input-group label {
     font-weight: 500;
 }
-.form-control, output {
-}
 .nav-pills>li>a, .nav-tabs>li>a {
     font-size: 15px;
     font-weight: 400;
@@ -367,9 +365,6 @@ a:hover {
 .page-header.navbar .top-menu .navbar-nav>li.dropdown-user .dropdown-toggle>.username {
     font-size: 15px;
     font-weight: 400;
-}
-.form-control {
-    height: 35px;
 }
 .page-sidebar .page-sidebar-menu .sub-menu>li.active>a, .page-sidebar .page-sidebar-menu .sub-menu>li.open>a, .page-sidebar .page-sidebar-menu .sub-menu>li:hover>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li.active>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li.open>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li:hover>a {
     background: none !important;
