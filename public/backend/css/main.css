@@ -691,3 +691,6 @@ span.help-block.alert {
 .btn-group-sm>.btn, .btn-sm {
     line-height: 1.8;
 }
+.addableform-more {
+    background: #eee;
+}
