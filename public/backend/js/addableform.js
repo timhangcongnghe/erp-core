@@ -36,7 +36,11 @@ function addableformAddLine(addableform) {
             if(type !== 'table') {
                 container.append('<span class="addableform-line">' + result + '</span>');
             } else {
-                container.append('<tr class="addableform-line">' + result + '</tr>');
+                if ($('<div>').html(result).find('tr').length) {
+                    container.append(result);
+                } else {
+                    container.append('<tr class="addableform-line">' + result + '</tr>');
+                }                
             }
             
             clearDataselectControlText(add_control.parents('.dataselect'));

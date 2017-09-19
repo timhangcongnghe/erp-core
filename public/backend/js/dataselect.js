@@ -290,11 +290,13 @@ function getDataselectCurrentValue(dataselect) {
 function removeDataselectValueItem(item) {
     var dataselect = item.parents('.dataselect');
     var control = dataselect.find('.dataselect-control');
+    var value_control = dataselect.find('.dataselect-value');
 
     item.remove();
 
     control.focus();
     updateDataselectData(dataselect);
+    value_control.eq(0).trigger('change');
 }
 
 // remove name item from dataselect
@@ -329,6 +331,7 @@ function insertDataselectValueItem(dataselect, text, value) {
     // wait for other action
     control.focus();
     updateDataselectData(dataselect);
+    value_control.trigger('change');
 }
 
 // insert item to dataselect value if multiple

@@ -507,4 +507,35 @@ $(document).ready(function() {
         setTimeout(function() {autoAddItemsLine(container);}, 100);
     });
     // -END- Auto count quantity for addableform-table (line-form)
+    
+    // warehouses-stock-info
+    $('.warehouses-stock-info').each(function() {
+        var box = $(this);
+        var form = box.closest('form');
+        var url = box.attr('data-url');
+        var control_selector = box.attr('data-control');
+        
+        $(control_selector).change(function() {
+            var values = [];
+            $(control_selector).each(function() {
+                console.log($(this).val());
+                values.push($(this).val());
+            });
+            
+            console.log(values);
+            box.html('<div class="loader"><div class="ball-pulse"><div></div><div></div><div></div></div></div>');
+            
+            $.ajax({
+                method: "GET",
+                url: url,
+                data: {
+                    ids: values.join(',')
+                }
+            }).done(function( data ) {
+                box.html(data);
+                applyJs(box);
+            });
+        });        
+        $(control_selector).trigger('change');
+    });    
 });
