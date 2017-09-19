@@ -62,7 +62,8 @@ $(document).ready(function() {
     $(document).on("click", ".addableform .remove-button", function() {
         var addableformline = $(this).parents('.addableform-line');
         
-        addableformline.remove();
+        addableformline.next('.addableform-more').remove();
+        addableformline.remove();        
     });
     
     $(document).on("click", ".addableform .nested-remove-button", function() {
@@ -75,6 +76,7 @@ $(document).ready(function() {
             }
         });
         
-        addableformline.hide();
+        addableformline.next('.addableform-more').hide();
+        addableformline.hide();        
     });
 });
