@@ -1,14 +1,14 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "login-form"}) do |f| %>
     <h3 class="form-title font-green"><%= t('.sign_in') %></h3>
     <% if notice %>
-        <div class="alert alert-danger">
-            <button class="close" data-close="alert"></button>
+        <div class="alert alert-warning">
+            <button style="margin-top: 5px;" class="close" data-close="warning"></button>
             <span><%= notice %></span>
         </div>
     <% end %>
     <% if alert %>
-        <div class="alert alert-danger">
-            <button class="close" data-close="alert"></button>
+        <div class="alert alert-warning">
+            <button style="margin-top: 5px;" class="close" data-close="alert"></button>
             <span><%= alert %></span>
         </div>
     <% end %>    
@@ -23,10 +23,5 @@
     </div>
     <div class="form-actions">
         <button type="submit" class="btn green uppercase"><%= t('.login') %></button>
-        <label class="rememberme check mt-checkbox mt-checkbox-outline" for="user_remember_me">
-            <input name="user[remember_me]" type="hidden" value="0"><input type="checkbox" id="user_remember_me" name="user[remember_me]" value="1" /><%= t('.remember_me') %>
-            <span></span>
-        </label>
-        <a href="javascript:;" id="forget-password" class="forget-password"><%= t('.forgot_password') %></a>
     </div>
 <% end %>
