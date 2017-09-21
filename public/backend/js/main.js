@@ -523,7 +523,7 @@ $(document).ready(function() {
             });
             
             console.log(values);
-            box.html('<div class="loader"><div class="ball-pulse"><div></div><div></div><div></div></div></div>');
+            // box.html('<div class="loader"><div class="ball-pulse"><div></div><div></div><div></div></div></div>');
             
             $.ajax({
                 method: "GET",
