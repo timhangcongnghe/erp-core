@@ -692,5 +692,34 @@ span.help-block.alert {
     line-height: 1.8;
 }
 .addableform-more {
-    background: #eee;
+    background: #fff;
+}
+.table>tbody>tr.addableform-line:nth-of-type(n+2) {
+    border-top: solid 1px rgba(232, 232, 232, .2);
+}
+.table>tbody>tr.addableform-more {
+    padding: 8px 15px;
+}
+.table>tbody>tr.addableform-more .todo-tasklist-item-title {
+    font-size: 13px;
+    color: #2b4a5c;
+    font-weight: 600;
+    padding-top: 3px;
+}
+.table>tbody>tr.addableform-more .todo-tasklist-item-text {
+    font-size: 13px;
+    color: #577688;
+    padding-bottom: 5px;
+}
+.table>tbody>tr.addableform-more i.available {
+    color: #00a900;
+    font-weight: 900;
+    margin-top: 5px;
+    font-size: 15px;
+}
+.table>tbody>tr.addableform-more i.not-available {
+    color: #f30303;
+    font-weight: 900;
+    margin-top: 5px;
+    font-size: 15px;
 }
