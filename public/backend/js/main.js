@@ -220,6 +220,34 @@ function jsForAjaxContent(container) {
             }
         });
     });
+
+    // ajax-box
+    container.find('.ajax-box').each(function() {
+        var box = $(this);
+        var url = box.attr('data-url');
+        var controls = $(box.attr('data-control'));
+
+        controls.change(function() {
+            controls = $(box.attr('data-control'));
+
+            var datas = [];
+            controls.each(function() {
+                datas.push($(this).val());
+            });
+
+            $.ajax({
+                url: url,
+                method: 'GET',
+                data: {
+                    datas: datas
+                }
+            }).done(function( result ) {
+                box.html(result);
+            });
+        });
+
+        controls.eq(0).trigger('change');
+    });
 }
 
 //scroll to jquery element
@@ -489,42 +517,42 @@ $(document).ready(function() {
 
     // Auto list
     $('.autolist').autolist();
-    
+
     // -- Auto count quantity for addableform-table (line-form)
     $('.add-items-line').each(function() {
         autoAddItemsLine($(this));
     });
-    
+
     // Change event on order line
     $(document).on('change keyup', '.add-items-line input', function(e) {
         var container = $(this).parents('.add-items-line');
         autoAddItemsLine(container);
     });
-    
+
     // Click event nested remove button
     $(document).on('click', '.nested-remove-button', function(e) {
         var container = $(this).parents('.add-items-line');
         setTimeout(function() {autoAddItemsLine(container);}, 100);
     });
     // -END- Auto count quantity for addableform-table (line-form)
-    
+
     // warehouses-stock-info
     $('.warehouses-stock-info').each(function() {
         var box = $(this);
         var form = box.closest('form');
         var url = box.attr('data-url');
         var control_selector = box.attr('data-control');
-        
+
         $(control_selector).change(function() {
             var values = [];
             $(control_selector).each(function() {
                 console.log($(this).val());
                 values.push($(this).val());
             });
-            
+
             console.log(values);
             // box.html('<div class="loader"><div class="ball-pulse"><div></div><div></div><div></div></div></div>');
-            
+
             $.ajax({
                 method: "GET",
                 url: url,
@@ -535,7 +563,7 @@ $(document).ready(function() {
                 box.html(data);
                 applyJs(box);
             });
-        });        
+        });
         $(control_selector).trigger('change');
-    });    
+    });
 });
