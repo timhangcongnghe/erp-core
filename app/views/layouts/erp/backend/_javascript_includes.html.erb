@@ -31,6 +31,12 @@
 <%= javascript_include_tag '/backend/js/editor.js' %>
 <!-- END CUSTOM ERP SCRIPTS -->
 
+<!-- CUSTOM PAGE SCRIPTS -->
+<% if content_for?(:page_script) %>
+    <%= yield(:page_script) %>
+<% end %>
+<!-- END CUSTOM PAGE SCRIPTS -->
+
 <!-- LOCALE JAVASCRIPT -->
 <script>
     var LANG_OR = '<%= t('or') %>';

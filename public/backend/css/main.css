@@ -723,3 +723,7 @@ span.help-block.alert {
     margin-top: 5px;
     font-size: 15px;
 }
+.addableform+table.table.all-line-total tr>td span {
+    line-height: 0.5;
+    font-size: 16px;
+}

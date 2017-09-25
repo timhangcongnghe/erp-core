@@ -228,13 +228,14 @@ function jsForAjaxContent(container) {
         var controls = $(box.attr('data-control'));
 
         controls.change(function() {
-            controls = $(box.attr('data-control'));
+            str = box.attr('data-control');
+            //console.log(str);
 
             var datas = [];
-            controls.each(function() {
-                datas.push($(this).val());
+            str.split(',').forEach(function(str) {
+                datas.push($(str).val());
             });
-
+            
             $.ajax({
                 url: url,
                 method: 'GET',
