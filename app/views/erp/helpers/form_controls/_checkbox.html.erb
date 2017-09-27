@@ -1,5 +1,14 @@
 <div class="form-group">
-    <% if options[:label].present? %><label><%= options[:label] %></label><% end %>
+    <% if options[:label].present? %>
+        <label>
+            <%= options[:label] %>
+            <% if options[:help].present? %>
+                <i class="fa fa-commenting default tooltips icon-default-color"
+                data-original-title="<%= options[:help] %>"
+                data-container="body"></i>
+            <% end %>
+        </label>
+    <% end %>    
     <div class="mt-checkbox-inline radio-padding-top">
         <% if options[:options].present? %>
             <% options[:options].each_with_index do |option| %>
@@ -20,12 +29,7 @@
                         id="<%= options[:id] if options[:id].present? %>"
                         value="<%= option[:value] %>"> <%= option[:text] %>
                     <span></span>
-                </label>
-                <% if options[:help].present? %>
-                    <i class="fa fa-commenting default tooltips icon-default-color"
-                    data-original-title="<%= options[:help] %>"
-                    data-container="body"></i>
-                <% end %>
+                </label>                
             <% end %>
         <% end %>
     </div>
