@@ -8,7 +8,6 @@ require 'unidecoder'
 require 'omniauth-facebook'
 require 'omniauth-google-oauth2'
 require 'rmega'
-require 'rubyzip'
 require 'axlsx'
 require 'axlsx_rails'
 
