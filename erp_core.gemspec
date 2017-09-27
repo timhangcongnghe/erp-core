@@ -32,4 +32,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'omniauth-facebook'
   s.add_dependency 'omniauth-google-oauth2'
   s.add_dependency 'rmega'
+  s.add_dependency 'axlsx', '2.1.0.pre'
+  s.add_dependency 'axlsx_rails'
 end
