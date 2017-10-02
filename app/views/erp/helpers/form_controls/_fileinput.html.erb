@@ -9,7 +9,7 @@
         <div class="input-group input-large">
             <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
                 <i class="fa fa-file fileinput-exists"></i>&nbsp;
-                <span class="fileinput-filename"> </span>
+                <span class="fileinput-filename"> <%= options[:value] if options[:value].present? %></span>
             </div>
             <span class="input-group-addon btn default btn-file">
                 <span class="fileinput-new"> <%= t('core.select_file') %> </span>
