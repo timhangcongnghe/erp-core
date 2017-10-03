@@ -727,3 +727,6 @@ span.help-block.alert {
     line-height: 0.5;
     font-size: 16px;
 }
+.input-group .icheck-inline.radio-padding-top {
+    line-height: 25px;
+}
