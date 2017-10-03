@@ -105,7 +105,7 @@ a:hover {
 .dataselect-data {
     position: absolute;
     width: 100%;
-    z-index: 10056;
+    z-index: 9000;
 }
 .dataselect-data ul {
     background: #fff;
