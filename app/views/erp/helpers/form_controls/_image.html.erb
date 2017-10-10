@@ -1,4 +1,4 @@
-<div class="form-group center">
+<div class="form-group center <%= options[:class] if options[:class].present? %>">
     <% if options[:label].present? %>
         <label><%= options[:label] %>
             <% if options[:required] == true %>
