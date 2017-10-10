@@ -360,9 +360,6 @@ i.default:hover {
 .form-control-mb-0 .form-group, .form-control-mb-0 .form-group label {
     margin-bottom: 0 !important;
 }
-.form-control-mb-10 .form-group {
-    margin-bottom: 10px !important;
-}
 .mt-checkbox-inline .mt-checkbox {
     margin-right: 0;
 }
@@ -662,9 +659,9 @@ span.help-block.alert {
 .table-child-content {
     margin-bottom: 0px;
 }
-.ml-10 {
-    margin-left: 10px;
-}
+.ml-10 { margin-left: 10px !important; }
+.mb-5 { margin-bottom: 5px !important; }
+.mb-10 { margin-bottom: 10px !important; }
 .pull-none {
     float: none;
 }
@@ -729,4 +726,25 @@ span.help-block.alert {
 }
 .input-group .icheck-inline.radio-padding-top {
     line-height: 25px;
+}
+.custom-show h4, .custom-show h5 {
+    margin: 0 0 5px;
+}
+.custom-show hr {
+    margin: 5px 0 10px;
+}
+.custom-show textarea {
+    max-width: 100%;
+}
+.profile-desc-title sup span.label {
+    background-color: #00ab64;
+    font-weight: normal !important;
+    padding: 1px 2px !important;
+    border-radius: 2px !important;
+}
+.alert-margin-0 .alert {
+    margin: 0;
+}
+.alert-child-contact {
+    background-color: #e6f1ff;
 }
