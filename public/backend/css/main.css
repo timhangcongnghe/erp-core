@@ -662,6 +662,7 @@ span.help-block.alert {
 .ml-10 { margin-left: 10px !important; }
 .mb-5 { margin-bottom: 5px !important; }
 .mb-10 { margin-bottom: 10px !important; }
+.mb-15 { margin-bottom: 15px !important; }
 .pull-none {
     float: none;
 }
@@ -747,4 +748,7 @@ span.help-block.alert {
 }
 .alert-child-contact {
     background-color: #e6f1ff;
+}
+.ajax-box .table.table-info-detail>tbody>tr>td {
+    padding: 4px 8px;
 }

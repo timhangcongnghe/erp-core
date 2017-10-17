@@ -244,6 +244,7 @@ function jsForAjaxContent(container) {
                 }
             }).done(function( result ) {
                 box.html(result);
+                jsForAjaxContent(box);
             });
         });
 
