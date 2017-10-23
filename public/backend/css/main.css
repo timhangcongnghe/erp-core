@@ -752,3 +752,6 @@ span.help-block.alert {
 .ajax-box .table.table-info-detail>tbody>tr>td {
     padding: 4px 8px;
 }
+.portlet-body.form .ajax-box .form-group:last-child {
+    margin-bottom: 25px;
+}
