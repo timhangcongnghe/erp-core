@@ -1,3 +1,6 @@
+function priceInput(element) {
+    element.inputmask("decimal", { radixPoint: ".", autoGroup: true, groupSeparator: ",", digits: 2, groupSize: 3 });
+}
 function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
 }
@@ -175,7 +178,7 @@ function jsForAjaxContent(container) {
         var digit = $(this).attr("digit");
         var type = $(this).attr("number-type");
 
-        $(this).inputmask(type, {min:parseFloat(min), max: parseFloat(max), digits: parseFloat(digit), groupSeparator: ","});
+        priceInput($(this)); // .inputmask(type, {min:parseFloat(min), max: parseFloat(max), digits: parseFloat(digit), groupSeparator: ","});
     });
 
     // select helper
@@ -235,7 +238,7 @@ function jsForAjaxContent(container) {
             str.split(',').forEach(function(str) {
                 datas.push($(str).val());
             });
-            
+
             $.ajax({
                 url: url,
                 method: 'GET',
