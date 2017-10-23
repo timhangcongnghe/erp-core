@@ -468,6 +468,9 @@ table tr.addableform-line > td .form-group {
     font-size: 11px;
     padding: 4px 4px;
 }
+.child-row .child-td .tabbable-custom .btn:not(.md-skip):not(.bs-select-all):not(.bs-deselect-all).btn-sm {
+    padding: 1px 2px;
+}
 table tr.blurred, table tr.blurred > td .btn-group > a.btn, table tr.blurred > td a {
     color: #95a5a6;
 }
