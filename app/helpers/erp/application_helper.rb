@@ -209,7 +209,7 @@ module Erp
     def url_friendly(string)
       string.to_ascii.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
     end
-    
+
     # display short name for user
     def user_short_name(str)
       str.rpartition(' ').last
@@ -237,7 +237,7 @@ module Erp
     # format price
     def format_price(price)
       price = (price.to_f/1000).round*1000 if Erp::Core.available?("online_store")
-      "<span style=\'font-family:sans-serif;\'>#{number_to_currency(price, precision: 0, format: "%n₫", separator: ',', unit: '', delimiter: ".")}</span>".html_safe
+      "<span style=\'font-family:sans-serif;\'>#{number_to_currency(price, precision: 0, format: "%n₫", separator: '.', unit: '', delimiter: ",")}</span>".html_safe
     end
 
   end
