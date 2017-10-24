@@ -11,15 +11,15 @@
             <% end %>
         </label>
     <% end %>
-        
-    <input class="form-control spinner <%= options[:class] if options[:class].present? %>"
+
+    <input <%= 'required=required' if options[:required] == true %> class="form-control spinner <%= options[:class] if options[:class].present? %>"
         type="text"
         name="<%= options[:name] if options[:name].present? %>"
         id="<%= options[:id] if options[:id].present? %>"
         value="<%= options[:value] if options[:value].present? %>"
         placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
     />
-        
+
     <% if options[:errors].present? %>
         <span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span>
     <% end %>

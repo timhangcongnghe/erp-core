@@ -14,6 +14,7 @@
     <% end %>
     <input
         type="hidden"
+        <%= 'required=required' if options[:required] == true %>
         name="<%= options[:name] if options[:name].present? %>"
         value="<%= options[:value] if options[:value].present? %>"
         class="dataselect-value"

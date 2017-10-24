@@ -755,3 +755,8 @@ span.help-block.alert {
 .portlet-body.form .ajax-box .form-group:last-child {
     margin-bottom: 25px;
 }
+label.myErrorClass {
+    font-size: 13px;
+    margin-top: 5px;
+    color: #e02222;
+}

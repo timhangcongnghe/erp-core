@@ -19,6 +19,8 @@
 <%= render "layouts/erp/backend/theme_layout_scripts" %>
 <!-- END THEME LAYOUT SCRIPTS -->
 <!-- CUSTOM ERP SCRIPTS -->
+<%= javascript_include_tag '/backend/js/validation/jquery.validate.min.js' %>
+<%= javascript_include_tag '/backend/js/validation/localization/messages_vi.min.js' %>
 <%= javascript_include_tag '/backend/js/autolist.js' %>
 
 <%= javascript_include_tag '/backend/js/main.js' %>
@@ -29,6 +31,7 @@
 <%= javascript_include_tag "/backend/js/order.js" if Erp::Core.available?("orders") %>
 <%= javascript_include_tag "/backend/js/stock-transfer.js" if Erp::Core.available?("stock_transfers") %>
 <%= javascript_include_tag '/backend/js/editor.js' %>
+<%= javascript_include_tag '/backend/js/validate.js' %>
 <!-- END CUSTOM ERP SCRIPTS -->
 
 <!-- CUSTOM PAGE SCRIPTS -->

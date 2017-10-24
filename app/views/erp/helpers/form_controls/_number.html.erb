@@ -11,8 +11,9 @@
             <% end %>
         </label>
     <% end %>
-    
+
     <input class="form-control <%= options[:class] if options[:class].present? %> numberic"
+        <%= 'required=required' if options[:required] == true %>
         type="text"
         name="<%= options[:name] if options[:name].present? %>"
         value="<%= options[:value] if options[:value].present? %>"
@@ -22,7 +23,7 @@
         digit="<%= options[:digit].present? ? options[:digit] : 2 %>"
         number-type="<%= options[:type].present? ? options[:type] : "decimal" %>"
     />
-        
+
     <% if options[:errors].present? %>
         <span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span>
     <% end %>
