@@ -411,6 +411,11 @@ function updateDataselectData(dataselect, ignore_keyword) {
         'current_value': current_value
     };
 
+    // all form param
+    dataselect.closest('form').find('input, select, textarea').each(function() {
+        form_data[$(this).attr('name')] = $(this).val();
+    });
+
     // check parent control
     if(typeof(parent_control) !== 'undefined' && parent_control !== '' && typeof(parent_id) !== 'undefined' && parent_id !== '') {
         form_data.parent_value = $(parent_control).val();

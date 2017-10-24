@@ -760,3 +760,10 @@ label.myErrorClass {
     margin-top: 5px;
     color: #e02222;
 }
+.autolist-line .dataselect label.myErrorClass {
+    font-size: 13px;
+    margin-top: 5px;
+    color: #e02222;
+    margin-top: -18px;
+    position: absolute;
+}
