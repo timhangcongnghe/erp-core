@@ -30,6 +30,19 @@ function calculateOrderDetails(container) {
 
         // update line total
         row.find('.line_total').html(formatNumber(line_total));
+        
+        if (row.find('.line_customer_commission_percent').val() !== '') {
+            var customer_commission_percent = customParseFloat(row.find('.line_customer_commission_percent').val());
+        } else {
+            var customer_commission_percent = 0;
+        }
+        
+        var customer_commission_amount = (unit_price*quantity*customer_commission_percent)/100;
+        if (customer_commission_amount > 0) {
+            row.find('.line_customer_commission_amount').html('= ' + formatNumber(customer_commission_amount));
+        } else {
+            row.find('.line_customer_commission_amount').html('');
+        }
 
         // Update order total
         if(line_total) {
@@ -45,7 +58,13 @@ $(document).ready(function() {
     $('.order-details').each(function() {
         calculateOrderDetails($(this));
     });
-
+    
+    // Event DOM subtree modified
+    $('.ajax-box').bind("DOMSubtreeModified", function(){
+        var container = $(this).parents('.order-details');
+        calculateOrderDetails(container);
+    });
+    
     // Change event on order line
     $(document).on('change keyup', '.order-details input', function(e) {
         var container = $(this).parents('.order-details');
