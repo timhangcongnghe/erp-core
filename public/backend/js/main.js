@@ -237,7 +237,7 @@ function jsForAjaxContent(container) {
         var url = box.attr('data-url');
         var controls = $(box.attr('data-control'));
 
-        controls.change(function() {
+        controls.on('change keyup', function() {
             str = box.attr('data-control');
             //console.log(str);
 
