@@ -412,8 +412,13 @@ function updateDataselectData(dataselect, ignore_keyword) {
     };
 
     // all form param
+    var limit = 20;
+    var count = 0;
     dataselect.closest('form').find('input, select, textarea').each(function() {
-        form_data[$(this).attr('name')] = $(this).val();
+        if (count <= limit) {
+            form_data[$(this).attr('name')] = $(this).val();
+        }
+        count = count + 1;
     });
 
     // check parent control
