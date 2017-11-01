@@ -358,6 +358,9 @@ a:hover {
 .btn.btn-noborder:hover, .page-bar .btn:hover {
     background: #f5f5f5 !important;
 }
+.noborder {
+    border: none;
+}
 .dataselect-data ul, .select2-container--bootstrap .select2-dropdown {
     box-shadow: 3px 3px rgba(102,102,102,.2)
 }
