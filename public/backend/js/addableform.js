@@ -34,12 +34,12 @@ function addableformAddLine(addableform) {
             }
         }).done(function( result ) {
             if(type !== 'table') {
-                container.append('<span class="addableform-line">' + result + '</span>');
+                container.prepend('<span class="addableform-line">' + result + '</span>');
             } else {
                 if ($('<div>').html(result).find('tr').length) {
-                    container.append(result);
+                    container.prepend(result);
                 } else {
-                    container.append('<tr class="addableform-line">' + result + '</tr>');
+                    container.prepend('<tr class="addableform-line">' + result + '</tr>');
                 }                
             }
             
@@ -47,7 +47,7 @@ function addableformAddLine(addableform) {
             clearDataselectValue(add_control.parents('.dataselect'));
             
             // js for new content
-            jsForAjaxContent(container.find('.addableform-line').last());
+            jsForAjaxContent(container.find('.addableform-line').first());
         });
     }
 }
