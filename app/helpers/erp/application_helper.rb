@@ -87,6 +87,11 @@ module Erp
     end
 
     # Format date
+    def format_datetime(date)
+      date.nil? ? '' : date.strftime(t('datetime_format'))
+    end
+
+    # Format date
     def export_partial
       "erp/elements/export.xlsx.axlsx"
     end
