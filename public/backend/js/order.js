@@ -7,6 +7,10 @@ function calculateOrderDetails(container) {
     rows.each(function() {
         var row = $(this);
         var quantity = customParseFloat(row.find('.line_quantity').val());
+        if (row.find('.line_fill_price').html() !== '') {
+            var price = customParseFloat(row.find('.line_fill_price').html());
+            row.find('.line_unit_price').val(formatNumber(price));
+        }
         var unit_price = customParseFloat(row.find('.line_unit_price').val());
         var discount_amount = 0;
         var shipping_amount = 0;
