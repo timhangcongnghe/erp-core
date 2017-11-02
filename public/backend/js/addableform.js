@@ -5,13 +5,13 @@ function addableformAddLine(addableform) {
     var type = addableform.attr('type');
     var add_control = addableform.find(addableform.attr('add-control-selector'));
     var items = container.find('.item-id');
-    
+
     if(typeof(add_control) === 'undefined') {
-        add_value = '';        
+        add_value = '';
     } else {
         add_value = add_control.val();
     }
-    
+
     if(typeof(type) === 'undefined') {
         type = 'normal';
     }
@@ -23,7 +23,7 @@ function addableformAddLine(addableform) {
             exist_ids.push(id);
         });
     }
-    
+
     if(add_value != '') {
         $.ajax({
             url: url,
@@ -40,12 +40,12 @@ function addableformAddLine(addableform) {
                     container.prepend(result);
                 } else {
                     container.prepend('<tr class="addableform-line">' + result + '</tr>');
-                }                
+                }
             }
-            
+
             clearDataselectControlText(add_control.parents('.dataselect'));
             clearDataselectValue(add_control.parents('.dataselect'));
-            
+
             // js for new content
             jsForAjaxContent(container.find('.addableform-line').first());
         });
@@ -55,28 +55,29 @@ function addableformAddLine(addableform) {
 $(document).ready(function() {
     $(document).on("click", ".addableform .add-button", function() {
         var addableform = $(this).parents('.addableform');
-        
+
         addableformAddLine(addableform);
     });
-    
+
     $(document).on("click", ".addableform .remove-button", function() {
         var addableformline = $(this).parents('.addableform-line');
-        
+
         addableformline.next('.addableform-more').remove();
-        addableformline.remove();        
+        addableformline.remove();
     });
-    
+
     $(document).on("click", ".addableform .nested-remove-button", function() {
         var addableformline = $(this).parents('.addableform-line');
-        
+
         addableformline.find('input').each(function() {
             var name = $(this).attr('name');
             if(typeof(name) != 'undefined' && name.indexOf('_destroy') >= 0) {
-                $(this).val('1');                
+                $(this).val('1');
             }
         });
-        
+
         addableformline.next('.addableform-more').hide();
-        addableformline.hide();        
+        addableformline.hide();
+        addableformline.find('input, select').addClass('jvalidate_ignore');
     });
 });

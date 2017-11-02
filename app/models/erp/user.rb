@@ -63,7 +63,7 @@ module Erp
     end
 
     def activate
-			update_columns(active: true)
+			update_columns(active: true, backend_access: true, confirmed_at: Time.now)
 		end
 
     def deactivate

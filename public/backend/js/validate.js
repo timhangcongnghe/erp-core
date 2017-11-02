@@ -3,7 +3,7 @@ function customValidate(container) {
     var validobj = container.find('form').validate({
         onkeyup: false,
         errorClass: "myErrorClass",
-        ignore: [],
+        ignore: ".jvalidate_ignore",
 
         //put error message behind each form element
         errorPlacement: function (error, element) {
