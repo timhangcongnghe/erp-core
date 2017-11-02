@@ -40,8 +40,10 @@ $.fn.autolist = function(action, param) {
                 processData: false,
                 contentType: false,
             }).done(function( row ) {
-                // line.find('.order-box').html( $('<div>').html(row).find('.order-box').html() );
-                line.replaceWith( row );
+                line.html( $('<div>').html(row).find('.autolist-line').html() );
+
+                line.css('opacity', 1);
+
                 jsForAjaxContent(line);
             });
         }, 150);

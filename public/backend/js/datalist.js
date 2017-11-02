@@ -501,9 +501,22 @@ function datalistFilter(list, page) {
     if ($('.global-filter').length) {
         arr = $('.global-filter').serializeArray();
         for (var i = 0; i < arr.length; i++){
-          global_filter[arr[i]['name']] = arr[i]['value'];
+            var name = arr[i]['name'];
+            if (name.indexOf('[]') !== -1) {
+                name = name.substr(0,name.length-2)
+            }
+            if (global_filter[name]) {
+                if (global_filter[name].constructor !== Array) {
+                    global_filter[name] = [global_filter[name]];
+                }
+                global_filter[name].push(arr[i]['value']);
+            } else {
+                global_filter[name] = arr[i]['value'];
+            }
         }
     }
+
+    list.find(".datalist-container").addClass('loading');
 
     // ajax update custom sort
 	if(datalists[id] && datalists[id].readyState != 4){
@@ -524,6 +537,8 @@ function datalistFilter(list, page) {
         },
     }).done(function( html ) {
         list.find(".datalist-container" ).html( html );
+
+        list.find(".datalist-container").removeClass('loading');
 
         // update list sort layout
         updateDatalistSortLayout(list);

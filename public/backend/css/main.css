@@ -772,3 +772,15 @@ label.myErrorClass {
 .custom-row-0 {
     background: #eee;
 }
+.datalist-container.loading {
+    opacity: 0.5;
+}
+.stooltip {
+    position: absolute;
+    padding: 15px;
+    background: #efefef;
+    border: solid 1px #ccc;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+}
+.tooltip_showed {
+}

@@ -578,4 +578,33 @@ $(document).ready(function() {
         });
         $(control_selector).trigger('change');
     });
+
+    // Change event on order line
+    $(document).on('mouseover', '[data-tooltip-url]', function() {
+        var box = $(this);
+        var tooltip = box.find('.stooltip');
+        var url = box.attr('data-tooltip-url');
+
+        if (!box.hasClass('tooltip_showed')) {
+            box.addClass('tooltip_showed');
+            box.append('<div class="stooltip">Đang tải dữ liệu...</div>');
+            tooltip = box.find('.stooltip');
+
+            $.ajax({
+                method: "GET",
+                url: url
+            }).done(function( data ) {
+                tooltip.html(data);
+            });
+        }
+
+        tooltip.show();
+    });
+    $(document).on('mouseout', '[data-tooltip-url]', function() {
+        var box = $(this);
+        var tooltip = box.find('.stooltip');
+
+        tooltip.hide();
+    });
+
 });
