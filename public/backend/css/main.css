@@ -784,3 +784,6 @@ label.myErrorClass {
 }
 .tooltip_showed {
 }
+.text-small {
+    font-size: 80%;
+}
