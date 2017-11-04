@@ -1,16 +1,54 @@
 //function formatNumber(num) {
 //    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
 //}
+
+function updateDefaultPrice(row) {
+    var quantity = customParseFloat(row.find('.line_quantity').val());
+    if (row.find('.line_fill_price').html() !== '') {
+        var price = customParseFloat(row.find('.line_fill_price').html());
+        row.find('.line_unit_price').val(formatNumber(price)).change();
+    }
+
+    calculateOrderDetails(row.closest('.order-details'));
+}
+
+function updateDefaultCommission(row) {
+    var line_subtotal = customParseFloat(row.find('.line_subtotal').html());
+    var discount_amount = 0;
+
+    if (row.find('.line_discount_amount').val() !== '') {
+        discount_amount = customParseFloat(row.find('.line_discount_amount').val());
+    }
+
+    var c_total = line_subtotal - discount_amount;
+
+    var customer_commission_percent;
+    if (row.find('.line_customer_commission_percent').html() !== '') {
+        customer_commission_percent = customParseFloat(row.find('.line_customer_commission_percent').html());
+    } else {
+        customer_commission_percent = 0;
+    }
+
+    var customer_commission_amount = (c_total*customer_commission_percent)/100;
+    if (customer_commission_amount > 0) {
+        row.find('.line_customer_commission_amount').val(formatNumber(customer_commission_amount));
+    } else {
+        row.find('.line_customer_commission_amount').val('');
+    }
+
+    calculateOrderDetails(row.closest('.order-details'));
+}
+
 function calculateOrderDetails(container) {
     var rows = container.find('table tbody tr:visible');
     var order_total = 0;
     rows.each(function() {
         var row = $(this);
         var quantity = customParseFloat(row.find('.line_quantity').val());
-        if (row.find('.line_fill_price').html() !== '') {
-            var price = customParseFloat(row.find('.line_fill_price').html());
-            row.find('.line_unit_price').val(formatNumber(price));
-        }
+        //if (row.find('.line_fill_price').html() !== '') {
+        //    var price = customParseFloat(row.find('.line_fill_price').html());
+        //    row.find('.line_unit_price').val(formatNumber(price));
+        //}
         var unit_price = customParseFloat(row.find('.line_unit_price').val());
         var discount_amount = 0;
         var shipping_amount = 0;
@@ -34,19 +72,19 @@ function calculateOrderDetails(container) {
 
         // update line total
         row.find('.line_total').html(formatNumber(line_total));
-        
-        if (row.find('.line_customer_commission_percent').html() !== '') {
-            var customer_commission_percent = customParseFloat(row.find('.line_customer_commission_percent').html());
-        } else {
-            var customer_commission_percent = 0;
-        }
-        
-        var customer_commission_amount = (line_total*customer_commission_percent)/100;
-        if (customer_commission_amount > 0) {
-            row.find('.line_customer_commission_amount').val(formatNumber(customer_commission_amount));
-        } else {
-            row.find('.line_customer_commission_amount').val();
-        }
+
+        //if (row.find('.line_customer_commission_percent').html() !== '') {
+        //    var customer_commission_percent = customParseFloat(row.find('.line_customer_commission_percent').html());
+        //} else {
+        //    var customer_commission_percent = 0;
+        //}
+        //
+        //var customer_commission_amount = (line_total*customer_commission_percent)/100;
+        //if (customer_commission_amount > 0) {
+        //    row.find('.line_customer_commission_amount').val(formatNumber(customer_commission_amount));
+        //} else {
+        //    row.find('.line_customer_commission_amount').val();
+        //}
 
         // Update order total
         if(line_total) {
@@ -62,15 +100,51 @@ $(document).ready(function() {
     $('.order-details').each(function() {
         calculateOrderDetails($(this));
     });
-    
-    // Event DOM subtree modified
-    $(document).on('DOMSubtreeModified', '.ajax-box', function(){
-        var container = $(this).parents('.order-details');
-        calculateOrderDetails(container);
-    });
-    
+
+    //// Event DOM subtree modified
+    //$(document).on('DOMSubtreeModified', '.default_price_info', function(){
+    //    var row = $(this).closest('td');
+    //    var quantity = customParseFloat(row.find('.line_quantity').val());
+    //    if (row.find('.line_fill_price').html() !== '') {
+    //        var price = customParseFloat(row.find('.line_fill_price').html());
+    //        row.find('.line_unit_price').val(formatNumber(price));
+    //    }
+    //
+    //    calculateOrderDetails($(this));
+    //});
+    //
+    //// Event DOM subtree modified - commistion
+    //$(document).on('DOMSubtreeModified', '.default_customer_commission_info', function(){
+    //    var row = $(this).closest('tr');
+    //
+    //    var line_subtotal = customParseFloat(row.find('.line_subtotal').html());
+    //    var discount_amount = 0;
+    //
+    //    if (row.find('.line_discount_amount').val() !== '') {
+    //        discount_amount = customParseFloat(row.find('.line_discount_amount').val());
+    //    }
+    //
+    //    var c_total = line_subtotal - discount_amount;
+    //
+    //    var customer_commission_percent;
+    //    if (row.find('.line_customer_commission_percent').html() !== '') {
+    //        customer_commission_percent = customParseFloat(row.find('.line_customer_commission_percent').html());
+    //    } else {
+    //        customer_commission_percent = 0;
+    //    }
+    //
+    //    var customer_commission_amount = (c_total*customer_commission_percent)/100;
+    //    if (customer_commission_amount > 0) {
+    //        row.find('.line_customer_commission_amount').val(formatNumber(customer_commission_amount));
+    //    } else {
+    //        row.find('.line_customer_commission_amount').val('');
+    //    }
+    //
+    //    calculateOrderDetails($(this));
+    //});
+
     // Change event on order line
-    $(document).on('change keyup', '.order-details input:not(.line_customer_commission_amount)', function(e) {
+    $(document).on('change', '.order-details input:not(.line_customer_commission_amount)', function(e) {
         var container = $(this).parents('.order-details');
         calculateOrderDetails(container);
     });
