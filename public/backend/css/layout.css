@@ -474,7 +474,7 @@ table tr.addableform-line > td .form-group {
 .child-row .child-td .tabbable-custom .btn:not(.md-skip):not(.bs-select-all):not(.bs-deselect-all).btn-sm {
     padding: 1px 2px;
 }
-table tr.blurred, table tr.blurred > td .btn-group > a.btn, table tr.blurred > td a {
+table tr.blurred, table tr.blurred > td .btn-group > a.btn, table tr.blurred > td a, table tr.blurred > td a>[class*=" fa-"] {
     color: #95a5a6;
 }
 table tr.blurred > td .tr-expand-button {
