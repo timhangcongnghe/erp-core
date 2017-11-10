@@ -433,13 +433,19 @@ table tr.addableform-line > td .form-group {
     background-color: #bfbfbf;
 }
 .label-paid {
-    background-color: #36c6d3;
+    background-color: #4caf50;
 }
 .label-overdue {
     background-color: #f36a5a;
 }
 .label-debt {
     background-color: #ecc00d;
+}
+.label-owing {
+    background-color: #f36a5a;
+}
+.label-overpaid {
+    background-color: #ff9b04;
 }
 .label-return_back {
     background-color: #ff9b04;
