@@ -75,6 +75,24 @@ module Erp
       end
       conds
     end
+    
+    # Get filters datalist
+    def get_filters(params)
+      params = params.to_unsafe_hash
+      result = {}
+      if params["filters"].present?
+        params["filters"].each do |ft|
+          ft[1].each do |cond|
+            if result[cond[1]["name"]].present?
+              result[cond[1]["name"]] << cond[1]["value"]
+            else
+              result[cond[1]["name"]] = [cond[1]["value"]]
+            end
+          end
+        end
+      end
+      result
+    end
 
     # Get custom uniquess id
     def unique_id
