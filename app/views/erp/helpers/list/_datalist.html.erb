@@ -22,12 +22,13 @@
             <div class="actions">
                 <div class="list-search-items">
                 </div>
-                <div class="form-group form-md-line-input has-success form-md-floating-label list-filters-search">
-                    <div class="input-icon right">
-                        <input type="text" class="datalist-search-input form-control" placeholder="<%= t('core.type_to_search') %>">
-                        <i class="fa fa-search"></i>
-                    </div>
-                    <% if options[:keywords] %>
+                <% if options[:keywords] %>
+                    <div class="form-group form-md-line-input has-success form-md-floating-label list-filters-search">
+                        <div class="input-icon right">
+                            <input type="text" class="datalist-search-input form-control" placeholder="<%= t('core.type_to_search') %>">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    
                         <div class="datalist-search-helper">
                             <ul>
                                 <% options[:keywords].each do |keyword| %>
@@ -48,9 +49,9 @@
                                     </li>
                                 <% end %>
                             </ul>
-                        </div>
-                    <% end %>
-                </div>
+                        </div>                    
+                    </div>
+                <% end %>
                 <a class="btn btn-circle btn-icon-only btn-default fullscreen pl-10" href="javascript:;" data-original-title="<%= t('fullscreen') %>" title=""> </a>
                 <a href="" class="reload"></a>
             </div>
