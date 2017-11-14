@@ -25,6 +25,12 @@ Erp::Core::Engine.routes.draw do
 					put 'deactivate_all'
 				end
 			end
+			resources :user_groups do
+				collection do
+					post 'list'
+					get 'dataselect'
+				end
+			end
 			post '/editor/upload' => 'editor_uploads#upload'
 			patch '/editor/upload' => 'editor_uploads#upload'
 		end

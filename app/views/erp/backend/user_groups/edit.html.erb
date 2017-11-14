@@ -1,0 +1,32 @@
+<% content_for :page_toolbar do %>
+    <%= erp_component('button/create', {
+        text: t('.create'),
+        href: erp.new_backend_user_group_path,
+        class: 'btn-sm'
+    }) %>
+<% end %>
+
+<% content_for :title do %>
+    <%= @user_group.name %>
+<% end %>
+
+<% content_for :page_title do %>
+    <a href="<%= erp.backend_user_groups_path %>">
+        <i class="fa fa-users"></i> <%= t('.user_group') %>
+    </a> / <%= t('.edit') %>: <%= @user_group.name %>
+<% end %>
+
+<div class="row">
+    <div class="col-md-12">
+        <% if @user_group.errors.any? %>
+            <%= erp_form_control("form_error_message") %>
+        <% end %>
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-body">
+                <%= render 'form', user_group: @user_group %>
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+</div>

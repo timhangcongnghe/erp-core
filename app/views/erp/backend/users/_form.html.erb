@@ -37,6 +37,29 @@
                 required: true,
                 errors: user.errors.full_messages_for(:password_confirmation)
             }) %>
+            <%= erp_form_control("dataselect", {
+                name: 'user[user_group_id]',
+                value: user.user_group_id,
+                text: user.user_group_name,
+                placeholder: t('.choose_user_group'),
+                label: t('.user_group'),
+                url: erp.dataselect_backend_user_groups_path(format: 'json'),
+                required: true,
+                errors: user.errors.full_messages_for(:user_group_id),
+                create: {
+                    url: erp.new_backend_user_group_path,
+                    title: t('.create'),
+                    modal_size: 'md',
+                    container_selector: '.new_user_group',
+                    input_selector: 'input[name="user_group[name]"]'
+                },
+                edit: {
+                    url: erp.edit_backend_user_group_path(id: ':value'),
+                    title: t('.edit'),
+                    modal_size: 'md',
+                    container_selector: '.edit_user_group',
+                }
+            }) %>
             <%= erp_form_control('select', {
                 label: t('.timezone'),
                 name: 'user[timezone]',

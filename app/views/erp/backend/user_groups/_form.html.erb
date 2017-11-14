@@ -1,0 +1,30 @@
+<%= form_for([erp, :backend, user_group]) do |f| %>
+    <div class="row">
+        <div class="col-md-6">
+            <%= erp_form_control("text", {
+                name: 'user_group[name]',
+                value: user_group.name,
+                label: t('.name'),
+                placeholder: t('.enter_user_group_name'),
+                required: true,
+                errors: user_group.errors.full_messages_for(:name)
+            }) %>
+            <%= erp_form_control("textarea", {
+                name: 'user_group[description]',
+                value: user_group.description,
+                label: t('.description'),
+                placeholder: t('.enter_description'),
+                required: true,
+                errors: user_group.errors.full_messages_for(:description)
+            }) %>
+        </div>
+    </div>
+    <hr>
+    <%= erp_component('button/save', {
+        text: t('submit')
+    }) %>
+    <%= erp_component('button/cancel', {
+        text: t('cancel'),
+        href: erp.backend_user_groups_path
+    }) %>
+<% end %>

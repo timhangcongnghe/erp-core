@@ -96,7 +96,13 @@ vi:
           enter_password: "Nhập mật khẩu..."
           enter_password_confirm: "Nhập lại mật khẩu..."
           timezone: "Múi giờ"
-          choose_timezone: "Chọn múi giờ..."          
+          choose_timezone: "Chọn múi giờ..."
+          user_group: "Nhóm người dùng"
+          choose_user_group: "Chọn nhóm người dùng"
+          create: "Thêm mới"
+          edit: "Chỉnh sửa"
+      user_groups:
+        user_group: "Nhóm người dùng"
   core:
     search_keyword_for: Tìm theo <span class="bold">%{name}</span> với từ khóa <span class="keyword bold" text="%{name}" name="%{keyword}"></span>
     search: "Tìm theo"

@@ -1,0 +1,68 @@
+<table class="table table-advance table-hover table-striped table-checkable order-column">
+    <thead>
+        <tr>
+            <th width='1%'>
+                <%= erp_datalist_check_all %>
+            </th>
+            <% if get_columns(params).include?("name") %>
+                <th>
+                    <%= t('.name') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("description") %>
+                <th>
+                    <%= t('.description') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("status") %>
+                <th>
+                    <%= t('status') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("created_at") %>
+                <th>
+                    <%= t('created_at') %>
+                </th>
+            <% end %>
+            <th width="7%"><%= t('actions') %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @user_groups.each do |user_group| %>
+            <tr class="odd gradeX">
+                <td>
+                    <%= erp_datalist_check_row(id: user_group.id) %>
+                </td>
+                <% if get_columns(params).include?("name") %>
+                    <td><%= link_to user_group.name, erp.edit_backend_user_group_path(user_group) %></td>
+                <% end %>
+                <% if get_columns(params).include?("description") %>
+                    <td><%= user_group.description %></td>
+                <% end %>
+                <% if get_columns(params).include?("status") %>
+                <td>
+                    
+                </td>
+                <% end %>
+                <% if get_columns(params).include?("created_at") %>
+                    <td class="center"><%= user_group.created_at.strftime("%d/%m/%Y") %></td>
+                <% end %>
+                <td>
+                    <%= erp_datalist_row_actions(
+                        [
+                            {
+                                text: '<i class="fa fa-edit"></i> '+t('edit'),
+                                href: erp.edit_backend_user_group_path(user_group)
+                            }
+                        ]
+                    ) %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<% if @user_groups.empty? %>
+    <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
+<% end %>
+        
+<%= erp_datalist_pagination(@user_groups) %>

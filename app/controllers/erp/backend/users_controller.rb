@@ -173,7 +173,7 @@ module Erp
 
         # Only allow a trusted parameter "white list" through.
         def user_params
-          params.fetch(:user, {}).permit(:avatar, :name, :email, :password, :timezone)
+          params.fetch(:user, {}).permit(:avatar, :name, :email, :password, :timezone, :user_group_id)
         end
     end
   end
