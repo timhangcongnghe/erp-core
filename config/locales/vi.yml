@@ -102,7 +102,49 @@ vi:
           create: "Thêm mới"
           edit: "Chỉnh sửa"
       user_groups:
-        user_group: "Nhóm người dùng"
+        create:
+          success: "Thêm tài khoản thành công."
+        update:
+          success: "Cập nhật tài khoản thành công."
+        destroy:
+          success: "Xóa tài khoản thành công."
+        delete_all:
+          success: "Xóa tài khoản được chọn thành công."
+        activate_all:
+          success: "Kích hoạt tài khoản được chọn thành công."
+        deactivate_all:
+          success: "Khóa tài khoản được chọn thành công."
+        activate:
+          success: "Kích hoạt tài khoản thành công."
+        deactivate:
+          success: "Khóa tài khoản thành công."
+        index:
+          create: "Thêm nhóm"
+          user_group: "Nhóm người dùng"
+          name: "Tên nhóm"
+          description: "Mô tả"
+        list:
+          name: "Tên người dùng"
+          email: "Địa chỉ email"
+          activate: "Kích hoạt tài khoản"
+          deactivate: "Khóa tài khoản"
+          delete: "Xóa tài khoản"
+          active: "Kích hoạt"
+          inactive: "Chưa kích hoạt"
+          delete_confirm: "Bạn chắc chắn muốn xóa?"
+        new:
+          user: "Tài khoản"
+          create: "Thêm tài khoản"
+        edit:
+          user: "Tài khoản"
+          create: "Thêm tài khoản"
+          edit: "Cập nhật"
+        form:
+          name: 'Tên nhóm'
+          user_group: "Nhóm người dùng"
+          enter_user_group_name: 'Nhập tên nhóm'
+          description: 'Mô tả'
+          enter_description: 'Nhập mô tả'
   core:
     search_keyword_for: Tìm theo <span class="bold">%{name}</span> với từ khóa <span class="keyword bold" text="%{name}" name="%{keyword}"></span>
     search: "Tìm theo"

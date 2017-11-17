@@ -7,7 +7,7 @@
             <% if options[:options].present? %>
                 <% options[:options].each do |option| %>
                     <label>
-                        <input type="radio" class="icheck" data-radio="iradio_flat-grey"
+                        <input type="radio" class="icheck<%= options[:icheck] if options[:icheck].present? %>" data-radio="iradio_flat-grey"
                             <%= 'checked' if options[:value] == option[:value] %>
                             name="<%= options[:name] if options[:name].present? %>"
                             value="<%= option[:value] if option[:value].present? %>"

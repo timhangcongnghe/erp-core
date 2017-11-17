@@ -28,6 +28,8 @@ module Erp
         @user_group = UserGroup.new(user_group_params)
 
         if @user_group.save
+          @user_group.update_permissions(params.to_unsafe_hash[:permissions])
+
           if request.xhr?
             render json: {
               status: 'success',
@@ -45,7 +47,8 @@ module Erp
       # PATCH/PUT /user_groups/1
       def update
         if @user_group.update(user_group_params)
-
+          @user_group.update_permissions(params.to_unsafe_hash[:permissions])
+          
           if request.xhr?
             render json: {
               status: 'success',

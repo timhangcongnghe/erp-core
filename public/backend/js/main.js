@@ -600,11 +600,28 @@ $(document).ready(function() {
 
         tooltip.show();
     });
-    $(document).on('mouseout', '[data-tooltip-url]', function() {
-        var box = $(this);
-        var tooltip = box.find('.stooltip');
 
-        tooltip.hide();
+
+
+    // Permission tabs
+    $(document).on('click', '.permissions-table h3', function() {
+        var box = $(this).next();
+        box.toggle();
+    });
+
+    $(document).on('click', '.permission-quick-check-on', function(e) {
+        e.stopPropagation();
+
+        var box = $(this).closest('h3,h4').next();
+        box.find('select').val('yes').change();
+        box.find('input[value=yes]').prop('checked', true);
+    });
+    $(document).on('click', '.permission-quick-check-off', function(e) {
+        e.stopPropagation();
+
+        var box = $(this).closest('h3,h4').next();
+        box.find('select').val('no').change();
+        box.find('input[value=no]').prop('checked', true);
     });
 
 });

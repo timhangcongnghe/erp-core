@@ -787,3 +787,50 @@ label.myErrorClass {
 .text-small {
     font-size: 80%;
 }
+.permissions-table h3 {
+    margin: 0px;
+    padding: 6px 10px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #555;
+    color: #fff;
+    margin-top: 20px;
+}
+.permissions-table h4 {
+    margin: 10px 0 0 0;
+    background: #eee;
+    color: #333;
+    padding: 6px 10px;
+    font-size: 16px;
+    font-style: italic;
+    cursor: pointer;
+    font-weight: 600;
+}
+.permissions-table h3:hover, .permissions-table h4:hover {
+    opacity: 0.9;
+}
+.permissions-list {
+    padding: 10px;
+}
+/*.group-box {
+    display: none;
+}*/
+/*.permissions-list {
+    display: none;
+}*/
+.permission-quick-check {
+    font-weight: normal;
+    font-size: 13px;
+    float: right;
+    line-height: 22px;
+}
+.permission-quick-check span:hover {
+    text-decoration: underline;
+}
+.permissions-table td, .permissions-table .form-group, .permissions-table label {
+    margin: 0;
+}
+.permissions-table .mt-checkbox-inline .mt-checkbox, .permissions-table .icheck-inline label {
+    margin-right: 40px;
+}

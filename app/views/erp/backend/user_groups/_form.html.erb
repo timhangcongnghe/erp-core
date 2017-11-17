@@ -9,6 +9,8 @@
                 required: true,
                 errors: user_group.errors.full_messages_for(:name)
             }) %>
+        </div>
+        <div class="col-md-6">
             <%= erp_form_control("textarea", {
                 name: 'user_group[description]',
                 value: user_group.description,
@@ -17,6 +19,73 @@
                 required: true,
                 errors: user_group.errors.full_messages_for(:description)
             }) %>
+        </div>
+    </div>
+    <hr>
+    <h2>Phân quyền</h2>
+    <div class="row permissions-table">
+        <div class="col-md-12">
+            <% user_group.get_permissions.each do |group| %>
+                <%
+                    group_name = group[0]
+                    engines = group[1]
+                %>
+                <h3><%= t("permission.group_#{group_name}") %>
+                    <span class="permission-quick-check">
+                        <span class="permission-quick-check-on">Cho phép tất cả</span>
+                        |
+                        <span class="permission-quick-check-off">Bỏ quyền tất cả</span>
+                    </span>
+                </h3>
+                <div class="group-box">
+                    <div class="row">
+                        <% engines.each do |engine| %>
+                            <%
+                                engine_name = engine[0]
+                                controllers = engine[1]
+                            %>
+                            <!--<h4><%= t("permission.#{group_name}.engine_#{engine_name}") %></h4>-->
+                            <% controllers.each do |controller| %>
+                                <%
+                                    controller_name = controller[0]
+                                    permissions = controller[1]
+                                %>
+                                <div class="col-md-6">
+                                    <h4><%= t("permission.#{group_name}.#{engine_name}.controller_#{controller_name}") %>
+                                        <span class="permission-quick-check">
+                                            <span class="permission-quick-check-on">Cho phép tất cả</span>
+                                            |
+                                            <span class="permission-quick-check-off">Bỏ quyền tất cả</span>
+                                        </span>
+                                    </h4>
+                                    <div class="permissions-list">
+                                        <table width="100%">
+                                            <% permissions.each do |permission| %>
+                                                <%
+                                                    permission_name = permission[0]
+                                                    action = permission[1]
+                                                %>
+                                                <tr>
+                                                    <td width="40%"><%= t("permission.#{group_name}.#{engine_name}.#{controller_name}.#{permission_name}") %></td>
+                                                    <td>
+                                                        <%= erp_form_control("radio", {
+                                                            name: "permissions[#{group_name}][#{engine_name}][#{controller_name}][#{permission_name}][value]",
+                                                            value: action[:value],
+                                                            label: '',
+                                                            options: action[:options],
+                                                            icheck: 'no',
+                                                        }) %>
+                                                    </td>
+                                                </tr>
+                                            <% end %>
+                                        </table>
+                                    </div>
+                                </div>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
         </div>
     </div>
     <hr>
