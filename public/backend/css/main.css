@@ -846,3 +846,10 @@ iframe.pdf{
     height: 800px;
     border: solid 1px #aaa;
 }
+.page-sidebar .page-sidebar-menu li>a>.badge, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li>a>.badge {
+    margin-top: 3px;
+}
+.dashboard-menu .nav-item .badge {
+    float: right;
+    margin-top: 8px;
+}

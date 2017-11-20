@@ -1,13 +1,13 @@
 body {
     font-family: 'Arial';
-    font-size: 11.3px;
+    font-size: 12px;
 }
 .text-small {
-    font-size: 10px;
+    font-size: 11px;
 }
 .header {
     height: 30px;
-    font-size: 10px;
+    font-size: 11px;
 }
 .header .left {
     float: left;
@@ -24,7 +24,7 @@ body {
     white-space: nowrap;
     opacity: .6;
     font-style: italic;
-    font-size: 10px;
+    font-size: 11px;
 }
 .header .right .line-1 {
 
@@ -40,7 +40,7 @@ body {
     font-weight: 600;
 }
 .title .center .line-2 {
-    font-size: 10px;
+    font-size: 11px;
 }
 .main_info {
     float: left;
