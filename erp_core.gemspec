@@ -34,4 +34,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'rmega'
   s.add_dependency 'axlsx', '2.1.0.pre'
   s.add_dependency 'axlsx_rails'
+  s.add_dependency 'wicked_pdf'
+  s.add_dependency 'wkhtmltopdf-binary'
 end

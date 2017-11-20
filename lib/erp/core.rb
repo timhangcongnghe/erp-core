@@ -10,6 +10,8 @@ require 'omniauth-google-oauth2'
 require 'rmega'
 require 'axlsx'
 require 'axlsx_rails'
+require 'wicked_pdf'
+# require 'wkhtmltopdf-binary'
 
 module Erp
 	module Core

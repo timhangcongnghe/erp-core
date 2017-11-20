@@ -834,3 +834,15 @@ label.myErrorClass {
 .permissions-table .mt-checkbox-inline .mt-checkbox, .permissions-table .icheck-inline label {
     margin-right: 40px;
 }
+.stock-num {
+    font-weight: bold;
+}
+.text-num-0 {
+    opacity: 0.6;
+    font-weight: normal;
+}
+iframe.pdf{
+    width: 100%;
+    height: 800px;
+    border: solid 1px #aaa;
+}

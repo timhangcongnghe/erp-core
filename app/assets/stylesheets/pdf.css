@@ -1,0 +1,141 @@
+body {
+    font-family: 'Arial';
+    font-size: 11.3px;
+}
+.text-small {
+    font-size: 10px;
+}
+.header {
+    height: 30px;
+    font-size: 10px;
+}
+.header .left {
+    float: left;
+    white-space: nowrap;
+}
+.header .left .line-1 {
+    font-weight: 600;
+}
+.header .left .line-2 {
+
+}
+.header .right {
+    float: right;
+    white-space: nowrap;
+    opacity: .6;
+    font-style: italic;
+    font-size: 10px;
+}
+.header .right .line-1 {
+
+}
+.title {
+
+}
+.title .center {
+    text-align: center;
+}
+.title .center .line-1 {
+    font-size: 15px;
+    font-weight: 600;
+}
+.title .center .line-2 {
+    font-size: 10px;
+}
+.main_info {
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.main_info p {
+    margin: 0;
+    margin-bottom: 0;
+}
+.main_info .col-1, .main_info .col-2, .main_info .col-3 {
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+    white-space: nowrap;
+}
+.main_info .col-1 {
+    width: 50%;
+}
+.main_info .col-3 {
+    float: right;
+}
+#content {
+    margin-top: 10px;
+}
+table.table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    padding: 3px;
+}
+table.table tr {
+
+}
+table.table tr th {
+    border: solid 1px #333;
+    text-align: center;
+    padding: 1px 5px;
+    white-space: nowrap;
+    font-size: 11px;
+}
+table.table tr td {
+    border: solid 1px #333;
+    padding: 2px 5px;
+}
+table.table tr td p {
+    margin: 0;
+    margin-bottom: 0;
+}
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}
+.text-center {
+    text-align: center;
+}
+.table-footer {
+    white-space: nowrap;
+    padding: 2px 5px;
+    text-align: right;
+    border: solid 1px #333;
+    width: calcu(100% - 12px);
+    border-top: none;
+}
+.table-footer label {
+    display: inline-block;
+    text-align: right;
+    margin-right: 20px;
+    margin-bottom: 1px;
+}
+.table-footer span {
+    display: inline-block;
+    width: 100px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+.footer {
+    float: left;
+    width: 100%;
+}
+.footer .col {
+    float: left;
+}
+.sign_name {
+    font-weight: 600;
+    margin-top: 50px;
+}
+.ml-10 {
+    margin-left: 10px;
+}
+.ml-15 {
+    margin-left: 15px;
+}
+.mt-5 {
+    margin-top: 5px;
+}
