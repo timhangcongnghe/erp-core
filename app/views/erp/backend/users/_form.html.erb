@@ -60,14 +60,6 @@
                     container_selector: '.edit_user_group',
                 }
             }) %>
-            <%= erp_form_control('select', {
-                label: t('.timezone'),
-                name: 'user[timezone]',
-                placeholder: t('.choose_timezone'),
-                id: '',
-                value: user.timezone,
-                options: Erp::User.get_list_timezone
-            }) %>
         </div>
         <% if Erp::Core.available?("online_store") %>
         <div class="col-md-6 permissions-container">

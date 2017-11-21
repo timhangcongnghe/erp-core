@@ -22,7 +22,7 @@ $.fn.autolist = function(action, param) {
         });
     });
     // Auto update line
-    $(document).on('change', '.autolist select, input', function() {
+    $(document).on('change', '.autolist select, .autolist input', function() {
         var input = $(this);
         var line = input.closest('.autolist-line');
 

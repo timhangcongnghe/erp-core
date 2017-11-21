@@ -237,7 +237,7 @@ function jsForAjaxContent(container) {
         var url = box.attr('data-url');
         var controls = $(box.attr('data-control'));
 
-        controls.on('change keyup', function() {
+        controls.on('change', function() {
             str = box.attr('data-control');
             //console.log(str);
 
@@ -258,7 +258,7 @@ function jsForAjaxContent(container) {
             });
         });
 
-        controls.eq(0).trigger('change');
+        controls.last().trigger('change');
     });
 }
 
@@ -600,6 +600,14 @@ $(document).ready(function() {
 
         tooltip.show();
     });
+    // Change event on order line
+    $(document).on('mouseout', '[data-tooltip-url]', function() {
+        var box = $(this);
+        var tooltip = box.find('.stooltip');
+        var url = box.attr('data-tooltip-url');
+
+        tooltip.hide();
+    });
 
 
 
@@ -622,6 +630,12 @@ $(document).ready(function() {
         var box = $(this).closest('h3,h4').next();
         box.find('select').val('no').change();
         box.find('input[value=no]').prop('checked', true);
+    });
+
+    // Per
+    $('.datetimepicker_format').datetimepicker({
+        format:'Y-m-d, H:i',
+        mask:'9999-19-39, 29:59'
     });
 
 });

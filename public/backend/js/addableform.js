@@ -5,7 +5,7 @@ function addableformAddLine(addableform) {
     var type = addableform.attr('type');
     var add_control = addableform.find(addableform.attr('add-control-selector'));
     var items = container.find('.item-id');
-
+console.log('ddd');
     if(typeof(add_control) === 'undefined') {
         add_value = '';
     } else {
@@ -15,7 +15,7 @@ function addableformAddLine(addableform) {
     if(typeof(type) === 'undefined') {
         type = 'normal';
     }
-    console.log('add clicked');
+
     var exist_ids = [];
     if(items.length) {
         items.each(function () {

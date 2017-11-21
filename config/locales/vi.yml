@@ -28,7 +28,7 @@ vi:
   cancel: "Hủy lưu"
   date_format_js: "yyyy-mm-dd"
   date_format: "%Y-%m-%d"
-  datetime_format: "%Y-%m-%d, %H:%I"
+  datetime_format: "%Y-%m-%d, %H:%M"
   layouts:
     erp:
       backend:
