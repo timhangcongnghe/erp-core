@@ -281,29 +281,6 @@ module Erp
                 ],
               },
             },
-            states: {
-              index: {
-                value: 'yes',
-                options: [
-                  {value: 'yes', text: 'Có'},
-                  {value: 'no', text: 'Không'},
-                ],
-              },
-              create: {
-                value: 'yes',
-                options: [
-                  {value: 'yes', text: 'Có'},
-                  {value: 'no', text: 'Không'},
-                ],
-              },
-              update: {
-                value: 'yes',
-                options: [
-                  {value: 'yes', text: 'Có'},
-                  {value: 'no', text: 'Không'},
-                ],
-              },
-            },
             properties: {
               index: {
                 value: 'yes',
