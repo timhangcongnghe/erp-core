@@ -533,7 +533,8 @@ function datalistFilter(list, page) {
             'page': page,
             'sort_by': sort_by,
             'sort_direction': sort_direction,
-            'global_filter': global_filter
+            'global_filter': global_filter,
+            'keyword': list.find('.datalist-search-keyword').val(),
         },
     }).done(function( html ) {
         list.find(".datalist-container" ).html( html );
@@ -626,6 +627,12 @@ $(document).ready(function() {
             addToKeywords(list);
         }
 
+    });
+    
+    // Datalist search input
+    $(document).on("keyup", ".datalist-search-keyword", function(e) {
+        var list = $(this).parents('.datalist');
+        datalistFilter(list);
     });
 
     // Datalist search helper click
