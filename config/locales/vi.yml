@@ -219,6 +219,8 @@ vi:
         text: "Cho phép"
   activerecord:
     errors:
+      messages:
+        record_invalid: "Có một vài lỗi gây ra tình trạng không hợp lệ khi thực hiện câu lệnh"
       models:
         erp/user:
           attributes:

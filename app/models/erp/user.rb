@@ -4,7 +4,7 @@ module Erp
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :validatable, :confirmable
-		belongs_to :user_group
+		belongs_to :user_group, optional: true
     mount_uploader :avatar, Erp::AvatarUploader
     validates :name, :presence => true
     validates_format_of :email, :presence => true,
