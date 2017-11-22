@@ -637,5 +637,19 @@ $(document).ready(function() {
         format:'Y-m-d, H:i',
         mask:'9999-19-39, 29:59'
     });
+    
+    // period from to date change
+    $(document).on('change', '.global-filter input[name=period]', function() {
+        var box = $(this).closest('.global-filter');
+        
+        box.find('input[name=from_date], input[name=to_date]').val('');
+    });
+    // period from to date change
+    $(document).on('change', '.global-filter input[name=from_date], .global-filter input[name=to_date]', function() {
+        var box = $(this).closest('.global-filter');
+        
+        box.find('input[name=period]').val('');
+        clearDataselectControlText(box.find('input[name=period]').closest('.dataselect'));
+    });
 
 });
