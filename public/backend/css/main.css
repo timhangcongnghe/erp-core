@@ -878,3 +878,6 @@ iframe.pdf{
     position: absolute;
     margin-left: calc(50% - 20px);
 }
+.datalist {
+    min-height: 250px;
+}
