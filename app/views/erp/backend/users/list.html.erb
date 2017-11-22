@@ -14,6 +14,9 @@
                     <%= t('.email') %>
                 </th>
             <% end %>
+            <th>
+                Nhóm
+            </th>
             <% if get_columns(params).include?("status") %>
                 <th>
                     <%= t('status') %>
@@ -39,12 +42,13 @@
                 <% if get_columns(params).include?("email") %>
                     <td><%= user.email %></td>
                 <% end %>
+                <td><%= user.user_group_name %></td>
                 <% if get_columns(params).include?("status") %>
                 <td>
                     <% if user.active == false %>
                         <%= erp_component('label/danger', {
                             text: t('.inactive')
-                        }) %>                            
+                        }) %>
                     <% else %>
                         <%= erp_component('label/success', {
                             text: t('.active')
@@ -96,5 +100,5 @@
 <% if @users.empty? %>
     <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
 <% end %>
-        
+
 <%= erp_datalist_pagination(@users) %>

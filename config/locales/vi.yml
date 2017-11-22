@@ -103,19 +103,19 @@ vi:
           edit: "Chỉnh sửa"
       user_groups:
         create:
-          success: "Thêm tài khoản thành công."
+          success: "Thêm nhóm thành công."
         update:
-          success: "Cập nhật tài khoản thành công."
+          success: "Cập nhật nhóm thành công."
         destroy:
-          success: "Xóa tài khoản thành công."
+          success: "Xóa nhóm thành công."
         delete_all:
-          success: "Xóa tài khoản được chọn thành công."
+          success: "Xóa nhóm được chọn thành công."
         activate_all:
-          success: "Kích hoạt tài khoản được chọn thành công."
+          success: "Kích hoạt nhóm được chọn thành công."
         deactivate_all:
-          success: "Khóa tài khoản được chọn thành công."
+          success: "Khóa nhóm được chọn thành công."
         activate:
-          success: "Kích hoạt tài khoản thành công."
+          success: "Kích hoạt nhóm thành công."
         deactivate:
           success: "Khóa tài khoản thành công."
         index:
@@ -133,11 +133,11 @@ vi:
           inactive: "Chưa kích hoạt"
           delete_confirm: "Bạn chắc chắn muốn xóa?"
         new:
-          user: "Tài khoản"
-          create: "Thêm tài khoản"
+          user_group: "Nhóm thành viên"
+          create: "Thêm nhóm"
         edit:
-          user: "Tài khoản"
-          create: "Thêm tài khoản"
+          user_group: "Nhóm thành viên"
+          create: "Thêm nhóm"
           edit: "Cập nhật"
         form:
           name: 'Tên nhóm'

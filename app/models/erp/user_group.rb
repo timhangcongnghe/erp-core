@@ -49,7 +49,7 @@ module Erp
     end
 
     # get permissions
-    def get_permissions()
+    def get_permissions
       permissions = UserGroup.permissions_array
       saved_permissions = self.permissions.present? ? JSON.parse(self.permissions) : {}
 
@@ -331,7 +331,7 @@ module Erp
         },
         sales: {
           sales: {
-            sales_orders: {
+            orders: {
               index: {
                 value: 'yes',
                 options: [
@@ -807,7 +807,35 @@ module Erp
                   {value: 'no', text: 'Không'},
                 ],
               },
-              delivery_by_category_diameter: {
+              category_diameter: {
+                value: 'yes',
+                options: [
+                  {value: 'yes', text: 'Có'},
+                  {value: 'no', text: 'Không'},
+                ],
+              },
+              product: {
+                value: 'yes',
+                options: [
+                  {value: 'yes', text: 'Có'},
+                  {value: 'no', text: 'Không'},
+                ],
+              },
+              central_area: {
+                value: 'yes',
+                options: [
+                  {value: 'yes', text: 'Có'},
+                  {value: 'no', text: 'Không'},
+                ],
+              },
+              custom_area: {
+                value: 'yes',
+                options: [
+                  {value: 'yes', text: 'Có'},
+                  {value: 'no', text: 'Không'},
+                ],
+              },
+              outside_product: {
                 value: 'yes',
                 options: [
                   {value: 'yes', text: 'Có'},
@@ -815,13 +843,6 @@ module Erp
                 ],
               },
               warehouse: {
-                value: 'yes',
-                options: [
-                  {value: 'yes', text: 'Có'},
-                  {value: 'no', text: 'Không'},
-                ],
-              },
-              other_products: {
                 value: 'yes',
                 options: [
                   {value: 'yes', text: 'Có'},

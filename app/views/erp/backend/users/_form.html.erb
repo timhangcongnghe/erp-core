@@ -27,14 +27,14 @@
                 name: 'user[password]',
                 label: t('.password'),
                 placeholder: t('.enter_password'),
-                required: true,
+                required: user.id.nil?,
                 errors: user.errors.full_messages_for(:password)
             }) %>
             <%= erp_form_control("password", {
                 name: 'user[password_confirmation]',
                 label: t('.password_confirm'),
                 placeholder: t('.enter_password_confirm'),
-                required: true,
+                required: user.id.nil?,
                 errors: user.errors.full_messages_for(:password_confirmation)
             }) %>
             <%= erp_form_control("dataselect", {

@@ -857,3 +857,7 @@ iframe.pdf{
     float: right;
     margin-top: 8px;
 }
+.page-sidebar .page-sidebar-menu .sub-menu li.divider a hr {
+    border-top: solid 1px rgba(255,255,255,0.2);
+    margin: 0;
+}

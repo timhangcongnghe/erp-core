@@ -13,6 +13,7 @@ module Erp
     # validates :password, :length => { :minimum => 6, :maximum => 40 }, :confirmation => true
 
     belongs_to :creator, class_name: "Erp::User", optional: true
+    belongs_to :user_group, class_name: "Erp::UserGroup", optional: true
 
     if Erp::Core.available?("contacts")
 			has_one :contact, class_name: "Erp::Contacts::Contact", foreign_key: 'user_id'
@@ -145,6 +146,7 @@ module Erp
 			}
 		end
 
+    # old permissions
     def get_permissions
 			saved_permissions = {}
 			saved_permissions = JSON.parse(self.permissions) if self.permissions.present?
@@ -164,9 +166,15 @@ module Erp
 
 			permissions
 		end
-    
+
     def user_group_name
 			user_group.present? ? user_group.name : ''
 		end
+
+    # new permission from group
+    def get_permission(group, engine, controller, permission)
+      return 'yes' if user_group.nil?
+      return user_group.get_permissions[group][engine][controller][permission][:value]
+    end
   end
 end
