@@ -517,6 +517,9 @@ function datalistFilter(list, page) {
     }
 
     list.find(".datalist-container").addClass('loading');
+    if (!list.find(".datalist-container .loader").length) {
+        list.find(".datalist-container").prepend('<div class="loader"><div class="ball-clip-rotate-multiple"><div></div><div></div></div></div>');
+    }
 
     // ajax update custom sort
 	if(datalists[id] && datalists[id].readyState != 4){
@@ -540,6 +543,7 @@ function datalistFilter(list, page) {
         list.find(".datalist-container" ).html( html );
 
         list.find(".datalist-container").removeClass('loading');
+        list.find(".datalist-container .loader").remove();
 
         // update list sort layout
         updateDatalistSortLayout(list);

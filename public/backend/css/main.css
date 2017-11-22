@@ -861,3 +861,20 @@ iframe.pdf{
     border-top: solid 1px rgba(255,255,255,0.2);
     margin: 0;
 }
+.ball-clip-rotate-multiple > div {
+    border: 2px solid #444;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+    border-radius: 100% !important;
+}
+.ball-clip-rotate-multiple > div:last-child {
+    border-color: #444 transparent #444 transparent;
+}
+.datalist-container.loading .loader {
+    display: block;
+    margin: 50px auto;
+    width: 20px;
+    height: 30px;
+    position: absolute;
+    margin-left: calc(50% - 20px);
+}
