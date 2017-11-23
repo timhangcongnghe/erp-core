@@ -637,19 +637,38 @@ $(document).ready(function() {
         format:'Y-m-d, H:i',
         mask:'9999-19-39, 29:59'
     });
-    
+
     // period from to date change
     $(document).on('change', '.global-filter input[name=period]', function() {
         var box = $(this).closest('.global-filter');
-        
+
         box.find('input[name=from_date], input[name=to_date]').val('');
     });
     // period from to date change
     $(document).on('change', '.global-filter input[name=from_date], .global-filter input[name=to_date]', function() {
         var box = $(this).closest('.global-filter');
-        
+
         box.find('input[name=period]').val('');
         clearDataselectControlText(box.find('input[name=period]').closest('.dataselect'));
     });
+
+
+    /////////// FOR ORTHO-K ONLY
+    $(document).on('change', '.transfer-condition', function() {
+        var cond = $(this).find('select').val();
+
+        if(cond != 'to_required') {
+            $('.transfer-condition-value label').html('Kho xuất tồn kho >=:');
+            $('.transfer-quantity label').html('Số lượng chuyển tối đa:');
+            $('.transfer-quantity input').val();
+            $('.transfer-condition-value label').val();
+        } else {
+            $('.transfer-condition-value label').html('Kho nhập phải tồn <=:');
+            $('.transfer-quantity label').html('Số lượng chuyển:');
+            $('.transfer-quantity input').val();
+            $('.transfer-condition-value label').val();
+        }
+    });
+    $('.transfer-condition').change();
 
 });
