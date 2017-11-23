@@ -881,3 +881,6 @@ iframe.pdf{
 .datalist {
     min-height: 250px;
 }
+.modal .modal-body {
+    background: #f0f0f0;
+}
