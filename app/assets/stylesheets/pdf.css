@@ -126,6 +126,9 @@ table.table tr td p {
 .footer .col {
     float: left;
 }
+.liner {
+    margin: 0 4px 0 4px;
+}
 .sign_name {
     font-weight: 600;
     margin-top: 50px;
@@ -138,4 +141,10 @@ table.table tr td p {
 }
 .mt-5 {
     margin-top: 5px;
+}
+.mr-10 {
+    margin-right: 10px;
+}
+.mr-5 {
+    margin-right: 5px;
 }
