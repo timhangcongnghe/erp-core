@@ -38,7 +38,7 @@ module Erp
               value: @user.id
             }
           else
-            redirect_to erp.backend_users_path, notice: 'User was successfully created.'
+            redirect_to erp.edit_backend_user_path(@user), notice: t('.success')
           end
         else
           render :new
@@ -63,7 +63,7 @@ module Erp
               value: @user.id
             }
           else
-            redirect_to erp.backend_users_path, notice: t('.success')
+            redirect_to erp.edit_backend_user_path(@user), notice: t('.success')
           end
         else
           render :edit
