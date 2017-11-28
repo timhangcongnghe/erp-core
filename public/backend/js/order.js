@@ -41,6 +41,7 @@ function updateDefaultCommission(row) {
 
 function calculateOrderDetails(container) {
     var rows = container.find('table tbody tr:visible');
+    var order_quantity = 0;
     var order_total = 0;
     rows.each(function() {
         var row = $(this);
@@ -87,11 +88,15 @@ function calculateOrderDetails(container) {
         //}
 
         // Update order total
+        if(quantity) {
+            order_quantity += quantity;
+        }
         if(line_total) {
             order_total = order_total + line_total;
         }
     });
     // update line total
+    container.find('.order_quantity').html(formatNumber(order_quantity));
     container.find('.order_total').html(formatNumber(order_total));
 }
 
