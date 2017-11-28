@@ -884,3 +884,8 @@ iframe.pdf{
 .modal .modal-body {
     background: #f0f0f0;
 }
+.child-td .portlet.light.datalist {
+    padding: 0;
+    box-shadow: none;
+    border: none;
+}

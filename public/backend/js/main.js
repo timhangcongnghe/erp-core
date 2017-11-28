@@ -219,6 +219,11 @@ function jsForAjaxContent(container) {
 
                 child = row.next();
                 jsForAjaxContent(child);
+                
+                // datalist
+                child.find('.datalist').each(function() {
+                    datalistFilter($(this));
+                });
             } else {
                 if(exist.is(':visible')) {
                     exist.remove();
