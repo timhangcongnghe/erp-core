@@ -515,6 +515,26 @@ function datalistFilter(list, page) {
             }
         }
     }
+    
+    // More global filter
+    var more_filter = {};
+    if ($('.more-filter').length) {
+        arr = $('.more-filter').serializeArray();
+        for (var i = 0; i < arr.length; i++){
+            var name = arr[i]['name'];
+            if (name.indexOf('[]') !== -1) {
+                name = name.substr(0,name.length-2)
+            }
+            if (more_filter[name]) {
+                if (more_filter[name].constructor !== Array) {
+                    more_filter[name] = [more_filter[name]];
+                }
+                more_filter[name].push(arr[i]['value']);
+            } else {
+                more_filter[name] = arr[i]['value'];
+            }
+        }
+    }
 
     list.find(".datalist-container").addClass('loading');
     if (!list.find(".datalist-container .loader").length) {
@@ -537,6 +557,7 @@ function datalistFilter(list, page) {
             'sort_by': sort_by,
             'sort_direction': sort_direction,
             'global_filter': global_filter,
+            'more_filter': more_filter,
             'keyword': list.find('.datalist-search-keyword').val(),
         },
     }).done(function( html ) {
@@ -741,5 +762,12 @@ $(document).ready(function() {
     // Datalist search entry select
     $(document).on("change", ".global-filter input, .global-filter select", function() {
         datalistFilterAll();
+    });
+    
+    // Datalist search entry select
+    $(document).on("change", ".more-filter input, .more-filter select", function() {
+        $(this).closest('.more-filter').closest('div').find('.datalist').each(function() {
+            datalistFilter($(this));
+        });
     });
 });
