@@ -6,8 +6,10 @@ body {
     font-size: 11px;
 }
 .header {
-    height: 30px;
+    height: auto;
     font-size: 11px;
+    float: left;
+    width: 100%;
 }
 .header .left {
     float: left;
