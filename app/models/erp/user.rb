@@ -176,5 +176,10 @@ module Erp
       return 'yes' if user_group.nil?
       return user_group.get_permissions[group][engine][controller][permission][:value]
     end
+
+    # empoyee count
+    def self.employee_count
+      self.count-1
+    end
   end
 end
