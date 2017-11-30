@@ -1,12 +1,12 @@
 <!-- BEGIN EXAMPLE TABLE PORTLET-->
-<div class="<%= 'portlet' if !options[:no_border].present? %> light datalist"
+<div class="<%= 'portlet' if !options[:no_border].present? %> light datalist <%= 'scroll-page' if options[:scroll_page] == true %>"
     data-url='<%= options[:url] %>'
     data-id='<%= Digest::SHA1.hexdigest([Time.now, rand].join) %>'
     sort-by='<%= options[:sort][:sort_by] if options[:sort].present? and options[:sort][:sort_by].present? %>'
     sort-direction='<%= options[:sort][:sort_direction] if options[:sort].present? and options[:sort][:sort_direction].present? %>'
     <%= 'sortable=true' if options[:sortable].present? %>
 >
-    
+
     <% if options[:keywords] or options[:actions] or options[:filters] or options[:columns] or options[:keyword] %>
         <div class="portlet-title">
             <div class="caption font-green-haze">
@@ -36,7 +36,7 @@
                             <input type="text" class="datalist-search-input form-control" placeholder="<%= t('core.type_to_search') %>">
                             <i class="fa fa-search"></i>
                         </div>
-                    
+
                         <div class="datalist-search-helper">
                             <ul>
                                 <% options[:keywords].each do |keyword| %>
@@ -57,7 +57,7 @@
                                     </li>
                                 <% end %>
                             </ul>
-                        </div>                    
+                        </div>
                     </div>
                 <% end %>
                 <a class="btn btn-circle btn-icon-only btn-default fullscreen pl-10" href="javascript:;" data-original-title="<%= t('fullscreen') %>" title=""> </a>

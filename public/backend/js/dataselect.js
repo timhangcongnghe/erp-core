@@ -236,6 +236,7 @@ function findDataselectControlTextMatched(dataselect) {
     var items = dataselect.find('.dataselect-item a');
     var current_text = dataselect.find('.dataselect-control').val().trim();
     var edit_button = dataselect.find('.dataselect-edit-button');
+    var clear_button = dataselect.find('.dataselect-clear-button');
     var found;
 
     // update dataselect data
@@ -253,6 +254,7 @@ function findDataselectControlTextMatched(dataselect) {
 
         // hide edit button
         edit_button.hide();
+        clear_button.hide();
     }
 
     return found;
@@ -350,6 +352,7 @@ function updateDataselectSingleValue(dataselect, text, value) {
 function updateDataselectValue(dataselect, text, value) {
     var control = dataselect.find('.dataselect-control');
     var edit_button = dataselect.find('.dataselect-edit-button');
+    var clear_button = dataselect.find('.dataselect-clear-button');
     var is_multiple = control.attr('multiple');
 
     if(!is_multiple) {
@@ -362,6 +365,7 @@ function updateDataselectValue(dataselect, text, value) {
 
     // show edit button
     edit_button.show();
+    clear_button.show();
 }
 
 // dataselect select an item
@@ -477,10 +481,12 @@ var CURRENT_DATASELECT;
 var CURRENT_DATASELECT_XHR;
 $(document).ready(function() {
     // Datalist search input
-    $(document).on('keyup', '.dataselect .dataselect-control', function() {
+    $(document).on('keyup', '.dataselect .dataselect-control', function(e) {
         var dataselect = $(this).parents('.dataselect');
-        toggleDataselectData(dataselect);
-        updateDataselectData(dataselect);
+        if (e.keyCode !== 40 && e.keyCode !== 38) {
+            toggleDataselectData(dataselect);
+            updateDataselectData(dataselect);
+        }
     });
 
     // Datalist search input
@@ -519,6 +525,16 @@ $(document).ready(function() {
     $(document).on("keypress",".dataselect .dataselect-control", function(e) {
         var dataselect = $(this).parents('.dataselect');
         var control = dataselect.find('.dataselect-control');
+        var current = dataselect.find('.dataselect-data ul li.current a');
+
+        if(e.which === 13) {
+            e.preventDefault();
+
+            if (current.length) {
+                selectDataselectItem(current);
+                $(this).blur();
+            }
+        }
 
         if(control.attr('insert-name')) {
             if(e.which === 44 || e.which === 59 || e.which === 13) {
@@ -527,7 +543,38 @@ $(document).ready(function() {
                 insertTagNameToDataSelect(dataselect);
             }
         }
-   });
+    });
+
+    $(document).on("keydown",".dataselect .dataselect-control", function(e) {
+        var dataselect = $(this).parents('.dataselect');
+        var control = dataselect.find('.dataselect-control');
+
+        if (e.keyCode == 40) {
+            var current = dataselect.find('.dataselect-data ul li.current');
+            //
+            if (!current.length) {
+                current = dataselect.find('.dataselect-data ul li').first();
+                current.addClass('current');
+            } else {
+                current.next().addClass('current');
+                current.removeClass('current');
+                current = current.next();
+            }
+        }
+
+        if (e.keyCode == 38) {
+            var current = dataselect.find('.dataselect-data ul li.current');
+            //
+            if (!current.length) {
+                current = dataselect.find('.dataselect-data ul li').first();
+                current.addClass('current');
+            } else {
+                current.prev().addClass('current');
+                current.removeClass('current');
+                current = current.prev();
+            }
+        }
+    });
 
     // Show creat new modal
     $(document).on('click', '.dataselect .create-edit a', function() {
@@ -563,6 +610,21 @@ $(document).ready(function() {
 
         // show edit modal
         showModalForm(dataselect, false, true);
+    });
+
+    // edit button click
+    $(document).on('click', '.dataselect-clear-button', function() {
+        var dataselect = $(this).parents('.dataselect');
+        var edit_button = dataselect.find('.dataselect-edit-button');
+        var clear_button = dataselect.find('.dataselect-clear-button');
+
+        // show edit modal
+        clearDataselectValue(dataselect);
+        clearDataselectTags(dataselect);
+        clearDataselectControlText(dataselect);
+
+        edit_button.hide();
+        clear_button.hide();
     });
 
     // remove dataselect item

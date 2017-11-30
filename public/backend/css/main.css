@@ -189,18 +189,21 @@ div.sm-title {
 div.alert.custom-box-shadow {
     box-shadow: 0 1px 3px rgba(0,0,0,.1),0 0px 2px rgba(0,0,0,.18);
 }
-.dataselect-edit-button {
+.dataselect-edit-button, .dataselect-clear-button {
     position: absolute;
     right: 30px;
-    padding: 4px 7px;
+    padding: 3px 7px;
     top: 4px;
     height: 26px;
     display: none;
 }
+.dataselect-clear-button {
+    right: 3px;
+}
 .dataselect-data ul li.dataselect-empty a {
     color: #aaa;
 }
-.dataselect-edit-button:hover {
+.dataselect-edit-button:hover, .dataselect-clear-button:hover {
     background: #ddd;
     cursor: pointer;
 }
@@ -889,4 +892,12 @@ iframe.pdf{
     box-shadow: none;
     border: none;
     min-height: auto;
+}
+.dataselect-item.current {
+    background: #f8f8f8;
+}
+.child-row .loader {
+    height: 20px;
+    margin-top: 25px;
+    display: inline-block;
 }

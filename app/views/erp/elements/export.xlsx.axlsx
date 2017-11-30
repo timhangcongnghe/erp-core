@@ -10,7 +10,7 @@ wb.styles do |s|
       head_style << head_cell
     end    
     sheet.add_row header, :style => head_style
-  
+
     rows.each do |row|
       sheet.add_row row
     end

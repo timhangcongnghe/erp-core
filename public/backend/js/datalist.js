@@ -454,16 +454,23 @@ function updateDatalistSortLayout(list) {
     th.attr('sort-direction', sort_direction);
 }
 
+var scroll_current_page = 1;
 // Filter a datalist
-function datalistFilter(list, page) {
+function datalistFilter(list, page, scroll) {
     var url = list.attr('data-url');
     var id = list.attr('data-id');
     var sort_by = list.attr('sort-by');
     var sort_direction = list.attr('sort-direction');
+    var scroll_page = list.hasClass('scroll-page');
 
     // check page
     if(typeof(page) == 'undefined') {
         page = 1;
+    }
+
+    // check page
+    if(typeof(scroll) == 'undefined') {
+        scroll = false;
     }
 
     // save current page
@@ -536,9 +543,14 @@ function datalistFilter(list, page) {
         }
     }
 
-    list.find(".datalist-container").addClass('loading');
-    if (!list.find(".datalist-container .loader").length) {
-        list.find(".datalist-container").prepend('<div class="loader"><div class="ball-clip-rotate-multiple"><div></div><div></div></div></div>');
+    if (!scroll) {
+        list.find(".datalist-container").addClass('loading');
+        if (!list.find(".datalist-container .loader").length) {
+            list.find(".datalist-container").prepend('<div class="loader"><div class="ball-clip-rotate-multiple"><div></div><div></div></div></div>');
+        }
+    } else {
+        list.find('.pagination-row').hide();
+        list.find(".datalist-container").append('<div class="loader"><div class="ball-clip-rotate-multiple"><div></div><div></div></div></div>');
     }
 
     // ajax update custom sort
@@ -559,21 +571,43 @@ function datalistFilter(list, page) {
             'global_filter': global_filter,
             'more_filter': more_filter,
             'keyword': list.find('.datalist-search-keyword').val(),
+            'just_rows': (scroll && scroll_page && list.find(".datalist-container" ).find('.datalist-scroll').length),
         },
     }).done(function( html ) {
-        list.find(".datalist-container" ).html( html );
+        if (!scroll || !scroll_page || list.find(".datalist-container" ).find('.datalist-scroll').length == 0) {
+            list.find(".datalist-container" ).html( html );
 
-        list.find(".datalist-container").removeClass('loading');
-        list.find(".datalist-container .loader").remove();
+            list.find(".datalist-container").removeClass('loading');
+            list.find(".datalist-container .loader").remove();
 
-        // update list sort layout
-        updateDatalistSortLayout(list);
+            // update list sort layout
+            updateDatalistSortLayout(list);
 
-        // hide actions button
-        checkDatalistCheckAllState(list);
+            // hide actions button
+            checkDatalistCheckAllState(list);
 
-        // Tooltip
-        jsForAjaxContent(list);
+            // Tooltip
+            jsForAjaxContent(list);
+
+            scroll_current_page = 2;
+
+            if (scroll_page && list.find(".datalist-container" ).find('.datalist-scroll').length) {
+                datalistFilter(list, scroll_current_page, true);
+            }
+        } else {
+            list.find(".datalist-container").removeClass('loading');
+            list.find(".datalist-container .loader").remove();
+
+            var rows = $('<div>').html( html ).find('.datalist-scroll tbody').html();
+
+            list.find(".datalist-container .datalist-scroll tbody").append(rows);
+
+            scroll_current_page += 1;
+
+            if ($('<div>').html( html ).find('.datalist-scroll tbody tr').length) {
+                datalistFilter(list, scroll_current_page, true);
+            }
+        }
     });
 }
 
@@ -653,7 +687,7 @@ $(document).ready(function() {
         }
 
     });
-    
+
     // Datalist search input
     $(document).on("keyup", ".datalist-search-keyword", function(e) {
         var list = $(this).parents('.datalist');

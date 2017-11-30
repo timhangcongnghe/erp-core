@@ -201,38 +201,42 @@ function jsForAjaxContent(container) {
         var row = $(this).closest('tr');
         var url = row.attr('data-url');
         var cols = row.find('td').length;
+        var child = row.next();
+
+        if (child.hasClass('child-row')) {
+            if (child.is(':visible')) {
+                child.remove();
+                row.removeClass('opened');
+                return;
+            }
+
+            child.remove();
+        }
+
+        row.addClass('opened');
+        row.after(
+            '<tr class="child-row">' +
+                '<td class="child-td" colspan="' + cols + '">' +
+                    '<div class="loader"><div class="ball-clip-rotate-multiple"><div></div><div></div></div></div>' +
+                '</td>' +
+            '</tr>'
+        );
+        child = row.next();
 
         $.ajax({
             url: url,
             method: 'GET'
         }).done(function( result ) {
-            var exist = row.next();
-            if(!exist.hasClass('child-row')) {
-                row.after(
-                    '<tr class="child-row">' +
-                        '<td class="child-td" colspan="' + cols + '">' +
-                            result +
-                        '</td>' +
-                    '</tr>'
-                );
-                row.addClass('opened');
-
-                child = row.next();
-                jsForAjaxContent(child);
-                
-                // datalist
-                child.find('.datalist').each(function() {
-                    datalistFilter($(this));
-                });
-            } else {
-                if(exist.is(':visible')) {
-                    exist.remove();
-                    row.removeClass('opened');
-                } else {
-                    exist.show();
-                    row.addClass('opened');
-                }
-            }
+            child.remove();
+            row.after(
+                '<tr class="child-row">' +
+                    '<td class="child-td" colspan="' + cols + '">' +
+                        result +
+                    '</td>' +
+                '</tr>'
+            );
+            child = row.next();
+            jsForAjaxContent(child);
         });
     });
 
@@ -675,5 +679,32 @@ $(document).ready(function() {
         }
     });
     $('.transfer-condition').change();
+
+    // delivery_details_categories_filter
+    $(document).on('change', '[name=delivery_details_categories_filter]', function() {
+        var value = getDataselectCurrentValue($(this).closest('.dataselect'));
+
+        $('.delivery_details_box .autolist-line').each(function() {
+            var line = $(this);
+            if (value == '') {
+                line.find('.ignore_input').val('');
+                line.show();
+            } else {
+                var show = false;
+                value.split(',').forEach(function(i) {
+                    if (line.hasClass('auto-cat-'+i)) {
+                        show = true;
+                    }
+                });
+                if (show) {
+                    line.find('.ignore_input').val('');
+                    line.show();
+                } else {
+                    line.find('.ignore_input').val('true');
+                    line.hide();
+                }
+            }
+        });
+    });
 
 });
