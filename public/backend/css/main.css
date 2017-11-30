@@ -901,3 +901,6 @@ iframe.pdf{
     margin-top: 25px;
     display: inline-block;
 }
+.under_develop {
+    opacity: 0.2;
+}
