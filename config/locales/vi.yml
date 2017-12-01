@@ -16,6 +16,7 @@ vi:
   created_at: "Ngày tạo"
   updated_at: "Ngày cập nhật"
   actions: "Thao tác"
+  options: "Tùy chọn"
   archived: "Đã ngưng sử dụng"
   active: "Đang sử dụng"
   archive: "Ngưng sử dụng"
