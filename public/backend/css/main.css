@@ -904,3 +904,21 @@ iframe.pdf{
 .under_develop {
     opacity: 0.2;
 }
+.ajax-box.loading {
+    opacity: 0.5;
+}
+.ajax-box.loading .loader {
+    display: block;
+    margin: 50px auto;
+    width: 20px;
+    height: 30px;
+    position: absolute;
+    margin-left: calc(50% - 20px);
+}
+.table-matrix>tbody>tr>td, .table-matrix>tbody>tr>th, .table-matrix>tfoot>tr>td, .table-matrix>tfoot>tr>th, .table-matrix>thead>tr>td, .table-matrix>thead>tr>th {
+    border-top: 0;
+    padding: 4px;
+    font-size: 11px;
+    border: solid 1px #aaa;
+    width: 27px !important;
+}

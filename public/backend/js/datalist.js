@@ -522,11 +522,11 @@ function datalistFilter(list, page, scroll) {
             }
         }
     }
-    
+
     // More global filter
     var more_filter = {};
-    if ($('.more-filter').length) {
-        arr = $('.more-filter').serializeArray();
+    if (list.closest('.tab-pane').find('.more-filter').length) {
+        arr = list.closest('.tab-pane').find('.more-filter').serializeArray();
         for (var i = 0; i < arr.length; i++){
             var name = arr[i]['name'];
             if (name.indexOf('[]') !== -1) {
@@ -797,7 +797,7 @@ $(document).ready(function() {
     $(document).on("change", ".global-filter input, .global-filter select", function() {
         datalistFilterAll();
     });
-    
+
     // Datalist search entry select
     $(document).on("change", ".more-filter input, .more-filter select", function() {
         $(this).closest('.more-filter').closest('div').find('.datalist').each(function() {

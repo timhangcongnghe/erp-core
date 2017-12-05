@@ -255,15 +255,42 @@ function jsForAjaxContent(container) {
                 datas.push($(str).val());
             });
 
+            // More global filter
+            var form_data = {};
+            arr = box.closest('form').serializeArray();
+            for (var i = 0; i < arr.length && i < 20; i++){
+                var name = arr[i]['name'];
+                if (name.indexOf('[]') !== -1) {
+                    name = name.substr(0,name.length-2)
+                }
+                if (form_data[name]) {
+                    if (form_data[name].constructor !== Array) {
+                        form_data[name] = [form_data[name]];
+                    }
+                    form_data[name].push(arr[i]['value']);
+                } else {
+                    form_data[name] = arr[i]['value'];
+                }
+            }
+
+            box.addClass('loading');
+            if (!box.find(".loader").length) {
+                box.prepend('<div class="loader"><div class="ball-clip-rotate-multiple"><div></div><div></div></div></div>');
+            }
+
             $.ajax({
                 url: url,
                 method: 'GET',
                 data: {
-                    datas: datas
+                    datas: datas,
+                    form_data: form_data
                 }
             }).done(function( result ) {
                 box.html(result);
                 jsForAjaxContent(box);
+
+                box.removeClass('loading');
+                box.find(".loader").remove();
             });
         });
 
@@ -669,41 +696,63 @@ $(document).ready(function() {
         if(cond != 'to_required') {
             $('.transfer-condition-value label').html('Kho xuất tồn kho >=:');
             $('.transfer-quantity label').html('Số lượng chuyển tối đa:');
-            $('.transfer-quantity input').val();
+            $('.transfer-quantity input').val(100000);
+            $('.transfer-quantity input').closest('.form-group').hide();
             $('.transfer-condition-value label').val();
         } else {
             $('.transfer-condition-value label').html('Kho nhập phải tồn <=:');
             $('.transfer-quantity label').html('Số lượng chuyển:');
             $('.transfer-quantity input').val();
             $('.transfer-condition-value label').val();
+
+            $('.transfer-quantity input').val(1);
+            $('.transfer-quantity input').closest('.form-group').show();
         }
     });
     $('.transfer-condition').change();
 
     // delivery_details_categories_filter
-    $(document).on('change', '[name=delivery_details_categories_filter]', function() {
-        var value = getDataselectCurrentValue($(this).closest('.dataselect'));
+    $(document).on('change', '[name=delivery_details_categories_filter],[name=delivery_details_diameters_filter]', function() {
+        var cats = getDataselectCurrentValue($('[name=delivery_details_categories_filter]').closest('.dataselect'));
+        var diameters = getDataselectCurrentValue($('[name=delivery_details_diameters_filter]').closest('.dataselect'));
 
         $('.delivery_details_box .autolist-line').each(function() {
             var line = $(this);
-            if (value == '') {
-                line.find('.ignore_input').val('');
-                line.show();
-            } else {
-                var show = false;
-                value.split(',').forEach(function(i) {
-                    if (line.hasClass('auto-cat-'+i)) {
-                        show = true;
-                    }
-                });
-                if (show) {
+            //if (cats == '') {
+            //    line.find('.ignore_input').val('');
+            //    line.show();
+            //} else {
+                var show_cat = false;
+                if (cats == '') {
+                    show_cat = true;
+                } else {
+                    cats.split(',').forEach(function(i) {
+                        if (line.hasClass('auto-cat-'+i)) {
+                            show_cat = true;
+                        }
+                    });
+                }
+
+                var show_dia = false;
+                console.log(diameters);
+                if (diameters == '') {
+                    show_dia = true;
+                } else {
+                    diameters.split(',').forEach(function(i) {
+                        if (line.hasClass('auto-diameter-'+i)) {
+                            show_dia = true;
+                        }
+                    });
+                }
+
+                if (show_cat && show_dia) {
                     line.find('.ignore_input').val('');
                     line.show();
                 } else {
                     line.find('.ignore_input').val('true');
                     line.hide();
                 }
-            }
+            //}
         });
     });
 

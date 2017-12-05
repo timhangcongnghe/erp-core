@@ -5,7 +5,7 @@ function addableformAddLine(addableform) {
     var type = addableform.attr('type');
     var add_control = addableform.find(addableform.attr('add-control-selector'));
     var items = container.find('.item-id');
-console.log('ddd');
+
     if(typeof(add_control) === 'undefined') {
         add_value = '';
     } else {
@@ -24,13 +24,32 @@ console.log('ddd');
         });
     }
 
+    // More global filter
+    var form_data = {};
+    arr = addableform.closest('form').serializeArray();
+    for (var i = 0; i < arr.length; i++){
+        var name = arr[i]['name'];
+        if (name.indexOf('[]') !== -1) {
+            name = name.substr(0,name.length-2)
+        }
+        if (form_data[name]) {
+            if (form_data[name].constructor !== Array) {
+                form_data[name] = [form_data[name]];
+            }
+            form_data[name].push(arr[i]['value']);
+        } else {
+            form_data[name] = arr[i]['value'];
+        }
+    }
+
     if(add_value != '') {
         $.ajax({
             url: url,
             data: {
                 partial: partial,
                 add_value: add_value,
-                exist_ids: exist_ids
+                exist_ids: exist_ids,
+                form: form_data
             }
         }).done(function( result ) {
             if(type !== 'table') {

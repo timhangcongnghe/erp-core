@@ -48,8 +48,12 @@ function initParentControls() {
 
 function clearDataselectControlText(dataselect) {
     var control = dataselect.find('.dataselect-control');
+    var edit_button = dataselect.find('.dataselect-edit-button');
+    var clear_button = dataselect.find('.dataselect-clear-button');
 
     control.val('');
+    edit_button.hide();
+    clear_button.hide();
 }
 
 function clearDataselectValue(dataselect, trigger) {
@@ -57,6 +61,7 @@ function clearDataselectValue(dataselect, trigger) {
     var control = dataselect.find('.dataselect-control');
     var is_multiple = control.attr('multiple');
     var edit_button = dataselect.find('.dataselect-edit-button');
+    var clear_button = dataselect.find('.dataselect-clear-button');
 
     if(!is_multiple) {
         if(value_control.val() !== '') {
@@ -64,6 +69,8 @@ function clearDataselectValue(dataselect, trigger) {
             if (typeof(trigger) === 'undefined' || trigger) {
                 value_control.trigger('change');
             }
+            edit_button.hide();
+            clear_button.hide();
         }
     }
 }
