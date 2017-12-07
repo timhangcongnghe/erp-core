@@ -23,6 +23,13 @@
                 required: true,
                 errors: user.errors.full_messages_for(:email)
             }) %>
+            <%= erp_form_control("text", {
+                name: 'user[address]',
+                value: user.address,
+                label: 'Địa chỉ',
+                placeholder: 'Nhập địa chỉ',
+                errors: user.errors.full_messages_for(:address)
+            }) %>
             <%= erp_form_control("password", {
                 name: 'user[password]',
                 label: t('.password'),

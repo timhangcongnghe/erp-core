@@ -216,7 +216,7 @@ function jsForAjaxContent(container) {
         row.addClass('opened');
         row.after(
             '<tr class="child-row">' +
-                '<td class="child-td" colspan="' + cols + '">' +
+                '<td class="child-td text-center" colspan="' + cols + '">' +
                     '<div class="loader"><div class="ball-clip-rotate-multiple"><div></div><div></div></div></div>' +
                 '</td>' +
             '</tr>'

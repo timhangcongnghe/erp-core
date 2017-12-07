@@ -922,3 +922,16 @@ iframe.pdf{
     border: solid 1px #aaa;
     width: 27px !important;
 }
+.global-filter .form-group {
+    height: 60px;
+}
+input.dataselect-control {
+    padding-right: 40px;
+}
+.dataselect-data {
+    width: auto;
+    min-width: 100%;
+}
+.dataselect-data ul li a {
+    white-space: nowrap;
+}
