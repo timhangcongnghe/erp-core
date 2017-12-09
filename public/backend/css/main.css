@@ -935,3 +935,6 @@ input.dataselect-control {
 .dataselect-data ul li a {
     white-space: nowrap;
 }
+.text-lg {
+    font-size: 18px !important;
+}

@@ -21,15 +21,21 @@ function updateDefaultCommission(row) {
     }
 
     var c_total = line_subtotal - discount_amount;
+    var customer_commission_amount;
 
-    var customer_commission_percent;
-    if (row.find('.line_customer_commission_percent').html() !== '') {
-        customer_commission_percent = customParseFloat(row.find('.line_customer_commission_percent').html());
-    } else {
-        customer_commission_percent = 0;
+    if (row.find('.line_customer_commission_percent').length) {
+        var customer_commission_percent;
+        if (row.find('.line_customer_commission_percent').html() !== '') {
+            customer_commission_percent = customParseFloat(row.find('.line_customer_commission_percent').html());
+        } else {
+            customer_commission_percent = 0;
+        }
+
+        customer_commission_amount = (c_total*customer_commission_percent)/100;
+    } else if (row.find('.ajax_line_customer_commission_amount').length) {
+        customer_commission_amount = customParseFloat(row.find('.ajax_line_customer_commission_amount').html());
     }
 
-    var customer_commission_amount = (c_total*customer_commission_percent)/100;
     if (customer_commission_amount > 0) {
         row.find('.line_customer_commission_amount').val(formatNumber(customer_commission_amount));
     } else {
