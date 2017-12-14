@@ -215,6 +215,9 @@ div.alert.custom-box-shadow {
     border: solid 1px #c2cad8;
     padding-right: 25px;
 }
+.global-filter .dataselect-input-group.multiple {
+    background: #fff;
+}
 .multiselect-values-container, .multiselect-names-container {
     display: inline-block;
     line-height: 0px;
@@ -923,7 +926,10 @@ iframe.pdf{
     width: 27px !important;
 }
 .global-filter .form-group {
-    height: 60px;
+    margin-bottom: 15px;
+}
+.global-filter .form-control {
+    background: #fff !important;
 }
 input.dataselect-control {
     padding-right: 40px;
