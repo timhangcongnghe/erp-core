@@ -30,7 +30,7 @@
                 </div>
             <% end %>
             <div class="col-md-6">
-                <a class="btn btn-primary add-button <%= 'mt-25' if options[:add_control].present? %>">
+                <a class="btn btn-primary add-button <%= 'mt-25' if options[:add_control].present? and !options[:no_label].present? %>">
                     <i class="fa fa-plus"></i> <%= options[:add_button].present? ? options[:add_button] : t('.add')  %>
                 </a>
             </div>

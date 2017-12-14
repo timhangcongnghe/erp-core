@@ -642,13 +642,13 @@ span.help-block.alert {
 .mt-5 {
     margin-top: 5px;
 }
-.label-not-delivery {
+.label-not-delivery, .label-not_delivery {
     background-color: #e87e04;
 }
-.label-deliveried {
+.label-deliveried, .label-deliveried {
     background-color: #1bbc9b;
 }
-.label-over-deliveried {
+.label-over-deliveried, .label-over_deliveried {
     background-color: #d91e18;
 }
 .child-tr-expand-button {
@@ -937,4 +937,10 @@ input.dataselect-control {
 }
 .text-lg {
     font-size: 18px !important;
+}
+.text-warning {
+    color: #f1740F;
+}
+.addableform-table .form-group {
+    margin-bottom: 15px;
 }
