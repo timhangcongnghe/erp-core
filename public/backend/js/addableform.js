@@ -28,17 +28,19 @@ function addableformAddLine(addableform) {
     var form_data = {};
     arr = addableform.closest('form').serializeArray();
     for (var i = 0; i < arr.length; i++){
-        var name = arr[i]['name'];
-        if (name.indexOf('[]') !== -1) {
-            name = name.substr(0,name.length-2)
-        }
-        if (form_data[name]) {
-            if (form_data[name].constructor !== Array) {
-                form_data[name] = [form_data[name]];
+        if (i <= 10 ) {
+            var name = arr[i]['name'];
+            if (name.indexOf('[]') !== -1) {
+                name = name.substr(0,name.length-2)
             }
-            form_data[name].push(arr[i]['value']);
-        } else {
-            form_data[name] = arr[i]['value'];
+            if (form_data[name]) {
+                if (form_data[name].constructor !== Array) {
+                    form_data[name] = [form_data[name]];
+                }
+                form_data[name].push(arr[i]['value']);
+            } else {
+                form_data[name] = arr[i]['value'];
+            }
         }
     }
 
