@@ -16,6 +16,7 @@
         <%= 'disabled=disabled' if options[:disabled] == true %>
         <%= 'required=required' if options[:required] == true %>
         name="<%= options[:name] if options[:name].present? %>"
+        placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
         <%= 'multiple=multiple' if options[:multiple] == true %>
         id="<%= options[:id] if options[:id].present? %>">
         <% if options[:include_blank].present? %>

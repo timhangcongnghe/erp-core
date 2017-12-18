@@ -190,7 +190,13 @@ function jsForAjaxContent(container) {
 
     // select helper
     container.find('.select2').each(function() {
-        $(this).select2();
+        var placeholder = $(this).attr('placeholder');
+        if(typeof(placeholder) === 'undefined') {
+            placeholder = '';
+        }
+        $(this).select2({
+            placeholder: placeholder
+        });
     });
 
     // For tooltip
