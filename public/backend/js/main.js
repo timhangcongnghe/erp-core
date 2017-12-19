@@ -302,6 +302,39 @@ function jsForAjaxContent(container) {
 
         controls.last().trigger('change');
     });
+
+
+    // ajax-form
+    container.find('.ajax-form').bind("submit", function(e) {
+        e.preventDefault();
+
+        var form = $(this);
+        var url = form.attr('action');
+        var method = form.attr('method');
+        var box = form.find('.ajax-content');
+
+        box.addClass('loading');
+        if (!box.find(".loader").length) {
+            box.prepend('<div class="loader"><div class="ball-clip-rotate-multiple"><div></div><div></div></div></div>');
+        }
+
+        $.ajax({
+            url: url,
+            method: method,
+            data: form.serialize()
+        }).done(function( html ) {
+            if (box.length) {
+                box.html(html);
+
+                box.removeClass('loading');
+                box.find(".loader").remove();
+
+                jsForAjaxContent(box);
+            }
+        });
+
+        return false;
+    });
 }
 
 //scroll to jquery element

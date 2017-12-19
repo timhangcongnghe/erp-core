@@ -876,7 +876,10 @@ iframe.pdf{
 .ball-clip-rotate-multiple > div:last-child {
     border-color: #444 transparent #444 transparent;
 }
-.datalist-container.loading .loader {
+.ajax-content.loading {
+    opacity: 0.7;
+}
+.datalist-container.loading .loader, .ajax-content.loading .loader {
     display: block;
     margin: 50px auto;
     width: 20px;
@@ -949,4 +952,10 @@ input.dataselect-control {
 }
 .addableform-table .form-group {
     margin-bottom: 15px;
+}
+.inline-form .form-group {
+    margin-bottom: 0;
+}
+.inline-form .form-control {
+    width: auto;
 }
