@@ -11,6 +11,7 @@ require 'rmega'
 require 'axlsx'
 require 'axlsx_rails'
 require 'wicked_pdf'
+require 'roo'
 # require 'wkhtmltopdf-binary'
 
 module Erp

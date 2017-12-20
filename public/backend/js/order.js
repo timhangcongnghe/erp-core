@@ -1,3 +1,19 @@
+function orderFormPaymentForChange(form) {
+    var control = form.find('input[name="order[payment_for]"]:checked');
+
+    if (control.length) {
+        if (control.val() == 'for_contact') {
+            $('.payment-for-contact').show();
+            $('.payment-for-order').hide();
+            $('.payment-for-order input').val('');
+        } else {
+            $('.payment-for-contact').hide();
+            $('.payment-for-contact input').val('');
+            $('.payment-for-order').show();
+        }
+    }
+}
+
 //function formatNumber(num) {
 //    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
 //}
@@ -164,5 +180,11 @@ $(document).ready(function() {
     $(document).on('click', '.nested-remove-button', function(e) {
         var container = $(this).parents('.order-details');
         calculateOrderDetails(container);
+    });
+
+    orderFormPaymentForChange($('.edit_order, .new_order'));
+    $(document).on('ifChecked', 'input[name="order[payment_for]"]', function() {
+        var form = $(this).closest('.edit_order, .new_order');
+        orderFormPaymentForChange(form);
     });
 });

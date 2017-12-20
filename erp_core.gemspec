@@ -36,4 +36,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'axlsx_rails'
   s.add_dependency 'wicked_pdf'
   s.add_dependency 'wkhtmltopdf-binary'
+  s.add_dependency 'roo'
 end

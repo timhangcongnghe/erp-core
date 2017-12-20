@@ -9,6 +9,7 @@ $.fn.autolist = function(action, param) {
         var line = $(this).closest('.autolist-line');
 
         line.find('.destroy_input').val('true');
+        line.find('input, select').addClass('jvalidate_ignore');
         line.hide();
     });
     // Click add button

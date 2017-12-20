@@ -795,4 +795,16 @@ $(document).ready(function() {
         });
     });
 
+
+    $(document).on('click', '.custom-form-submit', function(e) {
+        e.preventDefault();
+
+        var form = $(this).closest('form');
+        var url = $(this).attr('data-action');
+
+        form.attr('action', url);
+
+        form.submit();
+    });
+
 });
