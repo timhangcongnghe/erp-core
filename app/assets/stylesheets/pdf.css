@@ -106,7 +106,7 @@ table.table tr td p {
     padding: 2px 5px;
     text-align: right;
     border: solid 1px #333;
-    width: calcu(100% - 12px);
+    width: calc(100% - 12px);
     border-top: none;
 }
 .table-footer label {
