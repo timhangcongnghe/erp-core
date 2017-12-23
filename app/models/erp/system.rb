@@ -200,7 +200,7 @@ module Erp
     def self.upload_backup_to_google_drive(params)
       bk_dir = params[:backup_dir]
       root_dir = params[:dir].present? ? params[:dir] : ""
-      revision_max = 3
+      revision_max = params[:revision_max]
       backup_folder_name = 'timhangcongnghe.com'
 
       # find lastest backup file
