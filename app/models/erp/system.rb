@@ -1,4 +1,5 @@
 require "rmega"
+require 'dropbox'
 
 module Erp
   class System < ActiveRecord::Base
@@ -131,6 +132,7 @@ module Erp
 
       # upload file
       backup_folder.upload(latest_backup_file)
+      # `rmega-up #{latest_backup_file} --user timhangcongnghe.vn@gmail.com --pass aA456321@#$ -r /#{backup_folder_name}`
 
       # Delete last file if revision_max
       count = backup_folder.files.count
@@ -138,6 +140,55 @@ module Erp
         if count - index > revision_max
           puts "Deleting old backup... #{file.name}"
           file.delete
+        end
+      end
+
+      puts "done"
+    end
+
+    # upload mega.nz
+    def self.upload_backup_to_dropbox(params)
+      bk_dir = params[:backup_dir]
+      root_dir = params[:dir].present? ? params[:dir] : ""
+      revision_max = 3
+      backup_folder_name = 'timhangcongnghe.vn'
+
+      # find lastest backup file
+      latest_backup_file = nil
+      (Dir.glob("#{bk_dir}/*").sort{|a,b| b <=> a}).each do |f|
+        if f.include?(".zip")
+          latest_backup_file = f
+          break
+        end
+      end
+      return if latest_backup_file.nil?
+      file_name = latest_backup_file.split("/").last
+      puts "Uploading... " + latest_backup_file
+
+      dbx = Dropbox::Client.new(params[:token])
+
+      files = dbx.list_folder('')
+
+      # Check if already upload
+      if files.find { |file| file.name == file_name }
+        puts "file exists!"
+        return
+      end
+
+
+      # upload file
+      dbx.upload('/'+file_name, File.open(latest_backup_file))
+
+      #backup_folder.upload(latest_backup_file)
+      # `rmega-up #{latest_backup_file} --user timhangcongnghe.vn@gmail.com --pass aA456321@#$ -r /#{backup_folder_name}`
+
+      # Delete last file if revision_max
+      files = dbx.list_folder('')
+      count = files.count
+      files.each_with_index do |file,index|
+        if count - index > revision_max
+          puts "Deleting old backup... #{file.name}"
+          dbx.delete('/'+file.name)
         end
       end
 
