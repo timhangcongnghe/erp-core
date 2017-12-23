@@ -218,9 +218,9 @@ module Erp
       # Connect
       session = GoogleDrive::Session.from_config(params[:token])
 
-      folder = session.collection_by_title('timhangcongnghe.com')
+      folder = session.collection_by_title(backup_folder_name)
       if !folder.present?
-        folder = session.root_collection.create_subcollection('timhangcongnghe.com')
+        folder = session.root_collection.create_subcollection(backup_folder_name)
       end
 
       files = folder.files
@@ -238,9 +238,9 @@ module Erp
       files = folder.files
       count = files.count
       files.each_with_index do |file,index|
-        if count - index > revision_max
+      if index >= revision_max
           puts "Deleting old backup... #{file.title}"
-          file.delete
+          file.delete(true)
         end
       end
 
