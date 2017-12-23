@@ -24,7 +24,7 @@ body {
 .header .right {
     float: right;
     white-space: nowrap;
-    opacity: .6;
+    color: #999;
     font-style: italic;
     font-size: 11px;
 }
@@ -135,6 +135,15 @@ table.table tr td p {
     font-weight: 600;
     margin-top: 50px;
 }
+.footer .bottom.left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    white-space: nowrap;
+    opacity: .6;
+    font-style: italic;
+    font-size: 11px;
+}
 .ml-10 {
     margin-left: 10px;
 }
@@ -144,9 +153,15 @@ table.table tr td p {
 .mt-5 {
     margin-top: 5px;
 }
+.mt-10 {
+    margin-top: 10px;
+}
 .mr-10 {
     margin-right: 10px;
 }
 .mr-5 {
     margin-right: 5px;
+}
+.mr-30 {
+    margin-right: 30px;
 }
