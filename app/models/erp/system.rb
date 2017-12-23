@@ -1,5 +1,6 @@
-require "rmega"
+require 'rmega'
 require 'dropbox'
+require 'google_drive'
 
 module Erp
   class System < ActiveRecord::Base
@@ -146,7 +147,7 @@ module Erp
       puts "done"
     end
 
-    # upload mega.nz
+    # upload dropbox
     def self.upload_backup_to_dropbox(params)
       bk_dir = params[:backup_dir]
       root_dir = params[:dir].present? ? params[:dir] : ""
@@ -189,6 +190,57 @@ module Erp
         if count - index > revision_max
           puts "Deleting old backup... #{file.name}"
           dbx.delete('/'+file.name)
+        end
+      end
+
+      puts "done"
+    end
+
+    # upload google drive
+    def self.upload_backup_to_google_drive(params)
+      bk_dir = params[:backup_dir]
+      root_dir = params[:dir].present? ? params[:dir] : ""
+      revision_max = 3
+      backup_folder_name = 'timhangcongnghe.com'
+
+      # find lastest backup file
+      latest_backup_file = nil
+      (Dir.glob("#{bk_dir}/*").sort{|a,b| b <=> a}).each do |f|
+        if f.include?(".zip")
+          latest_backup_file = f
+          break
+        end
+      end
+      return if latest_backup_file.nil?
+      file_name = latest_backup_file.split("/").last
+      puts "Uploading... " + latest_backup_file
+
+      # Connect
+      session = GoogleDrive::Session.from_config(params[:token])
+
+      folder = session.collection_by_title('timhangcongnghe.com')
+      if !folder.present?
+        folder = session.root_collection.create_subcollection('timhangcongnghe.com')
+      end
+
+      files = folder.files
+
+      # Check if already upload
+      if files.find { |file| file.title == file_name }
+        puts "file exists!"
+        return
+      end
+
+      # upload file
+      folder.upload_from_file(latest_backup_file, file_name, convert: false)
+
+      # Delete last file if revision_max
+      files = folder.files
+      count = files.count
+      files.each_with_index do |file,index|
+        if count - index > revision_max
+          puts "Deleting old backup... #{file.title}"
+          file.delete
         end
       end
 

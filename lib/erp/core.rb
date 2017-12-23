@@ -13,6 +13,7 @@ require 'axlsx_rails'
 require 'wicked_pdf'
 require 'roo'
 # require 'wkhtmltopdf-binary'
+require 'google_drive'
 
 module Erp
 	module Core

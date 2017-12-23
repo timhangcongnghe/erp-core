@@ -38,4 +38,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'wkhtmltopdf-binary'
   s.add_dependency 'roo'
   s.add_dependency 'dropbox-sdk-v2'
+  s.add_dependency 'google_drive'
 end
