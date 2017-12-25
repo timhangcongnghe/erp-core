@@ -22,7 +22,9 @@ function updateDefaultPrice(row) {
     var quantity = customParseFloat(row.find('.line_quantity').val());
     if (row.find('.line_fill_price').html() !== '') {
         var price = customParseFloat(row.find('.line_fill_price').html());
-        row.find('.line_unit_price').val(formatNumber(price)).change();
+        if (!row.find('.line_unit_price').hasClass('edit')) {
+            row.find('.line_unit_price').val(formatNumber(price)).change();
+        }
     }
 
     calculateOrderDetails(row.closest('.order-details'));

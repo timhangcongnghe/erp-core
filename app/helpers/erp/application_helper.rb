@@ -75,7 +75,7 @@ module Erp
       end
       conds
     end
-    
+
     # Get filters datalist
     def get_filters(params)
       params = params.to_unsafe_hash
@@ -208,7 +208,8 @@ module Erp
       end while so>0
 
       chuoi = chuoi.strip.capitalize
-      chuoi = (chuoi =~ /Triệu /) == 0 ? "Một " + chuoi : chuoi
+      chuoi = (chuoi =~ /Triệu/) == 0 ? "Một " + chuoi : chuoi
+      chuoi = (chuoi =~ /Tỷ/) == 0 ? "Một " + chuoi : chuoi
 
       return chuoi.strip.capitalize + " đồng"
     end
