@@ -363,7 +363,7 @@ i.default:hover {
     border-bottom: none;
     margin-bottom: 0;
 }
-.form-control-mb-0 .form-group, .form-control-mb-0 .form-group label {
+.form-control-mb-0 .form-group {
     margin-bottom: 0 !important;
 }
 .mt-checkbox-inline .mt-checkbox {
@@ -958,4 +958,7 @@ input.dataselect-control {
 }
 .inline-form .form-control {
     width: auto;
+}
+select[multiple] {
+    height: 120px;
 }
