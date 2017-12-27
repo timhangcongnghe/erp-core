@@ -804,4 +804,33 @@ $(document).ready(function() {
             datalistFilter($(this));
         });
     });
+
+    // datalist-ajax-control-box
+    $(document).on("change", ".datalist-ajax-control-box select", function() {
+        var control = $(this);
+        var box = control.closest('.datalist-ajax-control-box');
+        var url = box.attr('data-url');
+        var order = control.val();
+        var list = box.closest('.datalist');
+
+        // ajax update custom sort
+        $.ajax({
+            url: url,
+            method: 'POST',
+            data: {
+                authenticity_token: AUTH_TOKEN,
+                order: order,
+            },
+        }).done(function( result ) {
+            swal({
+                title: result.text,
+                text: '',
+                type: result.status,
+                allowOutsideClick: true,
+                confirmButtonText: "OK"
+            });
+
+            datalistFilter(list);
+        });
+    });
 });

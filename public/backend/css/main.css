@@ -962,3 +962,12 @@ input.dataselect-control {
 select[multiple] {
     height: 120px;
 }
+.select2-basic.select-inline {
+    width: auto;
+    display: inline-block;
+    height: auto;
+    padding: 2px 5px;
+}
+.datalist .form-group {
+    margin: 0;
+}

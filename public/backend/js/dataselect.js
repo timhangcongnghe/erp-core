@@ -648,4 +648,9 @@ $(document).ready(function() {
 
     // for related dataselect
     initParentControls();
+
+    // remove dataselect name item
+    $(document).on('click', '.dataselect-input-group', function() {
+        $(this).find('.dataselect-control').focus();
+    });
 });
