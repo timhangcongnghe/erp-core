@@ -335,6 +335,10 @@ function jsForAjaxContent(container) {
 
         return false;
     });
+    
+    container.find('.datalist').each(function() {
+        datalistFilter($(this));
+    });
 }
 
 //scroll to jquery element
@@ -545,6 +549,8 @@ $(document).ready(function() {
             url: url
         }).done(function( html ) {
             modal.find('.modal-body').html(html);
+            
+            jsForAjaxContent(modal.find('.modal-body'));
         });
     });
 
