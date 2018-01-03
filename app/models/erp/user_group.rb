@@ -664,21 +664,21 @@ module Erp
           users: {
             users: {
               index: {
-                value: 'yes',
+                value: 'no',
                 options: [
                   {value: 'yes', text: 'Có'},
                   {value: 'no', text: 'Không'},
                 ],
               },
               create: {
-                value: 'yes',
+                value: 'no',
                 options: [
                   {value: 'yes', text: 'Có'},
                   {value: 'no', text: 'Không'},
                 ],
               },
               update: {
-                value: 'yes',
+                value: 'no',
                 options: [
                   {value: 'yes', text: 'Có'},
                   {value: 'no', text: 'Không'},
@@ -687,21 +687,21 @@ module Erp
             },
             user_groups: {
               index: {
-                value: 'yes',
+                value: 'no',
                 options: [
                   {value: 'yes', text: 'Có'},
                   {value: 'no', text: 'Không'},
                 ],
               },
               create: {
-                value: 'yes',
+                value: 'no',
                 options: [
                   {value: 'yes', text: 'Có'},
                   {value: 'no', text: 'Không'},
                 ],
               },
               update: {
-                value: 'yes',
+                value: 'no',
                 options: [
                   {value: 'yes', text: 'Có'},
                   {value: 'no', text: 'Không'},
@@ -712,7 +712,7 @@ module Erp
           targets: {
             targets: {
               index: {
-                value: 'yes',
+                value: 'no',
                 options: [
                   {value: 'yes', text: 'Có'},
                   {value: 'no', text: 'Không'},
@@ -726,7 +726,7 @@ module Erp
                 ],
               },
               update: {
-                value: 'yes',
+                value: 'no',
                 options: [
                   {value: 'yes', text: 'Có'},
                   {value: 'no', text: 'Không'},
@@ -735,21 +735,21 @@ module Erp
             },
             company_targets: {
               index: {
-                value: 'yes',
+                value: 'no',
                 options: [
                   {value: 'yes', text: 'Có'},
                   {value: 'no', text: 'Không'},
                 ],
               },
               create: {
-                value: 'yes',
+                value: 'no',
                 options: [
                   {value: 'yes', text: 'Có'},
                   {value: 'no', text: 'Không'},
                 ],
               },
               update: {
-                value: 'yes',
+                value: 'no',
                 options: [
                   {value: 'yes', text: 'Có'},
                   {value: 'no', text: 'Không'},
@@ -760,21 +760,21 @@ module Erp
           periods: {
             periods: {
               index: {
-                value: 'yes',
+                value: 'no',
                 options: [
                   {value: 'yes', text: 'Có'},
                   {value: 'no', text: 'Không'},
                 ],
               },
               create: {
-                value: 'yes',
+                value: 'no',
                 options: [
                   {value: 'yes', text: 'Có'},
                   {value: 'no', text: 'Không'},
                 ],
               },
               update: {
-                value: 'yes',
+                value: 'no',
                 options: [
                   {value: 'yes', text: 'Có'},
                   {value: 'no', text: 'Không'},
@@ -929,6 +929,13 @@ module Erp
                   {value: 'yes', text: 'Có'},
                   {value: 'no', text: 'Không'},
                 ],
+              },
+              liabilities_arising: {
+                value: 'yes',
+                options: [
+                  {value: 'yes', text: 'Có'},
+                  {value: 'no', text: 'Không'},
+                ]
               },
               period_liabilities: {
                 value: 'yes',
