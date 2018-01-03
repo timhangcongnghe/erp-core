@@ -15,7 +15,7 @@
     <input <%= 'required=required' if options[:required] == true %> class="form-control spinner <%= options[:class] if options[:class].present? %>"
         type="text"
         name="<%= options[:name] if options[:name].present? %>"
-        id="<%= options[:id] if options[:id].present? %>"
+        <% if options[:id].present? %>id="<%= options[:id] %>"<% end %>
         value="<%= options[:value] if options[:value].present? %>"
         placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
     />

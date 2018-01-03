@@ -18,7 +18,7 @@
         name="<%= options[:name] if options[:name].present? %>"
         value="<%= options[:value] if options[:value].present? %>"
         class="dataselect-value"
-        id="<%= options[:id] if options[:id].present? %>"
+        <% if options[:id].present? %> id="<%= options[:id] %>" <% end %>
     />
     <div class="dataselect-input-group <%= 'multiple' if options[:multiple] == true %>">
         <% if options[:multiple] == true %>

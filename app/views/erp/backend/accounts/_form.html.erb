@@ -49,7 +49,6 @@
                                 <!-- PERSONAL INFO TAB -->
                                 <div class="tab-pane <%= 'active' if !params[:tab].present? or params[:tab] == 'personal' %>" id="tab_personal">
                                     <%= form_for '', url: erp.update_contact_backend_accounts_path, html: {multipart: false} do |f| %>
-                                        <input type="hidden" value="<%= @contact.id %>" name="contact[contact_id]" />
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <%= erp_form_control("text", {
