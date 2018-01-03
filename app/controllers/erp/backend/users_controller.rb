@@ -161,6 +161,14 @@ module Erp
           end
         end
 
+        # remember user filters
+        def save_filter
+          filter = JSON.parse(params[:filters])
+          current_user.update_filter(filter.first[0], filter.first[1]) # update_column(:data, data.to_json)
+
+          render plain: 'saved'
+        end
+
       private
         # Use callbacks to share common setup or constraints between actions.
         def set_user

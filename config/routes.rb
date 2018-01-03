@@ -23,6 +23,8 @@ Erp::Core::Engine.routes.draw do
 					put 'deactivate'
 					put 'activate_all'
 					put 'deactivate_all'
+
+					post 'save_filter'
 				end
 			end
 			resources :user_groups do

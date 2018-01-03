@@ -813,4 +813,20 @@ $(document).ready(function() {
         form.submit();
     });
 
+    // Down focus input
+    $(document).on('keyup', '.down-focus', function(e) {
+        if(e.which === 40) {
+            var next_tr = $(this).closest('tr').next();
+            if (next_tr.length) {
+                next_tr.find('.down-focus').focus();
+            }
+        }
+        if(e.which === 38) {
+            var prev_tr = $(this).closest('tr').prev();
+            if (prev_tr.length) {
+                prev_tr.find('.down-focus').focus();
+            }
+        }
+    });
+
 });

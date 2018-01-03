@@ -19,6 +19,7 @@
 <%= render "layouts/erp/backend/theme_layout_scripts" %>
 <!-- END THEME LAYOUT SCRIPTS -->
 <!-- CUSTOM ERP SCRIPTS -->
+<%= javascript_include_tag '/backend/js/jquery.cookie.js' %>
 <%= javascript_include_tag '/backend/js/validation/jquery.validate.min.js' %>
 <%= javascript_include_tag '/backend/js/validation/localization/messages_vi.min.js' %>
 <%= javascript_include_tag '/backend/js/autolist.js' %>
@@ -50,5 +51,6 @@
     var LANG_OK = '<%= t('ok') %>';
     var LANG_CANCEL = '<%= t('close') %>';
     var LANG_DATE_FORMAT_JS = '<%= t('date_format_js') %>';
+    var SAVE_FILTER_URL = '<%= erp.save_filter_backend_users_path %>';
 </script>
 <!-- END LOCALE JAVASCRIPT -->

@@ -181,5 +181,37 @@ module Erp
     def self.employee_count
       self.count-1
     end
+
+    # get data
+    def get_data
+      return {} if !self.data.present?
+      JSON.parse(self.data)
+    end
+
+    # get filters
+    def get_filters(url=nil)
+      data = self.get_data
+      return {} if !data["filters"].present?
+
+      if url.present?
+        return data["filters"][url].present? ? data["filters"][url] : {}
+      else
+        return data["filters"]
+      end
+    end
+
+    # update filter
+    def update_filter(url, params)
+      data = self.get_data
+
+      if data["filters"].present?
+        data["filters"][url] = params
+      else
+        data["filters"] = {}
+        data["filters"][url] = params
+      end
+
+      self.update_column(:data, data.to_json)
+    end
   end
 end

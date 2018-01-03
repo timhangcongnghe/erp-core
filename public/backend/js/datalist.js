@@ -1,3 +1,52 @@
+// Save global filter
+function saveFilter(box) {
+    var list = box.closest('.page-content').find('.datalist').first();
+    var url = list.attr('data-url');
+
+    var data = $.cookie("filters");
+    if (typeof(data) == 'undefined') {
+        data = {};
+        data[url] = {};
+    } else {
+        data = JSON.parse(data);
+        if (typeof(data[url]) == 'undefined') {
+            data[url] = {};
+        }
+    }
+
+    arr = box.serializeArray();
+    for (var i = 0; i < arr.length; i++){
+        // data[url][arr[i]['name']] = arr[i]['value'];
+        var name = arr[i]['name'];
+        if (name.indexOf('[]') !== -1) {
+            name = name.substr(0,name.length-2)
+        }
+        if (data[url][name]) {
+            if (data[url][name].constructor !== Array) {
+                data[url][name] = [data[url][name]];
+            }
+            data[url][name].push(arr[i]['value']);
+        } else {
+            data[url][name] = arr[i]['value'];
+        }
+    }
+
+    var filters = JSON.stringify(data);
+
+    // save_filter_backend_users
+    // ajax update custom sort
+	$.ajax({
+        url: SAVE_FILTER_URL,
+        method: 'POST',
+        data: {
+            'authenticity_token': AUTH_TOKEN,
+            'filters': filters
+        },
+    }).done(function( html ) {
+    });
+
+}
+
 // Filter a datalist
 function globalFilterAction(list) {
     var url = list.attr('data-url');
@@ -795,7 +844,12 @@ $(document).ready(function() {
 
     // Datalist search entry select
     $(document).on("change", ".global-filter input, .global-filter select", function() {
+        var box = $(this).closest(".global-filter");
+
         datalistFilterAll();
+
+        // Save filters
+        saveFilter(box);
     });
 
     // Datalist search entry select
