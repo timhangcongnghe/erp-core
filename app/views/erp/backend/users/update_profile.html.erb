@@ -1,0 +1,18 @@
+<% content_for :title do %>
+    <%= @user.name %>
+<% end %>
+
+<% content_for :page_title do %>
+    <a href="javascript:;">
+        <i class="fa fa-users"></i> Cập nhật hồ sơ
+    </a> / <%= @user.name %>
+<% end %>
+
+<div class="row">
+    <div class="col-md-12">
+        <% if @user.errors.any? %>
+            <%= erp_form_control("form_error_message") %>
+        <% end %>
+        <%= render 'profile', user: @user %>
+    </div>
+</div>

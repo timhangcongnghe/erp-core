@@ -1,0 +1,206 @@
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PROFILE SIDEBAR -->
+        <div class="profile-sidebar">
+            <!-- PORTLET MAIN -->
+            <div class="portlet light profile-sidebar-portlet ">
+                <!-- SIDEBAR USERPIC -->
+                <div class="profile-userpic">
+                    <img src="<%= user.avatar.present? ? user.avatar.profile : url_for("/backend/img/placeholder.jpg") %>"
+                        class="img-responsive" alt=""> </div>
+                <!-- END SIDEBAR USERPIC -->
+                <!-- SIDEBAR USER TITLE -->
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name"> <%= user.name %> </div>
+                    <div class="profile-desc-link">
+                        <%= user.email %>
+                    </div>
+                    <div class="margin-top-10 profile-usertitle-job"> <%= user.user_group_name %> </div>
+                </div>
+                <!-- END SIDEBAR USER TITLE -->
+            </div>
+            <!-- END PORTLET MAIN -->
+        </div>
+        <!-- END BEGIN PROFILE SIDEBAR -->
+        <!-- BEGIN PROFILE CONTENT -->
+        <div class="profile-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet light ">
+                        <div class="portlet-title tabbable-line">
+                            <div class="caption caption-md">
+                                <i class="icon-globe theme-font hide"></i>
+                                <span class="caption-subject font-blue-madison bold uppercase">Hồ sơ của tôi</span>
+                            </div>
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#tab_1_1" data-toggle="tab">Thông tin cá nhân</a>
+                                </li>
+                                <li>
+                                    <a href="#tab_1_2" data-toggle="tab">Ảnh đại diện</a>
+                                </li>
+                                <li>
+                                    <a href="#tab_1_3" data-toggle="tab">Thay đổi mật khẩu</a>
+                                </li>
+                                <% if false %>
+                                    <li>
+                                        <a href="#tab_1_4" data-toggle="tab">Quyền riêng tư</a>
+                                    </li>
+                                <% end %>
+                            </ul>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="tab-content">
+                                <!-- PERSONAL INFO TAB -->
+                                <div class="tab-pane active" id="tab_1_1">
+                                    <%= form_for '' do |f| %>
+                                        <% contact = Erp::Contacts::Contact.find(params[:id]) %>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <%= erp_form_control("text", {
+                                                    name: 'user[name]',
+                                                    value: '',
+                                                    label: 'Họ và tên',
+                                                    placeholder: 'Nhập họ tên nhân viên',
+                                                    required: true,
+                                                    errors: user.errors.full_messages_for(:name)
+                                                }) %>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <%= erp_form_control("date", {
+                                                    name: '',
+                                                    value: '',
+                                                    label: 'Sinh nhật',
+                                                    placeholder: 'Chọn ngày/tháng/năm sinh'
+                                                }) %>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <%= erp_form_control("email", {
+                                                    name: 'user[email]',
+                                                    value: user.email,
+                                                    label: 'E-mail liên hệ',
+                                                    placeholder: 'Nhập địa chỉ email liên hệ'
+                                                }) %>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <%= erp_form_control("text", {
+                                                    name: 'user[email]',
+                                                    value: '',
+                                                    label: 'Điện thoại',
+                                                    placeholder: 'Nhập số điện thoại liên hệ'
+                                                }) %>
+                                            </div>
+                                        </div>
+                                        <% if Erp::Core.available?("areas") %>
+                                        <div class="row">
+                                            <input type="hidden" name="contact[country_id]" value="<%= '1' %>" />
+                                            <div class="col-md-4">
+                                                <%= erp_form_control("dataselect", {
+                                                    name: 'contact[state_id]',
+                                                    value: contact.state_id,
+                                                    text: contact.state_name,
+                                                    placeholder: 'Chọn Khu vực/Tỉnh/Thành phố',
+                                                    label: 'Tỉnh/Thành phố',
+                                                    url: erp_areas.dataselect_backend_states_path(format: 'json'),
+                                                    parent_control: "input[name='contact[country_id]']",
+                                                    parent_id: "country_id"
+                                                }) %>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <%= erp_form_control("dataselect", {
+                                                    name: 'contact[district_id]',
+                                                    value: contact.district_id,
+                                                    text: contact.district_name,
+                                                    placeholder: 'Chọn Quận/Huyện/Thị xã',
+                                                    label: 'Quận/Huyện/T.xã',
+                                                    url: erp_areas.dataselect_backend_districts_path(format: 'json'),
+                                                    parent_control: "input[name='contact[state_id]']",
+                                                    parent_id: "state_id"
+                                                }) %>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <%= erp_form_control("text", {
+                                                    name: 'contact[address]',
+                                                    value: contact.address,
+                                                    label: 'Địa chỉ',
+                                                    placeholder: 'Nhập địa chỉ'
+                                                }) %>
+                                            </div>
+                                        </div>
+                                        <% end %>
+                                        <div class="margiv-top-10">
+                                            <a href="javascript:;" class="btn green"> Cập nhật </a>
+                                        </div>
+                                    <% end %>
+                                </div>
+                                <!-- END PERSONAL INFO TAB -->
+                                <!-- CHANGE AVATAR TAB -->
+                                <div class="tab-pane" id="tab_1_2">
+                                    
+                                    <form action="#" role="form">
+                                        <%= erp_form_control('fileinput', {
+                                            img_src: user.avatar,
+                                            name: 'user[avatar]',
+                                            width: 150,
+                                            height: 150
+                                        }) %>
+                                        <div class="margin-top-10">
+                                            <a href="javascript:;" class="btn green"> Cập nhật </a>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- END CHANGE AVATAR TAB -->
+                                <!-- CHANGE PASSWORD TAB -->
+                                <div class="tab-pane" id="tab_1_3">
+                                    <form action="#">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <%= erp_form_control("password", {
+                                                    name: 'user[password]',
+                                                    label: 'Mật khẩu mới',
+                                                    placeholder: 'Nhập mật khẩu mới',
+                                                    required: user.id.nil?,
+                                                    errors: user.errors.full_messages_for(:password)
+                                                }) %>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <%= erp_form_control("password", {
+                                                    name: 'user[password_confirmation]',
+                                                    label: 'Xác nhận mật khẩu mới',
+                                                    placeholder: 'Nhập lại mật khẩu mới',
+                                                    required: user.id.nil?,
+                                                    errors: user.errors.full_messages_for(:password_confirmation)
+                                                }) %>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <%= erp_form_control("password", {
+                                                    name: 'user[password_confirmation]',
+                                                    label: 'Mật khẩu hiện tại',
+                                                    placeholder: 'Nhập mật khẩu hiện tại',
+                                                    required: user.id.nil?,
+                                                    errors: user.errors.full_messages_for(:password_confirmation)
+                                                }) %>
+                                            </div>
+                                        </div>
+                                        <div class="margin-top-10">
+                                            <a href="javascript:;" class="btn green"> Cập nhật </a>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- END CHANGE PASSWORD TAB -->
+                                <!-- PRIVACY SETTINGS TAB -->
+                                <% if false %>
+                                    <div class="tab-pane" id="tab_1_4">
+                                        Đang phát triển...
+                                    </div>
+                                <% end %>
+                                <!-- END PRIVACY SETTINGS TAB -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PROFILE CONTENT -->
+    </div>
+</div>

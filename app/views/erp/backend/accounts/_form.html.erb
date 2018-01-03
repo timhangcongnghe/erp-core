@@ -1,0 +1,209 @@
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PROFILE SIDEBAR -->
+        <div class="profile-sidebar">
+            <!-- PORTLET MAIN -->
+            <div class="portlet light profile-sidebar-portlet ">
+                <!-- SIDEBAR USERPIC -->
+                <div class="profile-userpic">
+                    <img src="<%= user.avatar.present? ? user.avatar.profile : url_for("/backend/img/placeholder.jpg") %>"
+                        class="img-responsive" alt=""> </div>
+                <!-- END SIDEBAR USERPIC -->
+                <!-- SIDEBAR USER TITLE -->
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name"> <%= user.name %> </div>
+                    <div class="profile-desc-link">
+                        <%= user.email %>
+                    </div>
+                    <div class="margin-top-10 profile-usertitle-job"> <%= user.user_group_name %> </div>
+                </div>
+                <!-- END SIDEBAR USER TITLE -->
+            </div>
+            <!-- END PORTLET MAIN -->
+        </div>
+        <!-- END BEGIN PROFILE SIDEBAR -->
+        <!-- BEGIN PROFILE CONTENT -->
+        <div class="profile-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet light ">
+                        <div class="portlet-title tabbable-line">
+                            <div class="caption caption-md">
+                                <i class="icon-globe theme-font hide"></i>
+                                <span class="caption-subject font-blue-madison bold uppercase">Hồ sơ của tôi</span>
+                            </div>
+                            <ul class="nav nav-tabs">
+                                <li class="<%= 'active' if !params[:tab].present? or params[:tab] == 'personal' %>">
+                                    <a href="#tab_personal" data-toggle="tab">Thông tin cá nhân</a>
+                                </li>
+                                <li class="<%= 'active' if params[:tab] == 'account' %>">
+                                    <a href="#tab_account" data-toggle="tab">Tài khoản</a>
+                                </li>
+                                <li class="<%= 'active' if params[:tab] == 'password' %>">
+                                    <a href="#tab_password" data-toggle="tab">Thay đổi mật khẩu</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="tab-content">
+                                <!-- PERSONAL INFO TAB -->
+                                <div class="tab-pane <%= 'active' if !params[:tab].present? or params[:tab] == 'personal' %>" id="tab_personal">
+                                    <%= form_for '', url: erp.update_contact_backend_accounts_path, html: {multipart: false} do |f| %>
+                                        <input type="hidden" value="<%= @contact.id %>" name="contact[contact_id]" />
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <%= erp_form_control("text", {
+                                                    name: 'contact[name]',
+                                                    value: @contact.name,
+                                                    label: 'Họ và tên',
+                                                    placeholder: 'Nhập họ và tên đầy đủ',
+                                                    required: true,
+                                                    errors: user.errors.full_messages_for(:name)
+                                                }) %>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <%= erp_form_control("date", {
+                                                    name: 'contact[birthday]',
+                                                    value: @contact.birthday,
+                                                    label: 'Sinh nhật',
+                                                    placeholder: 'Chọn ngày sinh (YYYY-MM-DD)'
+                                                }) %>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <%= erp_form_control("email", {
+                                                    name: 'contact[email]',
+                                                    value: @contact.email,
+                                                    label: 'E-mail liên hệ',
+                                                    placeholder: 'Nhập địa chỉ email liên hệ'
+                                                }) %>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <%= erp_form_control("text", {
+                                                    name: 'contact[phone]',
+                                                    value: @contact.phone,
+                                                    label: 'Điện thoại',
+                                                    placeholder: 'Nhập số điện thoại liên hệ'
+                                                }) %>
+                                            </div>
+                                        </div>
+                                        <% if Erp::Core.available?("areas") %>
+                                        <div class="row">
+                                            <input type="hidden" name="contact[country_id]" value="<%= '1' %>" />
+                                            <div class="col-md-4">
+                                                <%= erp_form_control("dataselect", {
+                                                    name: 'contact[state_id]',
+                                                    value: @contact.state_id,
+                                                    text: @contact.state_name,
+                                                    placeholder: 'Chọn Khu vực/Tỉnh/Thành phố',
+                                                    label: 'Tỉnh/Thành phố',
+                                                    url: erp_areas.dataselect_backend_states_path(format: 'json'),
+                                                    parent_control: "input[name='contact[country_id]']",
+                                                    parent_id: "country_id"
+                                                }) %>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <%= erp_form_control("dataselect", {
+                                                    name: 'contact[district_id]',
+                                                    value: @contact.district_id,
+                                                    text: @contact.district_name,
+                                                    placeholder: 'Chọn Quận/Huyện/Thị xã',
+                                                    label: 'Quận/Huyện/T.xã',
+                                                    url: erp_areas.dataselect_backend_districts_path(format: 'json'),
+                                                    parent_control: "input[name='contact[state_id]']",
+                                                    parent_id: "state_id"
+                                                }) %>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <%= erp_form_control("text", {
+                                                    name: 'contact[address]',
+                                                    value: @contact.address,
+                                                    label: 'Địa chỉ',
+                                                    placeholder: 'Vd: 188 Đường số 1, Phường 16'
+                                                }) %>
+                                            </div>
+                                        </div>
+                                        <% end %>
+                                        <div class="margiv-top-10">
+                                            <%= erp_component('button/save', {
+                                                text: 'Cập nhật'
+                                            }) %>
+                                        </div>
+                                    <% end %>
+                                </div>
+                                <!-- END PERSONAL INFO TAB -->
+                                <!-- CHANGE AVATAR/USERNAME TAB -->
+                                <div class="tab-pane <%= 'active' if params[:tab] == 'account' %>" id="tab_account">
+                                    <%= form_for '', url: erp.update_user_backend_accounts_path, html: {multipart: true} do |f| %>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <%= erp_form_control('fileinput', {
+                                                    name: 'user[avatar]',
+                                                    label: 'Ảnh đại diện'
+                                                }) %>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <%= erp_form_control("text", {
+                                                    name: 'user[name]',
+                                                    value: user.name,
+                                                    label: 'Tên người dùng',
+                                                    placeholder: 'Nhập tên người dùng (nickname)',
+                                                    required: true,
+                                                    errors: user.errors.full_messages_for(:name)
+                                                }) %>
+                                            </div>
+                                        </div>
+                                        <div class="margin-top-10">
+                                            <%= erp_component('button/save', {
+                                                text: 'Cập nhật'
+                                            }) %>
+                                        </div>
+                                    <% end %>
+                                </div>
+                                <!-- END CHANGE AVATAR/USERNAME TAB -->
+                                <!-- CHANGE PASSWORD TAB -->
+                                <div class="tab-pane <%= 'active' if params[:tab] == 'password' %>" id="tab_password">
+                                    <%= form_for '', url: erp.update_password_backend_accounts_path, html: {multipart: true} do |f| %>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <%= erp_form_control("password", {
+                                                    name: 'user[password]',
+                                                    label: 'Mật khẩu mới',
+                                                    placeholder: 'Nhập mật khẩu mới',
+                                                    required: true,
+                                                }) %>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <%= erp_form_control("password", {
+                                                    name: 'user[password_confirmation]',
+                                                    label: 'Xác nhận mật khẩu mới',
+                                                    placeholder: 'Nhập lại mật khẩu mới',
+                                                    required: true,
+                                                }) %>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <%= erp_form_control("password", {
+                                                    name: 'user[current_password]',
+                                                    label: 'Mật khẩu hiện tại',
+                                                    placeholder: 'Nhập mật khẩu hiện tại',
+                                                    help: 'Vì lý do bảo mật, xin vui lòng cung cấp mật khẩu hiện tại của bạn.',
+                                                    required: true,
+                                                }) %>
+                                            </div>
+                                        </div>
+                                        <div class="margin-top-10">
+                                            <%= erp_component('button/save', {
+                                                text: 'Cập nhật'
+                                            }) %>
+                                        </div>
+                                    <% end %>
+                                </div>
+                                <!-- END CHANGE PASSWORD TAB -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PROFILE CONTENT -->
+    </div>
+</div>

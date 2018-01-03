@@ -33,6 +33,14 @@ Erp::Core::Engine.routes.draw do
 					get 'dataselect'
 				end
 			end
+			resources :accounts do
+				collection do
+					get 'profile'
+					post 'update_contact'
+					post 'update_user'
+					post 'update_password'
+				end
+			end
 			post '/editor/upload' => 'editor_uploads#upload'
 			patch '/editor/upload' => 'editor_uploads#upload'
 		end

@@ -39,6 +39,13 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-default">
                 <li>
+                    <%= link_to '<i class="icon-user"></i>'.html_safe + t('profile'),
+                        erp.profile_backend_accounts_path,
+                        redirect_to: erp.backend_path,
+                        class: 'link-method'
+                    %>
+                </li>
+                <li>
                     <%= link_to '<i class="icon-key"></i>'.html_safe + t('logout'),
                         erp.destroy_user_session_path,
                         method: :delete,
