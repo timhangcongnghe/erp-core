@@ -12,7 +12,7 @@
         <% end %>
     </label>
     <% end %>
-    <select class="bs-select form-control select2" data-live-search="true" data-size="8"
+    <select class="bs-select form-control select2 <%= options[:class] if options[:class].present? %>" data-live-search="true" data-size="8"
         <%= 'disabled=disabled' if options[:disabled] == true %>
         <%= 'required=required' if options[:required] == true %>
         name="<%= options[:name] if options[:name].present? %>"
