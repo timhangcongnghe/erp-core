@@ -511,3 +511,19 @@ table tr.addableform-more span.btn.btn-xs {
     padding: 1px 5px !important;
     text-transform: none !important;
 }
+table tr.addableform-more .mt-checkbox-inline {
+    padding: 0;
+}
+table tr.addableform-more .mt-checkbox-inline label.mt-checkbox {
+    margin-bottom: 0;
+    font-size: 13px;
+    padding-left: 20px;
+}
+table tr.addableform-more .mt-checkbox-inline label.mt-checkbox>span {
+    height: 15px;
+    width: 15px;
+}
+table tr.addableform-more .mt-checkbox-inline label.mt-checkbox>span:after {
+    left: 4px;
+    top: 0px;
+}
