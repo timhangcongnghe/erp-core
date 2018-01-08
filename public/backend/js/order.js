@@ -189,4 +189,15 @@ $(document).ready(function() {
         var form = $(this).closest('.edit_order, .new_order');
         orderFormPaymentForChange(form);
     });
+
+    // Click event alternative item change
+    $(document).on('click', '.alternative_item', function(e) {
+        
+        var id = $(this).attr('data-id');
+        var name = $(this).attr('data-name');
+        var tr = $(this).closest('tr').prev();
+        
+        tr.find('td > input.product-id').val(id)
+        tr.find('td > strong.product-name').html(name);
+    });
 });

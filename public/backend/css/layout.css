@@ -506,3 +506,8 @@ table tr.addableform-line > td .btn-group ul.dropdown-menu>li>a>.badge {
     margin-top: -1px;
     right: 5px;
 }
+table tr.addableform-more span.btn.btn-xs {
+    font-size: 10px !important;
+    padding: 1px 5px !important;
+    text-transform: none !important;
+}
