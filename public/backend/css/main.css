@@ -971,3 +971,13 @@ select[multiple] {
 .datalist .form-group {
     margin: 0;
 }
+.page-sidebar .page-sidebar-menu li a .notification-badge-container>.badge {
+    margin-right: -24px;
+    margin-top: -1px;
+}
+.page-sidebar .page-sidebar-menu .sub-menu li a .notification-badge-container>.badge {
+    margin-top: 2px;
+}
+.dashboard-menu>.nav-item>a>.notification-badge-container>.badge {
+    margin-top: 0;
+}
