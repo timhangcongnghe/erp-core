@@ -252,7 +252,7 @@ function jsForAjaxContent(container) {
         var url = box.attr('data-url');
         var controls = $(box.attr('data-control'));
 
-        controls.on('change', function() {
+        $(document).on('change', box.attr('data-control'), function() {
             str = box.attr('data-control');
             //console.log(str);
 
