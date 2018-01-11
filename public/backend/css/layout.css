@@ -432,6 +432,12 @@ table tr.addableform-line > td .form-group {
 .label-deleted {
     background-color: #bfbfbf;
 }
+.label-archived {
+    background-color: #bfbfbf;
+}
+.label-unarchived {
+    background-color: #36c6d3;
+}
 .label-paid {
     background-color: #4caf50;
 }
