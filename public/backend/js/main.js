@@ -335,7 +335,7 @@ function jsForAjaxContent(container) {
 
         return false;
     });
-    
+
     container.find('.datalist').each(function() {
         datalistFilter($(this));
     });
@@ -549,7 +549,7 @@ $(document).ready(function() {
             url: url
         }).done(function( html ) {
             modal.find('.modal-body').html(html);
-            
+
             jsForAjaxContent(modal.find('.modal-body'));
         });
     });
@@ -829,4 +829,46 @@ $(document).ready(function() {
         }
     });
 
+    // addable-container
+    $(document).on('click', '.addable-but-add', function() {
+        var container = $(this).closest('.addable-container').first();
+        var boxes = container.find('.addable-boxes').eq(0);
+        var html = $(boxes.attr('data-pattern')).html();
+
+        boxes.append(html);
+
+        // Update indexes
+
+        $('.addable-container .addable-boxes').each(function() {
+            index1 = 0;
+            $(this).children().each(function() {
+                $(this).find('input,select').each(function() {
+                    var name = $(this).attr('name');
+                    if (typeof(name) !== 'undefined') {
+                        name = name.replace(/<<index1>>/g, index1);
+                        $(this).attr('name', name);
+                    }
+                });
+
+                // index2
+                index2 = 0;
+                $(this).find('.addable-boxes').children().each(function() {
+                    $(this).find('input,select').each(function() {
+                        var name = $(this).attr('name');
+                        if (typeof(name) !== 'undefined') {
+                            name = name.replace(/<<index2>>/g, index2);
+                            $(this).attr('name', name);
+                        }
+                    });
+
+                    index2 += 1;
+                });
+
+                index1 += 1;
+            });
+        });
+    });
+    $(document).on('click', '.addable-but-remove', function() {
+        $(this).closest('.addable-box').remove();
+    });
 });
