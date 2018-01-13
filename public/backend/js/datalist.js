@@ -688,7 +688,7 @@ $(document).ready(function() {
     // Change page
     $(document).on("click", ".datalist .pagination a", function(e) {
         var url = $(this).attr("href");
-        var list = $(this).parents('.datalist');
+        var list = $(this).closest('.datalist');
         var page = getUrlParameter(url, 'page');
 
         datalistFilter(list, page);
