@@ -485,6 +485,9 @@ h2.invoice-title.title {
 tr.child-row>td.child-td table.table {
     margin-bottom: auto;
 }
+tr.child-row>td.child-td table.table {
+    margin-bottom: auto;
+}
 .top-datalist div#reportrange {
     background-color: #f7f9f9;;
     margin-bottom: 5px;
@@ -898,6 +901,16 @@ iframe.pdf{
     box-shadow: none;
     border: none;
     min-height: auto;
+}
+.child-td .portlet.light.datalist {
+    margin-bottom: 0;
+    background-color: transparent;
+}
+.child-td .portlet.light.datalist > .portlet-body.datalist-container {
+    padding-top: 0;
+}
+.child-td .pagination-row div:first-child > div {
+    display: none;
 }
 .dataselect-item.current {
     background: #f8f8f8;
