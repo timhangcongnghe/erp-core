@@ -517,6 +517,9 @@ $(document).ready(function() {
         var item = $(this);
         selectDataselectItem(item);
     });
+    $(document).on('mousedown', '.dataselect .dataselect-item a', function() {
+        $(this).click();
+    });
 
     // when blur dataselect control
     $(document).on("blur",".dataselect .dataselect-control", function() {

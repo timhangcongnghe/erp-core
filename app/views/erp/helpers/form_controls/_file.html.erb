@@ -12,16 +12,16 @@
     </label>
     <div class="input-group fileinput fileinput-new" data-provides="fileinput">
         <div class="input-group input-large">
-            <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
+            <div class="form-control uneditable-input input-fixed input-small" data-trigger="fileinput">
                 <i class="fa fa-file fileinput-exists"></i>&nbsp;
                 <span class="fileinput-filename"> </span>
             </div>
             <span class="input-group-addon btn default btn-file">
-                <span class="fileinput-new"> Select file </span>
-                <span class="fileinput-exists"> Change </span>
+                <span class="fileinput-new"> Chọn </span>
+                <span class="fileinput-exists"> Chọn </span>
                 <input type="file" name="<%= options[:name] if options[:name].present? %>" id="">
             </span>
-            <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+            <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> X </a>
         </div>
     </div>
     <% if options[:errors].present? %>

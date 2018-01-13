@@ -994,3 +994,11 @@ select[multiple] {
 .dashboard-menu>.nav-item>a>.notification-badge-container>.badge {
     margin-top: 0;
 }
+.fileinput .btn-file {
+    float: left;
+    min-width: 60px;
+}
+.fileinput a.fileinput-exists {
+    float: left;
+    min-width: 37px;
+}
