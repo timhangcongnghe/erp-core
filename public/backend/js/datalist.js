@@ -574,8 +574,8 @@ function datalistFilter(list, page, scroll) {
 
     // More global filter
     var more_filter = {};
-    if (list.closest('.tab-pane').find('.more-filter').length) {
-        arr = list.closest('.tab-pane').find('.more-filter').serializeArray();
+    if (list.closest('.tab-pane, .child-td').find('.more-filter').length) {
+        arr = list.closest('.tab-pane, .child-td').find('.more-filter').serializeArray();
         for (var i = 0; i < arr.length; i++){
             var name = arr[i]['name'];
             if (name.indexOf('[]') !== -1) {
