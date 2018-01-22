@@ -913,7 +913,7 @@ iframe.pdf{
     display: none;
 }
 .dataselect-item.current {
-    background: #f8f8f8;
+    background: #dedede;
 }
 .child-row .loader {
     height: 20px;
