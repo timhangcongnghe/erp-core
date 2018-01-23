@@ -17,6 +17,9 @@ module Erp
 
     if Erp::Core.available?("contacts")
 			has_one :contact, class_name: "Erp::Contacts::Contact", foreign_key: 'user_id'
+			def contact_name
+        contact.present? ? contact.contact_name : nil
+      end
 		end
 
     if Erp::Core.available?("carts")
