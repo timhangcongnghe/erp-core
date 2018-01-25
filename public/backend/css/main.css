@@ -658,8 +658,9 @@ span.help-block.alert {
     background-color: #d91e18;
 }
 .child-tr-expand-button {
-    margin-right: -37px;
-    margin-left: 15px;
+    margin-right: 10px;
+    /*margin-right: -37px;
+    margin-left: 15px;*/
     background: #3598dc;
 }
 .table-child-content {
