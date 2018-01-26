@@ -942,6 +942,11 @@ iframe.pdf{
     border: solid 1px #aaa;
     width: 27px !important;
 }
+.table-matrix tr>td:first-child, .table-matrix tr>th:first-child {
+    max-width: fit-content;
+    min-width: fit-content;
+    padding: 4px;
+}
 .global-filter .form-group {
     margin-bottom: 15px;
 }
