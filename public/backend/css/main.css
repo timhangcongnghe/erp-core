@@ -1008,3 +1008,19 @@ select[multiple] {
     float: left;
     min-width: 37px;
 }
+.check-box-no-padding .mt-checkbox-inline {
+    padding: 0;
+}
+.valign-top td {
+    vertical-align: top !important;
+}
+.valign-center td {
+    vertical-align: middle !important;
+}
+.scheck-row {
+    border-bottom: solid 20px #ddd;
+}
+th.bg-primary {
+    color: #fff !important;
+    background-color: #337ab7 !important;
+}
