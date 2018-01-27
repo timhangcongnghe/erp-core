@@ -14,7 +14,11 @@
         <div class="input-group input-large">
             <div class="form-control uneditable-input input-fixed input-small" data-trigger="fileinput">
                 <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                <% if options[:value].present? %>
+                <span class="fileinput-filename"><%= options[:value] %></span>
+                <% else %>
                 <span class="fileinput-filename"> </span>
+                <% end %>
             </div>
             <span class="input-group-addon btn default btn-file">
                 <span class="fileinput-new"> Chọn </span>
