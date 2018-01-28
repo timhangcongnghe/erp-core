@@ -21,6 +21,10 @@ module Erp
         contact.present? ? contact.contact_name : nil
       end
 		end
+    
+    if Erp::Core.available?("finances")
+      has_many :service_registers, class_name: "Erp::Finances::ServiceRegister", foreign_key: 'user_id', dependent: :destroy
+    end
 
     if Erp::Core.available?("carts")
 			has_many :wish_lists, dependent: :destroy, class_name: 'Erp::Carts::WishList'
