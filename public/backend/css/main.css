@@ -1024,3 +1024,5 @@ th.bg-primary {
     color: #fff !important;
     background-color: #337ab7 !important;
 }
+input.bg-danger {
+  background-color: #fbe1e3 !important; }
