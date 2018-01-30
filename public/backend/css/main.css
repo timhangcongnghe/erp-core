@@ -1026,3 +1026,7 @@ th.bg-primary {
 }
 input.bg-danger {
   background-color: #fbe1e3 !important; }
+
+.btn-group.open>.dropdown-menu {
+    z-index: 10000;
+}
