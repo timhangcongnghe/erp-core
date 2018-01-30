@@ -339,6 +339,11 @@ function jsForAjaxContent(container) {
     container.find('.datalist').each(function() {
         datalistFilter($(this));
     });
+
+    container.find('table').floatThead({
+        position: 'fixed',
+        top: 50
+    });
 }
 
 //scroll to jquery element
