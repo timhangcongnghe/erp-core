@@ -101,4 +101,17 @@ $(document).ready(function() {
         addableformline.hide();
         addableformline.find('input, select').addClass('jvalidate_ignore');
     });
+
+    // addable form enter
+    $(document).on("keyup", "body", function(e) {
+        if (e.which = 13) {
+            $('.addableform').each(function() {
+                var input = $(this).find('.dataselect-control');
+
+                if(input.val() != '') {
+                    $(this).find('.add-button').click();
+                }
+            });
+        }
+    });
 });
