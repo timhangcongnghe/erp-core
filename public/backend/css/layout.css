@@ -119,7 +119,7 @@ a:hover {
     padding-bottom: 15px;
 }
 .page-sidebar .page-sidebar-menu>li>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a {
-    padding: 12px 15px;    
+    padding: 12px 15px;
 }
 .page-sidebar .page-sidebar-menu>li>a {
     font-size: 15px !important;
@@ -166,7 +166,7 @@ a:hover {
 /* Tooltip */
 .tooltip > .tooltip-inner {
     background: #364150;
-    color: #fff; 
+    color: #fff;
     border: 1px solid #364150;
     padding: 7px 10px;
     font-size: 15px;
@@ -402,6 +402,7 @@ table tr.addableform-line > td .form-group {
     box-shadow: 5px 5px rgba(102,102,102,.2);
     border: 1px solid #bbb;
     background: #f7f9f9;
+    z-index: 10000;
 }
 .datepicker table td, .datepicker table th, .datetimepicker table td, .datetimepicker table th {
     font-family: "Roboto", "Helvetica Neue",Helvetica,Arial,sans-serif !important;

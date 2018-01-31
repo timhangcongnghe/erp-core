@@ -78,11 +78,16 @@ function globalFilterAction(list) {
     filters = filters.concat(selects[id]);
 
     // More global filter
+    var gbf_form = $('.global-filter');
+    var gbf_class = list.attr('global-filter');
+    if (typeof(gbf_class) != 'undefined') {
+        gbf_form = $(gbf_class);
+    }
     var global_filter = {};
-    if ($('.global-filter').length) {
-        arr = $('.global-filter').serializeArray();
+    if (gbf_form.length) {
+        arr = gbf_form.serializeArray();
         for (var i = 0; i < arr.length; i++){
-          global_filter[arr[i]['name']] = arr[i]['value'];
+            global_filter[arr[i]['name']] = arr[i]['value'];
         }
     }
 
@@ -489,7 +494,16 @@ function getValuesFromCheckableList(items) {
 // Filter all datalists in current page
 function datalistFilterAll() {
     $('.datalist').each(function() {
+        var list = $(this);
         datalistFilter($(this));
+
+        // listening
+        var gbf_class = list.attr('global-filter');
+        if (typeof(gbf_class) != 'undefined') {
+            $(gbf_class).find("input, select").change(function() {
+                datalistFilter(list);
+            });
+        }
     });
 }
 
@@ -554,8 +568,13 @@ function datalistFilter(list, page, scroll) {
 
     // More global filter
     var global_filter = {};
-    if ($('.global-filter').length) {
-        arr = $('.global-filter').serializeArray();
+    var gbf_form = $('.global-filter');
+    var gbf_class = list.attr('global-filter');
+    if (typeof(gbf_class) != 'undefined') {
+        gbf_form = $(gbf_class);
+    }
+    if (gbf_form.length) {
+        arr = gbf_form.serializeArray();
         for (var i = 0; i < arr.length; i++){
             var name = arr[i]['name'];
             if (name.indexOf('[]') !== -1) {
@@ -845,9 +864,7 @@ $(document).ready(function() {
     // Datalist search entry select
     $(document).on("change", ".global-filter input, .global-filter select", function() {
         var box = $(this).closest(".global-filter");
-
         datalistFilterAll();
-
         // Save filters
         saveFilter(box);
     });

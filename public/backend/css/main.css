@@ -1030,3 +1030,6 @@ input.bg-danger {
 .btn-group.open>.dropdown-menu {
     z-index: 10000;
 }
+thead tr th {
+    white-space: nowrap;
+}

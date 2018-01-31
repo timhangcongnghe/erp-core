@@ -129,6 +129,10 @@ Website: http://globalnaturesoft.com/
                                     <!-- END GLOABL FILTER -->
                                 <% end %>
 
+                                <% if content_for?(:top_page) %>
+                                    <%= yield(:top_page) %>
+                                <% end %>
+
                                 <%= yield %>
                             </div>
                         </div>

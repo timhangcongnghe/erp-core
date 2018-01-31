@@ -4,6 +4,7 @@
     data-id='<%= Digest::SHA1.hexdigest([Time.now, rand].join) %>'
     sort-by='<%= options[:sort][:sort_by] if options[:sort].present? and options[:sort][:sort_by].present? %>'
     sort-direction='<%= options[:sort][:sort_direction] if options[:sort].present? and options[:sort][:sort_direction].present? %>'
+    <% if options[:global_filter].present? %>global-filter="<%= options[:global_filter] %>"<% end %>
     <%= 'sortable=true' if options[:sortable].present? %>
 >
 
