@@ -746,17 +746,17 @@ $(document).ready(function() {
         if(cond != 'to_required') {
             $('.transfer-condition-value label').html('Kho xuất tồn kho >=:');
             $('.transfer-quantity label').html('Số lượng chuyển tối đa:');
-            $('.transfer-quantity input').val(100000);
-            $('.transfer-quantity input').closest('.form-group').hide();
-            $('.transfer-condition-value label').val();
+            $('.transfer-quantity input').val(1);
+            //$('.transfer-quantity input').closest('.form-group').hide();
+            //$('.transfer-condition-value label').val();
         } else {
             $('.transfer-condition-value label').html('Kho nhập phải tồn <=:');
-            $('.transfer-quantity label').html('Số lượng chuyển:');
+            $('.transfer-quantity label').html('Số lượng chuyển tối đa:');
             $('.transfer-quantity input').val();
             $('.transfer-condition-value label').val();
 
             $('.transfer-quantity input').val(1);
-            $('.transfer-quantity input').closest('.form-group').show();
+            //$('.transfer-quantity input').closest('.form-group').show();
         }
     });
     $('.transfer-condition').change();
