@@ -336,9 +336,7 @@ function jsForAjaxContent(container) {
         return false;
     });
 
-    container.find('.datalist').each(function() {
-        datalistFilter($(this));
-    });
+    datalistFilterAll(container);
 
     container.find('table').floatThead({
         position: 'fixed',

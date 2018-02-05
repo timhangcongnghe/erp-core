@@ -492,10 +492,20 @@ function getValuesFromCheckableList(items) {
 }
 
 // Filter all datalists in current page
-function datalistFilterAll() {
-    $('.datalist').each(function() {
+function datalistFilterAll(container) {
+    lists = $('.datalist');
+
+    if (typeof(container) != 'undefined') {
+        lists = container.find('.datalist');
+    }
+
+    lists.each(function() {
         var list = $(this);
-        datalistFilter($(this));
+        var autoload = list.attr('autoload');
+
+        if (typeof(autoload) == 'undefined' || autoload == 'true') {
+            datalistFilter($(this));
+        }
 
         // listening
         var gbf_class = list.attr('global-filter');
@@ -685,8 +695,8 @@ var keywords = {};
 var selects = {};
 // Main js execute when loaded page
 $(document).ready(function() {
-    // Filter all datalists in first load
-    datalistFilterAll();
+    //// Filter all datalists in first load
+    //datalistFilterAll();
 
     // Filters group link click
     $(document).on('click', '.btn-group-checkable .dropdown-menu>li>a', function(e) {
@@ -864,7 +874,24 @@ $(document).ready(function() {
     // Datalist search entry select
     $(document).on("change", ".global-filter input, .global-filter select", function() {
         var box = $(this).closest(".global-filter");
-        datalistFilterAll();
+        var button = box.find('.global-filter-button');
+
+        if (!button.length) {
+            datalistFilterAll();
+            // Save filters
+            saveFilter(box);
+        }
+    });
+
+    $(document).on("click", ".global-filter-button", function() {
+        var box = $(this).closest(".global-filter");
+
+        lists = $('.datalist');
+        lists.each(function() {
+            var list = $(this);
+            datalistFilter($(this));
+        });
+
         // Save filters
         saveFilter(box);
     });

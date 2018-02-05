@@ -5,6 +5,7 @@
     sort-by='<%= options[:sort][:sort_by] if options[:sort].present? and options[:sort][:sort_by].present? %>'
     sort-direction='<%= options[:sort][:sort_direction] if options[:sort].present? and options[:sort][:sort_direction].present? %>'
     <% if options[:global_filter].present? %>global-filter="<%= options[:global_filter] %>"<% end %>
+    autoload="<%= options[:autoload] %>"
     <%= 'sortable=true' if options[:sortable].present? %>
 >
 
@@ -67,7 +68,11 @@
         </div>
     <% end %>
     <div class="portlet-body datalist-container">
-
+        <% if options[:placeholder] %>
+            <div class="alert alert-warning">
+                <%= options[:placeholder] %>
+            </div>
+        <% end %>
     </div>
 </div>
 <!-- END EXAMPLE TABLE PORTLET-->
