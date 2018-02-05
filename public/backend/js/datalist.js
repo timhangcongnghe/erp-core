@@ -503,7 +503,7 @@ function datalistFilterAll(container) {
         var list = $(this);
         var autoload = list.attr('autoload');
 
-        if (typeof(autoload) == 'undefined' || autoload == 'true') {
+        if (typeof(autoload) == 'undefined' || autoload == 'true' || autoload == '') {
             datalistFilter($(this));
         }
 
