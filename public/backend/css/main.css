@@ -556,6 +556,13 @@ span.tooltips {
 .stock-num-1 {
     background-color: #f9e491;
 }
+[class*="stock-num--"] {
+    background-color: red;
+    color: #fff;
+}
+[class*="stock-num--"] .stooltip {
+    color: #333;
+}
 .stock-num-2 {
     background-color: #e0ebf9;
 }
