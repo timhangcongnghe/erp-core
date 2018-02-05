@@ -557,7 +557,7 @@ span.tooltips {
     background-color: #f9e491;
 }
 [class*="stock-num--"] {
-    background-color: red;
+    background-color: #ed6b75;
     color: #fff;
 }
 [class*="stock-num--"] .stooltip {
