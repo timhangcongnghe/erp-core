@@ -104,14 +104,14 @@ $(document).ready(function() {
 
     // addable form enter
     $(document).on("keyup", "body", function(e) {
-        if (e.which = 13) {
-            $('.addableform').each(function() {
-                var input = $(this).find('.dataselect-control');
-
-                if(input.val() != '') {
-                    $(this).find('.add-button').click();
-                }
-            });
-        }
+        //if (e.which = 13) {
+        //    $('.addableform').each(function() {
+        //        var input = $(this).find('.dataselect-control');
+        //
+        //        if(input.val() != '') {
+        //            $(this).find('.add-button').click();
+        //        }
+        //    });
+        //}
     });
 });
