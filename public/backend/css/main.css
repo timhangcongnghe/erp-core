@@ -1040,3 +1040,6 @@ input.bg-danger {
 thead tr th {
     white-space: nowrap;
 }
+.addableform-line td {
+    vertical-align: top !important;
+}
