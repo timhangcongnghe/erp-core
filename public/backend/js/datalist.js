@@ -931,4 +931,28 @@ $(document).ready(function() {
             datalistFilter(list);
         });
     });
+
+    // datalist inline action post
+    $(document).on("click", ".ajax-datalist-inline-action", function(e) {
+        e.preventDefault();
+
+        var link = $(this);
+        var row = link.closest('tr');
+        var url = link.attr('href');
+        var list = row.closest('.datalist');
+        var page = list.attr('data-page');
+        var method = link.attr('data-method');
+
+        link.addClass('btn-grey');
+        link.html('Đang xử lý...');
+
+        // ajax update custom sort
+        $.ajax({
+            url: url,
+            method: method,
+            data: row.find(':input').serialize()
+        }).done(function( result ) {
+            datalistFilter(list, page);
+        });
+    });
 });
