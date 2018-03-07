@@ -29,7 +29,7 @@ function insertTagNameToDataSelect(dataselect) {
 function initParentControls() {
     // find all cond item
     $('[parent-control]').each(function() {
-        box = $(this).parents('form');
+        box = $(this).closest('form');
 
         var class_name = $(this).attr('parent-control');
         var parent_control = box.find(class_name);
@@ -37,7 +37,7 @@ function initParentControls() {
         parent_control.on("change", function() {
             value = $(this).val();
             box.find('[parent-control="' + class_name + '"]').each(function() {
-                var dataselect = $(this).parents('.dataselect');
+                var dataselect = $(this).closest('.dataselect');
                 clearDataselectControlText(dataselect);
                 clearDataselectValue(dataselect);
                 clearDataselectTags(dataselect);
@@ -434,7 +434,7 @@ function updateDataselectData(dataselect, ignore_keyword) {
 
     // check parent control
     if(typeof(parent_control) !== 'undefined' && parent_control !== '' && typeof(parent_id) !== 'undefined' && parent_id !== '') {
-        form_data.parent_value = $(parent_control).val();
+        form_data.parent_value = dataselect.closest('form').find(parent_control).val();
         form_data.parent_id = parent_id;
     }
 
