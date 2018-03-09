@@ -476,6 +476,10 @@ h2.invoice-title.title {
 .opened i.tr-expand-button:before {
     content: "\f068";
 }
+.tr-expand-button.disabled {
+    pointer-events: none;
+    opacity: 0.2;
+}
 .child-td {
     padding: 10px !important;
 }
