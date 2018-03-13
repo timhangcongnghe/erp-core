@@ -70,7 +70,7 @@
     <div class="portlet-body datalist-container">
         <% if options[:placeholder] %>
             <div class="alert alert-warning">
-                <%= options[:placeholder] %>
+                <%= options[:placeholder].html_safe %>
             </div>
         <% end %>
     </div>
