@@ -655,6 +655,8 @@ span.help-block.alert {
 }
 .autolist .row {
     margin: 0 -5px 0 0;
+    border-bottom: solid 1px #ccc;
+    margin-bottom: 14px;
 }
 .mt-5 {
     margin-top: 5px;
@@ -1046,4 +1048,7 @@ thead tr th {
 }
 .addableform-line td {
     vertical-align: top !important;
+}
+.highlight-tr {
+    background: #f9e491;
 }

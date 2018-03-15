@@ -874,4 +874,12 @@ $(document).ready(function() {
     $(document).on('click', '.addable-but-remove', function() {
         $(this).closest('.addable-box').remove();
     });
+
+    // table click-highlight row
+    $(document).on('click', '.click-highlight tr', function() {
+        var table = $(this).closest('table');
+
+        table.find('tr').removeClass('highlight-tr');
+        $(this).addClass('highlight-tr');
+    });
 });
