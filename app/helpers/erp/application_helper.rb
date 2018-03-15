@@ -96,7 +96,7 @@ module Erp
 
     # Get custom uniquess id
     def unique_id
-      return [*5..30000].sample.to_s
+      return 'a' + SecureRandom.uuid
     end
 
     # Format date
