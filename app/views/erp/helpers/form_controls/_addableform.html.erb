@@ -45,9 +45,9 @@
             <% end %>
             <tbody class="addableform-container">
                 <% if options[:items].present? %>
-                    <% options[:items].each do |item| %>
+                    <% options[:items].each_with_index do |item,index| %>
                         <% if !options[:no_tr].present? %><tr class="addableform-line"><% end %>
-                            <%= render options[:partial], options[:item] => item, uid: unique_id(), params: options[:params] %>
+                            <%= render options[:partial], options[:item] => item, uid: index.to_s, params: options[:params] %>
                         <% if !options[:no_tr].present? %></tr><% end %>
                     <% end %>
                 <% end %>
