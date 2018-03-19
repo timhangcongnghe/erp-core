@@ -534,3 +534,7 @@ table tr.addableform-more .mt-checkbox-inline label.mt-checkbox>span:after {
     left: 4px;
     top: 0px;
 }
+.page-footer .page-footer-inner a {
+  color: #98a6ba;
+  text-decoration: underline;
+}
