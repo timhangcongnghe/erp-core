@@ -1,3 +1,52 @@
+function reloadChildRow(child) {
+    var row = child.prev();
+    child.remove();
+
+    expandChildRow(row);
+}
+
+function expandChildRow(row) {
+    var url = row.attr('data-url');
+    var cols = row.find('td').length;
+    var child = row.next();
+
+    if (child.hasClass('child-row')) {
+        if (child.is(':visible')) {
+            child.remove();
+            row.removeClass('opened');
+            return;
+        }
+
+        child.remove();
+    }
+
+    row.addClass('opened');
+    row.after(
+        '<tr class="child-row">' +
+            '<td class="child-td text-center" colspan="' + cols + '">' +
+                '<div class="loader"><div class="ball-clip-rotate-multiple"><div></div><div></div></div></div>' +
+            '</td>' +
+        '</tr>'
+    );
+    child = row.next();
+
+    $.ajax({
+        url: url,
+        method: 'GET'
+    }).done(function( result ) {
+        child.remove();
+        row.after(
+            '<tr class="child-row">' +
+                '<td class="child-td" colspan="' + cols + '">' +
+                    result +
+                '</td>' +
+            '</tr>'
+        );
+        child = row.next();
+        jsForAjaxContent(child);
+    });
+}
+
 function customParseFloat(num) {
     if (typeof(num) == 'undefined') {
         return 0.0;
@@ -205,45 +254,8 @@ function jsForAjaxContent(container) {
     // Row has child ajax content
     container.find('.has-child-table .expand').bind("click", function() {
         var row = $(this).closest('tr');
-        var url = row.attr('data-url');
-        var cols = row.find('td').length;
-        var child = row.next();
 
-        if (child.hasClass('child-row')) {
-            if (child.is(':visible')) {
-                child.remove();
-                row.removeClass('opened');
-                return;
-            }
-
-            child.remove();
-        }
-
-        row.addClass('opened');
-        row.after(
-            '<tr class="child-row">' +
-                '<td class="child-td text-center" colspan="' + cols + '">' +
-                    '<div class="loader"><div class="ball-clip-rotate-multiple"><div></div><div></div></div></div>' +
-                '</td>' +
-            '</tr>'
-        );
-        child = row.next();
-
-        $.ajax({
-            url: url,
-            method: 'GET'
-        }).done(function( result ) {
-            child.remove();
-            row.after(
-                '<tr class="child-row">' +
-                    '<td class="child-td" colspan="' + cols + '">' +
-                        result +
-                    '</td>' +
-                '</tr>'
-            );
-            child = row.next();
-            jsForAjaxContent(child);
-        });
+        expandChildRow(row);
     });
 
     // ajax-box

@@ -952,7 +952,12 @@ $(document).ready(function() {
             method: method,
             data: row.find(':input').serialize()
         }).done(function( result ) {
-            datalistFilter(list, page);
+            //datalistFilter(list, page);
+            if (link.closest('.child-row').length) {
+                reloadChildRow(link.closest('.child-row'));
+            } else {
+                datalistFilter(list, page);
+            }
         });
     });
 });

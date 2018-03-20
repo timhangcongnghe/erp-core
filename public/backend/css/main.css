@@ -257,6 +257,7 @@ th.sortable:hover {
     padding-right: 10px;
     display: inline-block;
     margin-left: -10px;
+    position: absolute;
 }
 .sortable[sort-direction=desc]:after {
     content: "\f0d7";
