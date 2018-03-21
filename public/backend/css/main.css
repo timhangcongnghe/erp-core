@@ -571,6 +571,12 @@ span.tooltips {
 .stock-num-2 {
     background-color: #e0ebf9;
 }
+.stock-num-true {
+    color: #26c281;
+}
+.stock-num-false {
+    color: #e43a45;
+}
 .dataselect-data ul {
     max-height: 250px;
     overflow: auto;
@@ -1052,4 +1058,15 @@ thead tr th {
 }
 .highlight-tr {
     background: #f9e491;
+}
+.child-row .child-td .alert {
+    box-shadow: none;
+    border-width: thin;
+    padding: 10px;
+    border-radius: 4px !important;
+}
+.child-row .child-td .alert-warning {
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+    color: #8a6d3b;
 }
