@@ -1065,7 +1065,7 @@ thead tr th {
     padding: 10px;
     border-radius: 4px !important;
 }
-.child-row .child-td .alert-warning {
+.child-row .child-td .alert-warning-o {
     background-color: #fcf8e3;
     border-color: #faebcc;
     color: #8a6d3b;
