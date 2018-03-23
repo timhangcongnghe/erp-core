@@ -1077,3 +1077,6 @@ thead tr th {
 .table>thead>tr>th {
   border-top: 1px solid #e7ecf1;
 }
+.form-group label.myErrorClass {
+    margin: 0;
+}
