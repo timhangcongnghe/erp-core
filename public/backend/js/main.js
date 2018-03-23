@@ -736,13 +736,13 @@ $(document).ready(function() {
 
     // period from to date change
     $(document).on('change', '.global-filter input[name=period]', function() {
-        var box = $(this).closest('.global-filter');
+        var box = $(this).closest('.global-filter, .addable-box');
 
         box.find('input[name=from_date], input[name=to_date]').val('');
     });
     // period from to date change
     $(document).on('change', '.global-filter input[name=from_date], .global-filter input[name=to_date]', function() {
-        var box = $(this).closest('.global-filter');
+        var box = $(this).closest('.global-filter, .addable-box');
 
         box.find('input[name=period]').val('');
         clearDataselectControlText(box.find('input[name=period]').closest('.dataselect'));
@@ -851,9 +851,10 @@ $(document).ready(function() {
         var html = $(boxes.attr('data-pattern')).html();
 
         boxes.append(html);
+        
+        jsForAjaxContent(container.find('.addable-box').last());
 
         // Update indexes
-
         $('.addable-container .addable-boxes').each(function() {
             index1 = 0;
             $(this).children().each(function() {

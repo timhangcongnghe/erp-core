@@ -1070,3 +1070,7 @@ thead tr th {
     border-color: #faebcc;
     color: #8a6d3b;
 }
+.border-top .addable-box {
+    border-top: solid 1px #aaa;
+    padding-top: 10px;
+}
