@@ -7,6 +7,7 @@ vi:
   custom_order: 'Order'
   please_select_at_least_one_row: "Vui lòng chọn ít nhất 1 đối tượng"
   no_record_found: "Không tìm thấy kết quả"
+  no_matching_records_found: "Không tìm thấy kết quả"
   #vietnamese translate global locales
   fullscreen: "Toàn màn hình"
   image: "Hình ảnh"
