@@ -1074,3 +1074,6 @@ thead tr th {
     border-top: solid 1px #aaa;
     padding-top: 10px;
 }
+.table>thead>tr>th {
+  border-top: 1px solid #e7ecf1;
+}
