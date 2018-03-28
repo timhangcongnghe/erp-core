@@ -24,7 +24,7 @@
         <% end %>
         <% if options[:options].present? %>
             <% options[:options].each_with_index do |option| %>
-                <option <%= 'selected' if options[:value] == option[:value] %>
+                <option <%= 'selected' if options[:value] == option[:value] or (options[:values].present? and options[:values].include?(option[:value])) %>
                     value="<%= option[:value] %>">
                     <%= option[:text] %>
                 </option>

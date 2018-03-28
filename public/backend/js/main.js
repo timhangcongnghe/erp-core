@@ -854,6 +854,8 @@ $(document).ready(function() {
         
         jsForAjaxContent(container.find('.addable-box').last());
 
+        jsForAjaxContent(boxes.find('.addable-box').last());
+
         // Update indexes
         $('.addable-container .addable-boxes').each(function() {
             index1 = 0;
@@ -894,5 +896,10 @@ $(document).ready(function() {
 
         table.find('tr').removeClass('highlight-tr');
         $(this).addClass('highlight-tr');
+    });
+
+    // table click-highlight row
+    $(document).on("keypress", "form", function(event) {
+        return event.keyCode != 13;
     });
 });
