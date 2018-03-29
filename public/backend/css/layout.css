@@ -378,7 +378,7 @@ a:hover {
     font-size: 15px;
     font-weight: 500;
 }
-.portlet-body.form .form-group:last-child {
+.portlet-body.form .form-group:last-child, .portlet-body.form .row.last .form-group:last-child {
     margin-bottom: 10px;
 }
 .portlet-body.form .row .form-group:last-child {
