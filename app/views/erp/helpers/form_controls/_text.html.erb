@@ -23,4 +23,8 @@
     <% if options[:errors].present? %>
         <span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span>
     <% end %>
+    
+    <% if options[:notice].present? %>
+        <span id="has-notice" class="help-block" style="font-size: 85%;"> <%= options[:notice] %></span>
+    <% end %>
 </div>

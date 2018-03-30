@@ -538,3 +538,6 @@ table tr.addableform-more .mt-checkbox-inline label.mt-checkbox>span:after {
   color: #98a6ba;
   text-decoration: underline;
 }
+#has-notice.help-block {
+  color: #27a4b0;
+}
