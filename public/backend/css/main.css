@@ -690,6 +690,7 @@ span.help-block.alert {
 .mb-5 { margin-bottom: 5px !important; }
 .mb-10 { margin-bottom: 10px !important; }
 .mb-15 { margin-bottom: 15px !important; }
+.mb-25 { margin-bottom: 25px !important; }
 .mt-10 { margin-top: 10px;}
 .mt-20 { margin-top: 20px;}
 .pull-none {
@@ -781,9 +782,9 @@ span.help-block.alert {
 .ajax-box .table.table-info-detail>tbody>tr>td {
     padding: 4px 8px;
 }
-.portlet-body.form .ajax-box .form-group:last-child {
+/*.portlet-body.form .ajax-box .form-group:last-child {
     margin-bottom: 25px;
-}
+}*/
 label.myErrorClass {
     font-size: 13px;
     margin-top: 5px;
