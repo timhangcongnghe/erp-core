@@ -17,6 +17,7 @@
                             <%= ('data-confirm="' + act[:data_confirm] + '"').html_safe if act[:data_confirm].present? %>
                             class="<%= act[:class] if act[:class].present? %>"
                             <%= ('target="' + act[:target] + '"').html_safe if act[:target].present? %>
+                            <%= ('data-checkboxes="' + act[:data_checkboxes] + '"').html_safe if act[:data_checkboxes].present? %>
                         >
                             <%= act[:text].html_safe %>
                         </a>

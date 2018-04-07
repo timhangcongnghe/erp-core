@@ -361,10 +361,12 @@ function scrollToElement(element, top) {
   if(typeof(top) === 'undefined') {
     top = 0;
   }
-
-  $('html,body').animate({
-    scrollTop: element.offset().top - top
-  }, 'slow');
+    
+    if (typeof(element.offset()) != 'undefined') {
+        $('html,body').animate({
+          scrollTop: element.offset().top - top
+        }, 'slow');
+    }
 }
 
 // Generate unique id
@@ -901,5 +903,63 @@ $(document).ready(function() {
     // table click-highlight row
     $(document).on("keypress", "form", function(event) {
         return event.keyCode != 13;
+    });
+    
+    
+    // with-checkboxes-link
+    $(document).on("click", ".with-checkboxes-link", function(event) {
+        event.preventDefault();
+        
+        // create new modal if not exist
+        var modal_uid = "link-modal-" + guid();
+        var modal_size = 'full';
+        var title = 'Tùy chọn nội dung';
+        var url = $(this).attr('href');
+        
+        // checkboxes
+        var data = $(this).attr('data-checkboxes');
+        var checkboxes_html = '';
+        
+        data.split(',').forEach(function(element) {
+            var iname = element.split('|')[0];
+            var ilabel = element.split('|')[1];
+            checkboxes_html += '<div class="col-md-2 col-sm-3 col-xs-6">' +
+                                    '<div class="form-groupx">' +
+                                        '<div class="mt-checkbox-inline radio-padding-top">' +
+                                                    '<label class="mt-checkbox">' +
+                                                        '<input type="checkbox" name="'+iname+'" value="yes"> '+ilabel+'' +
+                                                        '<span></span>' +
+                                                    '</label>' +       
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>';
+        });
+
+        var modal = $('#' + modal_uid);
+        if(!modal.length) {
+            var html = '<div id="' + modal_uid + '" class="modal fade" tabindex="-1">' +
+                '<div class="modal-dialog  modal-custom-blue modal-' + modal_size + '">' +
+                    '<div class="modal-content">' +
+                        '<div class="modal-header">' +
+                            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>' +
+                            '<h4 class="modal-title">' + title + '</h4>' +
+                        '</div>' +
+                        '<div class="modal-body">' +
+                            '<form class="form-with-checkboxes-link" action="'+url+'" method="POST"  target="_blank">' +
+                            '<div class="row">' +
+                                    checkboxes_html +
+                                '</div>' +
+                                '<input class="btn btn-primary" type="submit" value="Tiếp tục >>" />' +
+                            '</form>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
+            $('body').append(html);
+
+            modal = $('#' + modal_uid);
+        }
+
+        modal.modal('show');
     });
 });
