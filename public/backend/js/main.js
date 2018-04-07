@@ -924,11 +924,12 @@ $(document).ready(function() {
         data.split(',').forEach(function(element) {
             var iname = element.split('|')[0];
             var ilabel = element.split('|')[1];
+            var checked = element.split('|')[2];
             checkboxes_html += '<div class="col-md-2 col-sm-3 col-xs-6">' +
                                     '<div class="form-groupx">' +
                                         '<div class="mt-checkbox-inline radio-padding-top">' +
                                                     '<label class="mt-checkbox">' +
-                                                        '<input type="checkbox" name="'+iname+'" value="yes"> '+ilabel+'' +
+                                                        '<input type="checkbox" '+checked+' name="'+iname+'" value="yes"> '+ilabel+'' +
                                                         '<span></span>' +
                                                     '</label>' +       
                                         '</div>' +
@@ -946,7 +947,7 @@ $(document).ready(function() {
                             '<h4 class="modal-title">' + desc + '</h4>' +
                         '</div>' +
                         '<div class="modal-body">' +
-                            //'<h4>'+desc+'</h4>' +
+                            // '<h4>'+desc+'</h4>' +
                             '<form class="form-with-checkboxes-link" action="'+url+'" method="POST"  target="_blank">' +
                                 '<div class="row">' +
                                     checkboxes_html +
