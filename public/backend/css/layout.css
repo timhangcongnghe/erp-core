@@ -460,10 +460,10 @@ table tr.addableform-line > td .form-group {
 .label-orange {
     background-color: #ff5000;
 }
-.label-active {
+.label-active, .label-in_stock {
     background-color: #4caf50;
 }
-.label-not_delivery {
+.label-not_delivery, .label-out_of_stock {
     background-color: #ed6b75;
 }
 .label-delivered {
