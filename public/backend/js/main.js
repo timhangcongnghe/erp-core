@@ -925,7 +925,7 @@ $(document).ready(function() {
             var iname = element.split('|')[0];
             var ilabel = element.split('|')[1];
             var checked = element.split('|')[2];
-            checkboxes_html += '<div class="col-md-2 col-sm-3 col-xs-6">' +
+            checkboxes_html += '<div class="col-md-4 col-sm-6 col-xs-12">' +
                                     '<div class="form-groupx">' +
                                         '<div class="mt-checkbox-inline radio-padding-top">' +
                                                     '<label class="mt-checkbox">' +
