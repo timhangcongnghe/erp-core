@@ -475,6 +475,15 @@ table tr.addableform-line > td .form-group {
 .label-done {
     background-color: #4caf50;
 }
+.label-returned {
+    background-color: #128fc7;
+}
+.label-not_returned {
+    background-color: #dc4e4ed4;
+}
+.label-over_returned {
+    background-color: #d29236;
+}
 
 .label:not(.md-skip) {
     padding: 3px 6px 3px;
