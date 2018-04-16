@@ -965,4 +965,11 @@ $(document).ready(function() {
 
         modal.modal('show');
     });
+    
+    // table click-highlight row
+    $(document).on("click", ".delivery-clear-prices", function(event) {
+        event.preventDefault();
+        
+        $('.delivery-detail-price').val('');
+    });
 });
