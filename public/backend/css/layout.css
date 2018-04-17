@@ -224,6 +224,9 @@ a:hover {
 .form-control:focus, .form-control:hover {
     border: 1px solid #759ecf;
 }
+.alert table.table .form-control {
+    background: #eef1f5;
+}
 .modal-custom-blue .modal-header {
     background-color: #317aac;
     color: #fff;
