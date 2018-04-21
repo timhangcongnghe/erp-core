@@ -870,18 +870,20 @@ $(document).ready(function() {
                     }
                 });
 
-                // index2
-                index2 = 0;
-                $(this).find('.addable-boxes').children().each(function() {
-                    $(this).find('input,select').each(function() {
-                        var name = $(this).attr('name');
-                        if (typeof(name) !== 'undefined') {
-                            name = name.replace(/<<index2>>/g, index2);
-                            $(this).attr('name', name);
-                        }
+                // index2                
+                $(this).find('.addable-boxes').each(function() {
+                    index2 = 0;
+                    $(this).children().each(function() {
+                        $(this).find('input,select').each(function() {
+                            var name = $(this).attr('name');
+                            if (typeof(name) !== 'undefined') {
+                                name = name.replace(/<<index2>>/g, index2);
+                                $(this).attr('name', name);
+                            }
+                        });
+    
+                        index2 += 1;
                     });
-
-                    index2 += 1;
                 });
 
                 index1 += 1;
