@@ -201,7 +201,7 @@ module Erp
       bk_dir = params[:backup_dir]
       root_dir = params[:dir].present? ? params[:dir] : ""
       revision_max = params[:revision_max]
-      backup_folder_name = 'timhangcongnghe.com'
+      backup_folder_name = 'orthok_sg'
 
       # find lastest backup file
       latest_backup_file = nil
