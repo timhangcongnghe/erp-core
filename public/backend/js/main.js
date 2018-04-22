@@ -313,6 +313,8 @@ function jsForAjaxContent(container) {
                     box.find(".loader").remove();
                 });
             });
+            
+            but.trigger('click');
         } else {
             $(document).on('change', box.attr('data-control'), function() {
                 str = box.attr('data-control');
