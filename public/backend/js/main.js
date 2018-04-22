@@ -263,54 +263,105 @@ function jsForAjaxContent(container) {
         var box = $(this);
         var url = box.attr('data-url');
         var controls = $(box.attr('data-control'));
-
-        $(document).on('change', box.attr('data-control'), function() {
-            str = box.attr('data-control');
-            //console.log(str);
-
-            var datas = [];
-            str.split(',').forEach(function(str) {
-                datas.push($(str).val());
-            });
-
-            // More global filter
-            var form_data = {};
-            arr = box.closest('form').serializeArray();
-            for (var i = 0; i < arr.length && i < 20; i++){
-                var name = arr[i]['name'];
-                if (name.indexOf('[]') !== -1) {
-                    name = name.substr(0,name.length-2)
-                }
-                if (form_data[name]) {
-                    if (form_data[name].constructor !== Array) {
-                        form_data[name] = [form_data[name]];
+        var but = $('.'+box.attr('data-button'));
+        
+        if(but.length) {
+            but.click(function() {
+                str = box.attr('data-control');
+                //console.log(str);
+    
+                var datas = [];
+                str.split(',').forEach(function(str) {
+                    datas.push($(str).val());
+                });
+    
+                // More global filter
+                var form_data = {};
+                arr = box.closest('form').serializeArray();
+                for (var i = 0; i < arr.length && i < 100; i++){
+                    var name = arr[i]['name'];
+                    if (name.indexOf('[]') !== -1) {
+                        name = name.substr(0,name.length-2)
                     }
-                    form_data[name].push(arr[i]['value']);
-                } else {
-                    form_data[name] = arr[i]['value'];
+                    if (form_data[name]) {
+                        if (form_data[name].constructor !== Array) {
+                            form_data[name] = [form_data[name]];
+                        }
+                        form_data[name].push(arr[i]['value']);
+                    } else {
+                        form_data[name] = arr[i]['value'];
+                    }
                 }
-            }
-
-            box.addClass('loading');
-            if (!box.find(".loader").length) {
-                box.prepend('<div class="loader"><div class="ball-clip-rotate-multiple"><div></div><div></div></div></div>');
-            }
-
-            $.ajax({
-                url: url,
-                method: 'GET',
-                data: {
-                    datas: datas,
-                    form_data: form_data
+    
+                box.addClass('loading');
+                if (!box.find(".loader").length) {
+                    box.prepend('<div class="loader"><div class="ball-clip-rotate-multiple"><div></div><div></div></div></div>');
                 }
-            }).done(function( result ) {
-                box.html(result);
-                jsForAjaxContent(box);
-
-                box.removeClass('loading');
-                box.find(".loader").remove();
+    
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    data: {
+                        datas: datas,
+                        form_data: form_data
+                    }
+                }).done(function( result ) {
+                    box.html(result);
+                    jsForAjaxContent(box);
+    
+                    box.removeClass('loading');
+                    box.find(".loader").remove();
+                });
             });
-        });
+        } else {
+            $(document).on('change', box.attr('data-control'), function() {
+                str = box.attr('data-control');
+                //console.log(str);
+    
+                var datas = [];
+                str.split(',').forEach(function(str) {
+                    datas.push($(str).val());
+                });
+    
+                // More global filter
+                var form_data = {};
+                arr = box.closest('form').serializeArray();
+                for (var i = 0; i < arr.length && i < 100; i++){
+                    var name = arr[i]['name'];
+                    if (name.indexOf('[]') !== -1) {
+                        name = name.substr(0,name.length-2)
+                    }
+                    if (form_data[name]) {
+                        if (form_data[name].constructor !== Array) {
+                            form_data[name] = [form_data[name]];
+                        }
+                        form_data[name].push(arr[i]['value']);
+                    } else {
+                        form_data[name] = arr[i]['value'];
+                    }
+                }
+    
+                box.addClass('loading');
+                if (!box.find(".loader").length) {
+                    box.prepend('<div class="loader"><div class="ball-clip-rotate-multiple"><div></div><div></div></div></div>');
+                }
+    
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    data: {
+                        datas: datas,
+                        form_data: form_data
+                    }
+                }).done(function( result ) {
+                    box.html(result);
+                    jsForAjaxContent(box);
+    
+                    box.removeClass('loading');
+                    box.find(".loader").remove();
+                });
+            });
+        }
 
         controls.last().trigger('change');
     });
