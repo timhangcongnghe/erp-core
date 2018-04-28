@@ -195,9 +195,11 @@ $(document).ready(function() {
         
         var id = $(this).attr('data-id');
         var name = $(this).attr('data-name');
+        var serials = $(this).attr('data-serials');
         var tr = $(this).closest('tr').prev();
         
         tr.find('td > input.product-id').val(id)
         tr.find('td > strong.product-name').html(name);
+        tr.find('td textarea.product-serials').val(serials);
     });
 });
