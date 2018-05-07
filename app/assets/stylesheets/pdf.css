@@ -10,6 +10,7 @@ body {
     font-size: 11px;
     float: left;
     width: 100%;
+    line-height: 14px;
 }
 .header .left {
     float: left;
@@ -48,6 +49,7 @@ body {
     float: left;
     width: 100%;
     margin-bottom: 10px;
+    line-height: 14px;
 }
 .main_info p {
     margin: 0;
@@ -73,6 +75,7 @@ table.table {
     border-spacing: 0;
     border-collapse: collapse;
     padding: 3px;
+    line-height: 14px;
 }
 table.table tr {
 
