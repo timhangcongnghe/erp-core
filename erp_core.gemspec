@@ -39,4 +39,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'roo'
   s.add_dependency 'dropbox-sdk-v2'
   s.add_dependency 'google_drive'
+  s.add_dependency 'paper_trail'
 end

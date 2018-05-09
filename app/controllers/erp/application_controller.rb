@@ -1,5 +1,7 @@
 module Erp
   class ApplicationController < ActionController::Base
+    before_action :set_paper_trail_whodunnit
+    
 		if Erp::Core.available?("carts")
 			# @todo add cart for application controller bescause User::Session login not run
 			include Erp::Carts::Frontend::Concerns::CurrentCart

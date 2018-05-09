@@ -14,6 +14,7 @@ require 'wicked_pdf'
 require 'roo'
 # require 'wkhtmltopdf-binary'
 require 'google_drive'
+require 'paper_trail'
 
 module Erp
 	module Core
