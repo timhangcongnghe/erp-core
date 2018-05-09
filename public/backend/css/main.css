@@ -1081,3 +1081,6 @@ thead tr th {
 .form-group label.myErrorClass {
     margin: 0;
 }
+.input-short {
+    width: 100px;
+}
