@@ -1,8 +1,8 @@
 module Erp
   module Backend
     class UsersController < Erp::Backend::BackendController
-      before_action :set_user, only: [:deactivate, :activate, :edit, :update, :destroy]
-      before_action :set_users, only: [:deactivate_all, :activate_all, :delete_all]
+      before_action :set_user, only: [:deactivate, :activate, :edit, :update]
+      before_action :set_users, only: [:deactivate_all, :activate_all]
 
       # GET /users
       def index
@@ -67,35 +67,6 @@ module Erp
           end
         else
           render :edit
-        end
-      end
-
-      # DELETE /users/1
-      def destroy
-        @user.destroy
-
-        respond_to do |format|
-          format.html { redirect_to erp.backend_users_path, notice: t('.success') }
-          format.json {
-            render json: {
-              'message': t('.success'),
-              'type': 'success'
-            }
-          }
-        end
-      end
-
-      # DELETE /users/delete_all?ids=1,2,3
-      def delete_all
-        @users.destroy_all
-
-        respond_to do |format|
-          format.json {
-            render json: {
-              'message': t('.success'),
-              'type': 'success'
-            }
-          }
         end
       end
 
