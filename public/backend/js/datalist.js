@@ -578,7 +578,7 @@ function datalistFilter(list, page, scroll) {
 
     // More global filter
     var global_filter = {};
-    var gbf_form = list.closest('body, .row, .page-content, .modal-body').find('.global-filter');
+    var gbf_form = list.closest('body, .page-content, .modal-body').find('.global-filter');
     var gbf_class = list.attr('global-filter');
     if (typeof(gbf_class) != 'undefined') {
         gbf_form = $(gbf_class);
@@ -877,7 +877,7 @@ $(document).ready(function() {
         var button = box.find('.global-filter-button');
 
         if (!button.length) {
-            datalistFilterAll(box.closest('body, .row, .page-content, .modal-body'));
+            datalistFilterAll(box.closest('body, .page-content, .modal-body'));
             // Save filters
             saveFilter(box);
         }
