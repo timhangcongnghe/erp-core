@@ -1084,3 +1084,10 @@ thead tr th {
 .input-short {
     width: 100px;
 }
+.select-sm .select2-container {
+    max-width: 100px;
+}
+.line_subtotal, .line_total {
+    font-size: 16px;
+    line-height: 34px;
+}
