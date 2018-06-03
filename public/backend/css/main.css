@@ -1091,3 +1091,6 @@ thead tr th {
     font-size: 16px;
     line-height: 34px;
 }
+.btn:not(.md-skip):not(.bs-select-all):not(.bs-deselect-all).btn-xs {
+    padding: 3px 16px;
+}
