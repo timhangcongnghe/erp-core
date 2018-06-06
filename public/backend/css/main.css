@@ -1085,7 +1085,7 @@ thead tr th {
     width: 100px;
 }
 .select-sm .select2-container {
-    max-width: 100px;
+    max-width: 150px;
 }
 .line_subtotal, .line_total {
     font-size: 16px;
