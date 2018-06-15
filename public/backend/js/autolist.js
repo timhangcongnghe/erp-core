@@ -33,6 +33,8 @@ $.fn.autolist = function(action, param) {
                 formData.append($(this).attr('name'), $(this).val());
             });
             line.css('opacity', 0.5);
+            
+            formData.append('current_control', input.attr('name'));
 
             $.ajax({
                 url: line_url,
