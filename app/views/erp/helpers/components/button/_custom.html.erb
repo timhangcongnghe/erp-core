@@ -1,0 +1,11 @@
+<% if options[:href].present? %>
+    <a class="btn blue-steel <%= options[:class] if options[:class].present? %>"
+        href="<%= options[:href] if options[:href].present? %>"
+        target="<%= options[:target] if options[:target].present? %>">
+        <i class="<%= options[:icon] if options[:icon].present? %>"></i> <%= options[:text] if options[:text].present? %>
+    </a>
+<% else %>
+    <button type="button" class="btn blue-soft <%= options[:class] if options[:class].present? %>">
+        <i class="<%= options[:icon] if options[:icon].present? %>"></i> <%= options[:text] if options[:text].present? %>
+    </button>
+<% end %>
