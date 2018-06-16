@@ -556,10 +556,13 @@ span.tooltips {
     margin-bottom: 2px;
 }
 .stock-num-0 {
-    background-color: #fbe1e3;
+    background-color: #ff3399;
 }
 .stock-num-1 {
-    background-color: #f9e491;
+    background-color: #ffff00;
+}
+.stock-num-2 {
+    background-color: #0099ff;
 }
 [class*="stock-num--"] {
     background-color: #ed6b75;
@@ -567,9 +570,6 @@ span.tooltips {
 }
 [class*="stock-num--"] .stooltip {
     color: #333;
-}
-.stock-num-2 {
-    background-color: #e0ebf9;
 }
 .stock-num-true {
     color: #26c281;
