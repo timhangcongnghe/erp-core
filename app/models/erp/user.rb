@@ -64,11 +64,21 @@ module Erp
 
       if keyword.present?
         keyword = keyword.strip.downcase
-        query = query.where('LOWER(name) LIKE ?', "%#{keyword}%")
+        query = query.where('LOWER(erp_users.cache_search) LIKE ?', "%#{keyword}%")
       end
 
       query = query.limit(8).map{|user| {value: user.id, text: user.name} }
     end
+    
+    # Update cache search
+    after_save :update_cache_search
+		def update_cache_search
+			str = []
+			str << email.to_s.downcase.strip
+			str << name.to_s.downcase.strip
+
+			self.update_column(:cache_search, str.join(" ") + " " + str.join(" ").to_ascii)
+		end
 
     def activate
 			update_columns(active: true, backend_access: true, confirmed_at: Time.now)
