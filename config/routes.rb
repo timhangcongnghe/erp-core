@@ -18,7 +18,6 @@ Erp::Core::Engine.routes.draw do
 				collection do
 					post 'list'
 					get 'dataselect'
-					delete 'delete_all'
 					put 'activate'
 					put 'deactivate'
 					put 'activate_all'
