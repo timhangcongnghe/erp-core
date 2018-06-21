@@ -1,3 +1,47 @@
+//
+function submitModalHasForm(form) {
+    var method = form.attr('method');
+    var url = form.attr('action');
+    var modal = form.parents('.modal');
+
+    modal.find('.modal-body').html('<div class="text-center"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
+
+    // form data
+    var form_data = new FormData(form[0]);
+    
+    if (form.valid()) {
+        $.ajax({
+            type: method,
+            url: url,
+            data: form_data, // serializes the form's elements.
+            processData: false,
+            contentType:false,
+            success: function(data)
+            {
+                if(typeof(data) == 'object') {
+                    showAlert('success', 'Lưu thành công!');
+                    
+                    modal.modal('hide');
+                    datalistFilterAll();
+                }
+                
+                //// get data
+                //container = $('<div>').html(data).find(selector);
+                //if (container.length) {
+                //    modal.find('.modal-body').html(container[0].outerHTML);
+                //} else {
+                //    if(typeof(data.status) !== 'undefined' && data.status === 'success') {
+                //        updateDataselectValue(getCurrentDataselect(), data.text, data.value);
+                //    }
+                //
+                //    modal.modal('hide');
+                //    jsForAjaxContent(modal);
+                //}
+            }
+        });
+    }
+}
+
 function reloadChildRow(child) {
     var row = child.prev();
     child.remove();
@@ -407,6 +451,8 @@ function jsForAjaxContent(container) {
         position: 'fixed',
         top: 50
     });
+    
+    customValidate(container);
 }
 
 //scroll to jquery element
@@ -587,6 +633,16 @@ $(document).ready(function() {
         e.preventDefault();
 
         var url = $(this).attr('href');
+        var method = $(this).attr('data-method');
+        
+        if (typeof(method) == 'undefined') {
+            method = 'GET';
+        }
+        
+        var has_form_class = '';
+        if ($(this).hasClass('has-form')) {
+            has_form_class = 'has-form';
+        }
 
         // create new modal if not exist
         var modal_uid = "link-modal-" + guid();
@@ -595,7 +651,7 @@ $(document).ready(function() {
 
         var modal = $('#' + modal_uid);
         if(!modal.length) {
-            var html = '<div id="' + modal_uid + '" class="modal addablelist-modal fade" tabindex="-1">' +
+            var html = '<div id="' + modal_uid + '" class="modal fade '+has_form_class+'" tabindex="-1">' +
                 '<div class="modal-dialog  modal-custom-blue modal-' + modal_size + '">' +
                     '<div class="modal-content">' +
                         '<div class="modal-header">' +
@@ -603,7 +659,7 @@ $(document).ready(function() {
                             '<h4 class="modal-title">' + title + '</h4>' +
                         '</div>' +
                         '<div class="modal-body">' +
-                            '<i class="icon-refresh text-semibold"></i>' +
+                            '<div class="text-center"><i class="fa fa-circle-o-notch fa-spin"></i></div>' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
@@ -616,7 +672,8 @@ $(document).ready(function() {
         modal.modal('show');
 
         $.ajax({
-            url: url
+            url: url,
+            method: method,
         }).done(function( html ) {
             modal.find('.modal-body').html(html);
 
@@ -1026,5 +1083,13 @@ $(document).ready(function() {
         event.preventDefault();
         
         $('.delivery-detail-price').val('');
+    });
+    
+    // modal form submit
+    $(document).on('submit', '.modal.has-form form', function(e) {
+        e.preventDefault();
+        
+        // submit form
+        submitModalHasForm($(this));
     });
 });
