@@ -360,13 +360,14 @@ function jsForAjaxContent(container) {
             
             but.trigger('click');
         } else {
-            $(document).on('change', box.attr('data-control'), function() {
+            //$(document).on('change', box.attr('data-control'), function() {
+            box.closest('body, .modal-body').find(box.attr('data-control')).change(function() {
                 str = box.attr('data-control');
                 //console.log(str);
     
                 var datas = [];
                 str.split(',').forEach(function(str) {
-                    datas.push($(str).val());
+                    datas.push(box.closest('body, .modal-body').find(str).val());
                 });
     
                 // More global filter
