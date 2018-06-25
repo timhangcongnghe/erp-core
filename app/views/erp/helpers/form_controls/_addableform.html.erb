@@ -37,11 +37,15 @@
         </div>
         <table class="table table-advance table-hover table-striped mt-20">
             <% if options[:thead].present? %>
-                <thead>
+                <% if !request.xhr? %>
+                    <thead>
+                <% end %>
                     <tr>
                         <%= options[:thead].html_safe %>
                     </tr>
-                </thead>
+                <% if !request.xhr? %>
+                    </thead>
+                <% end %>
             <% end %>
             <tbody class="addableform-container">
                 <% if options[:items].present? %>
