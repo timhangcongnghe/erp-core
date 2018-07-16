@@ -360,8 +360,8 @@ function jsForAjaxContent(container) {
             
             but.trigger('click');
         } else {
-            //$(document).on('change', box.attr('data-control'), function() {
-            box.closest('body, .modal-body').find(box.attr('data-control')).change(function() {
+            $(document).on('change', box.attr('data-control'), function() {
+            //box.closest('body, .modal-body').find(box.attr('data-control')).change(function() {
                 str = box.attr('data-control');
                 //console.log(str);
     
