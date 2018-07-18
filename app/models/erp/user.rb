@@ -45,6 +45,15 @@ module Erp
           and_conds << '('+or_conds.join(' OR ')+')'
         end
       end
+      
+      # single keyword
+      if params[:keyword].present?
+				keyword = params[:keyword].strip.downcase
+				keyword.split(' ').each do |q|
+					q = q.strip
+					query = query.where('LOWER(erp_users.cache_search) LIKE ?', '%'+q+'%')
+				end
+			end
 
       query = query.where(and_conds.join(' AND ')) if !and_conds.empty?
 
