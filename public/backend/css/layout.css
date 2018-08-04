@@ -433,7 +433,7 @@ table tr.addableform-line > td .form-group {
 .label-cancelled {
     background-color: #ed6b75;
 }
-.label-deleted {
+.label-deleted, .label-inactive {
     background-color: #bfbfbf;
 }
 .label-archived {
