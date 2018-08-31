@@ -32,6 +32,7 @@ vi:
   date_format: "%Y-%m-%d"
   datetime_format: "%Y-%m-%d, %H:%M"
   profile: "Hồ sơ của tôi"
+  no_creator: "N/A"
   layouts:
     erp:
       backend:
@@ -69,18 +70,22 @@ vi:
           user: "Tài khoản"
           name: "Tên người dùng"
           email: "Địa chỉ email"
+          user_group: "Nhóm người dùng"
           activate: "Kích hoạt tài khoản"
           deactivate: "Khóa tài khoản"
           delete: "Xóa tài khoản"
           delete_confirm: "Bạn chắc chắn muốn xóa?"
+          active: "Đang kích hoạt"
+          inactive: "Không kích hoạt"
         list:
           name: "Tên người dùng"
           email: "Địa chỉ email"
+          user_group: "Nhóm"
           activate: "Kích hoạt tài khoản"
           deactivate: "Khóa tài khoản"
           delete: "Xóa tài khoản"
-          active: "Kích hoạt"
-          inactive: "Chưa kích hoạt"
+          active: "Đang kích hoạt"
+          inactive: "Không kích hoạt"
           delete_confirm: "Bạn chắc chắn muốn xóa?"
         new:
           user: "Tài khoản"

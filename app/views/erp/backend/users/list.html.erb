@@ -5,25 +5,32 @@
                 <%= erp_datalist_check_all %>
             </th>
             <% if get_columns(params).include?("name") %>
-                <th>
+                <th class="sortable" sort-by='erp_users.name'>
                     <%= t('.name') %>
                 </th>
             <% end %>
             <% if get_columns(params).include?("email") %>
-                <th>
+                <th class="sortable" sort-by='erp_users.email'>
                     <%= t('.email') %>
                 </th>
             <% end %>
-            <th>
-                Nhóm
-            </th>
+            <% if get_columns(params).include?("user_group") %>
+                <th>
+                    <%= t('.user_group') %>
+                </th>
+            <% end %>
             <% if get_columns(params).include?("status") %>
                 <th>
                     <%= t('status') %>
                 </th>
             <% end %>
+            <% if get_columns(params).include?("creator") %>
+                <th class="text-center">
+                    <%= t('creator') %>
+                </th>
+            <% end %>
             <% if get_columns(params).include?("created_at") %>
-                <th>
+                <th class="text-center sortable" sort-by='erp_users.created_at'>
                     <%= t('created_at') %>
                 </th>
             <% end %>
@@ -42,7 +49,9 @@
                 <% if get_columns(params).include?("email") %>
                     <td><%= user.email %></td>
                 <% end %>
-                <td><%= user.user_group_name %></td>
+                <% if get_columns(params).include?("user_group") %>
+                    <td><%= user.user_group_name %></td>
+                <% end %>
                 <% if get_columns(params).include?("status") %>
                 <td>
                     <% if user.active == false %>
@@ -56,6 +65,13 @@
                     <% end %>
                 </td>
                 <% end %>
+                <% if get_columns(params).include?("creator") %>
+                    <td>
+                        <%= erp_component('avatar', {
+                            user: user.creator
+                        }) %>
+                    </td>
+                <% end %>
                 <% if get_columns(params).include?("created_at") %>
                     <td class="center"><%= user.created_at.strftime("%d/%m/%Y") %></td>
                 <% end %>
@@ -67,14 +83,14 @@
                                 href: erp.edit_backend_user_path(user)
                             },
                             {
-                                text: '<i class="fa fa-check"></i> '+t('.deactivate'),
+                                text: '<i class="fa fa-exclamation"></i> '+t('.deactivate'),
                                 href: erp.deactivate_backend_users_path(id: user),
                                 data_method: 'PUT',
                                 hide: !user.active,
                                 class: 'ajax-link'
                             },
                             {
-                                text: '<i class="fa fa-exclamation"></i> '+t('.activate'),
+                                text: '<i class="fa fa-check"></i> '+t('.activate'),
                                 href: erp.activate_backend_users_path(id: user),
                                 data_method: 'PUT',
                                 hide: user.active,

@@ -1,98 +1,125 @@
 <%= form_for([erp, :backend, user], html: {multipart: true}) do |f| %>
-    <div class="row">
-        <div class="col-md-6">
-            <%= erp_form_control('image', {
-                img_src: user.avatar,
-                name: 'user[avatar]',
-                width: 150,
-                height: 150
-            }) %>
-            <%= erp_form_control("text", {
-                name: 'user[name]',
-                value: user.name,
-                label: t('.name'),
-                placeholder: t('.enter_user_name'),
-                required: true,
-                errors: user.errors.full_messages_for(:name)
-            }) %>
-            <%= erp_form_control("email", {
-                name: 'user[email]',
-                value: user.email,
-                label: t('.email'),
-                placeholder: t('.enter_email'),
-                required: true,
-                errors: user.errors.full_messages_for(:email)
-            }) %>
-            <%= erp_form_control("text", {
-                name: 'user[address]',
-                value: user.address,
-                label: 'Địa chỉ',
-                placeholder: 'Nhập địa chỉ',
-                errors: user.errors.full_messages_for(:address)
-            }) %>
-            <%= erp_form_control("password", {
-                name: 'user[password]',
-                label: t('.password'),
-                placeholder: t('.enter_password'),
-                required: user.id.nil?,
-                errors: user.errors.full_messages_for(:password)
-            }) %>
-            <%= erp_form_control("password", {
-                name: 'user[password_confirmation]',
-                label: t('.password_confirm'),
-                placeholder: t('.enter_password_confirm'),
-                required: user.id.nil?,
-                errors: user.errors.full_messages_for(:password_confirmation)
-            }) %>
-            <%= erp_form_control("dataselect", {
-                name: 'user[user_group_id]',
-                value: user.user_group_id,
-                text: user.user_group_name,
-                placeholder: t('.choose_user_group'),
-                label: t('.user_group'),
-                url: erp.dataselect_backend_user_groups_path(format: 'json'),
-                required: true,
-                errors: user.errors.full_messages_for(:user_group_id),
-                create: {
-                    url: erp.new_backend_user_group_path,
-                    title: t('.create'),
-                    modal_size: 'md',
-                    container_selector: '.new_user_group',
-                    input_selector: 'input[name="user_group[name]"]'
-                },
-                edit: {
-                    url: erp.edit_backend_user_group_path(id: ':value'),
-                    title: t('.edit'),
-                    modal_size: 'md',
-                    container_selector: '.edit_user_group',
-                }
-            }) %>
-        </div>
-        <% if Erp::Core.available?("online_store") %>
-        <div class="col-md-6 permissions-container">
-            <h4 class="text-bold mb-20"><%= t('can.permissions') %></h4>
-            <% Erp::User.permission_options.each do |permission_group| %>
-                <h5 class="text-semibold"><%= t('can.'+permission_group[0].to_s+'.label') %></h5>
-                <div class="row">
-                    <% permission_group[1].each do |permission| %>
-                        <div class="col-md-6">
-                            <h5><%= t('can.'+permission_group[0].to_s+'.'+permission[0].to_s+'.label') %></h5>
-                            <% if permission[1]["type"] == 'checkbox' %>
-                                <%= erp_form_control('checkbox', {
-                                    name: 'permissions['+permission_group[0].to_s+']['+permission[0].to_s+']',
-                                    value: user.get_permissions[permission_group[0]][permission[0]],
-                                    not_selected_value: permission[1]["options"][0],
-                                    options: [{text: t('can.'+permission_group[0].to_s+'.'+permission[0].to_s+'.text'), value: permission[1]["options"][1]}]
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="portlet light bordered">
+                    <div class="portlet-body form">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <%= erp_form_control('image', {
+                                    img_src: user.avatar,
+                                    name: 'user[avatar]',
+                                    width: 140,
+                                    height: 140
                                 }) %>
-                            <% end %>
+                            </div>
+                            <div class="col-md-8">
+                                <%= erp_form_control("text", {
+                                    name: 'user[name]',
+                                    value: user.name,
+                                    label: t('.name'),
+                                    placeholder: t('.enter_user_name'),
+                                    required: true,
+                                    errors: user.errors.full_messages_for(:name)
+                                }) %>
+                                <%= erp_form_control("email", {
+                                    name: 'user[email]',
+                                    value: user.email,
+                                    label: t('.email'),
+                                    placeholder: t('.enter_email'),
+                                    required: true,
+                                    errors: user.errors.full_messages_for(:email)
+                                }) %>
+                            </div>
                         </div>
-                    <% end %>
+                        <%= erp_form_control("text", {
+                            name: 'user[address]',
+                            value: user.address,
+                            label: 'Địa chỉ',
+                            placeholder: 'Nhập địa chỉ',
+                            errors: user.errors.full_messages_for(:address)
+                        }) %>
+                    </div>
                 </div>
-            <% end %>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="portlet light bordered">
+                    <div class="portlet-body form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <%= erp_form_control("password", {
+                                    name: 'user[password]',
+                                    label: t('.password'),
+                                    placeholder: t('.enter_password'),
+                                    required: user.id.nil?,
+                                    errors: user.errors.full_messages_for(:password)
+                                }) %>
+                            </div>
+                            <div class="col-md-6">
+                                <%= erp_form_control("password", {
+                                    name: 'user[password_confirmation]',
+                                    label: t('.password_confirm'),
+                                    placeholder: t('.enter_password_confirm'),
+                                    required: user.id.nil?,
+                                    errors: user.errors.full_messages_for(:password_confirmation)
+                                }) %>
+                            </div>
+                        </div>
+                        <%= erp_form_control("dataselect", {
+                            name: 'user[user_group_id]',
+                            value: user.user_group_id,
+                            text: user.user_group_name,
+                            placeholder: t('.choose_user_group'),
+                            label: t('.user_group'),
+                            url: erp.dataselect_backend_user_groups_path(format: 'json'),
+                            required: true,
+                            errors: user.errors.full_messages_for(:user_group_id),
+                            create: {
+                                url: erp.new_backend_user_group_path,
+                                title: t('.create'),
+                                modal_size: 'md',
+                                container_selector: '.new_user_group',
+                                input_selector: 'input[name="user_group[name]"]'
+                            },
+                            edit: {
+                                url: erp.edit_backend_user_group_path(id: ':value'),
+                                title: t('.edit'),
+                                modal_size: 'md',
+                                container_selector: '.edit_user_group',
+                            }
+                        }) %>
+                        <% if Erp::Core.available?("online_store") %>
+                            <div class="row">
+                                <div class="col-md-6 permissions-container">
+                                    <h4 class="text-bold mb-20"><%= t('can.permissions') %></h4>
+                                    <% Erp::User.permission_options.each do |permission_group| %>
+                                        <h5 class="text-semibold"><%= t('can.'+permission_group[0].to_s+'.label') %></h5>
+                                        <div class="row">
+                                            <% permission_group[1].each do |permission| %>
+                                                <div class="col-md-6">
+                                                    <h5><%= t('can.'+permission_group[0].to_s+'.'+permission[0].to_s+'.label') %></h5>
+                                                    <% if permission[1]["type"] == 'checkbox' %>
+                                                        <%= erp_form_control('checkbox', {
+                                                            name: 'permissions['+permission_group[0].to_s+']['+permission[0].to_s+']',
+                                                            value: user.get_permissions[permission_group[0]][permission[0]],
+                                                            not_selected_value: permission[1]["options"][0],
+                                                            options: [{text: t('can.'+permission_group[0].to_s+'.'+permission[0].to_s+'.text'), value: permission[1]["options"][1]}]
+                                                        }) %>
+                                                    <% end %>
+                                                </div>
+                                            <% end %>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
         </div>
-        <% end %>
     </div>
-    <hr>
+    
     <%= erp_component('button/save', {
         text: t('submit')
     }) %>

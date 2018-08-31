@@ -34,6 +34,17 @@ module Erp
     def self.filter(query, params)
       params = params.to_unsafe_hash
       and_conds = []
+      
+      # filters
+      if params["filters"].present?
+        params["filters"].each do |ft|
+          or_conds = []
+          ft[1].each do |cond|
+            or_conds << "#{cond[1]["name"]} = '#{cond[1]["value"]}'"
+          end
+          and_conds << '('+or_conds.join(' OR ')+')' if !or_conds.empty?
+        end
+      end
 
       #keywords
       if params["keywords"].present?
@@ -56,13 +67,33 @@ module Erp
 			end
 
       query = query.where(and_conds.join(' AND ')) if !and_conds.empty?
+      
+      # global filter
+      global_filter = params[:global_filter]
+      
+      if global_filter.present?
+				if global_filter[:user_group_id].present?
+					query = query.where(user_group_id: global_filter[:user_group_id])
+				end
+			end
+      # end// global filter
 
       return query
     end
 
     def self.search(params)
-      query = self.order("created_at DESC")
+      query = self.all
       query = self.filter(query, params)
+      
+      # order
+      if params[:sort_by].present?
+        order = params[:sort_by]
+        order += " #{params[:sort_direction]}" if params[:sort_direction].present?
+
+        query = query.order(order)
+      else
+				query = query.order('erp_users.created_at DESC')
+      end
 
       return query
     end

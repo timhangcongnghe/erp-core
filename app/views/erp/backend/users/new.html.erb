@@ -13,11 +13,7 @@
             <%= erp_form_control("form_error_message") %>
         <% end %>
         <!-- BEGIN SAMPLE FORM PORTLET-->
-        <div class="portlet light bordered">
-            <div class="portlet-body">
-                <%= render 'form', user: @user %>
-            </div>
-        </div>
+        <%= render 'form', user: @user %>
         <!-- END SAMPLE FORM PORTLET-->
     </div>
 </div>

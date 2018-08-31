@@ -20,10 +20,14 @@
         </div>
     </div>
 <% else %>
-    <div class="list-userpic">
-        <img class="img-circle" src="/backend/img/placeholder.jpg"> 
-    </div>
-    <div class="list-usertitle">
-        <div class="list-usertitle-name"><%= t("no_creator") %></div>
+    <div class="userpic">
+        <div class="list-userpic">
+            <img class="img-circle" src="/backend/img/placeholder.jpg"> 
+        </div>
+        <div class="list-usertitle">
+            <div class="list-usertitle-name">
+                <%= t("no_creator") %>
+            </div>
+        </div>
     </div>
 <% end %>
