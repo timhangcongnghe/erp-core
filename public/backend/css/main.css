@@ -835,7 +835,7 @@ label.myErrorClass {
     color: #333;
     padding: 6px 10px;
     font-size: 16px;
-    font-style: italic;
+    font-style: normal;
     cursor: pointer;
     font-weight: 600;
 }
@@ -844,6 +844,9 @@ label.myErrorClass {
 }
 .permissions-list {
     padding: 10px;
+}
+.permissions-table h3:first-child {
+    margin-top: 0;
 }
 /*.group-box {
     display: none;
@@ -864,7 +867,10 @@ label.myErrorClass {
     margin: 0;
 }
 .permissions-table .mt-checkbox-inline .mt-checkbox, .permissions-table .icheck-inline label {
-    margin-right: 40px;
+    margin-right: 25px;
+}
+.permissions-table .mt-checkbox-inline .mt-checkbox, .permissions-table .icheck-inline label:last-child {
+    margin-right: 0;
 }
 .stock-num {
     font-weight: bold;
