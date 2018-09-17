@@ -424,6 +424,9 @@ table tr.addableform-line > td .form-group {
 .label-stock_approved {
     background-color: #15a704;
 }
+.label-pending {
+    background-color: #538a8f;
+}
 .label-confirmed {
     background-color: #36c6d3;
 }
