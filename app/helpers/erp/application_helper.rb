@@ -123,9 +123,9 @@ module Erp
       end
 
       if vn
-        number_to_currency(number, precision: prec, separator: ",", unit: '', delimiter: ".")
+        number_to_currency(number, precision: prec, separator: ",", unit: '', delimiter: ".", strip_insignificant_zeros: true)
       else
-        number_to_currency(number, precision: prec, separator: ".", unit: '', delimiter: ",")
+        number_to_currency(number, precision: prec, separator: ".", unit: '', delimiter: ",", strip_insignificant_zeros: true)
       end
     end
 
