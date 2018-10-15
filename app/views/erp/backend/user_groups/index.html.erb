@@ -7,11 +7,13 @@
 <% end %>
 
 <% content_for :page_toolbar do %>
-    <%= erp_component('button/create', {
-        text: t('.create'),
-        href: erp.new_backend_user_group_path,
-        class: 'btn-noborder'
-    }) %>
+    <%=
+        erp_component('button/create', {
+            text: t('.create'),
+            href: erp.new_backend_user_group_path,
+            class: 'btn-noborder'
+        }) if can? :create, nil
+    %>
 <% end %>
 
 <%= erp_datalist(
@@ -32,7 +34,7 @@
             text: t('.description'), name: 'description', value: true, checked: true
         },
         {
-            text: t('status'), name: 'status', value: true, checked: true
+            text: t('creator'), name: 'creator', value: true, checked: false
         },
         {
             text: t('created_at'), name: 'created_at', value: true, checked: false

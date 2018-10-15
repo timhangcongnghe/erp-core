@@ -56,11 +56,11 @@ vi:
         destroy:
           success: "Xóa tài khoản thành công."
         delete_all:
-          success: "Xóa tài khoản được chọn thành công."
+          success: "Xóa tài khoản thành công."
         activate_all:
-          success: "Kích hoạt tài khoản được chọn thành công."
+          success: "Kích hoạt tài khoản thành công."
         deactivate_all:
-          success: "Khóa tài khoản được chọn thành công."
+          success: "Khóa tài khoản thành công."
         activate:
           success: "Kích hoạt tài khoản thành công."
         deactivate:
@@ -82,7 +82,9 @@ vi:
           email: "Địa chỉ email"
           user_group: "Nhóm"
           activate: "Kích hoạt tài khoản"
+          activate_confirm: "Bạn có muốn kích hoạt tài khoản này?"
           deactivate: "Khóa tài khoản"
+          deactivate_confirm: "Bạn đang yêu cầu khóa tài khoản. Bạn chắc chứ?"
           delete: "Xóa tài khoản"
           active: "Đang kích hoạt"
           inactive: "Không kích hoạt"
@@ -117,11 +119,11 @@ vi:
         destroy:
           success: "Xóa nhóm thành công."
         delete_all:
-          success: "Xóa nhóm được chọn thành công."
+          success: "Xóa nhóm thành công."
         activate_all:
-          success: "Kích hoạt nhóm được chọn thành công."
+          success: "Kích hoạt nhóm thành công."
         deactivate_all:
-          success: "Khóa nhóm được chọn thành công."
+          success: "Khóa tài khoản thành công."
         activate:
           success: "Kích hoạt nhóm thành công."
         deactivate:

@@ -6,10 +6,17 @@ module Erp
 
       # GET /users
       def index
+        if !Erp::Core.available?("online_store")
+          authorize! :options_users_users_index, nil
+        end
       end
 
       # POST /users/list
       def list
+        if !Erp::Core.available?("online_store")
+          authorize! :options_users_users_index, nil
+        end
+        
         @users = User.search(params).paginate(:page => params[:page], :per_page => 20)
 
         render layout: nil
@@ -18,16 +25,22 @@ module Erp
       # GET /users/new
       def new
         @user = User.new
+        
+        authorize! :create, @user
       end
 
       # GET /users/1/edit
       def edit
+        authorize! :update, @user
       end
 
       # POST /users
       def create
         @user = User.new(user_params)
         @user.creator = current_user
+        
+        authorize! :create, @user
+        
         @user.permissions = params.to_unsafe_hash[:permissions].to_json
 
         if @user.save
@@ -47,6 +60,8 @@ module Erp
 
       # PATCH/PUT /users/1
       def update
+        authorize! :update, @user
+        
         if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
           params[:user].delete(:password)
           params[:user].delete(:password_confirmation)
@@ -79,6 +94,8 @@ module Erp
       end
 
       def deactivate
+        authorize! :deactivate, @user
+        
         @user.deactivate
         respond_to do |format|
           format.html { redirect_to erp.backend_users_path, notice: t('.success') }
@@ -92,6 +109,8 @@ module Erp
       end
 
       def activate
+        authorize! :activate, @user
+        
         @user.activate
         respond_to do |format|
           format.html { redirect_to erp.backend_users_path, notice: t('.success') }
@@ -106,6 +125,8 @@ module Erp
 
       # Deactivate /users/deactivate_all?ids=1,2,3
         def deactivate_all
+          authorize! :feature_locked, nil
+          
           @users.deactivate_all
 
           respond_to do |format|
@@ -120,6 +141,8 @@ module Erp
 
         # Activate /users/activate_all?ids=1,2,3
         def activate_all
+          authorize! :feature_locked, nil
+          
           @users.activate_all
 
           respond_to do |format|

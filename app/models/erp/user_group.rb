@@ -2,6 +2,7 @@ module Erp
   class UserGroup < ApplicationRecord
     validates :name, presence: true
     has_many :users
+    belongs_to :creator, class_name: "Erp::User"
 
     # Filters
     def self.filter(query, params)

@@ -7,11 +7,13 @@
 <% end %>
 
 <% content_for :page_toolbar do %>
-    <%= erp_component('button/create', {
-        text: t('.create'),
-        href: erp.new_backend_user_path,
-        class: 'btn-noborder'
-    }) %>
+    <%=
+        erp_component('button/create', {
+            text: t('.create'),
+            href: erp.new_backend_user_path,
+            class: 'btn-noborder'
+        }) if can? :create, nil
+    %>
 <% end %>
 
 <% content_for :global_filter do %>
@@ -28,21 +30,26 @@
     </div>
 <% end %>
 
+<%
+    actions = []
+    
+    actions << {
+        text: '<i class="fa fa-check"></i> '+t('.activate'),
+        url: erp.activate_all_backend_users_path,
+        data_method: 'PUT'
+    } if Erp::Core.available?("online_store")
+    
+    actions << {
+        text: '<i class="fa fa-exclamation"></i> '+t('.deactivate'),
+        url: erp.deactivate_all_backend_users_path,
+        data_method: 'PUT'
+    } if Erp::Core.available?("online_store")
+%>
+
 <%= erp_datalist(
     url: erp.list_backend_users_path,
     keyword: true,
-    actions: [
-        {
-            text: '<i class="fa fa-check"></i> '+t('.activate'),
-            url: erp.activate_all_backend_users_path,
-            data_method: 'PUT'
-        },
-        {
-            text: '<i class="fa fa-exclamation"></i> '+t('.deactivate'),
-            url: erp.deactivate_all_backend_users_path,
-            data_method: 'PUT'
-        }
-    ],
+    actions: actions,
     filters: [
         {
             text: t('.active'), name: 'active', value: 'true', checked: true

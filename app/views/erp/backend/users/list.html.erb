@@ -44,7 +44,9 @@
                     <%= erp_datalist_check_row(id: user.id) %>
                 </td>
                 <% if get_columns(params).include?("name") %>
-                    <td><%= link_to user.name, erp.edit_backend_user_path(user) %></td>
+                    <td>
+                        <span class="font-blue-soft"><%= user.name %></span>
+                    </td>
                 <% end %>
                 <% if get_columns(params).include?("email") %>
                     <td><%= user.email %></td>
@@ -76,28 +78,32 @@
                     <td class="center"><%= user.created_at.strftime("%d/%m/%Y") %></td>
                 <% end %>
                 <td>
-                    <%= erp_datalist_row_actions(
-                        [
-                            {
-                                text: '<i class="fa fa-edit"></i> '+t('edit'),
-                                href: erp.edit_backend_user_path(user)
-                            },
-                            {
-                                text: '<i class="fa fa-exclamation"></i> '+t('.deactivate'),
-                                href: erp.deactivate_backend_users_path(id: user),
-                                data_method: 'PUT',
-                                hide: !user.active,
-                                class: 'ajax-link'
-                            },
-                            {
-                                text: '<i class="fa fa-check"></i> '+t('.activate'),
-                                href: erp.activate_backend_users_path(id: user),
-                                data_method: 'PUT',
-                                hide: user.active,
-                                class: 'ajax-link'
-                            }
-                        ]
-                    ) %>
+                    <%=
+                        actions = []
+                        
+                        actions << {
+                            text: '<i class="fa fa-edit"></i> '+t('edit'),
+                            href: erp.edit_backend_user_path(user)
+                        } if can? :update, user
+                        
+                        actions << {
+                            text: '<i class="fa fa-lock"></i> '+t('.deactivate'),
+                            href: erp.deactivate_backend_users_path(id: user),
+                            data_method: 'PUT',
+                            class: 'ajax-link',
+                            data_confirm: t('.deactivate_confirm')
+                        } if can? :deactivate, user
+                        
+                        actions << {
+                            text: '<i class="fa fa-unlock"></i> '+t('.activate'),
+                            href: erp.activate_backend_users_path(id: user),
+                            data_method: 'PUT',
+                            class: 'ajax-link',
+                            data_confirm: t('.activate_confirm')
+                        } if can? :activate, user
+                        
+                        erp_datalist_row_actions(actions) if !actions.empty?
+                    %>
                 </td>
             </tr>
         <% end %>

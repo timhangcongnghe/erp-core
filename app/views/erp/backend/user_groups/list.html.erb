@@ -14,9 +14,9 @@
                     <%= t('.description') %>
                 </th>
             <% end %>
-            <% if get_columns(params).include?("status") %>
-                <th>
-                    <%= t('status') %>
+            <% if get_columns(params).include?("creator") %>
+                <th class="text-center">
+                    <%= t('creator') %>
                 </th>
             <% end %>
             <% if get_columns(params).include?("created_at") %>
@@ -34,28 +34,31 @@
                     <%= erp_datalist_check_row(id: user_group.id) %>
                 </td>
                 <% if get_columns(params).include?("name") %>
-                    <td><%= link_to user_group.name, erp.edit_backend_user_group_path(user_group) %></td>
+                    <td><%= user_group.name %></td>
                 <% end %>
                 <% if get_columns(params).include?("description") %>
                     <td><%= user_group.description %></td>
                 <% end %>
-                <% if get_columns(params).include?("status") %>
-                <td>
-                    
-                </td>
+                <% if get_columns(params).include?("creator") %>
+                    <td>
+                        <%= erp_component('avatar', {
+                            user: user_group.creator
+                        }) %>
+                    </td>
                 <% end %>
                 <% if get_columns(params).include?("created_at") %>
                     <td class="center"><%= user_group.created_at.strftime("%d/%m/%Y") %></td>
                 <% end %>
                 <td>
-                    <%= erp_datalist_row_actions(
-                        [
-                            {
-                                text: '<i class="fa fa-edit"></i> '+t('edit'),
-                                href: erp.edit_backend_user_group_path(user_group)
-                            }
-                        ]
-                    ) %>
+                    <%=
+                    actions = []
+                    
+                    actions << {
+                        text: '<i class="fa fa-edit"></i> '+t('edit'),
+                        href: erp.edit_backend_user_group_path(user_group)
+                    } if can? :update, user_group
+                    
+                    erp_datalist_row_actions(actions) if !actions.empty? %>
                 </td>
             </tr>
         <% end %>

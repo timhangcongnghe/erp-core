@@ -5,10 +5,17 @@ module Erp
 
       # GET /user_groups
       def index
+        if !Erp::Core.available?("online_store")
+          authorize! :options_users_user_groups_index, nil
+        end
       end
 
       # POST /user_groups/list
       def list
+        if !Erp::Core.available?("online_store")
+          authorize! :options_users_user_groups_index, nil
+        end
+        
         @user_groups = UserGroup.search(params).paginate(:page => params[:page], :per_page => 10)
 
         render layout: nil
@@ -17,15 +24,22 @@ module Erp
       # GET /user_groups/new
       def new
         @user_group = UserGroup.new
+        
+        authorize! :create, @user_group
       end
 
       # GET /user_groups/1/edit
       def edit
+        authorize! :update, @user_group
       end
 
       # POST /user_groups
       def create
         @user_group = UserGroup.new(user_group_params)
+        
+        authorize! :create, @user_group
+        
+        @user_group.creator = current_user
 
         if @user_group.save
           @user_group.update_permissions(params.to_unsafe_hash[:permissions])
@@ -46,6 +60,8 @@ module Erp
 
       # PATCH/PUT /user_groups/1
       def update
+        authorize! :update, @user_group
+        
         if @user_group.update(user_group_params)
           @user_group.update_permissions(params.to_unsafe_hash[:permissions])
           
