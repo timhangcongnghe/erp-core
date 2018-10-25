@@ -113,6 +113,11 @@ module Erp
     def export_partial
       "erp/elements/export.xlsx.axlsx"
     end
+    
+    # Test if string is a number
+    def is_number?(object)
+      true if Float(object) rescue false
+    end
 
     def format_number(number, vn = false, round = false, precision = nil)
       prec = (number.to_f.round == number.to_f) ? 0 : 2
