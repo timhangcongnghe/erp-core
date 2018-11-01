@@ -556,3 +556,8 @@ table tr.addableform-more .mt-checkbox-inline label.mt-checkbox>span:after {
 #has-notice.help-block {
   color: #27a4b0;
 }
+button[type="submit"].btn-disabled, input[type="submit"].btn-disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.5;
+}

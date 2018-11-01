@@ -1093,4 +1093,18 @@ $(document).ready(function() {
         // submit form
         submitModalHasForm($(this));
     });
+    
+    $(document).on("click", ".one_click_btn", function(e) {
+        //var label_html = $(this).html();
+        //var label_val = $(this).val();
+            
+        if ($(this).closest('form').valid()) {
+            $(this).html('Đang xử lý... Hãy chờ!');
+            $(this).val('Đang xử lý... Hãy chờ!');
+            $(this).addClass('btn-disabled');
+            $(this).closest('form').find(":submit").prop("disabled", true);
+            $(this).closest('form').find(":submit").addClass('btn-disabled');
+            $(this).closest('form').submit();
+        }
+    });
 });
