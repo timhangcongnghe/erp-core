@@ -1,11 +1,19 @@
 <% content_for :page_toolbar do %>
-    <%=
-        erp_component('button/create', {
+    <% if Erp::Core.available?("online_store") %>
+        <%= erp_component('button/create', {
             text: t('.create'),
             href: erp.new_backend_user_group_path,
             class: 'btn-sm'
-        }) if can? :create, Erp::UserGroup
-    %>
+        }) %>
+    <% else %>
+        <%=
+            erp_component('button/create', {
+                text: t('.create'),
+                href: erp.new_backend_user_group_path,
+                class: 'btn-sm'
+            }) if can? :options_users_user_groups_create, nil
+        %>
+    <% end %>
 <% end %>
 
 <% content_for :title do %>

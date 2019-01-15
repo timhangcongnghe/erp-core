@@ -7,13 +7,21 @@
 <% end %>
 
 <% content_for :page_toolbar do %>
-    <%=
-        erp_component('button/create', {
+    <% if Erp::Core.available?("online_store") %>
+        <%= erp_component('button/create', {
             text: t('.create'),
             href: erp.new_backend_user_path,
             class: 'btn-noborder'
-        }) if can? :create, Erp::User
-    %>
+        }) %>
+    <% else %>
+        <%=
+            erp_component('button/create', {
+                text: t('.create'),
+                href: erp.new_backend_user_path,
+                class: 'btn-noborder'
+            }) if can? :options_users_users_create, nil
+        %>
+    <% end %>
 <% end %>
 
 <% content_for :global_filter do %>
