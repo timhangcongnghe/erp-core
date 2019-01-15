@@ -1,9 +1,11 @@
 <% content_for :page_toolbar do %>
-    <%= erp_component('button/create', {
-        text: t('.create'),
-        href: erp.new_backend_user_path,
-        class: 'btn-sm'
-    }) %>
+    <%=
+        erp_component('button/create', {
+            text: t('.create'),
+            href: erp.new_backend_user_path,
+            class: 'btn-sm'
+        }) if can? :create, Erp::User
+    %>
 <% end %>
 
 <% content_for :title do %>

@@ -12,7 +12,7 @@
             text: t('.create'),
             href: erp.new_backend_user_group_path,
             class: 'btn-noborder'
-        }) if can? :create, nil
+        }) if can? :create, Erp::UserGroup
     %>
 <% end %>
 
