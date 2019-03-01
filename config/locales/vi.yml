@@ -44,6 +44,10 @@ vi:
         javascript_includes:
           no_record_found: "Không tìm thấy kết quả."
   erp:
+    helpers:
+      form_controls:
+        editor:
+          insert_image: "Chọn hình ảnh"
     backend:
       dashboard:
         index:

@@ -2,7 +2,7 @@
 
 <div class="form-group" data-toggle="tooltip">
     <a style="<% if !options[:label].present? %>margin-top: -30px<% end %>" href="#upload" class="btn btn-primary btn-xs pull-right editor-insert-image-button">
-        <i class="fa fa-file-image-o"></i> Insert Image
+        <i class="fa fa-file-image-o"></i> <%= t('.insert_image') %>
     </a>
     <% if options[:label].present? %>
         <label><%= options[:label] if options[:label].present? %></label>
