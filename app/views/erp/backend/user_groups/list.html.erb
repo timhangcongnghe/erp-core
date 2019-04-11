@@ -14,6 +14,11 @@
                     <%= t('.description') %>
                 </th>
             <% end %>
+            <% if get_columns(params).include?("status") %>
+                <th>
+                    <%= t('.status') %>
+                </th>
+            <% end %>
             <% if get_columns(params).include?("creator") %>
                 <th class="text-center">
                     <%= t('creator') %>
@@ -39,6 +44,19 @@
                 <% if get_columns(params).include?("description") %>
                     <td><%= user_group.description %></td>
                 <% end %>
+                <% if get_columns(params).include?("status") %>
+                <td>
+                    <% if user_group.active == false %>
+                        <%= erp_component('label/danger', {
+                            text: t('.inactive')
+                        }) %>
+                    <% else %>
+                        <%= erp_component('label/success', {
+                            text: t('.active')
+                        }) %>
+                    <% end %>
+                </td>
+                <% end %>
                 <% if get_columns(params).include?("creator") %>
                     <td>
                         <%= erp_component('avatar', {
@@ -57,6 +75,22 @@
                         text: '<i class="fa fa-edit"></i> '+t('edit'),
                         href: erp.edit_backend_user_group_path(user_group)
                     } if can? :update, user_group
+                        
+                    actions << {
+                        text: '<i class="fa fa-lock"></i> Vô hiệu hóa quyền',
+                        href: erp.deactivate_backend_user_groups_path(id: user_group),
+                        data_method: 'PUT',
+                        class: 'ajax-link',
+                        data_confirm: 'Các chính sách sẽ bị vô hiệu cho những người dùng đang thuộc nhóm quyền này. Bạn chắc chắn vẫn muốn tiếp tục?'
+                    } if can? :deactivate, user_group
+                    
+                    actions << {
+                        text: '<i class="fa fa-unlock"></i> Kích hoạt quyền',
+                        href: erp.activate_backend_user_groups_path(id: user_group),
+                        data_method: 'PUT',
+                        class: 'ajax-link',
+                        data_confirm: 'Bạn có chắc muốn kích hoạt nhóm quyền này?'
+                    } if can? :activate, user_group
                     
                     erp_datalist_row_actions(actions) if !actions.empty? %>
                 </td>

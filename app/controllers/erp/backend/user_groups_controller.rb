@@ -1,7 +1,7 @@
 module Erp
   module Backend
     class UserGroupsController < Erp::Backend::BackendController
-      before_action :set_user_group, only: [:edit, :update]
+      before_action :set_user_group, only: [:deactivate, :activate, :edit, :update]
 
       # GET /user_groups
       def index
@@ -83,6 +83,36 @@ module Erp
         respond_to do |format|
           format.json {
             render json: UserGroup.dataselect(params[:keyword])
+          }
+        end
+      end
+      
+      def deactivate
+        authorize! :deactivate, @user_group
+        
+        @user_group.deactivate
+        respond_to do |format|
+          format.html { redirect_to erp.backend_user_groups_path, notice: t('.success') }
+          format.json {
+            render json: {
+              'message': t('.success'),
+              'type': 'success'
+            }
+          }
+        end
+      end
+
+      def activate
+        authorize! :activate, @user_group
+        
+        @user_group.activate
+        respond_to do |format|
+          format.html { redirect_to erp.backend_user_groups_path, notice: t('.success') }
+          format.json {
+            render json: {
+              'message': t('.success'),
+              'type': 'success'
+            }
           }
         end
       end

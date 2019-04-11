@@ -230,7 +230,8 @@ module Erp
 
     # new permission from group
     def get_permission(group, engine, controller, permission)
-      return 'yes' if user_group.nil?
+      return 'no' if user_group.nil?
+      return 'no' if !user_group.active?
       return user_group.get_permissions[group][engine][controller][permission][:value]
     end
 

@@ -43,6 +43,16 @@ module Erp
 
       query = query.limit(8).map{|user_group| {value: user_group.id, text: user_group.name} }
     end
+    
+    # activate
+    def activate
+			update_columns(active: true)
+		end
+    
+    # deactivate
+    def deactivate
+			update_columns(active: false)
+		end
 
     # update permissions
     def update_permissions(permissions_params)

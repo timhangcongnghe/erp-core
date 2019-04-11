@@ -127,24 +127,26 @@ vi:
         activate_all:
           success: "Kích hoạt nhóm thành công."
         deactivate_all:
-          success: "Khóa tài khoản thành công."
+          success: "Vô hiệu nhóm thành công."
         activate:
-          success: "Kích hoạt nhóm thành công."
+          success: "Kích hoạt nhóm/quyền thành công."
         deactivate:
-          success: "Khóa tài khoản thành công."
+          success: "Vô hiệu nhóm/quyền thành công."
         index:
           create: "Thêm nhóm"
           user_group: "Nhóm người dùng"
           name: "Tên nhóm"
           description: "Mô tả"
+          status: "Trạng thái"
         list:
-          name: "Tên người dùng"
-          email: "Địa chỉ email"
-          activate: "Kích hoạt tài khoản"
-          deactivate: "Khóa tài khoản"
-          delete: "Xóa tài khoản"
-          active: "Kích hoạt"
-          inactive: "Chưa kích hoạt"
+          name: "Tên nhóm"
+          description: "Mô tả"
+          status: "Trạng thái"
+          activate: "Kích hoạt nhóm"
+          deactivate: "Vô hiệu nhóm"
+          delete: "Xóa nhóm"
+          active: "Đang kích hoạt"
+          inactive: "Bị vô hiệu"
           delete_confirm: "Bạn chắc chắn muốn xóa?"
         new:
           user_group: "Nhóm thành viên"

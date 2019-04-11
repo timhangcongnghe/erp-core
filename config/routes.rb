@@ -30,6 +30,8 @@ Erp::Core::Engine.routes.draw do
 				collection do
 					post 'list'
 					get 'dataselect'
+					put 'activate'
+					put 'deactivate'
 				end
 			end
 			resources :accounts do
