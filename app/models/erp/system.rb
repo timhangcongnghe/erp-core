@@ -44,7 +44,7 @@ module Erp
 
       backup_cmd = "mkdir #{bk_dir}/#{dir} && "
       backup_cmd += "pg_dump #{database} >> #{bk_dir}/#{dir}/data.dump && " if params[:database].present?
-      backup_cmd += "cp -a #{root_dir}public/uploads #{bk_dir}/#{dir}/ && " if !params[:file].nil? && File.directory?("#{root_dir}public/uploads")
+      backup_cmd += "cp -a #{root_dir} #{bk_dir}/#{dir}/ && " if !params[:file].nil? && File.directory?("#{root_dir}")
       backup_cmd += "cd #{bk_dir}/#{dir} && zip -r #{bk_dir}/#{dir}.zip ./* && "
       backup_cmd += "rm -rf #{bk_dir}/#{dir}"
 
