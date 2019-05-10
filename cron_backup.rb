@@ -23,6 +23,6 @@ Erp::System.backup({
   file: true,
   database_name: config["database"],
   rails_env: rails_env,
-  backup_dir: DIR+'/../../backup',
+  backup_dir: DIR+'/../../../backup',
   dir: DIR+'/../../'
 })
