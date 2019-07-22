@@ -581,7 +581,7 @@ span.tooltips {
     max-height: 250px;
     overflow: auto;
 }
-.global-filter span.select2 {
+.global-filter span.select2, .more-filter span.select2 {
     width: 100% !important;
 }
 .table-checkable tr>td.text-left:first-child, .table-checkable tr>th.text-left:first-child {
