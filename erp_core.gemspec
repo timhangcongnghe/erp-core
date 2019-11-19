@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'axlsx', '2.1.0.pre'
   s.add_dependency 'axlsx_rails'
   s.add_dependency 'wicked_pdf'
-  s.add_dependency 'wkhtmltopdf-binary'
+  s.add_dependency 'wkhtmltopdf-binary-edge'
   s.add_dependency 'roo'
   s.add_dependency 'dropbox-sdk-v2'
   s.add_dependency 'google_drive'
