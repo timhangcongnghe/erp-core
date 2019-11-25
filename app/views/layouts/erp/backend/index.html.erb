@@ -22,10 +22,10 @@
         <meta content="" name="description" />
         <meta content="" name="author" />
 
-        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=vietnamese" rel="stylesheet">
+        <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=vietnamese" rel="stylesheet">
 
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
-        <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" %>
+        <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/font-awesome/css/fontawesome-all.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/font-awesome/css/font-awesome.min.css" %>        
         <%= stylesheet_link_tag "/backend/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" %>
@@ -143,18 +143,15 @@
                     <!-- END CONTENT BODY -->
                 </div>
                 <!-- END CONTENT -->
-
                 <!-- BEGIN QUICK SIDEBAR -->
                 <%= render "layouts/erp/backend/quick_sidebar" %>
                 <!-- END QUICK SIDEBAR -->
-
             </div>
             <!-- END CONTAINER -->
 
             <!-- BEGIN FOOTER -->
             <%= render "layouts/erp/backend/footer" %>
             <!-- END FOOTER -->
-
         </div>
 
         <!-- BEGIN JAVASCRIPT INCLUDES -->
@@ -166,7 +163,5 @@
         <!-- BEGIN toastr flash messages -->
             <%= render 'layouts/erp/backend/flash_messages' %>
         <!-- END toastr flash messages -->
-
     </body>
-
 </html>
