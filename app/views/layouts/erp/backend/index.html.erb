@@ -1,39 +1,21 @@
 <!DOCTYPE html>
-    
-<!--
-    App name: Tìm Hàng Công Nghệ - Thương Mại Điện Tử
-    Version: 1.0.0
-    Author: Công ty TNHH Giải Pháp Công Nghệ Thông Tin Và Truyền Thông Hoàng Khang, Tìm Hàng Công Nghệ, Sơn Nguyễn
-    Website: https://timhangcongnghe.com/
--->
-
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<html lang="en">
-    <!--<![endif]-->
-    <!-- BEGIN HEAD -->
+<html lang="vi">
     <head>
         <%= csrf_meta_tags %>
-
         <meta charset="utf-8" />
-        <title><%= yield(:title) %> | ERP, Enterprise Resource Planning Software, ERP Software, ERP System, ERP Solutions | Global Naturesoft</title>
+        <title><%= yield(:title) %> | Quản Trị Tìm Hàng Công Nghệ</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <meta content="" name="description" />
-        <meta content="" name="author" />
-
+        <meta name="robots" content="noindex, nofollow">
         <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=vietnamese" rel="stylesheet">
-
-        <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/font-awesome/css/fontawesome-all.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/font-awesome/css/font-awesome.min.css" %>        
         <%= stylesheet_link_tag "/backend/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap/css/bootstrap.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" %>
-        <!-- END GLOBAL MANDATORY STYLES -->
-        
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
         <%= stylesheet_link_tag "/backend/assets/global/plugins/datatables/datatables.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" %>
@@ -45,27 +27,19 @@
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/icheck/skins/all.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-sweetalert/sweetalert.css" %>
-
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/plugins/clockface/css/clockface.css" %>
-
         <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-toastr/toastr.min.css" %>
-        <!-- END PAGE LEVEL PLUGINS -->
-        <!-- BEGIN THEME GLOBAL STYLES -->
         <%= stylesheet_link_tag "/backend/assets/global/css/components.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/css/plugins.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/css/components-md.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/global/css/plugins-md.min.css" %>
-        <!-- END THEME GLOBAL STYLES -->
-        <!-- BEGIN PAGE LEVEL STYLES -->
         <%= stylesheet_link_tag "/backend/assets/pages/css/invoice.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/pages/css/invoice-2.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/pages/css/profile.min.css" %>
-        <!-- END PAGE LEVEL STYLES -->
-        <!-- BEGIN THEME LAYOUT STYLES -->
         <%= stylesheet_link_tag "/backend/assets/layouts/layout/css/layout.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/layouts/layout/css/themes/darkblue.min.css" %>
         <%= stylesheet_link_tag "/backend/assets/layouts/layout/css/custom.min.css" %>
@@ -74,14 +48,9 @@
         <%= stylesheet_link_tag "/backend/css/loaders.css" %>
         <%= stylesheet_link_tag "/backend/css/layout.css" %>
         <%= stylesheet_link_tag "/backend/css/main.css" %>
-        <!-- END THEME LAYOUT STYLES -->
-        <!-- BEGIN ENGINES STYLES -->
         <%= render "layouts/erp/backend/engines_css" %>
-        <!-- END ENGINES STYLES -->
         <%= favicon_link_tag '/backend/favicon.png', rel: 'shortcut icon' %>
     </head>
-    <!-- END HEAD -->
-
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-container-bg-solid">
         <div class="page-wrapper">
 
