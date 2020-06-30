@@ -54,9 +54,5 @@
     var LANG_CANCEL = '<%= t('close') %>';
     var LANG_DATE_FORMAT_JS = '<%= t('date_format_js') %>';
     var SAVE_FILTER_URL = '<%= erp.save_filter_backend_users_path %>';
-
-    <% if Erp::Core.available?("ortho_k") %>
-        var NOTIFICATION_URL = '<%= erp_ortho_k.notification_badge_backend_notification_index_path %>';
-    <% end %>
 </script>
 <!-- END LOCALE JAVASCRIPT -->
