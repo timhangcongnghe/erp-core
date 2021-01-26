@@ -4,7 +4,7 @@ vi:
   home: "Trang chủ"
   login: "Đăng nhập"
   logout: "Đăng xuất"
-  custom_order: 'Order'
+  custom_order: 'Sắp xếp'
   please_select_at_least_one_row: "Vui lòng chọn ít nhất 1 đối tượng"
   no_record_found: "Không tìm thấy kết quả"
   no_matching_records_found: "Không tìm thấy kết quả"
@@ -169,7 +169,7 @@ vi:
     filters: "Bộ lọc"
     actions: "Hành động"
     options: "Tùy chọn"
-    type_to_search: "Nhập từ khóa để tìm kiếm..."
+    type_to_search: "Tìm kiếm từ khoá..."
     form_has_error_message: "Có một vài lỗi trong lúc xác nhận. Vui lòng kiểm tra lại."
     img_select: "Chọn hình ảnh"
     img_update: "Cập nhật"
