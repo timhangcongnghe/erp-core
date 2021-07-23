@@ -506,8 +506,14 @@ function ajaxLinkRequest(link) {
             confirmButtonText: LANG_OK
         });
 
+        // redirect if copying product
+        if (result.status === 'product_copied_success') {
+            showAlert('success', 'Nhân bản sản phẩm thành công!');
+            window.location.href = result.url;
+        }
+
         // find outer datalist if exists
-        if(link_item.parents('.datalist').length) {
+        if (link_item.parents('.datalist').length) {
             datalistFilter(link_item.parents('.datalist'));
         }
     });
