@@ -512,6 +512,11 @@ function ajaxLinkRequest(link) {
             window.location.href = result.url;
         }
 
+        // reload field after alias updated
+        if (result.status === 'product_alias_updated_success') {
+            $('form.edit_product #product-alias').load(' form.edit_product #product-alias');
+        }
+
         // find outer datalist if exists
         if (link_item.parents('.datalist').length) {
             datalistFilter(link_item.parents('.datalist'));
