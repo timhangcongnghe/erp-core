@@ -116,7 +116,7 @@ a:hover {
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 5px;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
 }
 .page-sidebar .page-sidebar-menu>li>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a {
     padding: 12px 15px;
