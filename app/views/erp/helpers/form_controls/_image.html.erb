@@ -1,14 +1,8 @@
 <div class="form-group center <%= options[:class] if options[:class].present? %>">
-    <% if options[:label].present? %>
-        <label><%= options[:label] %>
-            <% if options[:required] == true %>
-                <span class="required" aria-required="true"> * </span>
-            <% end %>
-        </label>
-    <% end %>
+    <% if options[:label].present? %><label><%= options[:label] %><% if options[:required] == true %><span class="required" aria-required="true"> * </span><% end %></label><% end %>
     <div class="fileinput fileinput-new" data-provides="fileinput">
         <div class="fileinput-new thumbnail" style="width: <%= options[:width].present? ? options[:width] : '100' %>px; height: <%= options[:height].present? ? options[:height] : '100' %>px;">
-            <img src="<%= options[:img_src].present? ? options[:img_src] : url_for("/backend/img/placeholder.jpg") %>" alt="" />
+            <img src="<%= options[:img_src].present? ? options[:img_src] : url_for('/backend/img/placeholder.jpg') %>" alt="" />
         </div>
         <div class="fileinput-preview fileinput-exists thumbnail" style="width: <%= options[:width].present? ? options[:width] : '100' %>px; height: <%= options[:height].present? ? options[:height] : '100' %>px;"></div>
         <% if !options[:button].present? or !options[:button] == 'btn-no' %>
@@ -16,15 +10,11 @@
                 <span class="btn btn-xs grey-cascade btn-outline btn-file">
                     <span class="fileinput-new"> <i class="icon-link"></i> <%= t('core.img_select') %> </span>
                     <span class="fileinput-exists"> <i class="fa fa-pencil-square-o"></i> <%= t('core.img_update') %> </span>
-                    <input type="file"
-                           name="<%= options[:name] if options[:name].present? %>"
-                    />
+                    <input type="file" name="<%= options[:name] if options[:name].present? %>"/>
                 </span>
                 <a href="javascript:;" class="btn btn-xs grey-cascade fileinput-exists" data-dismiss="fileinput"> <i class="fa fa-remove"></i> <%= t('core.img_remove') %> </a>
             </div>
         <% end %>
     </div>
-    <% if options[:errors].present? %>
-        <span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span>
-    <% end %>
+    <% if options[:errors].present? %><span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span><% end %>
 </div>

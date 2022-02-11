@@ -1,29 +1,12 @@
 <div class="form-group <%= "has-error" if options[:errors].present? %>">
     <label>
         <%= options[:label] if options[:label].present? %>
-        <% if options[:required] == true %>
-            <span class="required" aria-required="true"> * </span>
-        <% end %>
-        <% if options[:help].present? %>
-            <i class="fa fa-commenting right tooltips icon-default-color"
-            data-original-title="<%= options[:help] %>"
-            data-container="body"></i>
-        <% end %>
+        <% if options[:required] == true %><span class="required" aria-required="true"> * </span><% end %>
+        <% if options[:help].present? %><i class="fa fa-commenting right tooltips icon-default-color" data-original-title="<%= options[:help] %>" data-container="body"></i><% end %>
     </label>
     <div class="input-group">
-        <span class="input-group-addon">
-            <i class="fa fa-envelope"></i>
-        </span>
-        <div class="">
-            <input type="text" class="form-control"
-                <%= 'required=required' if options[:required] == true %>
-                name="<%= options[:name] if options[:name].present? %>"
-                value="<%= options[:value] if options[:value].present? %>"
-                placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
-            />
-        </div>
+        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+        <div class=""><input type="text" class="form-control" <%= 'required=required' if options[:required] == true %> name="<%= options[:name] if options[:name].present? %>" value="<%= options[:value] if options[:value].present? %>" placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"/></div>
     </div>
-    <% if options[:errors].present? %>
-        <span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span>
-    <% end %>
+    <% if options[:errors].present? %><span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span><% end %>
 </div>

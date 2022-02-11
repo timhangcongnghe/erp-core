@@ -2,24 +2,11 @@
     <% if options[:label].present? %>
         <label>
             <%= options[:label] if options[:label].present? %>
-            <% if options[:required] == true %>
-                <span class="required" aria-required="true"> * </span>
-            <% end %>
-            <% if options[:help].present? %>
-                <i class="fa fa-commenting right tooltips icon-default-color"
-                    data-original-title="<%= options[:help] %>"
-                    data-container="body"></i>
-            <% end %>
+            <% if options[:required] == true %><span class="required" aria-required="true"> * </span><% end %>
+            <% if options[:help].present? %><i class="fa fa-commenting right tooltips icon-default-color" data-original-title="<%= options[:help] %>" data-container="body"></i><% end %>
         </label>
     <% end %>
-    <input
-        type="hidden"
-        <%= 'required=required' if options[:required] == true %>
-        name="<%= options[:name] if options[:name].present? %>"
-        value="<%= options[:value] if options[:value].present? %>"
-        class="dataselect-value"
-        <% if options[:id].present? %> id="<%= options[:id] %>" <% end %>
-    />
+    <input type="hidden" <%= 'required=required' if options[:required] == true %> name="<%= options[:name] if options[:name].present? %>" value="<%= options[:value] if options[:value].present? %>" class="dataselect-value"<% if options[:id].present? %> id="<%= options[:id] %>" <% end %>/>
     <div class="dataselect-input-group <%= 'multiple' if options[:multiple] == true %>">
         <% if options[:multiple] == true %>
             <div class="multiselect-values-container">
@@ -47,71 +34,29 @@
                 <% end %>
             </div>
         <% end %>
-        <input
-            class="form-control dataselect-control"
-            data-url="<%= options[:url] if options[:url].present? %>"
-            placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
-            value='<%= options[:text] if options[:text].present? %>'
-            <% if options[:inline_insert].present? %>
-                insert-name='<%= options[:inline_insert][:name] if options[:inline_insert][:name].present? %>'
-            <% end %>
+        <input class="form-control dataselect-control" data-url="<%= options[:url] if options[:url].present? %>" placeholder="<%= options[:placeholder] if options[:placeholder].present? %>" value='<%= options[:text] if options[:text].present? %>'
+            <% if options[:inline_insert].present? %> insert-name='<%= options[:inline_insert][:name] if options[:inline_insert][:name].present? %>' <% end %>
             <% if options[:create] %>
-                <% if options[:create].present? %>
-                    create-url='<%= options[:create][:url] if options[:create][:url].present? %>'
-                    create-title='<%= options[:create][:title] if options[:create][:title].present? %>'
-                <% end %>
-
-                input-selector='<%= options[:create][:input_selector] if options[:create][:input_selector].present? %>'
-                create-container-selector='<%= options[:create][:container_selector] if options[:create][:container_selector].present? %>'
-                modal-size='<%= options[:create][:modal_size] if options[:create][:modal_size].present? %>'
-
-                <% if options[:edit].present? %>
-                    edit-url='<%= options[:edit][:url] if options[:edit][:url].present? %>'
-                    edit-title='<%= options[:edit][:title] if options[:edit][:title].present? %>'
-                    edit-container-selector='<%= options[:edit][:container_selector] if options[:edit][:container_selector].present? %>'
-                <% end %>
+                <% if options[:create].present? %> create-url='<%= options[:create][:url] if options[:create][:url].present? %>' create-title='<%= options[:create][:title] if options[:create][:title].present? %>' <% end %>
+                input-selector='<%= options[:create][:input_selector] if options[:create][:input_selector].present? %>' create-container-selector='<%= options[:create][:container_selector] if options[:create][:container_selector].present? %>' modal-size='<%= options[:create][:modal_size] if options[:create][:modal_size].present? %>'
+                <% if options[:edit].present? %>edit-url='<%= options[:edit][:url] if options[:edit][:url].present? %>' edit-title='<%= options[:edit][:title] if options[:edit][:title].present? %>' edit-container-selector='<%= options[:edit][:container_selector] if options[:edit][:container_selector].present? %>'<% end %>
             <% end %>
-
-            <% if options[:parent_control].present? %>
-                parent-control='<%= options[:parent_control] if options[:parent_control].present? %>'
-                parent-id='<%= options[:parent_id] if options[:parent_id].present? %>'
-            <% end %>
-
-            <% if options[:multiple] == true %>
-                multiple='true'
-            <% end %>
+            <% if options[:parent_control].present? %> parent-control='<%= options[:parent_control] if options[:parent_control].present? %>'parent-id='<%= options[:parent_id] if options[:parent_id].present? %>'<% end %>
+            <% if options[:multiple] == true %> multiple='true' <% end %>
         />
         <span class="pointer"></span>
-        <% if options[:edit].present? %>
-            <span class="dataselect-edit-button"
-                <%= 'style="display: block"'.html_safe if options[:value].present? %>
-            ><i class="fa fa-pencil"></i></span>
-        <% end %>
-        <span class="dataselect-clear-button"
-            <%= 'style="display: block"'.html_safe if options[:value].present? %>
-        ><i class="fa fa-times"></i></span>
+        <% if options[:edit].present? %><span class="dataselect-edit-button" <%= 'style="display: block"'.html_safe if options[:value].present? %>><i class="fa fa-pencil"></i></span><% end %>
+        <span class="dataselect-clear-button"<%= 'style="display: block"'.html_safe if options[:value].present? %>><i class="fa fa-times"></i></span>
     </div>
     <div class="dataselect-data">
         <ul>
-            <% if options[:include_all].present? %>
-                <li class="dataselect-item all">
-                    <a href="javascript:;" data-value="<%= options[:include_all][:value] %>"><%= options[:include_all][:text] %></a>
-                </li>
-            <% end %>
-
+            <% if options[:include_all].present? %><li class="dataselect-item all"><a href="javascript:;" data-value="<%= options[:include_all][:value] %>"><%= options[:include_all][:text] %></a></li><% end %>
             <li class="dataselect-hook"></li>
-
             <% if options[:create].present? %>
-                <li class="create-new">
-                    <a href="#create"><i class="fa fa-plus"></i> <%= t('core.create_as') %> "<span class="text-bold dataselect-new-name"></span>"</a>
-                </li>
-                <li class="create-edit">
-                    <a href="#create"><i class="fa fa-plus"></i> <%= t('core.create') %></a>
-                </li>
+                <li class="create-new"><a href="#create"><i class="fa fa-plus"></i> Thêm mới"<span class="text-bold dataselect-new-name"></span>"</a></li>
+                <li class="create-edit"><a href="#create"><i class="fa fa-plus"></i> Thêm mới</a></li>
             <% end %>
         </ul>
     </div>
-    <% if options[:errors].present? %>
-        <span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span>
-    <% end %>
+    <% if options[:errors].present? %><span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span><% end %>
 </div>

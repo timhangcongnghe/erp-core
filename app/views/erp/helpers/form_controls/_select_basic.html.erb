@@ -1,16 +1,10 @@
 <div class="form-group <%= "has-error" if options[:errors].present? %>">
     <% if options[:label].present? %>
-    <label class="control-label">
-        <%= options[:label] if options[:label].present? %>
-        <% if options[:required] == true %>
-            <span class="required" aria-required="true"> * </span>
-        <% end %>
-        <% if options[:help].present? %>
-            <i class="fa fa-commenting right tooltips icon-default-color"
-            data-original-title="<%= options[:help] %>"
-            data-container="body"></i>
-        <% end %>
-    </label>
+        <label class="control-label">
+            <%= options[:label] if options[:label].present? %>
+            <% if options[:required] == true %><span class="required" aria-required="true"> * </span><% end %>
+            <% if options[:help].present? %><i class="fa fa-commenting right tooltips icon-default-color" data-original-title="<%= options[:help] %>" data-container="body"></i><% end %>
+        </label>
     <% end %>
     <select class="bs-select form-control select2-basic <%= options[:class] if options[:class].present? %>" data-live-search="true" data-size="8"
         <%= 'disabled=disabled' if options[:disabled] == true %>
@@ -19,19 +13,8 @@
         placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
         <%= 'multiple=multiple' if options[:multiple] == true %>
         id="<%= options[:id] if options[:id].present? %>">
-        <% if options[:include_blank].present? %>
-            <option><%= options[:include_blank] %></option>
-        <% end %>
-        <% if options[:options].present? %>
-            <% options[:options].each_with_index do |option| %>
-                <option <%= 'selected' if options[:value] == option[:value] %>
-                    value="<%= option[:value] %>">
-                    <%= option[:text] %>
-                </option>
-            <% end %>
-        <% end %>
+        <% if options[:include_blank].present? %><option><%= options[:include_blank] %></option><% end %>
+        <% if options[:options].present? %><% options[:options].each_with_index do |option| %><option <%= 'selected' if options[:value] == option[:value] %> value="<%= option[:value] %>"><%= option[:text] %></option><% end %><% end %>
     </select>
-    <% if options[:errors].present? %>
-        <span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span>
-    <% end %>
+    <% if options[:errors].present? %><span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span><% end %>
 </div>

@@ -1,54 +1,19 @@
-<% content_for :title do %>
-    <%= t('.user_group') %>
-<% end %>
-
-<% content_for :page_title do %>
-    <i class="fa fa-users"></i> <%= t('.user_group') %>
-<% end %>
-
-<% content_for :page_toolbar do %>
-    <% if Erp::Core.available?("online_store") %>
-        <%= erp_component('button/create', {
-            text: t('.create'),
-            href: erp.new_backend_user_group_path,
-            class: 'btn-noborder'
-        }) %>
-    <% else %>
-        <%=
-            erp_component('button/create', {
-                text: t('.create'),
-                href: erp.new_backend_user_group_path,
-                class: 'btn-noborder'
-            }) if can? :options_users_user_groups_create, nil
-        %>
-    <% end %>
-<% end %>
-
+<% content_for :title do %>Danh Sách Nhóm Tài Khoản<% end %>
+<% content_for :page_title do %><i class="fa fa-users"></i> Danh Sách Nhóm Tài Khoản<% end %>
+<% content_for :page_toolbar do %><%= erp_component('button/create', {text: 'Tạo nhóm tài khoản mới', href: erp.new_backend_user_group_path, class: 'btn-noborder'}) %><% end %>
 <%= erp_datalist(
     url: erp.list_backend_user_groups_path,
-    keywords: [
-        {
-            text: t('.name'), name: 'name'
-        }
-    ],
-    actions: [
-
+    keywords: [{text: 'Tên nhóm', name: 'erp_user_groups.name'}],
+    filters: [
+        {text: 'Đang sử dụng', name: 'erp_user_groups.active', value: 'true', checked: true},
+        {text: 'Đã bị khóa', name: 'erp_user_groups.active', value: 'false', checked: false}
     ],
     columns: [
-        {
-            text: t('.name'), name: 'name', value: true, checked: true
-        },
-        {
-            text: t('.description'), name: 'description', value: true, checked: true
-        },
-        {
-            text: t('.status'), name: 'status', value: true, checked: true
-        },
-        {
-            text: t('creator'), name: 'creator', value: true, checked: false
-        },
-        {
-            text: t('created_at'), name: 'created_at', value: true, checked: false
-        }
-    ]
+        {text: 'Tên nhóm', name: 'name', value: true, checked: true},
+        {text: 'Mô tả', name: 'description', value: true, checked: true},
+        {text: 'Trạng thái', name: 'status', value: true, checked: true},
+        {text: 'Người tạo', name: 'creator', value: true, checked: false},
+        {text: 'Ngày tạo', name: 'created_at', value: true, checked: false}
+    ],
+    sort: {sort_by: 'erp_user_groups.created_at', sort_direction: 'desc'}
 ) %>

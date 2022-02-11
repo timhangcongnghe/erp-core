@@ -1,27 +1,12 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "login-form"}) do |f| %>
-    <h3 class="form-title font-green"><%= t('.sign_in') %></h3>
-    <% if notice %>
-        <div class="alert alert-warning">
-            <button style="margin-top: 5px;" class="close" data-close="warning"></button>
-            <span><%= notice %></span>
-        </div>
-    <% end %>
-    <% if alert %>
-        <div class="alert alert-warning">
-            <button style="margin-top: 5px;" class="close" data-close="alert"></button>
-            <span><%= alert %></span>
-        </div>
-    <% end %>    
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'login-form'}) do |f| %>
+    <h3 class="form-title font-green">ĐĂNG NHẬP TÀI KHOẢN</h3>
     <div class="form-group">
-        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-        <label class="control-label visible-ie8 visible-ie9"><%= t('.user') %></label>
-        <%= f.email_field :email, autofocus: true, autocomplete: "off", placeholder: t('.enter_user'), class: "form-control form-control-solid placeholder-no-fix" %>
+        <label class="control-label visible-ie8 visible-ie9">Email đăng nhập</label>
+        <%= f.email_field :email, autofocus: true, autocomplete: "off", placeholder: 'Nhập email...', class: "form-control form-control-solid placeholder-no-fix" %>
     </div>
     <div class="form-group">
-        <label class="control-label visible-ie8 visible-ie9"><%= t('.password') %></label>
-        <%= f.password_field :password, autocomplete: "off", placeholder: t('.enter_password'), class: "form-control form-control-solid placeholder-no-fix" %>
+        <label class="control-label visible-ie8 visible-ie9">Mật khẩu đăng nhập</label>
+        <%= f.password_field :password, autocomplete: "off", placeholder: 'Nhập mật khẩu...', class: "form-control form-control-solid placeholder-no-fix" %>
     </div>
-    <div class="form-actions">
-        <button type="submit" class="btn green uppercase"><%= t('.login') %></button>
-    </div>
+    <div class="form-actions"><button type="submit" class="btn green uppercase">XÁC NHẬN ĐĂNG NHẬP</button></div>
 <% end %>

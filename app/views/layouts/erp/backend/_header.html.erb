@@ -1,31 +1,11 @@
 <div class="page-header navbar navbar-fixed-top">
-    <!-- BEGIN HEADER INNER -->
     <div class="page-header-inner ">
-        <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <%= render "layouts/erp/backend/logo" %>
-            <div class="menu-toggler sidebar-toggler">
-                <span></span>
-            </div>
+            <%= render partial: 'layouts/erp/backend/header/logo' %>
+            <div class="menu-toggler sidebar-toggler"><span></span></div>
         </div>
-        <!-- END LOGO -->
-        <!-- BEGIN MEGA MENU -->
-        <!-- DOC: Remove "hor-menu-light" class to have a horizontal menu with theme background instead of white background -->
-        <!-- DOC: This is desktop version of the horizontal menu. The mobile version is defined(duplicated) in the responsive menu below along with sidebar menu. So the horizontal menu has 2 seperate versions -->
-        <%= render "layouts/erp/backend/mega_menu" %>
-        <!-- END MEGA MENU -->
-        <!-- BEGIN HEADER SEARCH BOX -->
-        <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
-
-        <!-- END HEADER SEARCH BOX -->
-        <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
-            <span></span>
-        </a>
-        <!-- END RESPONSIVE MENU TOGGLER -->
-        <!-- BEGIN TOP NAVIGATION MENU -->
-        <%= render "layouts/erp/backend/top_navigation_menu" %>
-        <!-- END TOP NAVIGATION MENU -->
+        <%= render partial: 'layouts/erp/backend/header/mega_menu' %>
+        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"><span></span></a>
+        <%= render partial: 'layouts/erp/backend/header/top_navigation_menu' %>
     </div>
-    <!-- END HEADER INNER -->
 </div>

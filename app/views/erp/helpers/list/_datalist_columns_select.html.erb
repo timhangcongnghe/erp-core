@@ -1,22 +1,11 @@
 <div class="btn-group btn-group-checkable ">
-    <a class="btn btn-default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-        <i class="fa fa-th"></i>
-        <%= t('core.columns') %>
-        <i class="fa fa-angle-down"></i>
-    </a>
+    <a class="btn btn-default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"><i class="fa fa-th"></i> Ẩn/Hiện cột <i class="fa fa-angle-down"></i></a>
     <ul class="dropdown-menu pull-left datalist-columns-select">
         <% actions.each do |act| %>
             <% if act[:divider] %>
                 <li class="divider"></li>
             <% else %>
-                <li
-                  class="<%= "checked" if act[:checked] %>"
-                  name="<%= act[:name] if act[:name] %>"
-                  value="<%= act[:value] if act[:value] %>">
-                    <a href="javascript:;">
-                        <%= act[:text].html_safe %>
-                    </a>
-                </li>
+                <li class="<%= "checked" if act[:checked] %>" name="<%= act[:name] if act[:name] %>" value="<%= act[:value] if act[:value] %>"><a href="javascript:;"> <%= act[:text].html_safe %></a></li>
             <% end %>
         <% end %>
     </ul>

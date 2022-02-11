@@ -1,138 +1,40 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if IE 8]><html lang="en" class="ie8 no-js"><![endif]-->
+<!--[if IE 9]><html lang="en" class="ie9 no-js"><![endif]-->
 <html lang="vi">
     <head>
         <%= csrf_meta_tags %>
         <meta charset="utf-8" />
-        <title><%= yield(:title) %> | Quản Trị Tìm Hàng Công Nghệ</title>
+        <title><%= yield(:title) %> | Tìm Hàng Công Nghệ</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta name="robots" content="noindex, nofollow">
-        
-        <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=vietnamese" rel="stylesheet">
-        <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/font-awesome/css/fontawesome-all.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/font-awesome/css/font-awesome.min.css" %>        
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap/css/bootstrap.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/datatables/datatables.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-multiselect/css/bootstrap-multiselect.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/select2/css/select2.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/select2/css/select2-bootstrap.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/icheck/skins/all.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-sweetalert/sweetalert.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/clockface/css/clockface.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/plugins/bootstrap-toastr/toastr.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/css/components.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/css/plugins.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/css/components-md.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/global/css/plugins-md.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/pages/css/invoice.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/pages/css/invoice-2.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/pages/css/profile.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/layouts/layout/css/layout.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/layouts/layout/css/themes/darkblue.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/layouts/layout/css/custom.min.css" %>
-        <%= stylesheet_link_tag "/backend/assets/layouts/layout/css/custom.css" %>
-        <%= stylesheet_link_tag "/backend/js/datetimepicker/jquery.datetimepicker.css" %>
-        <%= stylesheet_link_tag "/backend/css/loaders.css" %>
-        <%= stylesheet_link_tag "/backend/css/layout.css" %>
-        <%= stylesheet_link_tag "/backend/css/main.css" %>
-        <%= render "layouts/erp/backend/engines_css" %>
+        <%= render partial: 'layouts/erp/backend/head' %>
         <%= favicon_link_tag '/backend/favicon.png', rel: 'shortcut icon' %>
     </head>
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-container-bg-solid">
         <div class="page-wrapper">
-
-            <!-- BEGIN HEADER -->
-            <!-- Includes: logo, mega menu, header search box, responsive menu toggler, top navigation menu -->
-            <%= render "layouts/erp/backend/header" %>
-            <!-- END HEADER -->
-
-            <!-- BEGIN HEADER & CONTENT DIVIDER -->
-            <div class="clearfix"> </div>
-            <!-- END HEADER & CONTENT DIVIDER -->
-
-            <!-- BEGIN CONTAINER -->
+            <%= render partial: 'layouts/erp/backend/header' %>
+            <div class="clearfix"></div>
             <div class="page-container">
-
-                <!-- BEGIN SIDEBAR -->
-                <%= render "layouts/erp/backend/sidebar" %>
-                <!-- END SIDEBAR -->
-
-                <!-- BEGIN CONTENT -->
+                <%= render partial: 'layouts/erp/backend/sidebar' %>
                 <div class="page-content-wrapper">
-                    <!-- BEGIN CONTENT BODY -->
                     <div class="page-content">
-                        <!-- BEGIN PAGE HEADER -->
-
-                        <!-- BEGIN PAGE BAR -->
-                        <!-- Includes: breadcrumb and actions -->
-                        <%= render "layouts/erp/backend/page_bar" %>
-                        <!-- END PAGE BAR -->
-
-                        <!-- BEGIN PAGE TITLE-->
-                        <!--<h1 class="page-title">This's Title</h1>-->
-                        <% if content_for?(:title) %>
-                            <!--<h1><%= yield(:title) %></h1>-->
-                            <br />
-                        <% else %>
-                            <br />
-                        <% end %>
-                        <!-- END PAGE TITLE-->
-
-                        <!-- END PAGE HEADER-->
+                        <%= render partial: 'layouts/erp/backend/page_bar' %>
+                        <% if content_for?(:title) %><% else %><% end %>
                         <div class="row">
                             <div class="col-md-12">
-                                <% if content_for?(:global_filter) %>
-                                    <!-- GLOABL FILTER -->
-                                    <form class="global-filter">
-                                        <%= yield(:global_filter) %>
-                                    </form>
-                                    <!-- END GLOABL FILTER -->
-                                <% end %>
-
-                                <% if content_for?(:top_page) %>
-                                    <%= yield(:top_page) %>
-                                <% end %>
-
+                                <% if content_for?(:global_filter) %><form class="global-filter"><%= yield(:global_filter) %></form><% end %>
+                                <% if content_for?(:top_page) %><%= yield(:top_page) %><% end %>
                                 <%= yield %>
                             </div>
                         </div>
                     </div>
-                    <!-- END CONTENT BODY -->
                 </div>
-                <!-- END CONTENT -->
-                <!-- BEGIN QUICK SIDEBAR -->
-                <%= render "layouts/erp/backend/quick_sidebar" %>
-                <!-- END QUICK SIDEBAR -->
             </div>
-            <!-- END CONTAINER -->
-
-            <!-- BEGIN FOOTER -->
-            <%= render "layouts/erp/backend/footer" %>
-            <!-- END FOOTER -->
+            <%= render partial: 'layouts/erp/backend/footer', cached: true %>
         </div>
-
-        <!-- BEGIN JAVASCRIPT INCLUDES -->
-        <%= render "layouts/erp/backend/javascript_includes" %>
-        <!-- END JAVASCRIPT INCLUDES -->
-
-        <!-- stackable -->
-
-        <!-- BEGIN toastr flash messages -->
-            <%= render 'layouts/erp/backend/flash_messages' %>
-        <!-- END toastr flash messages -->
+        <%= render partial: 'layouts/erp/backend/javascripts' %>
+        <%= render partial: 'layouts/erp/backend/flash_messages' %>
     </body>
 </html>

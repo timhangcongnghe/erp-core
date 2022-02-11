@@ -6517,7 +6517,7 @@ Custom color buttons
   width: 240px !important; }
 
 .input-large {
-  width: 320px !important; }
+  width: 90% !important; }
 
 .input-xlarge {
   width: 420px !important; }
@@ -6525,9 +6525,9 @@ Custom color buttons
 @media (max-width: 768px) {
   /* 768px */
   .input-large {
-    width: 250px !important; }
+    width: 90% !important; }
   .input-xlarge {
-    width: 300px !important; } }
+    width: 100% !important; } }
 
 .input-inline {
   display: inline-block;
@@ -7462,7 +7462,7 @@ Portlets
 /* Basic portlet */
 .portlet {
   margin-top: 0px;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   padding: 0px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;

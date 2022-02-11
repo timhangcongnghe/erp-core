@@ -1,19 +1,14 @@
 wb = xlsx_package.workbook
-
 wb.styles do |s|
-  head_cell = s.add_style :bg_color => "305496", :fg_color => "FF"
-
-  wb.add_worksheet(name: "Contacts") do |sheet|
-    # header
+  head_cell = s.add_style bg_color: '305496', fg_color: 'FF'
+  wb.add_worksheet(name: 'Contacts') do |sheet|
     head_style = []
     (1..header.count).each do |num|
       head_style << head_cell
     end    
-    sheet.add_row header, :style => head_style
-
+    sheet.add_row header, style: head_style
     rows.each do |row|
       sheet.add_row row
     end
   end
 end
-

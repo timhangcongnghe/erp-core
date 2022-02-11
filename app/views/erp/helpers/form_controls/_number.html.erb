@@ -1,26 +1,11 @@
 <div class="form-group <%= "has-error" if options[:errors].present? %>">
     <% if options[:label].present? %>
-        <label><%= options[:label] %>
-            <% if options[:required] == true %>
-                <span class="required" aria-required="true"> * </span>
-            <% end %>
-            <% if options[:help].present? %>
-                <i class="fa fa-commenting right tooltips icon-default-color"
-                    data-original-title="<%= options[:help] %>"
-                    data-container="body"></i>
-            <% end %>
+        <label>
+            <%= options[:label] %>
+            <% if options[:required] == true %><span class="required" aria-required="true"> * </span><% end %>
+            <% if options[:help].present? %><i class="fa fa-commenting right tooltips icon-default-color" data-original-title="<%= options[:help] %>" data-container="body"></i><% end %>
         </label>
     <% end %>
-
-    <input class="form-control <%= options[:class] if options[:class].present? %> numberic"
-        <%= 'required=required' if options[:required] == true %>
-        type="text"
-        name="<%= options[:name] if options[:name].present? %>"
-        value="<%= options[:value] if options[:value].present? %>"
-        placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
-    />
-
-    <% if options[:errors].present? %>
-        <span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span>
-    <% end %>
+    <input class="form-control <%= options[:class] if options[:class].present? %> numberic" <%= 'required=required' if options[:required] == true %> type="text" name="<%= options[:name] if options[:name].present? %>" value="<%= options[:value] if options[:value].present? %>" placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"/>
+    <% if options[:errors].present? %><span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span><% end %>
 </div>

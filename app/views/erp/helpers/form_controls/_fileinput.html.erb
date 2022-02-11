@@ -1,24 +1,17 @@
 <div class="form-group">
-    <% if options[:label].present? %>
-        <label><%= options[:label] %></label>
-        <% if options[:required] == true %>
-            <span class="required" aria-required="true"> * </span>
-        <% end %>
-    <% end %>
+    <% if options[:label].present? %><label><%= options[:label] %></label><% if options[:required] == true %><span class="required" aria-required="true"> * </span><% end %><% end %>
     <div class="fileinput fileinput-fullwidth fileinput-new" data-provides="fileinput">
         <div class="input-group input-large">
             <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
                 <i class="fa fa-file fileinput-exists"></i>&nbsp;
-                <span class="fileinput-filename"> <%= options[:value] if options[:value].present? %></span>
+                <span class="fileinput-filename"><%= options[:value] if options[:value].present? %></span>
             </div>
             <span class="input-group-addon btn default btn-file">
-                <span class="fileinput-new"> <%= t('core.select_file') %> </span>
-                <span class="fileinput-exists"> <%= t('core.change') %> </span>
-                <input type="file"
-                       name="<%= options[:name] if options[:name].present? %>"
-                />
+                <span class="fileinput-new">Chọn</span>
+                <span class="fileinput-exists">Thay đổi</span>
+                <input type="file" name="<%= options[:name] if options[:name].present? %>"/>
             </span>
-            <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> <%= t('core.remove') %> </a>
+            <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput">Xóa</a>
         </div>
     </div>
 </div>

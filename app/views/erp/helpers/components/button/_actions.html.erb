@@ -1,28 +1,12 @@
 <div class="btn-group">
-    <a class="btn btn-default <%= options[:class] if options[:class].present? %>"
-        href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-        <i class="<%= options[:icon].present? ? options[:icon] : 'fa fa-cog' %>"></i>
-        <%= options[:text] if options[:text].present? %>
-        <i class="fa fa-angle-down"></i>
-    </a>
+    <a class="btn btn-default <%= options[:class] if options[:class].present? %>" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"><i class="<%= options[:icon].present? ? options[:icon] : 'fa fa-cog' %>"></i> <%= options[:text] if options[:text].present? %> <i class="fa fa-angle-down"></i></a>
     <ul class="dropdown-menu pull-right">
         <% options[:actions].each do |act| %>
             <% if act[:divider] %>
                 <li class="divider"></li>
             <% else %>
                 <% if !act[:hide].present? %>
-                    <li>
-                        <a
-                            href="<%= act[:url] if act[:url].present? %><%= act[:href] if act[:href].present? %>"
-                            <%= ('data-method="' + act[:data_method] + '"').html_safe if act[:data_method].present? %>
-                            <%= ('data-confirm="' + act[:data_confirm] + '"').html_safe if act[:data_confirm].present? %>
-                            class="<%= act[:class] if act[:class].present? %>" target="<%= act[:target] if act[:target].present? %>"
-                            <%= ('data-checkboxes="' + act[:data_checkboxes] + '"').html_safe if act[:data_checkboxes].present? %>
-                            <%= ('data-checkboxes-desc="' + act[:data_checkboxes_desc] + '"').html_safe if act[:data_checkboxes_desc].present? %>
-                        >
-                            <%= act[:text].html_safe %>
-                        </a>
-                    </li>
+                    <li><a href="<%= act[:url] if act[:url].present? %><%= act[:href] if act[:href].present? %>" <%= ('data-method="' + act[:data_method] + '"').html_safe if act[:data_method].present? %> <%= ('data-confirm="' + act[:data_confirm] + '"').html_safe if act[:data_confirm].present? %> class="<%= act[:class] if act[:class].present? %>" target="<%= act[:target] if act[:target].present? %>"<%= ('data-checkboxes="' + act[:data_checkboxes] + '"').html_safe if act[:data_checkboxes].present? %> <%= ('data-checkboxes-desc="' + act[:data_checkboxes_desc] + '"').html_safe if act[:data_checkboxes_desc].present? %>><%= act[:text].html_safe %></a></li>
                 <% end %>
             <% end %>
         <% end %>

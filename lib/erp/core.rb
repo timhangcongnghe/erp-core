@@ -14,7 +14,6 @@ require 'wicked_pdf'
 require 'roo'
 require 'google_drive'
 require 'paper_trail'
-
 module Erp
 	module Core
 		def self.available?(engine_name)

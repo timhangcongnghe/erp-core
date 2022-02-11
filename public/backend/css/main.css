@@ -34,7 +34,8 @@ a:hover {
     font-style: italic;
 }
 .table-advance thead tr th {
-    font-weight: 500;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 .list-search-items .btn-group {
     margin-right: 5px;
@@ -1030,11 +1031,11 @@ select[multiple] {
 }
 .fileinput .btn-file {
     float: left;
-    min-width: 60px;
+    min-width: 80px;
 }
 .fileinput a.fileinput-exists {
     float: left;
-    min-width: 37px;
+    min-width: 50px;
 }
 .check-box-no-padding .mt-checkbox-inline {
     padding: 0;

@@ -1,0 +1,23 @@
+.img-dashboard {
+    width: 100%;
+    height: auto;
+}
+.note {
+  padding: 15px 15px 15px 15px;
+}
+.page-content-wrapper .page-content {
+  padding: 25px 20px 25px;
+}
+.login .content .form-actions {
+    padding: 0 0 15px 0;
+    text-align: center;
+}
+.page-sidebar .page-sidebar-menu, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu {
+    padding-top: 5px;
+}
+.page-sidebar .page-sidebar-menu>li>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a {
+    padding: 9px 15px;
+}
+.page-sidebar .page-sidebar-menu .sub-menu li>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li>a {
+    padding: 4px 15px 4px 40px;
+}

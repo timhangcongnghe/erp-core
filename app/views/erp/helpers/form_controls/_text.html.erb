@@ -1,30 +1,11 @@
 <div class="form-group <%= "has-error" if options[:errors].present? %>">
     <% if options[:label].present? %>
         <label><%= options[:label] %>
-            <% if options[:required] == true %>
-                <span class="required" aria-required="true"> * </span>
-            <% end %>
-            <% if options[:help].present? %>
-                <i class="fa fa-commenting right tooltips icon-default-color"
-                data-original-title="<%= options[:help] %>"
-                data-container="body"></i>
-            <% end %>
+            <% if options[:required] == true %><span class="required" aria-required="true"> * </span><% end %>
+            <% if options[:help].present? %><i class="fa fa-commenting right tooltips icon-default-color" data-original-title="<%= options[:help] %>" data-container="body"></i><% end %>
         </label>
     <% end %>
-
-    <input <%= 'required=required' if options[:required] == true %> class="form-control spinner <%= options[:class] if options[:class].present? %>"
-        type="text"
-        name="<%= options[:name] if options[:name].present? %>"
-        <% if options[:id].present? %>id="<%= options[:id] %>"<% end %>
-        value="<%= options[:value] if options[:value].present? %>"
-        placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
-    />
-
-    <% if options[:errors].present? %>
-        <span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span>
-    <% end %>
-    
-    <% if options[:notice].present? %>
-        <span id="has-notice" class="help-block" style="font-size: 85%;"> <%= options[:notice] %></span>
-    <% end %>
+    <input <%= 'required=required' if options[:required] == true %> class="form-control spinner <%= options[:class] if options[:class].present? %>" type="text" name="<%= options[:name] if options[:name].present? %>" <% if options[:id].present? %>id="<%= options[:id] %>"<% end %> value="<%= options[:value] if options[:value].present? %>" placeholder="<%= options[:placeholder] if options[:placeholder].present? %>" <%= 'autocomplete="off"' if options[:autocomplete] == true %>/>
+    <% if options[:errors].present? %><span class="help-block"><%= options[:errors].join('<br/>').html_safe %></span><% end %>
+    <% if options[:notice].present? %><span id="has-notice" class="help-block" style="font-size:85%"> <%= options[:notice] %></span><% end %>
 </div>

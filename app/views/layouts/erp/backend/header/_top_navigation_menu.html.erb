@@ -1,0 +1,15 @@
+<div class="top-menu">
+    <ul class="nav navbar-nav pull-right">
+        <li class="dropdown dropdown-user">
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                <% if current_user.avatar.present? %><%= image_tag current_user.avatar.system, class: 'img-circle' %><% else %><%= image_tag '/backend/img/placeholder.jpg', class: 'img-circle' %><% end %>
+                <span class="username username-hide-on-mobile"><%= current_user.get_name %></span>
+                <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-default">
+                <li><%= link_to '<i class="icon-user"></i> Thông tin cá nhân'.html_safe, erp.profile_backend_accounts_path, redirect_to: erp.backend_path, class: 'link-method' %></li>
+                <li><%= link_to '<i class="icon-key"></i> Đăng xuất'.html_safe, erp.destroy_user_session_path, method: :delete, redirect_to: erp.backend_path, class: 'link-method' %></li>
+            </ul>
+        </li>
+    </ul>
+</div>

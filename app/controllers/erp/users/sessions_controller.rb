@@ -12,7 +12,6 @@ module Erp
 		private
 			def set_layout
 				return nil if request.xhr?
-
 				if session[:current_view] == 'frontend'
 					'erp/frontend/index'
 				else

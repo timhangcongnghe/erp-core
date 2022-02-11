@@ -1,38 +1,4 @@
-<% content_for :page_toolbar do %>
-    <% if Erp::Core.available?("online_store") %>
-        <%= erp_component('button/create', {
-            text: t('.create'),
-            href: erp.new_backend_user_group_path,
-            class: 'btn-sm'
-        }) %>
-    <% else %>
-        <%=
-            erp_component('button/create', {
-                text: t('.create'),
-                href: erp.new_backend_user_group_path,
-                class: 'btn-sm'
-            }) if can? :options_users_user_groups_create, nil
-        %>
-    <% end %>
-<% end %>
-
-<% content_for :title do %>
-    <%= @user_group.name %>
-<% end %>
-
-<% content_for :page_title do %>
-    <a href="<%= erp.backend_user_groups_path %>">
-        <i class="fa fa-users"></i> <%= t('.user_group') %>
-    </a> / <%= t('.edit') %>: <%= @user_group.name %>
-<% end %>
-
-<div class="row">
-    <div class="col-md-12">
-        <% if @user_group.errors.any? %>
-            <%= erp_form_control("form_error_message") %>
-        <% end %>
-        <!-- BEGIN SAMPLE FORM PORTLET-->
-        <%= render 'form', user_group: @user_group %>
-        <!-- END SAMPLE FORM PORTLET-->
-    </div>
-</div>
+<% content_for :title do %>Cập Nhật Nhóm Tài Khoản: <%= @user_group.get_name %><% end %>
+<% content_for :page_toolbar do %><%= erp_component('button/create', {text: 'Tạo nhóm tài khoản mới', href: erp.new_backend_user_group_path, class: 'btn-sm'}) %><% end %>
+<% content_for :page_title do %><%= link_to '<i class="fa fa-users"></i> Danh Sách Nhóm Tài Khoản'.html_safe, erp.backend_user_groups_path %> / Cập Nhật Nhóm Tài Khoản: <%= @user_group.get_name %><% end %>
+<div class="row"><div class="col-md-12"><% if @user_group.errors.any? %><%= erp_form_control('form_error_message') %><% end %><%= render 'form', user_group: @user_group %></div></div>

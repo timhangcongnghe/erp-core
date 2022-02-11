@@ -1,34 +1,18 @@
 <div class="form-group <%= "has-error" if options[:errors].present? %>">
     <label class="control-label">
         <%= options[:label] if options[:label].present? %>
-        <% if options[:required] == true %>
-            <span class="required" aria-required="true"> * </span>
-        <% end %>
-        <% if options[:help].present? %>
-            <i class="fa fa-commenting right tooltips icon-default-color"
-            data-original-title="<%= options[:help] %>"
-            data-container="body"></i>
-        <% end %>
+        <% if options[:required] == true %><span class="required" aria-required="true"> * </span><% end %>
+        <% if options[:help].present? %><i class="fa fa-commenting right tooltips icon-default-color" data-original-title="<%= options[:help] %>" data-container="body"></i><% end %>
     </label>
     <div class="input-group fileinput fileinput-new" data-provides="fileinput">
         <div class="input-group input-large">
             <div class="form-control uneditable-input input-fixed input-small" data-trigger="fileinput">
                 <i class="fa fa-file fileinput-exists"></i>&nbsp;
-                <% if options[:value].present? %>
-                <span class="fileinput-filename"><%= options[:value] %></span>
-                <% else %>
-                <span class="fileinput-filename"> </span>
-                <% end %>
+                <% if options[:value].present? %><span class="fileinput-filename"><%= options[:value] %></span><% else %><span class="fileinput-filename"> </span><% end %>
             </div>
-            <span class="input-group-addon btn default btn-file">
-                <span class="fileinput-new"> Chọn </span>
-                <span class="fileinput-exists"> Chọn </span>
-                <input type="file" name="<%= options[:name] if options[:name].present? %>" id="">
-            </span>
+            <span class="input-group-addon btn default btn-file"><span class="fileinput-new"> Chọn </span><span class="fileinput-exists"> Chọn </span><input type="file" name="<%= options[:name] if options[:name].present? %>" id=""></span>
             <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> X </a>
         </div>
     </div>
-    <% if options[:errors].present? %>
-        <span class="help-block"> <%= options[:errors].join('<br/>') %></span>
-    <% end %>
+    <% if options[:errors].present? %><span class="help-block"> <%= options[:errors].join('<br/>') %></span><% end %>
 </div>

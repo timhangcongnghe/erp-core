@@ -1,9 +1,5 @@
 <% if options[:href].present? %>
-    <a class="btn btn-primary <%= options[:class] if options[:class].present? %>" href="<%= options[:href] if options[:href].present? %>">
-        <%= options[:text] if options[:text].present? %>
-    </a>
+    <a class="btn btn-primary <%= options[:class] if options[:class].present? %>" href="<%= options[:href] if options[:href].present? %>"><%= options[:text] if options[:text].present? %></a>
 <% else %>
-    <button class="btn btn-primary">
-        <%= options[:text] if options[:text].present? %>
-    </button>
+    <button class="btn btn-primary"><%= options[:text] if options[:text].present? %></button>
 <% end %>

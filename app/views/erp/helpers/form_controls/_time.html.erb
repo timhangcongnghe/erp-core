@@ -1,18 +1,10 @@
 <div class="form-group">
     <label class="control-label">
         <%= options[:label] if options[:label].present? %>
-        <% if options[:help].present? %>
-            <i class="fa fa-commenting right tooltips icon-default-color"
-            data-original-title="<%= options[:help] %>"
-            data-container="body"></i>
-        <% end %>
+        <% if options[:help].present? %><i class="fa fa-commenting right tooltips icon-default-color" data-original-title="<%= options[:help] %>" data-container="body"></i><% end %>
     </label>
     <div class="input-icon">
         <i class="fa fa-clock-o"></i>
-        <input class="form-control timepicker timepicker-no-seconds"
-            type="text"
-            name="<%= options[:name] if options[:name].present? %>"
-            value="<%= options[:value] if options[:value].present? %>"
-        />
+        <input class="form-control timepicker timepicker-no-seconds" type="text" name="<%= options[:name] if options[:name].present? %>" value="<%= options[:value] if options[:value].present? %>"/>
     </div>
 </div>

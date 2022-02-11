@@ -3,10 +3,8 @@ module Erp
     class RegistrationsController < Devise::RegistrationsController
       layout :set_layout
 
-      # POST /resource
       def create
         build_resource(sign_up_params)
-
         resource.save
         yield resource if block_given?
         if resource.persisted?
@@ -17,7 +15,7 @@ module Erp
           else
             set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
             expire_data_after_sign_in!
-            render plain: '<h2><i class="fa fa-user" aria-hidden="true"></i> Tạo tài khoản thành công</h2><p>Một email đã được gửi tới bạn với hướng dẫn xác minh tài khoản. Vui lòng kiểm tra email.</p>'
+            render plain: '<h2><i class="fa fa-user" aria-hidden="true"></i> Tạo Tài Khoản Thành Công</h2><p>Một email xác minh tài khoản đã được gửi tới bạn. Vui lòng kiểm tra hộp thư mail.</p>'
           end
         else
           clean_up_passwords resource
@@ -25,8 +23,6 @@ module Erp
           respond_with resource
         end
       end
-
-      private
 
       def sign_up_params
         params.require(:user).permit(:name, :email, :password, :password_confirmation)

@@ -1,24 +1,9 @@
 <% editor_id = 'editor_' + unique_id %>
-
 <div class="form-group" data-toggle="tooltip">
-    <a style="<% if !options[:label].present? %>margin-top: -30px<% end %>" href="#upload" class="btn btn-primary btn-xs pull-right editor-insert-image-button">
-        <i class="fa fa-file-image-o"></i> <%= t('.insert_image') %>
-    </a>
-    <% if options[:label].present? %>
-        <label><%= options[:label] if options[:label].present? %></label>
-    <% end %>
-    <% if options[:errors].present? %>
-        <span class="help-block" style="color: #e73d4a;"> <%= options[:errors].join('').html_safe %></span>
-    <% end %>
-    <% if options[:help].present? %>
-        <i class="fa fa-info-circle right tooltips icon-default-color"
-        data-original-title="<%= options[:help] %>"
-        data-container="body"></i>
-    <% end %>
-    <input editor-id="<%= editor_id %>" type='file' name="editor_upload[image_url]"
-        data-url="<%= erp.backend_editor_upload_path(type_name: 'article') %>" style="display: none" />    
-    <textarea id="<%= editor_id %>" class="form-control editor<%= options[:type] if options[:type].present? %>" rows="3"
-        name="<%= options[:name] if options[:name].present? %>"
-        placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
-    ><%= options[:value] if options[:value].present? %></textarea>
+    <a style="<% if !options[:label].present? %>margin-top: -30px<% end %>" href="#upload" class="btn btn-primary btn-xs pull-right editor-insert-image-button"><i class="fa fa-file-image-o"></i> Chèn hình ảnh</a>
+    <% if options[:label].present? %><label><%= options[:label] if options[:label].present? %></label><% end %>
+    <% if options[:errors].present? %><span class="help-block" style="color: #e73d4a;"> <%= options[:errors].join('').html_safe %></span><% end %>
+    <% if options[:help].present? %><i class="fa fa-info-circle right tooltips icon-default-color" data-original-title="<%= options[:help] %>" data-container="body"></i><% end %>
+    <input editor-id="<%= editor_id %>" type='file' name="editor_upload[image_url]" data-url="<%= erp.backend_editor_upload_path(type_name: 'article') %>" style="display: none" />    
+    <textarea id="<%= editor_id %>" class="form-control editor<%= options[:type] if options[:type].present? %>" rows="3" name="<%= options[:name] if options[:name].present? %>" placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"><%= options[:value] if options[:value].present? %></textarea>
 </div>

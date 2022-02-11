@@ -1,21 +1,9 @@
 <div class="form-group" data-toggle="tooltip">
     <% if options[:label].present? %>
-        <label><%= options[:label] if options[:label].present? %>
-            <% if options[:required] == true %>
-                <span class="required" aria-required="true"> * </span>
-            <% end %>
-        </label>
+        <label><%= options[:label] if options[:label].present? %><% if options[:required] == true %><span class="required" aria-required="true"> * </span><% end %></label>
     <% end %>
-    <% if options[:help].present? %>
-        <i class="fa fa-info-circle right tooltips icon-default-color"
-        data-original-title="<%= options[:help] %>"
-        data-container="body"></i>
-    <% end %>
-    <textarea class="form-control <%= options[:class] if options[:class].present? %>" rows="<%= options[:rows].present? ? options[:rows] : '3' %>"
-        name="<%= options[:name] if options[:name].present? %>"
-        placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
+    <% if options[:help].present? %><i class="fa fa-info-circle right tooltips icon-default-color" data-original-title="<%= options[:help] %>" data-container="body"></i><% end %>
+    <textarea class="form-control <%= options[:class] if options[:class].present? %>" rows="<%= options[:rows].present? ? options[:rows] : '3' %>" name="<%= options[:name] if options[:name].present? %>" placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
     ><%= options[:value] if options[:value].present? %></textarea>
-    <% if options[:errors].present? %>
-        <span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span>
-    <% end %>
+    <% if options[:errors].present? %><span class="help-block"> <%= options[:errors].join('<br/>').html_safe %></span><% end %>
 </div>

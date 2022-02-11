@@ -1,61 +1,32 @@
-<!-- BEGIN EXAMPLE TABLE PORTLET-->
-<div class="<%= 'portlet' if !options[:no_border].present? %> light datalist <%= 'scroll-page' if options[:scroll_page] == true %>"
-    data-url='<%= options[:url] %>'
-    data-id='<%= Digest::SHA1.hexdigest([Time.now, rand].join) %>'
-    sort-by='<%= options[:sort][:sort_by] if options[:sort].present? and options[:sort][:sort_by].present? %>'
-    sort-direction='<%= options[:sort][:sort_direction] if options[:sort].present? and options[:sort][:sort_direction].present? %>'
-    <% if options[:global_filter].present? %>global-filter="<%= options[:global_filter] %>"<% end %>
-    autoload="<%= options[:autoload] %>"
-    <%= 'sortable=true' if options[:sortable].present? %>
->
-
+<div class="<%= 'portlet' if !options[:no_border].present? %> light datalist <%= 'scroll-page' if options[:scroll_page] == true %>" data-url='<%= options[:url] %>' data-id='<%= Digest::SHA1.hexdigest([Time.now, rand].join) %>' sort-by='<%= options[:sort][:sort_by] if options[:sort].present? and options[:sort][:sort_by].present? %>' sort-direction='<%= options[:sort][:sort_direction] if options[:sort].present? and options[:sort][:sort_direction].present? %>' <% if options[:global_filter].present? %>global-filter="<%= options[:global_filter] %>"<% end %> autoload="<%= options[:autoload] %>" <%= 'sortable=true' if options[:sortable].present? %>>
     <% if options[:keywords] or options[:actions] or options[:filters] or options[:columns] or options[:keyword] %>
         <div class="portlet-title">
             <div class="caption font-green-haze">
-                <%= erp_datalist_list_actions(
-                    options[:actions]
-                ) if options[:actions].present? %>
-                <%= erp_datalist_filters(
-                    options[:filters]
-                ) if options[:filters].present? %>
-                <%= erp_datalist_columns_select(
-                    options[:columns]
-                ) if options[:columns].present? %>
+                <%= erp_datalist_list_actions(options[:actions]) if options[:actions].present? %>
+                <%= erp_datalist_filters(options[:filters]) if options[:filters].present? %>
+                <%= erp_datalist_columns_select(options[:columns]) if options[:columns].present? %>
             </div>
             <div class="actions">
-                <div class="list-search-items">
-                </div>
+                <div class="list-search-items"></div>
                 <% if options[:keyword] %>
                     <div class="form-group form-md-line-input has-success form-md-floating-label list-filters-search">
                         <div class="input-icon right">
-                            <input type="text" class="datalist-search-keyword form-control" placeholder="<%= t('core.type_to_search') %>">
+                            <input type="text" class="datalist-search-keyword form-control" placeholder="Nhập từ khóa cần tìm...">
                             <i class="fa fa-search"></i>
                         </div>
                     </div>
                 <% elsif options[:keywords] %>
                     <div class="form-group form-md-line-input has-success form-md-floating-label list-filters-search">
                         <div class="input-icon right">
-                            <input type="text" class="datalist-search-input form-control" placeholder="<%= t('core.type_to_search') %>">
+                            <input type="text" class="datalist-search-input form-control" placeholder="Nhập từ khóa cần tìm...">
                             <i class="fa fa-search"></i>
                         </div>
-
                         <div class="datalist-search-helper">
                             <ul>
                                 <% options[:keywords].each do |keyword| %>
                                     <li>
-                                        <a href="javascript:;" class="keyword-line <%= "has-keyword-select" if keyword[:data_url].present? %>">
-                                            <%= raw t('core.search_keyword_for', name: keyword[:text], keyword: keyword[:name]) %>
-                                        </a>
-
-                                        <% if keyword[:select].present? %>
-                                            <i class="keyword-select-pointer"></i>
-                                            <ul class="keyword-select"
-                                                data-url="<%= keyword[:select][:data_url] %>"
-                                                name="<%= keyword[:select][:name] %>"
-                                            >
-
-                                            </ul>
-                                        <% end %>
+                                        <a href="javascript:;" class="keyword-line <%= "has-keyword-select" if keyword[:data_url].present? %>"><%= raw t('core.search_keyword_for', name: keyword[:text], keyword: keyword[:name]) %></a>
+                                        <% if keyword[:select].present? %><i class="keyword-select-pointer"></i><ul class="keyword-select" data-url="<%= keyword[:select][:data_url] %>" name="<%= keyword[:select][:name] %>"></ul><% end %>
                                     </li>
                                 <% end %>
                             </ul>
@@ -66,11 +37,5 @@
             </div>
         </div>
     <% end %>
-    <div class="portlet-body datalist-container">
-        <% if options[:placeholder] %>
-            <div class="alert alert-warning">
-                <%= options[:placeholder].html_safe %>
-            </div>
-        <% end %>
-    </div>
+    <div class="portlet-body datalist-container"><% if options[:placeholder] %><div class="alert alert-warning"><%= options[:placeholder].html_safe %></div><% end %></div>
 </div>

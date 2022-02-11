@@ -1,28 +1,12 @@
 <div class="form-group <%= "has-error" if options[:errors].present? %>">
     <label class="control-label">
         <%= options[:label] if options[:label].present? %>
-        <% if options[:required] == true %>
-            <span class="required" aria-required="true"> * </span>
-        <% end %>
-        <% if options[:help].present? %>
-            <i class="fa fa-commenting right tooltips icon-default-color"
-            data-original-title="<%= options[:help] %>"
-            data-container="body"></i>
-        <% end %>
+        <% if options[:required] == true %><span class="required" aria-required="true"> * </span><% end %>
+        <% if options[:help].present? %><i class="fa fa-commenting right tooltips icon-default-color" data-original-title="<%= options[:help] %>" data-container="body"></i><% end %>
     </label>
     <div class="input-group date">
-        <input type="text"
-               name="<%= options[:name] if options[:name].present? %>"
-               value="<%= format_date(options[:value]) if options[:value].present? %>"
-               placeholder="<%= options[:placeholder] if options[:placeholder].present? %>"
-               class="form-control date-picker-erp" />
-        <span class="input-group-btn">
-            <button class="btn default" type="button">
-                <i class="fa fa-calendar"></i>
-            </button>
-        </span>
+        <input type="text"name="<%= options[:name] if options[:name].present? %>" value="<%= format_date(options[:value]) if options[:value].present? %>" placeholder="<%= options[:placeholder] if options[:placeholder].present? %>" class="form-control date-picker-erp" />
+        <span class="input-group-btn"><button class="btn default" type="button"><i class="fa fa-calendar"></i></button></span>
     </div>
-    <% if options[:errors].present? %>
-        <span class="help-block"> <%= options[:errors].join('<br/>') %></span>
-    <% end %>
+    <% if options[:errors].present? %><span class="help-block"> <%= options[:errors].join('<br/>') %></span><% end %>
 </div>

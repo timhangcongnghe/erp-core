@@ -1,105 +1,34 @@
 <table class="table table-advance table-hover table-striped table-checkable order-column">
     <thead>
         <tr>
-            <th width='1%'>
-                <%= erp_datalist_check_all %>
-            </th>
-            <% if get_columns(params).include?("name") %>
-                <th>
-                    <%= t('.name') %>
-                </th>
-            <% end %>
-            <% if get_columns(params).include?("description") %>
-                <th>
-                    <%= t('.description') %>
-                </th>
-            <% end %>
-            <% if get_columns(params).include?("status") %>
-                <th>
-                    <%= t('.status') %>
-                </th>
-            <% end %>
-            <% if get_columns(params).include?("creator") %>
-                <th class="text-center">
-                    <%= t('creator') %>
-                </th>
-            <% end %>
-            <% if get_columns(params).include?("created_at") %>
-                <th>
-                    <%= t('created_at') %>
-                </th>
-            <% end %>
-            <th width="7%"><%= t('actions') %></th>
+            <% if get_columns(params).include?('name') %><th width="30%" class="text-left">Tên nhóm</th><% end %>
+            <% if get_columns(params).include?('description') %><th class="text-center">Mô tả</th><% end %>
+            <% if get_columns(params).include?('status') %><th class="text-center">Trạng thái</th><% end %>
+            <% if get_columns(params).include?('creator') %><th class="text-center">Người tạo</th><% end %>
+            <% if get_columns(params).include?('created_at') %><th class="text-center">Ngày tạo</th><% end %>
+            <th width="8%" class="text-right">Thao tác</th>
         </tr>
     </thead>
     <tbody>
         <% @user_groups.each do |user_group| %>
             <tr class="odd gradeX">
-                <td>
-                    <%= erp_datalist_check_row(id: user_group.id) %>
-                </td>
-                <% if get_columns(params).include?("name") %>
-                    <td><%= user_group.name %></td>
-                <% end %>
-                <% if get_columns(params).include?("description") %>
-                    <td><%= user_group.description %></td>
-                <% end %>
-                <% if get_columns(params).include?("status") %>
-                <td>
-                    <% if user_group.active == false %>
-                        <%= erp_component('label/danger', {
-                            text: t('.inactive')
-                        }) %>
-                    <% else %>
-                        <%= erp_component('label/success', {
-                            text: t('.active')
-                        }) %>
-                    <% end %>
-                </td>
-                <% end %>
-                <% if get_columns(params).include?("creator") %>
-                    <td>
-                        <%= erp_component('avatar', {
-                            user: user_group.creator
-                        }) %>
-                    </td>
-                <% end %>
-                <% if get_columns(params).include?("created_at") %>
-                    <td class="center"><%= user_group.created_at.strftime("%d/%m/%Y") %></td>
-                <% end %>
-                <td>
-                    <%=
-                    actions = []
-                    
-                    actions << {
-                        text: '<i class="fa fa-edit"></i> '+t('edit'),
-                        href: erp.edit_backend_user_group_path(user_group)
-                    } if can? :update, user_group
-                        
-                    actions << {
-                        text: '<i class="fa fa-lock"></i> Vô hiệu hóa quyền',
-                        href: erp.deactivate_backend_user_groups_path(id: user_group),
-                        data_method: 'PUT',
-                        class: 'ajax-link',
-                        data_confirm: 'Các chính sách sẽ bị vô hiệu cho những người dùng đang thuộc nhóm quyền này. Bạn chắc chắn vẫn muốn tiếp tục?'
-                    } if can? :deactivate, user_group
-                    
-                    actions << {
-                        text: '<i class="fa fa-unlock"></i> Kích hoạt quyền',
-                        href: erp.activate_backend_user_groups_path(id: user_group),
-                        data_method: 'PUT',
-                        class: 'ajax-link',
-                        data_confirm: 'Bạn có chắc muốn kích hoạt nhóm quyền này?'
-                    } if can? :activate, user_group
-                    
-                    erp_datalist_row_actions(actions) if !actions.empty? %>
+                <% if get_columns(params).include?('name') %><td class="text-left"><%= link_to user_group.get_name, erp.edit_backend_user_group_path(user_group), class: 'title' %></td><% end %>
+                <% if get_columns(params).include?('description') %><td class="text-left"><%= user_group.description %></td><% end %>
+                <% if get_columns(params).include?('status') %><td class="text-center"><% if user_group.active == false %><%= erp_component('label/danger', {text: 'Đã bị khóa'}) %><% else %><%= erp_component('label/success', {text: 'Đang sử dụng'}) %><% end %></td><% end %>
+                <% if get_columns(params).include?('creator') %><td class="text-center"><%= erp_component('avatar', {user: user_group.creator}) %></td><% end %>
+                <% if get_columns(params).include?('created_at') %><td class="center"><%= user_group.created_at.strftime('%d-%m-%Y') %></td><% end %>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <a class="btn btn-default btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"><i class="fa fa-cog"></i>Lựa chọn<i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-menu pull-right">
+                            <% if user_group.active %><li><%= link_to '<i class="fa fa-lock"></i> Khóa sử dụng'.html_safe, erp.deactivate_backend_user_groups_path(id: user_group), method: 'PUT', data: {confirm: 'Bạn có chắc chắn muốn khóa nhóm tài khoản này không?'}, class: 'ajax-link' %></li><% end %>
+                            <% if !user_group.active %><li><%= link_to '<i class="fa fa-unlock"></i> Mở sử dụng'.html_safe, erp.activate_backend_user_groups_path(id: user_group), method: 'PUT', data: {confirm: 'Bạn có chắc chắn muốn mở nhóm tài khoản này không?'}, class: 'ajax-link' %></li><% end %>
+                        </ul>
+                    </div>
                 </td>
             </tr>
         <% end %>
     </tbody>
 </table>
-<% if @user_groups.empty? %>
-    <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
-<% end %>
-        
+<% if @user_groups.empty? %><div class="datalist-empty-line">Danh Sách Nhóm Tài Khoản Hiện Chưa Có Lựa Chọn Phù Hợp</div><% end %>   
 <%= erp_datalist_pagination(@user_groups) %>

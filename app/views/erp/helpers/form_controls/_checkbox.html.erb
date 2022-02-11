@@ -1,34 +1,14 @@
 <div class="form-group">
     <% if options[:label].present? %>
-        <label>
-            <%= options[:label] %>
-            <% if options[:help].present? %>
-                <i class="fa fa-commenting default tooltips icon-default-color"
-                data-original-title="<%= options[:help] %>"
-                data-container="body"></i>
-            <% end %>
-        </label>
+        <label><%= options[:label] %><% if options[:help].present? %> <i class="fa fa-commenting default tooltips icon-default-color" data-original-title="<%= options[:help] %>" data-container="body"></i><% end %></label>
     <% end %>    
     <div class="mt-checkbox-inline radio-padding-top">
         <% if options[:options].present? %>
             <% options[:options].each_with_index do |option| %>
-                <% if options[:errors].present? %>
-                    <span class="help-block<%= ' alert' if options[:alert].present? %>">
-                        <%= options[:errors].join('').html_safe %>
-                    </span>
-                <% end %>
+                <% if options[:errors].present? %><span class="help-block<%= ' alert' if options[:alert].present? %>"><%= options[:errors].join('').html_safe %></span><% end %>
                 <label class="mt-checkbox">
-                    <% if options[:not_selected_value].present? %>
-                        <input type="hidden"
-                            name="<%= options[:name] if options[:name].present? %>"
-                            value="<%= options[:not_selected_value] %>"
-                        >
-                    <% end %>
-                    <input type="checkbox" <%= "checked" if options[:value] == true or options[:value] == option[:value] %>
-                        name="<%= options[:name] if options[:name].present? %>"
-                        id="<%= options[:id] if options[:id].present? %>"
-                        value="<%= option[:value] %>"> <%= option[:text] %>
-                    <span></span>
+                    <% if options[:not_selected_value].present? %><input type="hidden" name="<%= options[:name] if options[:name].present? %>" value="<%= options[:not_selected_value] %>"><% end %>
+                    <input type="checkbox" <%= "checked" if options[:value] == true or options[:value] == option[:value] %> name="<%= options[:name] if options[:name].present? %>" id="<%= options[:id] if options[:id].present? %>" value="<%= option[:value] %>"> <%= option[:text] %><span></span>
                 </label>                
             <% end %>
         <% end %>

@@ -1,33 +1,8 @@
 <% if !options[:user].nil? %>
     <div class="userpic">
-        <div class="list-userpic">
-            <% if options[:user].avatar.present? %>
-                <%= image_tag options[:user].avatar.system, class: "img-circle",
-                    alt: options[:user].email,
-                    title: options[:user].name + " (" + options[:user].email + ")"
-                %>
-            <% else %>                    
-                <%= image_tag "/backend/img/placeholder.jpg", class: "img-circle",
-                    alt: options[:user].email,
-                    title: options[:user].name + " (" + options[:user].email + ")"
-                %>
-            <% end %>
-        </div>
-        <div class="list-usertitle">
-            <div class="list-usertitle-name" title="<%= options[:user].name + " (" + options[:user].email + ")" %>">
-                <%= user_short_name(options[:user].name) %>
-            </div>
-        </div>
+        <div class="list-userpic"><% if options[:user].avatar.present? %><%= image_tag options[:user].avatar.system, class: 'img-circle' %><% else %><%= image_tag "/backend/img/placeholder.jpg", class: 'img-circle' %><% end %></div>
+        <div class="list-usertitle"><div class="list-usertitle-name"><%= user_short_name(options[:user].name) %></div></div>
     </div>
 <% else %>
-    <div class="userpic">
-        <div class="list-userpic">
-            <img class="img-circle" src="/backend/img/placeholder.jpg"> 
-        </div>
-        <div class="list-usertitle">
-            <div class="list-usertitle-name">
-                <%= t("no_creator") %>
-            </div>
-        </div>
-    </div>
+    <div class="userpic"><div class="list-userpic"><%= image_tag '/backend/img/placeholder.jpg', class: 'img-circle' %></div><div class="list-usertitle"><div class="list-usertitle-name">N/A</div></div></div>
 <% end %>

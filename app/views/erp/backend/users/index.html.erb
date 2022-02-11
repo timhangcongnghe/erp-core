@@ -1,90 +1,21 @@
-<% content_for :title do %>
-    <%= t('.user') %>
-<% end %>
-
-<% content_for :page_title do %>
-    <i class="fa fa-users"></i> <%= t('.user') %>
-<% end %>
-
-<% content_for :page_toolbar do %>
-    <% if Erp::Core.available?("online_store") %>
-        <%= erp_component('button/create', {
-            text: t('.create'),
-            href: erp.new_backend_user_path,
-            class: 'btn-noborder'
-        }) %>
-    <% else %>
-        <%=
-            erp_component('button/create', {
-                text: t('.create'),
-                href: erp.new_backend_user_path,
-                class: 'btn-noborder'
-            }) if can? :options_users_users_create, nil
-        %>
-    <% end %>
-<% end %>
-
-<% content_for :global_filter do %>
-    <div class="row top-datalist">
-        <div class="col-md-3">
-            <%= erp_form_control("dataselect", {
-                name: 'user_group_id',
-                label: 'Nhóm người dùng',
-                placeholder: 'Tìm theo nhóm',
-                url: erp.dataselect_backend_user_groups_path(format: 'json'),
-                multiple: true
-            }) %>
-        </div>
-    </div>
-<% end %>
-
-<%
-    actions = []
-    
-    actions << {
-        text: '<i class="fa fa-check"></i> '+t('.activate'),
-        url: erp.activate_all_backend_users_path,
-        data_method: 'PUT'
-    } if Erp::Core.available?("online_store")
-    
-    actions << {
-        text: '<i class="fa fa-exclamation"></i> '+t('.deactivate'),
-        url: erp.deactivate_all_backend_users_path,
-        data_method: 'PUT'
-    } if Erp::Core.available?("online_store")
-%>
-
+<% content_for :title do %>Danh Sách Tài Khoản<% end %>
+<% content_for :page_title do %><i class="fa fa-users"></i> Danh Sách Tài Khoản<% end %>
+<% content_for :page_toolbar do %><%= erp_component('button/create', {text: 'Tạo tài khoản mới', href: erp.new_backend_user_path, class: 'btn-noborder'}) %><% end %>
+<% content_for :global_filter do %><div class="row top-datalist"><div class="col-md-4"><%= erp_form_control('dataselect', {name: 'user_group_id', label: 'Nhóm tài khoản', placeholder: 'Chọn nhóm tài khoản phù hợp...', url: erp.dataselect_backend_user_groups_path(format: 'json'), multiple: true}) %></div></div><% end %>
 <%= erp_datalist(
     url: erp.list_backend_users_path,
-    keyword: true,
-    actions: actions,
-    filters: [
-        {
-            text: t('.active'), name: 'active', value: 'true', checked: true
-        },
-        {
-            text: t('.inactive'), name: 'active', value: 'false', checked: false
-        }
+    keywords:[{text: 'Tên tài khoản', name: 'erp_users.name'}],
+    filters:[
+        {text: 'Đang sử dụng', name: 'erp_users.active', value: 'true', checked: true},
+        {text: 'Đã bị khóa', name: 'erp_users.active', value: 'false', checked: false}
     ],
-    columns: [
-        {
-            text: t('.name'), name: 'name', value: true, checked: true
-        },
-        {
-            text: t('.email'), name: 'email', value: true, checked: true
-        },
-        {
-            text: t('.user_group'), name: 'user_group', value: true, checked: true
-        },
-        {
-            text: t('status'), name: 'status', value: true, checked: true
-        },
-        {
-            text: t('creator'), name: 'creator', value: true, checked: false
-        },
-        {
-            text: t('created_at'), name: 'created_at', value: true, checked: false
-        }
+    columns:[
+        {text: 'Tên tài khoản', name: 'name', value: true, checked: true},
+        {text: 'Địa chỉ mail', name: 'email', value: true, checked: true},
+        {text: 'Nhóm tài khoản', name: 'user_group', value: true, checked: true},
+        {text: 'Trạng thái', name: 'status', value: true, checked: true},
+        {text: 'Người tạo', name: 'creator', value: true, checked: false},
+        {text: 'Ngày tạo', name: 'created_at', value: true, checked: false}
     ],
-    sort: { sort_by: 'erp_users.created_at', sort_direction: 'desc' }
+    sort: {sort_by: 'erp_users.created_at', sort_direction: 'desc'}
 ) %>

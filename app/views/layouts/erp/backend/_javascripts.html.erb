@@ -1,0 +1,35 @@
+<%= javascript_include_tag '/backend/assets/global/plugins/respond.min.js' %>
+<%= javascript_include_tag '/backend/assets/global/plugins/excanvas.min.js' %>
+<%= javascript_include_tag '/backend/assets/global/plugins/ie8.fix.min.js' %>
+<%= render partial: 'layouts/erp/backend/scripts/core_plugins' %>
+<%= render partial: 'layouts/erp/backend/scripts/page_level_plugins' %>
+<%= render partial: 'layouts/erp/backend/scripts/theme_global_scripts' %>
+<%= render partial: 'layouts/erp/backend/scripts/page_level_scripts' %>
+<%= render partial: 'layouts/erp/backend/scripts/theme_layout_scripts' %>
+<%= javascript_include_tag '/backend/js/jquery.cookie.js' %>
+<%= javascript_include_tag '/backend/js/validation/jquery.validate.min.js' %>
+<%= javascript_include_tag '/backend/js/validation/localization/messages_vi.min.js' %>
+<%= javascript_include_tag '/backend/js/autolist.js' %>
+<%= javascript_include_tag '/backend/js/datetimepicker/jquery.datetimepicker.js' %>
+<%= javascript_include_tag '/backend/js/jquery.floatThead.min.js' %>
+<%= javascript_include_tag '/backend/js/main.js?v=1.0' %>
+<%= javascript_include_tag '/backend/js/datalist.js' %>
+<%= javascript_include_tag '/backend/js/dataselect.js' %>
+<%= javascript_include_tag '/backend/js/addablelist.js' %>
+<%= javascript_include_tag '/backend/js/addableform.js?v=1' %>
+<%= javascript_include_tag '/backend/js/order.js' if Erp::Core.available?('orders') %>
+<%= javascript_include_tag '/backend/js/stock-transfer.js' if Erp::Core.available?('stock_transfers') %>
+<%= javascript_include_tag '/backend/js/editor.js' %>
+<%= javascript_include_tag '/backend/js/validate.js' %>
+<% if content_for?(:page_script) %><%= yield(:page_script) %><% end %>
+<script>
+    var LANG_OR = 'hoặc';
+    var LANG_NO_RECORD_FOUND = 'Chưa Có Lựa Chọn Phù Hợp';
+    var LANG_PLEASE_SELECT_AT_LEAST_ONE_ROW = 'Chọn Ít Nhất 1 Lựa Chọn Phù Hợp';
+    var LANG_OK = 'Đồng Ý';
+    var LANG_CANCEL = 'Hủy Bỏ';
+    var LANG_DATE_FORMAT_JS = 'yyyy-mm-dd';
+    var SAVE_FILTER_URL = '<%= erp.save_filter_backend_users_path %>';
+</script>
+<%= javascript_include_tag '/backend/js/tinymce.min.js' %>
+<!--<% neweditor_id = 'neweditor_' + unique_id %><script>tinymce.init({selector:<%= neweditor_id %>});</script>-->

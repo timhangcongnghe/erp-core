@@ -1,23 +1,19 @@
-$:.push File.expand_path("../lib", __FILE__)
-
-# Maintain your gem's version:
-require "erp/core/version"
-
-# Describe your gem and declare its dependencies:
+$:.push File.expand_path('../lib', __FILE__)
+require 'erp/core/version'
 Gem::Specification.new do |s|
-  s.name        = "erp_core"
+  s.name        = 'erp_core'
   s.version     = Erp::Core::VERSION
-  s.authors     = ["Nguyen Ngoc Son"]
-  s.email       = ["sonnn@hoangkhang.com.vn"]
-  s.homepage    = "http://timhangcongnghe.com/"
-  s.summary     = "Core - Tim Hang Cong Nghe"
-  s.description = "Core - Tim Hang Cong Nghe"
-  s.license     = "MIT"
+  s.authors     = 'Công Ty TNHH Giải Pháp CNTT Và Truyền Thông Hoàng Khang'
+  s.email       = 'kinhdoanh@hoangkhang.com.vn'
+  s.homepage    = 'https://timhangcongnghe.com/'
+  s.summary     = 'Tìm Hàng Công Nghệ'
+  s.description = 'Tìm Hàng Công Nghệ là đơn vị cung cấp các sản phẩm, dịch vụ thuộc lĩnh vực Công Nghệ Thông Tin do Công Ty TNHH Giải Pháp CNTT Và Truyền Thông Hoàng Khang phụ trách và phát triển.'
+  s.license     = 'MIT'
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
-  s.add_dependency "rails"
-  s.add_dependency "devise"
+  s.add_dependency 'rails'
+  s.add_dependency 'devise'
   s.add_dependency 'will_paginate'
   s.add_dependency 'will_paginate-bootstrap'
   s.add_dependency 'carrierwave'

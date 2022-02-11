@@ -1,175 +1,23 @@
-#Additional translations
-
 vi:
-  home: "Trang chủ"
-  login: "Đăng nhập"
-  logout: "Đăng xuất"
-  custom_order: 'Sắp xếp'
-  please_select_at_least_one_row: "Vui lòng chọn ít nhất 1 đối tượng"
-  no_record_found: "Không tìm thấy kết quả"
-  no_matching_records_found: "Không tìm thấy kết quả"
-  #vietnamese translate global locales
-  fullscreen: "Toàn màn hình"
-  image: "Hình ảnh"
-  edit: "Cập nhật"
-  status: "Trạng thái"
-  creator: "Người tạo"
-  created_at: "Ngày tạo"
-  updated_at: "Ngày cập nhật"
-  actions: "Thao tác"
-  options: "Tùy chọn"
-  archived: "Đã ngưng sử dụng"
-  active: "Đang sử dụng"
-  archive: "Ngưng sử dụng"
-  unarchive: "Sử dụng lại"
-  delete_confirm: "Bạn có chắc dòng thông tin đang chọn hiện tại muốn xóa?"
-  submit: "Lưu thông tin"
-  ok: "Đồng ý"
-  close: "Từ chối"
-  or: "hoặc"
-  cancel: "Hủy lưu"
-  date_format_js: "yyyy-mm-dd"
-  date_format: "%Y-%m-%d"
-  datetime_format: "%Y-%m-%d, %H:%M"
-  profile: "Hồ sơ của tôi"
-  no_creator: "N/A"
-  layouts:
-    erp:
-      backend:
-        header_search_box:
-          search: "Tìm kiếm..."
-        sidebar:
-          user: "Quản lý tài khoản"
-          users: "Tài khoản"
-        javascript_includes:
-          no_record_found: "Không tìm thấy kết quả."
-  erp:
-    helpers:
-      form_controls:
-        editor:
-          insert_image: "Chọn hình ảnh"
-    backend:
-      dashboard:
-        index:
-          dashboard: "Bảng điều khiển"
-      users:
-        create:
-          success: "Thêm tài khoản thành công."
-        update:
-          success: "Cập nhật tài khoản thành công."
-        destroy:
-          success: "Xóa tài khoản thành công."
-        delete_all:
-          success: "Xóa tài khoản thành công."
-        activate_all:
-          success: "Kích hoạt tài khoản thành công."
-        deactivate_all:
-          success: "Khóa tài khoản thành công."
-        activate:
-          success: "Kích hoạt tài khoản thành công."
-        deactivate:
-          success: "Khóa tài khoản thành công."
-        index:
-          create: "Thêm tài khoản"
-          user: "Tài khoản"
-          name: "Tên người dùng"
-          email: "Địa chỉ email"
-          user_group: "Nhóm người dùng"
-          activate: "Kích hoạt tài khoản"
-          deactivate: "Khóa tài khoản"
-          delete: "Xóa tài khoản"
-          delete_confirm: "Bạn chắc chắn muốn xóa?"
-          active: "Đang kích hoạt"
-          inactive: "Không kích hoạt"
-        list:
-          name: "Tên người dùng"
-          email: "Địa chỉ email"
-          user_group: "Nhóm"
-          activate: "Kích hoạt tài khoản"
-          activate_confirm: "Bạn có muốn kích hoạt tài khoản này?"
-          deactivate: "Khóa tài khoản"
-          deactivate_confirm: "Bạn đang yêu cầu khóa tài khoản. Bạn chắc chứ?"
-          delete: "Xóa tài khoản"
-          active: "Đang kích hoạt"
-          inactive: "Không kích hoạt"
-          delete_confirm: "Bạn chắc chắn muốn xóa?"
-        new:
-          user: "Tài khoản"
-          create: "Thêm tài khoản"
-        edit:
-          user: "Tài khoản"
-          create: "Thêm tài khoản"
-          edit: "Cập nhật"
-        form:
-          name: "Tên người dùng"
-          email: "Địa chỉ email"
-          enter_user_name: "Nhập tên người dùng"
-          enter_email: "Nhập địa chỉ email"
-          password: "Mật khẩu"
-          password_confirm: "Xác nhận mật khẩu"
-          enter_password: "Nhập mật khẩu..."
-          enter_password_confirm: "Nhập lại mật khẩu..."
-          timezone: "Múi giờ"
-          choose_timezone: "Chọn múi giờ..."
-          user_group: "Nhóm người dùng"
-          choose_user_group: "Chọn nhóm người dùng"
-          create: "Thêm mới"
-          edit: "Chỉnh sửa"
-      user_groups:
-        create:
-          success: "Thêm nhóm thành công."
-        update:
-          success: "Cập nhật nhóm thành công."
-        destroy:
-          success: "Xóa nhóm thành công."
-        delete_all:
-          success: "Xóa nhóm thành công."
-        activate_all:
-          success: "Kích hoạt nhóm thành công."
-        deactivate_all:
-          success: "Vô hiệu nhóm thành công."
-        activate:
-          success: "Kích hoạt nhóm/quyền thành công."
-        deactivate:
-          success: "Vô hiệu nhóm/quyền thành công."
-        index:
-          create: "Thêm nhóm"
-          user_group: "Nhóm người dùng"
-          name: "Tên nhóm"
-          description: "Mô tả"
-          status: "Trạng thái"
-        list:
-          name: "Tên nhóm"
-          description: "Mô tả"
-          status: "Trạng thái"
-          activate: "Kích hoạt nhóm"
-          deactivate: "Vô hiệu nhóm"
-          delete: "Xóa nhóm"
-          active: "Đang kích hoạt"
-          inactive: "Bị vô hiệu"
-          delete_confirm: "Bạn chắc chắn muốn xóa?"
-        new:
-          user_group: "Nhóm thành viên"
-          create: "Thêm nhóm"
-        edit:
-          user_group: "Nhóm thành viên"
-          create: "Thêm nhóm"
-          edit: "Cập nhật"
-        form:
-          name: 'Tên nhóm'
-          user_group: "Nhóm người dùng"
-          enter_user_group_name: 'Nhập tên nhóm'
-          description: 'Mô tả'
-          enter_description: 'Nhập mô tả'
+  date_format: '%Y-%m-%d'
+  datetime_format: '%Y-%m-%d, %H:%M'
+  permission:
+    group_system: 'Nhóm hệ thống'
+    system:
+      system:
+        controller_system: 'Quyền trên hệ thống'
+        system:
+          settings: 'Cấu hình hệ thống'
+          backup: 'Backup dữ liệu'
+          restore: 'Khôi phục dữ liệu'
   core:
-    search_keyword_for: Tìm theo <span class="bold">%{name}</span> với từ khóa <span class="keyword bold" text="%{name}" name="%{keyword}"></span>
+    search_keyword_for: 'Tìm theo <span class="bold">%{name}</span> với từ khóa <span class="keyword bold" text="%{name}" name="%{keyword}"></span>'
     search: "Tìm theo"
     for: "cho"
     columns: "Ẩn/Hiện cột"
     filters: "Bộ lọc"
     actions: "Hành động"
     options: "Tùy chọn"
-    type_to_search: "Tìm kiếm từ khoá..."
     form_has_error_message: "Có một vài lỗi trong lúc xác nhận. Vui lòng kiểm tra lại."
     img_select: "Chọn hình ảnh"
     img_update: "Cập nhật"
@@ -204,9 +52,8 @@ vi:
         zero:  "Dữ liệu trống."
         one:   "Hiện có 1 dữ liệu."
         other: "Hiển thị toàn bộ %{count} dữ liệu."
-
-      multi_page: "Hiển thị từ %{from} - %{to} / %{count}"
-      multi_page_html: "Hiển thị từ %{from} - %{to} / %{count}."
+      multi_page: 'Hiển thị <b>%{from}</b> - <b>%{to}</b> / <b>%{count}</b> sản phẩm.'
+      multi_page_html: 'Hiển thị <b>%{from}</b>-<b>%{to}</b> / <b>%{count}</b> sản phẩm.'
   can:
     permissions: "Phân Quyền"
     products_comments:

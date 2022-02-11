@@ -1,17 +1,11 @@
 <div class="form-group">
-    <% if options[:label].present? %>
-        <label><%= options[:label] %></label>
-    <% end %>
+    <% if options[:label].present? %><label><%= options[:label] %></label><% end %>
     <div class="input-group">
         <div class="icheck-inline radio-padding-top">
             <% if options[:options].present? %>
                 <% options[:options].each do |option| %>
                     <label title="<%= option[:title] if option[:title].present? %>">
-                        <input type="radio" class="icheck<%= options[:icheck] if options[:icheck].present? %>" data-radio="iradio_flat-grey"
-                            <%= 'checked' if options[:value] == option[:value] %>
-                            name="<%= options[:name] if options[:name].present? %>"
-                            value="<%= option[:value] if option[:value].present? %>"
-                        > <%= option[:text] %>
+                        <input type="radio" class="icheck<%= options[:icheck] if options[:icheck].present? %>" data-radio="iradio_flat-grey" <%= 'checked' if options[:value] == option[:value] %> name="<%= options[:name] if options[:name].present? %>" value="<%= option[:value] if option[:value].present? %>"> <%= option[:text] %>
                     </label>
                 <% end %>
             <% end %>

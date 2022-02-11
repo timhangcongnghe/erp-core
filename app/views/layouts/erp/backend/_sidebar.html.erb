@@ -1,56 +1,81 @@
 <div class="page-sidebar-wrapper">
-    <!-- BEGIN SIDEBAR -->
-    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-    <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
     <div class="page-sidebar navbar-collapse collapse">
-        <!-- END SIDEBAR MENU -->
         <div class="page-sidebar-wrapper">
-            <!-- BEGIN RESPONSIVE MENU FOR HORIZONTAL & SIDEBAR MENU -->
-            <ul class="page-sidebar-menu page-header-fixed" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
-                <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
-                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-                <li class="sidebar-toggler-wrapper hide">
-                    <div class="sidebar-toggler">
-                        <span></span>
-                    </div>
-                </li>
-                <!-- END SIDEBAR TOGGLER BUTTON -->
-                <!-- DOC: This is mobile version of the horizontal menu. The desktop version is defined(duplicated) in the header above -->
-                <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
-                <li class="nav-item start <%= "active open" if ["erp/backend/dashboard"].include?(params[:controller]) %>">
-                    <a href="<%= erp.backend_path %>" class="nav-link nav-toggle">
-                        <i class="icon-home"></i>
-                        <span class="title">Dashboard</span>
-                    </a>
-                </li>
-                <li class="" data-erp-hook='sidebar-menu'>
-                    
-                </li>
-                <li class="nav-item <%= "active open" if ["erp/backend/users"].include?(params[:controller]) %>">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="fa fa-users"></i>
-                        <span class="title"><%= t('.user') %></span>
-                        <% if ["erp/backend/users"].include?(params[:controller]) %>
-                            <span class="selected"></span>
-                            <span class="arrow open"></span>
-                        <% else %>
-                            <span class="arrow"></span>
-                        <% end %>
-                    </a>
+            <ul class="page-sidebar-menu page-header-fixed" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top:10px">
+                <li class="sidebar-toggler-wrapper hide"><div class="sidebar-toggler"><span></span></div></li>
+                <li class="nav-item <%= 'active open' if ['erp/products/backend/products', 'erp/products/backend/categories', 'erp/products/backend/brands', 'erp/products/backend/accessories'].include?(params[:controller]) %>">
+                    <a href="javascript:;" class="nav-link nav-toggle"><i class="fa fa-th"></i><span class="title">Quản Lý Sản Phẩm</span><% if ['erp/products/backend/products', 'erp/products/backend/categories', 'erp/products/backend/brands', 'erp/products/backend/accessories'].include?(params[:controller]) %><span class="selected"></span><span class="arrow open"></span><% else %><span class="arrow"></span><% end %></a>
                     <ul class="sub-menu">
-                        <li class="nav-item <%= "active" if ["erp/backend/users"].include?(params[:controller]) %>">
-                            <a href="<%= erp.backend_users_path %>" class="nav-link ">
-                                <span class="title"><%= t('.users') %></span>
-                                <% if ["erp/backend/contacts"].include?(params[:controller]) %>
-                                <span class="selected"></span>
-                                <% end %>
-                            </a>
+                        <li class="nav-item <%= 'active open' if ['erp/products/backend/products'].include?(params[:controller]) %>">
+                            <a href="<%= erp_products.backend_products_path %>" class="nav-link "><span class="title">Sản phẩm</span><% if ['erp/products/backend/products'].include?(params[:controller]) %><span class="selected"></span><% end %></a>
+                        </li>
+                        <li class="nav-item <%= 'active open' if ['erp/products/backend/categories'].include?(params[:controller]) %>">
+                            <a href="<%= erp_products.backend_categories_path %>" class="nav-link "><span class="title">Chuyên mục</span><% if ['erp/products/backend/categories'].include?(params[:controller]) %><span class="selected"></span><% end %></a>
+                        </li>
+                        <li class="nav-item <%= 'active open' if ['erp/products/backend/brands'].include?(params[:controller]) %>">
+                            <a href="<%= erp_products.backend_brands_path %>" class="nav-link "><span class="title">Thương hiệu</span><% if ['erp/products/backend/brands'].include?(params[:controller]) %><span class="selected"></span><% end %></a>
+                        </li>
+                        <li class="nav-item <%= 'active open' if ['erp/products/backend/accessories'].include?(params[:controller]) %>">
+                            <a href="<%= erp_products.backend_accessories_path %>" class="nav-link "><span class="title">Nhóm phụ kiện</span><% if ['erp/products/backend/accessories'].include?(params[:controller]) %><span class="selected"></span><% end %></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<%= erp_products.hkerp_products_backend_products_path %>" class="nav-link "><span class="title">Liên kết HK-ERP</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item <%= 'active open' if ['erp/products/backend/property_groups', 'erp/products/backend/properties', 'erp/products/backend/properties_values'].include?(params[:controller]) %>">
+                    <a href="javascript:;" class="nav-link nav-toggle"><i class="fa fa-gg"></i><span class="title">Quản Lý Thuộc Tính</span><% if ['erp/products/backend/property_groups', 'erp/products/backend/properties', 'erp/products/backend/properties_values'].include?(params[:controller]) %><span class="selected"></span><span class="arrow open"></span><% else %><span class="arrow"></span><% end %></a>
+                    <ul class="sub-menu">
+                        <li class="nav-item <%= 'active open' if ['erp/products/backend/property_groups'].include?(params[:controller]) %>">
+                            <a href="<%= erp_products.backend_property_groups_path %>" class="nav-link "><span class="title">Nhóm thuộc tính</span><% if ['erp/products/backend/property_groups'].include?(params[:controller]) %><span class="selected"></span><% end %></a>
+                        </li>
+                        <li class="nav-item <%= 'active open' if ['erp/products/backend/properties'].include?(params[:controller]) %>">
+                            <a href="<%= erp_products.backend_properties_path %>" class="nav-link "><span class="title">Thuộc tính</span><% if ['erp/products/backend/properties'].include?(params[:controller]) %><span class="selected"></span><% end %></a>
+                        </li>
+                        <li class="nav-item <%= 'active open' if ['erp/products/backend/properties_values'].include?(params[:controller]) %>">
+                            <a href="<%= erp_products.backend_properties_values_path %>" class="nav-link "><span class="title">Giá trị thuộc tính</span><% if ['erp/products/backend/properties_values'].include?(params[:controller]) %><span class="selected"></span><% end %></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item <%= 'active open' if ['erp/menus/backend/menus'].include?(params[:controller]) %>">
+                    <a href="javascript:;" class="nav-link nav-toggle"><i class="fa fa-sitemap"></i><span class="title">Quản Lý Menu</span><% if ['erp/menus/backend/menus'].include?(params[:controller]) %><span class="selected"></span><span class="arrow open"></span><% else %><span class="arrow"></span><% end %></a>
+                    <ul class="sub-menu">
+                        <li class="nav-item <%= 'active open' if ['erp/menus/backend/menus'].include?(params[:controller]) %>">
+                            <a href="<%= erp_menus.backend_menus_path %>" class="nav-link "><span class="title">Danh sách menu</span><% if ['erp/menus/backend/menus'].include?(params[:controller]) %><span class="selected"></span><% end %></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item <%= 'active open' if ['erp/orders/backend/frontend_orders'].include?(params[:controller]) %>">
+                    <a href="javascript:;" class="nav-link nav-toggle"><i class="fa fa-barcode"></i><span class="title">Quản Lý Đơn Hàng</span><% if ['erp/orders/backend/frontend_orders'].include?(params[:controller]) %><span class="selected"></span><span class="arrow open"></span><% else %><span class="arrow"></span><% end %></a>
+                    <ul class="sub-menu">
+                        <li class="nav-item <%= 'active open' if ['erp/orders/backend/frontend_orders'].include?(params[:controller]) %>">
+                            <a href="<%= erp_orders.backend_frontend_orders_path %>" class="nav-link "><span class="title">Đơn đặt hàng</span><% if ['erp/orders/backend/frontend_orders'].include?(params[:controller]) %><span class="selected"></span><% end %></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item <%= 'active open' if ['erp/articles/backend/articles', 'erp/articles/backend/categories'].include?(params[:controller]) %>">
+                    <a href="javascript:;" class="nav-link nav-toggle"><i class="fa fa-newspaper-o"></i><span class="title">Quản Lý Bài Viết</span><% if ['erp/articles/backend/articles', 'erp/articles/backend/categories'].include?(params[:controller]) %><span class="selected"></span><span class="arrow open"></span><% else %><span class="arrow"></span><% end %></a>
+                    <ul class="sub-menu">
+                        <li class="nav-item <%= 'active open' if ['erp/articles/backend/articles'].include?(params[:controller]) %>">
+                            <a href="<%= erp_articles.backend_articles_path %>" class="nav-link "><span class="title">Bài viết</span><% if ['erp/articles/backend/articles'].include?(params[:controller]) %><span class="selected"></span><% end %></a>
+                        </li>
+                        <li class="nav-item <%= 'active open' if ['erp/articles/backend/categories'].include?(params[:controller]) %>">
+                            <a href="<%= erp_articles.backend_categories_path %>" class="nav-link "><span class="title">Chuyên mục</span><% if ['erp/articles/backend/categories'].include?(params[:controller]) %><span class="selected"></span><% end %></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item <%= 'active open' if ['erp/backend/users', 'erp/backend/user_groups'].include?(params[:controller]) %>">
+                    <a href="javascript:;" class="nav-link nav-toggle"><i class="fa fa-users"></i><span class="title">Quản Lý Tài Khoản</span><% if ['erp/backend/users', 'erp/backend/user_groups'].include?(params[:controller]) %><span class="selected"></span><span class="arrow open"></span><% else %><span class="arrow"></span><% end %></a>
+                    <ul class="sub-menu">
+                        <li class="nav-item <%= 'active' if ['erp/backend/users'].include?(params[:controller]) %>">
+                            <a href="<%= erp.backend_users_path %>" class="nav-link "><span class="title">Tài khoản</span><% if ['erp/backend/users'].include?(params[:controller]) %><span class="selected"></span><% end %></a>
+                        </li>
+                        <li class="nav-item <%= 'active' if ['erp/backend/user_groups'].include?(params[:controller]) %>">
+                            <a href="<%= erp.backend_user_groups_path %>" class="nav-link "><span class="title">Nhóm tài khoản</span><% if ['erp/backend/user_groups'].include?(params[:controller]) %><span class="selected"></span><% end %></a>
                         </li>
                     </ul>
                 </li>
             </ul>
-            <!-- END RESPONSIVE MENU FOR HORIZONTAL & SIDEBAR MENU -->
         </div>
     </div>
-    <!-- END SIDEBAR -->
 </div>

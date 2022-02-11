@@ -1,18 +1,4 @@
-<% content_for :title do %>
-    <%= @user.name %>
-<% end %>
-
-<% content_for :page_title do %>
-    <a href="javascript:;">
-        <i class="fa fa-users"></i> Cập nhật hồ sơ
-    </a> / <%= @user.name %>
-<% end %>
-
-<div class="row">
-    <div class="col-md-12">
-        <% if @user.errors.any? %>
-            <%= erp_form_control("form_error_message") %>
-        <% end %>
-        <%= render 'form', user: @user %>
-    </div>
-</div>
+<% content_for :title do %>Cập Nhật Tài Khoản: <%= @user.get_name %><% end %>
+<% content_for :page_toolbar do %><%= erp_component('button/create', {text: 'Tạo tài khoản mới', href: erp.new_backend_user_path, class: 'btn-sm'}) %><% end %>
+<% content_for :page_title do %><%= link_to '<i class="fa fa-users"></i> Danh Sách Tài Khoản'.html_safe, erp.backend_users_path %> / Cập Nhật Tài Khoản: <%= @user.get_name %><% end %>
+<div class="row"><div class="col-md-12"><% if @user.errors.any? %><%= erp_form_control('form_error_message') %><% end %><%= render 'form', user: @user %></div></div>
