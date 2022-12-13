@@ -171,7 +171,7 @@ GEM
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
     jwt (2.3.0)
-    loofah (2.13.0)
+    loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -186,7 +186,7 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     nio4r (2.5.8)
-    nokogiri (1.13.0-x86_64-darwin)
+    nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.7)
       faraday (>= 0.8, < 2.0)
@@ -215,7 +215,7 @@ GEM
       request_store (~> 1.1)
     pbkdf2-ruby (0.2.1)
     public_suffix (4.0.6)
-    racc (1.6.0)
+    racc (1.6.1)
     rack (2.2.3)
     rack-protection (2.1.0)
       rack
@@ -303,7 +303,7 @@ GEM
     wkhtmltopdf-binary-edge (0.12.6.0)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   erp_core!
